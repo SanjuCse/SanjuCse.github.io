@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from www.java8.jobs4times.com/functions.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 22 Jun 2024 15:39:32 GMT -->
+<head>
+<meta charset="ISO-8859-1">
+<title>Java8 New Features - Functions</title>
+<link href="java8.css" rel="stylesheet"/>
+</head>
+<body>
+<div align="center" >
+<table border="1"><tr><td width="780px">
+
+ <script src="header.js"></script>
+<hr color="blue"><hr color="red"><hr color="green">
+<h2> Functions:</h2>
+<ul>
+<li> Functions are exactly same as predicates except that functions can return any type of result but function should (can) return only one value and that value can be any type as per our requirement.
+<li> To implement functions oracle people introduced Function interface in 1.8version.
+<li> Function interface present in java.util.function package.
+<li> Function interface contains only one method i.e., apply()
+</ul>
+<pre>
+interface Function(T,R) {
+public R apply(T t);
+}
+</pre>
+Assignment: Write a function to find length of given input string.
+<pre>
+Ex: 
+1) import java.util.function.*; 
+2) class Test { 
+3) public static void main(String[] args) { 
+4) Function&lt;String, Integer> f = s ->s.length(); 
+5) System.out.println(f.apply("Times")); 
+6) System.out.println(f.apply("Soft")); 
+7) } 
+8) }
+</pre>
+Note: Function is a functional interface and hence it can refer lambda expression.
+<br><br>
+<table border="1">
+<caption style="font-size: x-large;">Differences between Predicate and Function</caption>
+<tr><th>Predicate</th><th>Function</th></tr>
+<tr><td>To implement conditional checks we should go for predicate</td>
+	<td>To perform certain operation and to return some result we should go for function.</td></tr>
+<tr><td>Predicate can take one type parameter which represents input argument type. Predicate&lt;T></td>
+	<td>Function can take 2 type parameters. First one represent input argument type and Second one represent return Type.
+Function&lt;T,R></td></tr>
+<tr><td>Predicate interface defines only one method called <strong>test()</strong></td>
+	<td>Function interface defines only one Method called <strong>apply()</strong>.</td></tr>
+<tr><td>public boolean test(T t)</td>
+	<td>public R apply(T t)</td></tr>
+<tr><td>Predicate can return only boolean value.</td>
+	<td>Function can return any type of value</td></tr>
+<!-- <tr><td></td><td></td></tr> -->
+</table>
+<br>
+Note: Predicate is a boolean valued function and(), or(), negate() are default methods, present inside Predicate interface.
+   <br> <br>
+</td></tr></table></div>
+</body>
+
+<!-- Mirrored from www.java8.jobs4times.com/functions.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 22 Jun 2024 15:39:32 GMT -->
+</html>

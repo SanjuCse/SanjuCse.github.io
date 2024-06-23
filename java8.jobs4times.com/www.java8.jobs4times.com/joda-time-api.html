@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from www.java8.jobs4times.com/joda-time-api.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 22 Jun 2024 15:39:32 GMT -->
+<head>
+<meta charset="ISO-8859-1">
+<title> Java8 New Features - Joda-Time API</title>
+<link href="java8.css" rel="stylesheet"/>
+</head>
+<body>
+<div align="center" >
+<table border="1"><tr><td width="780px">
+<script src="header.js"></script>
+<hr color="blue"><hr color="red"><hr color="green">
+
+<h2>Date and Time API: (Joda-Time API)</h2>
+<ul>
+<li>Until Java 1.7version the classes present in java.util package to handle Date and Time (like Date, Calendar, TimeZoneetc) are not up to the mark with respect to convenience and performance.</li>
+<li>To overcome this problem in the 1.8version oracle people introduced Joda-Time API. This API developed by joda.org and available in Java in the form of java.time package.</li>
+</ul>
+# program for to display System Date and time. 
+<pre>
+1) import java.time.*; 
+2) public class DateTime { 
+3) public static void main(String[] args) { 
+4) LocalDate date = LocalDate.now(); 
+5) System.out.println(date); 
+6) LocalTime time=LocalTime.now(); 
+7) System.out.println(time); 
+8) } 
+9) }
+O/p:
+2015-11-23
+12:39:26:587
+</pre>
+
+Once we get LocalDate object we can call the following methods on that object to retrieve Day,month and year values separately.
+<pre>
+Ex: 
+1) import java.time.*; 
+2) class Test { 
+3) public static void main(String[] args) { 
+4) LocalDate date = LocalDate.now(); 
+5) System.out.println(date); 
+6) int dd = date.getDayOfMonth(); 
+7) int mm = date.getMonthValue(); 
+8) int yy = date.getYear(); 
+9) System.out.println(dd+"..."+mm+"..."+yy); 
+10) System.out.printf("\n%d-%d-%d",dd,mm,yy); 
+11) } 
+12) }
+</pre>
+
+Once we get LocalTime object we can call the following methods on that object.
+
+<pre>
+Ex: 
+1) import java.time.*; 
+2) class Test { 
+3) public static void main(String[] args) { 
+4) LocalTime time = LocalTime.now(); 
+5) int h = time.getHour(); 
+6) int m = time.getMinute(); 
+7) int s = time.getSecond(); 
+8) int n = time.getNano(); 
+9) System.out.printf("\n%d:%d:%d:%d",h,m,s,n); 
+10) } 
+11) }
+</pre>
+
+If we want to represent both Date and Time then we should go for LocalDateTime object.
+<pre>
+LocalDateTime dt = LocalDateTime.now(); 
+System.out.println(dt);
+O/p: 2015-11-23T12:57:24.531
+</pre>
+
+We can represent a particular Date and Time by using LocalDateTime object as follows.
+<pre>
+Ex:
+LocalDateTime dt1 = LocalDateTime.of(1995,Month.APRIL,28,12,45);
+sop(dt1);
+</pre>
+
+<pre>
+Ex:
+LocalDateTime dt1=LocalDateTime.of(1995,04,28,12,45);
+Sop(dt1);
+Sop("After six months:"+dt.plusMonths(6));
+Sop("Before six months:"+dt.minusMonths(6));
+</pre>
+
+To Represent Zone:
+ZoneId object can be used to represent Zone.
+<pre>
+Ex: 
+1) import java.time.*; 
+2) class ProgramOne { 
+3) public static void main(String[] args) { 
+4) ZoneId zone = ZoneId.systemDefault(); 
+5) System.out.println(zone); 
+6) } 
+7) }
+</pre>
+
+We can create ZoneId for a particular zone as follows
+<pre>
+Ex:
+ZoneId la = ZoneId.of("America/Los_Angeles");
+ZonedDateTime zt = ZonedDateTime.now(la);
+System.out.println(zt);
+</pre>
+
+Period Object:
+Period object can be used to represent quantity of time
+
+<pre>
+Ex:
+LocalDate today = LocalDate.now();
+LocalDate birthday = LocalDate.of(1989,06,15);
+Period p = Period.between(birthday,today);
+System.out.printf("age is %d year %d months %d days",p.getYears(),p.getMonths(),p.getDays());
+</pre>
+
+# write a program to check the given year is leap year or not 
+<pre>
+1) import java.time.*; 
+2) public class Leapyear { 
+3) int n = Integer.parseInt(args[0]); 
+4) Year y = Year.of(n); 
+5) if(y.isLeap()) 
+6) System.out.printf("%d is Leap year",n); 
+7) else 
+8) System.out.printf("%d is not Leap year",n); 
+9) }
+</pre>
+
+</td></tr></table></div>
+</body>
+
+<!-- Mirrored from www.java8.jobs4times.com/joda-time-api.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 22 Jun 2024 15:39:32 GMT -->
+</html>

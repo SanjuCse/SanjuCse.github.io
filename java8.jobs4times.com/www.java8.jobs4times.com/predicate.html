@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from www.java8.jobs4times.com/predicate.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 22 Jun 2024 15:39:32 GMT -->
+<head>
+<meta charset="ISO-8859-1">
+<title> Java8 New Features - Predicate</title>
+<link href="java8.css" rel="stylesheet"/>
+</head>
+<body>
+<div align="center" >
+<table border="1"><tr><td width="780px">
+
+ <script src="header.js"></script>
+<hr color="blue"><hr color="red"><hr color="green">
+<h2> Predicate:</h2>
+<ul>
+<li> A predicate is a function with a single argument and returns boolean value.
+<li> To implement predicate functions in Java, Oracle people introduced Predicate interface in 1.8 version (i.e.,Predicate&lt;T>).
+<li> Predicate interface present in Java.util.function package.
+<li> It's a functional interface and it contains only one method i.e., test()
+</ul>
+
+<pre>
+Ex:
+interface Predicate&lt;T> {
+public boolean test(T t);
+}
+</pre>
+As predicate is a functional interface and hence it can refers lambda expression<br>
+Ex:1 Write a predicate to check whether the given integer is greater than 10 or not.
+<pre>
+Ex:
+public boolean test(Integer I) { 
+if (I >10) {
+return true;
+} else {
+return false;
+} 
+}
+
+(Integer I) -> {
+if(I > 10)
+return true;
+else
+return false;
+}
+
+I -> (I>10);
+Predicate&lt;Integer> p = I ->(I >10);
+System.out.println (p.test(100)); //true
+System.out.println (p.test(7)); //false
+</pre>
+Program: 
+<pre>
+1) import java.util.function; 
+2) class Test { 
+3) public static void main(String[] args) { 
+4) Predicate&lt;Integer> p = I -> (i>10); 
+5) System.out.println(p.test(100)); 
+6) System.out.println(p.test(7)); 
+7) System.out.println(p.test(true)); //CE 
+8) } 
+9) }
+</pre>
+
+# 1 Write a predicate to check the length of given string is greater than 3 or not.
+
+<pre>
+Predicate&lt;String> p = s -> (s.length() > 3);
+System.out.println (p.test("rvkb")); //true
+System.out.println (p.test("rk")); //false
+</pre>
+
+#-2 write a predicate to check whether the given collection is empty or not.
+<pre>
+Predicate<collection> p = c -> c.isEmpty();
+</pre>
+
+Predicate joining
+<br>
+It's possible to join predicates into a single predicate by using the following methods.
+<ul><li>and()  <li>or() <li>negate() </ul>
+these are exactly same as logical AND ,OR complement operators
+
+<pre>
+Ex: 
+1) import java.util.function.*; 
+2) class test { 
+3) public static void main(string[] args) { 
+4) int[] x = {0, 5, 10, 15, 20, 25, 30}; 
+5) Predicate&lt;Integer> p1 = i->i>10; 
+6) Predicate&lt;Integer> p2=i -> i%2==0; 
+7) System.out.println("The Numbers Greater Than 10:"); 
+8) m1(p1, x); 
+9) System.out.println("The Even Numbers Are:");
+10) m1(p2, x); 
+11) System.out.println("The Numbers Not Greater Than 10:"); 
+12) m1(p1.negate(), x); 
+13) System.out.println("The Numbers Greater Than 10 And Even Are:"); 
+14) m1(p1.and(p2), x); 
+15) System.out.println("The Numbers Greater Than 10 OR Even:"); 
+16) m1(p1.or(p2), x); 
+17) } 
+18) public static void m1(Predicate&lt;Integer> p, int[] x) { 
+19) for(int x1:x) { 
+20) if(p.test(x1)) 
+21) System.out.println(x1); 
+22) } 
+23) } 
+24) }
+</pre>  
+   
+</td></tr></table></div>
+</body>
+
+<!-- Mirrored from www.java8.jobs4times.com/predicate.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 22 Jun 2024 15:39:32 GMT -->
+</html>

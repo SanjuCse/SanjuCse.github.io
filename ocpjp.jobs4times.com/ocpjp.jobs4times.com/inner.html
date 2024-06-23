@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from ocpjp.jobs4times.com/inner.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 22 Jun 2024 15:29:37 GMT -->
+<head>
+<meta charset="ISO-8859-1">
+
+<title>Inner Classes</title>
+<link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+
+<div align="center">   
+<table border="1"> <tr><td width="900px">
+    
+    
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td width="50%" align="left"><a href="http://www.jobs4times.com/"><img alt="jobs4timesLogo"  src="../img.logos.jobs4times.com/banner%20J4T.jpg" width="500" height="200">   </a> </td> 
+<td  align="right"><a href="http://jobs4times.com/J4T/allmaterial.html"><img alt="jobs4timesLogo"  src="../img.logos.jobs4times.com/as2.jpg"  width="180" height="200" >  </a>  </td> 	  	
+</tr>
+</table> 			
+
+    
+	
+<h1 align="center"  style="background-color: rgb(64, 0, 64);"> <font color="#ffff00">Inner Classes</font>  </h1>
+
+<h3>Q: 01 Given:</h3>
+<pre>
+10. class Line { 
+11. public static class Point {} 
+12. } 
+13. 
+14. class Triangle { 
+15. // insert code here 
+16. }
+</pre>
+Which code, inserted at line 15, creates an instance of the Point class defined in Line ?
+<ol><li> Point p = new Point();</li><li> Line.Point p = new Line.Point();</li><li>The Point class cannot be instatiated at line 15.</li>
+<li> Line l = new Line() ; l.Point p = new l.Point();</li></ol>
+ Answer: B
+ 
+<h3> Q: 02 Given:</h3>
+<pre>
+11. static class A { 
+12. void process() throws Exception { throw new Exception(); } 
+13. } 
+14. static class B extends A { 
+15. void process() { System.out.println("B "); } 
+16. } 
+17. public static void main(String[] args) { 
+18. A a = new B(); 
+19. a.process(); 
+20. }
+</pre>
+
+What is the result ?
+<ol><li> B</li><li> The code runs with no output.</li><li> An exception is thrown at runtime</li><li> Compilation fails because of an error in line 15.</li>
+<li> Compilation fails because of an error in line 18.</li><li> Compilation fails because of an error in line 19.</li></ol>
+ Answer: F 
+ 
+ <h3> Q: 03 Given:</h3> 
+<pre> 
+1. package geometry; 
+2. public class Hypotenuse { 
+3. public InnerTriangle it = new InnerTriangle(); 
+4. class InnerTriangle { 
+5. public int base; 
+6. public int height; 
+7. } 
+8. }
+</pre>
+
+ Which statement is true about the class of an object that can reference the variable base ?
+<ol><li> It can be any class.</li><li> No class has access to base.</li>
+<li> The class must belong to the geometry package.</li>
+<li> The class must be a subclass of the class Hypotenuse.</li></ol>
+ Answer: C
+
+<h3> Q: 04 Given:</h3>
+<pre>
+10. class Line { 
+11. public class Point { public int x,y;} 
+12. public Point getPoint() { return new Point(); } 
+13. } 
+14. class Triangle { 
+15. public Triangle() { 
+16. // insert code here 
+17. } 
+18. }
+</pre>
+
+Which code, inserted at line 16, correctly retrieves a local instance of a Point object ?
+<ol><li> Point p = Line.getPoint();</li><li> Line.Point p = Line.getPoint();</li><li> Point p = (new Line()).getPoint();</li>
+<li> Line.Point p = (new Line()).getPoint();</li></ol>
+ Answer: D
+
+
+
+
+
+
+
+
+
+
+
+<br><br>
+
+</td></tr></table>
+<a href="index-2.html">BACK</a>
+
+</div>
+
+</body>
+
+<!-- Mirrored from ocpjp.jobs4times.com/inner.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 22 Jun 2024 15:29:37 GMT -->
+</html>

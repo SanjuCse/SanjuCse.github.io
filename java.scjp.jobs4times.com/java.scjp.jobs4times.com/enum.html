@@ -1,0 +1,504 @@
+<!DOCTYPE HTML>
+<html>
+  
+<!-- Mirrored from java.scjp.jobs4times.com/enum.htm by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 22 Jun 2024 15:21:28 GMT -->
+<head><meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+    <title>Java ENUM Tutorial | Java ENUM Real Time Examples | Java ENUM concepts | Java ENUM Class Room study material | Java ENUM Practical Demonstration | Java ENUM Interview Questions and Answers </title>
+	
+    <meta http-equiv="keywords" content="java enum Introduction ,   Internal implementation of enum ,  Declaration and usage of enum ,  Enum vs switch statement ,  enum outside the class allowed modifiers ,  enum inside a class allowed modifiers ,  Enum vs inheritance , 
+Java.lang.Enum class ,  values() method ,  ordinal() method ,  Speciality of java enum  , 
+Enum vs constructor  ,  enum Vs Enum Vs Enumeration ">
+
+    <meta http-equiv="description" content="We can use enum to define a group of named constants.    Enum concept introduced in 1.5 versions.  When compared with old languages enum  java's enum is more powerful.">
+
+    
+    
+   <link rel="stylesheet" type="text/css" href="styles.css">
+   
+   <!--   widgets amung count 
+    
+  <script type="text/javascript" id="_wauqxp">var _wau = _wau || [];
+_wau.push(["tab", "ctfq2qz9u6oo", "qxp", "right-middle"]);
+(function() {var s=document.createElement("script"); s.async=true;
+s.src="http://widgets.amung.us/tab.js";
+document.getElementsByTagName("head")[0].appendChild(s);
+})();</script>  -->
+
+  </head>
+  
+  <body>
+<div align="center">
+<table border="4" width="75%" ><tr><td> 
+
+ <table width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="">
+     <tr>
+ <td width="50%" align="left"><a href="https://www.jobs4times.com/"><img alt="jobs4timesLogo"  src="../img.logos.jobs4times.com/banner%20J4T.jpg" width="700" height="200">   </a> </td> 
+   	<td  align="right"><a href="index-2.html"><img alt="jobs4timesLogo"  src="../img.logos.jobs4times.com/as2.jpg"  width="180" height="200" >  </a>  </td>
+    </tr>
+    </table>  	
+
+   
+ <h1 align="center"  style="background-color: rgb(0, 128, 0);"><font color="#ffffff">ENUM</font></h1>
+<u><em><strong>Agenda  </strong></em></u>
+<ol>
+<li><a href="#intro" > Introduction </a></li>   
+<li><a href="#internal" > Internal implementation of enum </a></li>   
+<li><a href="#usage" > Declaration and usage of enum </a></li>   
+<li><a href="#switch" > Enum vs switch statement </a></li>   
+<li><a href="#outside" > enum outside the class allowed modifiers </a></li>   
+<li><a href="#inside" > enum inside a class  allowed modifiers </a></li>   
+<li><a href="#inher" > Enum vs inheritance </a></li>   
+<li><a href="#class" > Java.lang.Enum class </a> <ul> 
+<li><a href="#values" > values() method </a></li>   
+<li><a href="#ordinal" > ordinal() method </a></li>  </ul> </li> 
+<li><a href="#special" > Speciality of java enum </a></li>   
+<li><a href="#con" > Enum vs constructor </a></li>   
+<li><a href="#eee" > enum Vs Enum Vs Enumeration </a></li>   
+
+</ol>
+
+<h2  id="intro" style="background-color: rgb(0, 64, 128);"><font color="#ffff00">Introduction :</font></h2>
+<p>We can use enum to define a group of named constants.</p> 
+<u>Example 1: 
+</u><pre>
+enum Month
+{
+JAN,FEB,MAR,  ... DEC;      //; --&gt;optional
+}
+</pre> 
+<u>Example 2: 
+</u><pre>
+enum Beer
+{
+KF,KO,RC,FO;
+}
+</pre>
+<ul>
+<li>Enum concept introduced in 1.5 versions.</li>
+<li>When compared with old languages enum java's enum is more powerful.</li>
+<li>By using enum we can define our own data types which are also come enumerated data types.</li>
+</ul>
+
+<h3 id="internal"><font color="#800040"><u>Internal implementation of enum:</u></font></h3>
+<p>
+Internally enum's are implemented by using class concept.<br> Every enum constant is a reference variable to that enum type object. <br>
+Every enum constant is implicitly<b> public static final</b> always.
+</p> 
+ 
+<u>Example 3:</u><br><br><img alt="" src="flow/image157.png"><br><br>
+
+<br> 
+  
+<u>Diagram:</u><br><br><img alt="" src="flow/image159.png"><br><br>
+
+<h3 id="usage"><u><font color="#800000">Declaration and usage of enum:</font></u></h3> 
+ 
+<u>Example 4: 
+ 
+</u><pre>
+enum Beer
+{
+KF,KO,RC,FO;//here semicolon is optional.
+}
+class Test
+{
+public static void main(String args[]){
+Beer b1=Beer.KF;
+System.out.println(b1);
+}
+}
+Output:
+D:\Enum&gt;java Test
+KF
+</pre> 
+ 
+<u><strong>Note:</strong></u><ul><li> Every enum constant internally static hence we can access by using &quot;enum name&quot;. 
+ </li><li>Internally inside  every enum toString() method is implemented to return  name of the constant.</li></ul>
+<h3 id="switch"><font color="#0000ff"><u>Enum vs switch statement:</u></font></h3>
+<p>Until 1.4 versions the allowed argument types for the switch statement are byte, short, char int. <br></p><p>But from 1.5 version onwards in addition to this the corresponding wrapper classes and enum type also allowed. <br></p><p>That is from 1.5 version onwards we can use enum type as argument to switch statement.</p> 
+ 
+<u>Diagram:</u><br><br><img alt="" src="flow/image007.png"><br><br>
+
+<br> 
+  
+<u>Example: 
+ 
+</u><pre>
+enum Beer
+{
+KF,KO,RC,FO;
+}
+class Test{
+public static void main(String args[]){
+Beer b1=Beer.RC;
+switch(b1){
+case KF:
+	System.out.println("it is childrens brand");
+	break;
+case KO:
+	System.out.println("it is too lite");
+	break;
+case RC:
+	System.out.println("it is too hot");
+	break;
+
+case FO:
+	System.out.println("buy one get one");
+	break;
+default:
+	System.out.println("other brands are not good");
+	}
+}}
+Output:
+D:\Enum&gt;java Test
+It is too hot
+</pre>
+
+<p>If we are passing enum type as argument to switch statement then every case label should be a valid enum constant otherwise we will get compile time error.</p> 
+ 
+<u>Example: 
+</u><pre>
+enum Beer
+{
+KF,KO,RC,FO;
+}
+class Test{
+public static void main(String args[]){
+Beer b1=Beer.RC;
+switch(b1){
+case KF:
+case RC:
+case KALYANI:
+}}}
+Output:
+Compile time error.
+D:\Enum&gt;javac Test.java
+Test.java:11: unqualified enumeration constant name required
+case KALYANI:
+</pre>
+
+<b>
+We can declare enum either outside the class or within the class but not inside a method. 
+</b>
+<h3  id="outside"><u><font color="#0000ff">If we declare enum outside the class the allowed modifiers are :</font></u></h3>
+<pre>
+public 
+default 
+strictfp.
+</pre>
+
+<h3 id="inside"><font color="#004080"><u>If we declare enum inside a class then the allowed modifiers are : </u></font></h3>
+<pre> 
+public        private
+default  +   protected
+ strictfp       static
+</pre> 
+ 
+<u>Example: 
+</u><br><br><img alt="" src="flow/image162.png"><br><br>
+
+
+<h3 id="inher"><font color="#008000"><u>Enum vs inheritance:</u></font></h3>
+<ul>
+<li>Every enum in java is the direct child class of java.lang.Enum class hence it is not possible to extends any other enum.</li>
+<li>Every enum is implicitly final hence we can't create child enum.</li>
+<li>Because of above reasons we can conclude inheritance concept is not applicable for enum's explicitly. Hence we can't apply extends keyword  for enum's .</li>
+<li>But enum can implement any no. Of interfaces simultaneously.</li>
+</ul> 
+ 
+<u>Example:</u><br><br><img alt="" src="flow/image164.png"><br><br> 
+  
+<u>Example:</u><br><br><img alt="" src="flow/image166.png"><br><br> 
+  
+<font color="#800000"><u><h3 id="class">Java.lang.Enum class: </h3></u></font><ul><li>Every enum in java  is the direct child class of java.lang.Enum class. Hence this class acts as base class for  all java enums. </li><li>
+It is abstract class and it is direct child class of &quot;Object class&quot;</li><li> It implements Serializable and Comparable. </li></ul>
+
+<font color="#0000ff"><u><h3 id="values">values() method:</h3></u></font> Every enum implicitly contains a static values() method to list all constants of enum. 
+<br><u>Example:</u> <strong>Beer[] b=Beer.values(); </strong><br><br><font color="#0080ff"><u><h3 id="ordinal">ordinal() method:</h3></u></font> Within enum the order of constants is important we can specify by its ordinal value. 
+We can find ordinal value(index value) of enum constant by using ordinal() method. 
+<br><u>Example:</u> <strong>public final int ordinal(); </strong><br><br><u>Example: 
+</u><pre>
+enum Beer
+{
+KF,KO,RC,FO;
+}
+class Test{
+public static void main(String args[]){
+Beer[] b=Beer.values();
+for(Beer b1:b)//this is forEach loop.
+{
+System.out.println(b1+"......."+b1.ordinal());
+}}}
+Output:
+D:\Enum&gt;java Test
+KF.......0
+KO.......1
+RC.......2
+FO.......3
+</pre>
+
+<p> 
+<font color="#0000ff"><u><h3 id="special">Speciality of java enum:</h3></u></font></p><p> When compared with old languages enum, java's enum is more powerful because in addition to constants we can take normal variables, constructors, methods etc which may not possible in old languages.<br> 
+Inside enum we can declare main method and even we can invoke enum directly from the command prompt. 
+</p> 
+ 
+<u>Example: 
+ 
+</u><pre>
+enum Fish{
+GOLD,APOLO,STAR;
+public static void main(String args[]){
+System.out.println("enum main() method called");
+}}
+Output:
+D:\Enum&gt;java Fish
+enum main() method called
+</pre>
+
+<p>
+In addition to constants if we are taking any extra members like methods then the list of constants should be in the 1st line and should ends with semicolon. <br> 
+If we are taking any extra member then enum should contain at least one constant. Any way an empty enum is always valid.
+</p> 
+ 
+<u>Example:</u><br><br><img alt="" src="flow/image168.png"><br><br>
+<br><br><img alt="" src="flow/image170.png"><br><br>
+
+<h3 id="con" style="background-color: rgb(0, 128, 0);"><font color="#ffffff">Enum vs constructor:</font></h3>
+<p> Enum can contain constructor. Every enum constant represents an object of that enum class which is static hence all enum constants will be created at the time of class loading automatically and hence constructor will be executed at the time of enum class loading for every enum constants.</p> 
+<u>Example: 
+ 
+</u><pre>
+enum Beer{
+KF,KO,RC,FO;
+Beer(){
+System.out.println("Constructor called.");
+}
+}
+class Test{
+public static void main(String args[]){
+Beer b=Beer.KF;    // ---&gt;1
+System.out.println("hello.");
+}}
+Output:
+D:\Enum&gt;java Test
+Constructor called.
+Constructor called.
+Constructor called.
+Constructor called.
+Hello.
+</pre>
+If we comment line 1 then the output is <b> Hello</b>.
+<p>We can't create enum object explicitly and hence we can't invoke constructor directly.</p> 
+ 
+<u>Example: 
+ 
+ 
+</u><pre>
+enum Beer{
+KF,KO,RC,FO;
+Beer(){
+System.out.println("constructor called");
+}
+}
+class Test{
+public static void main(String args[]){
+Beer b=new Beer();
+System.out.println(b);
+}}
+Output:
+Compile time error.
+D:\Enum&gt;javac Test.java
+Test.java:9: enum types may not be instantiated
+Beer b=new Beer();
+</pre> 
+ 
+<u>Example:</u><br><br><img alt="" src="flow/image172.png"><br><br>
+
+<pre>
+enum Beer
+{
+KF(100),KO(70),RC(65),Fo(90),KALYANI;
+int price;
+Beer(int price){
+this.price=price;
+}
+Beer()
+{
+this.price=125;
+}
+public int getPrice()
+{
+return price;
+}
+}
+class Test{
+public static void main(String args[]){
+Beer[] b=Beer.values();
+for(Beer b1:b)
+{
+System.out.println(b1+"......."+b1.getPrice());
+}}}
+
+output :
+KF.......100
+KO.......70
+RC.......65
+FO .......90
+KALYANI.......125
+
+</pre>
+
+<p>Inside enum we can take both instance and static methods but it is not possible to take abstract methods.</p> 
+ 
+<font color="#000080"><u><strong>Case 1: 
+ 
+</strong></u></font><p>Every enum constant represents an object hence whatever the methods we can apply on the normal objects we can apply the same methods on enum constants also.</p> 
+ 
+<strong><font color="#ff0000">Which of the following expressions are valid ? 
+</font></strong><pre>
+Beer.KF==Beer.RC----------------------------&gt; false
+Beer.KF.equals(Beer.RC) -------------------&gt;   false
+Beer.KF  &lt;  Beer.RC------------------------------&gt;  invalid
+Beer.KF.ordinal() &lt; Beer.RC.ordinal()------&gt;  valid
+</pre> 
+ 
+<font color="#800000"><u><strong>Case 2:        </strong></u></font><br> 
+<u>Example 1: 
+ 
+</u><pre>
+package pack1;
+public enum Fish
+{
+STAR,GUPPY;
+}
+</pre> 
+ 
+ 
+<u>Example 2: 
+</u><pre>
+package pack2;
+//import static pack1.Fish.*;
+import static pack1.Fish.STAR;
+class A
+{
+public static void main(String args[]){
+System.out.println(STAR);
+}
+}
+Import pack1.*; ----------------------------&gt;invalid
+Import pack1.Fish; -------------------------&gt;invalid
+import static pack1.Fish.*; ---------------&gt;valid
+import static pack1.Fish.STAR; ----------&gt;valid
+</pre> 
+ 
+<u>Example 3: 
+ 
+</u><pre>
+package pack3;
+//import pack1.Fish;
+import pack1.*;
+//import static pack1.Fish.GUPPY;
+import static pack1.Fish.*;
+class B
+{
+public static void main(String args[]){
+Fish f=Fish.STAR;
+System.out.println(GUPPY);
+}
+}
+</pre> 
+<b>
+Note :</b><br> 
+If we want to use classname directly  from outside package we should write normal import , If we want  to access  static method  or static variable without  classname directly then static  import is  required.
+
+
+
+ <br><br>
+<font color="#008000"><u><strong>Case 3: </strong></u></font>
+<br>Example 1: 
+<pre>
+enum Color
+{
+BLUE,RED,GREEN;
+public void info()
+{
+System.out.println("Universal color");
+}
+}
+class Test
+{
+public static void main(String args[]){
+Color[] c=Color.values();
+for(Color c1:c)
+{
+c1.info();
+}}}
+Output:
+Universal color
+Universal color
+Universal color
+</pre>
+
+
+
+
+
+<br>Example 2:
+<pre>
+enum Color
+{
+BLUE,RED
+{
+public void info(){
+System.out.println("Dangerous color");
+}
+},GREEN;
+public void info()
+{
+System.out.println("Universal color");
+}
+}
+class Test
+{
+public static void main(String args[]){
+Color[] c=Color.values();
+for(Color c1:c)
+{
+c1.info();
+}}}
+Output:
+Universal color
+Dangerous color
+Universal color
+</pre>
+<h3  id="eee" style="background-color: rgb(0, 128, 0);"><font color="#ffff00">enum  Vs  
+Enum  Vs  Enumeration :</font></h3>
+<p>
+<font color="#008000"><u><strong>enum :</strong></u></font> enum is a keyword  which  can be used  to define  a group of  named constants.
+</p><p>
+<font color="#008000"><u><strong>Enum :</strong></u></font> <br>It is a class present in java.lang  package . <br>Every enum  in java is the  direct  child class of this class. Hence this Enum class acts as base class  for  all java enum's .
+</p><p>
+<font color="#008000"><u><strong>Enumeration :</strong></u></font><br>It is a interface present in java.util package .<br> We can use  Enumeration  to get the objects  one by one from  the Collections.
+</p>
+
+
+<br>
+
+
+
+</td></tr></table><a href="index-2.html">BACK</a></div>
+
+     
+ <!-- infolinks  -->   
+<script type="text/javascript">
+ var infolinks_pid = 1921552;
+ var infolinks_wsid = 0;
+</script>
+<script type="text/javascript" src="../resources.infolinks.com/js/infolinks_main.js"></script>
+   
+
+
+  </body>
+
+<!-- Mirrored from java.scjp.jobs4times.com/enum.htm by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 22 Jun 2024 15:21:30 GMT -->
+</html>

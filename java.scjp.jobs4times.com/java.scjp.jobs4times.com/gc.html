@@ -1,0 +1,388 @@
+<!DOCTYPE HTML>
+<html>
+  
+<!-- Mirrored from java.scjp.jobs4times.com/gc.htm by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 22 Jun 2024 15:20:21 GMT -->
+<head><meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+    <title>Java Garbage Collection Tutorial | Java Garbage Collection Real Time Examples | Java Garbage Collection concepts | Java Garbage Collection Class Room study material | Java Garbage Collection Practical Demonstration | Java Garbage Collection Interview Questions and Answers</title>
+	
+    <meta http-equiv="keywords" content="Garbage Collection Introduction ,  The way to make an object eligible for GC , Nullifying the reference variable ,
+	Reassign the reference variable , Objects created inside a method ,  Island of Isolation , The methods for requesting JVM to run GC ,  By System class ,
+	By Runtime class , Finalization , Case 1 : Just before destroying any object GC calls finalize() method on the object , Case 2 : We can call finalize() method explicitly ,
+	Case 3 : finalize() method can be call either by the programmer or by the GC , Case 4 : On any object GC calls finalize() method only once ,  Memory leaks ">
+
+    <meta http-equiv="description" content="Sun people provided one assistant which is always running in the background for destruction at useless objects. Due to this assistant the chance of failing java program is very rare because of memory problems.
+	This assistant is nothing but garbage collector. Hence the main objective of GC is to destroy useless objects.">
+    
+    
+  <link rel="stylesheet" type="text/css" href="styles.css">
+
+</head>
+  
+  <body>
+ <div align="center">
+<table  border="4"  width="80%"><tr><td>   
+ 
+  <table width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="">
+     <tr>
+  <td width="50%" align="left"><a href="https://www.jobs4times.com/"><img alt="jobs4timesLogo"  src="../img.logos.jobs4times.com/banner%20J4T.jpg" width="700" height="200">   </a> </td> 
+   	<td  align="right"><a href="index-2.html"><img alt="jobs4timesLogo"  src="../img.logos.jobs4times.com/as2.jpg"  width="180" height="200" >  </a>  </td>
+    </tr>
+    </table>  	
+ 
+ 
+<h1 align="center" style="background-color: rgb(0, 128, 255);"><font color="#ffffff">Garbage Collection:</font></h1>
+<ol>
+<li><a href="#intro" > Introduction:</a></li>
+<li><a href="#gc" > The way to make an object eligible for GC</a>
+<ol type="i">
+<li><a href="#null" > Nullifying the reference variable</a></li>
+<li><a href="#reassign" > Reassign the reference variable</a></li>
+<li><a href="#method" >Objects created inside a method</a></li>
+<li><a href="#isolation" > Island of Isolation</a></li>
+</ol>
+</li>
+<li><a href="#jvm" > The methods for requesting JVM to run GC</a>
+<ol type="i">
+<li><a href="#system" > By System class</a></li>
+<li><a href="#runtime" > By Runtime class</a></li>
+</ol>
+</li>
+<li><a href="#finalise" > Finalization</a></li>
+<ul>
+<li><a href="#case1" > Case 1 : Just before destroying any object GC calls finalize() method on the object</a></li>
+<li><a href="#case2" > Case 2 : We can call finalize() method explicitly</a></li>
+<li><a href="#case3" > Case 3 : finalize() method can be call either by the programmer or by the GC</a></li>
+<li><a href="#case4" > Case 4 : On any object GC calls finalize() method only once</a></li>
+</ul>
+<li><a href="#leak" > Memory leaks</a></li>
+
+</ol>
+
+<h3 id="intro"><u><font color="#0000ff">Introduction:</font></u></h3>
+<ul>
+<li>In old languages like C++ programmer is responsible for both creation and destruction of objects. Usually programmer is taking very much care while creating object and neglect destruction of useless objects .Due to his negligence at certain point of time for creation of new object sufficient memory may not be available and entire application may be crashed due to memory problems.</li>
+<li>But in java programmer is responsible only for creation of new object and his not responsible for destruction of objects.</li>
+<li>Sun people provided one assistant which is always running in the background for destruction at useless objects. Due to this assistant the chance of failing java program is very rare because of memory problems.</li>
+<li>This assistant is nothing but garbage collector. Hence the main objective of GC is to destroy useless objects.</li>
+</ul>
+
+<h3 id="gc" ><u><font color="#004080">The ways to make an object eligible for GC:</font></u></h3>
+<ul>
+<li>Even through programmer is not responsible for destruction of objects but it is always a good programming practice to make an object eligible for GC if it is no longer required.</li>
+<li>An object is eligible for GC if and only if it does not have any references.</li>
+</ul>
+
+<h3><u><font color="#008000">The following are various possible ways to make an object eligible for GC:</font></u></h3>
+
+<p> 
+ <font color="#0000ff"><u><h3 id="null" >1.Nullifying the reference variable:  </h3></u></font><br>
+If an object is no longer required then we can make eligible for GC by assigning "null" to all its reference variables.
+</p> 
+<u>Example:</u><br><br><img alt="" src="flow/image142.png"><br><br>
+ 
+
+<p> 
+<font color="#800000"> <u><h3 id="reassign" >2.Reassign the reference variable:  </h3></u></font><br>
+If an object is no longer required then reassign all its reference variables to some other objects then old object is by default eligible for GC.
+</p> 
+<u>Example:</u><br><br><img alt="" src="flow/image144.png"><br><font color="#008080"><br></font>
+
+<p> 
+<u><font color="#008080"><h3 id="method" >3. Objects created inside a method: </h3></font></u><br>
+Objects created inside a method are by default eligible for GC once method completes.
+</p> 
+<u>Example 1:</u><br><br><img alt="" src="flow/image146.png"><br><br>
+
+<br> 
+ 
+<u>Example 2:</u><br><br><img alt="" src="flow/image148.png"><br><br>
+ 
+<br> 
+ 
+<u>Example 3:</u><br><br><img alt="" src="flow/image150.png"><br><br>
+
+<br> 
+ 
+<u>Example 4:</u><br><br><img alt="" src="flow/image151.png"><br><br>
+ 
+<h3 id="isolation" ><font color="#0000ff"><u>4.Island of Isolation:</u></font></h3>
+<br><br><img alt="" src="flow/image152.png"><br><br>
+
+<p>  
+<strong>Note:</strong> if an object doesn't have any reference then it always eligible for GC. <br> 
+<strong>Note:</strong> Even though object having reference still it is eligible for GC some times.<br> 
+</p><p><strong>Example: </strong><br></p><p><strong><font color="#008000">island of isolation. (Island of Isolation  all references  are internal  references )
+</font></strong></p>
+
+<h3 id="jvm"><u><font color="#0000ff">The methods for requesting JVM to run GC:</font></u></h3>
+<ul>
+<li>Once we made an object eligible for GC it may not be destroyed immediately by the GC. Whenever jvm runs GC then only object will be destroyed by the GC. But when exactly JVM runs GC we can't expert it is vendor dependent.</li>
+<li>We can request jvm to run garbage collector programmatically, but whether jvm accept our request or not there is no guaranty. But most of the times JVM will accept  our request.  </li>
+</ul>
+
+<h3 id="method" ><font color="#800040"><u>The following are various ways for requesting jvm to run GC:</u></font></h3>
+
+<p> 
+<u><font color="#800040"><h4 id="system" >By System class:</h4></font></u>&nbsp;&nbsp; System class contains a static method GC for this purpose. <br> 
+<strong>Example: </strong><br><strong>System.gc(); 
+</strong></p>
+
+<p> 
+<font color="#0000ff"><u><h4 id="runtime" >By Runtime class:</h4></u></font>
+<ul><li>
+ A java application can communicate with jvm by using Runtime object. </li><li>
+Runtime class is a singleton class present in java.lang. Package.</li><li> We can create Runtime object by using factory method getRuntime().</li> </ul>
+<strong>Example: </strong><br></p><p><strong>Runtime r=Runtime.getRuntime(); 
+</strong></p>
+
+<p>Once we got Runtime object we can call the following methods on that object.</p>
+
+
+<p>
+<u><font color="#804000"><strong>freeMemory():</strong></font></u> returns the free memory present in the heap.<br> 
+<font color="#800040"><u><strong>totalMemory():</strong></u></font> returns total memory of the heap.<br> 
+<font color="#0000ff"><u><strong>gc():</strong></u></font> for requesting jvm to run gc. 
+</p> 
+<u>Example: 
+</u><pre>
+import java.util.Date;
+class RuntimeDemo
+{
+public static void main(String args[]){
+Runtime r=Runtime.getRuntime();
+System.out.println("total memory of the heap :"+r.totalMemory());
+System.out.println("free memory of the heap :"+r.freeMemory());
+for(int i=0;i&lt;10000;i++)
+{
+Date d=new Date();
+d=null;
+}
+System.out.println("free memory of the heap :"+r.freeMemory());
+r.gc();
+System.out.println("free memory of the heap :"+r.freeMemory());
+}
+}
+Output:
+Total memory of the heap: 5177344
+Free memory of the heap: 4994920
+Free memory of the heap: 4743408
+Free memory of the heap: 5049776
+</pre>
+<b>Note :</b> Runtime class is a singleton class so not create the object  to use constructor.
+<p> 
+<font color="#ff0000"><strong>Which of the following are valid ways for requesting jvm to run GC ? </strong></font><br>
+System.gc(); (valid)  <br>
+Runtime.gc(); (invalid)  <br>
+(new Runtime).gc(); (invalid)  <br>
+Runtime.getRuntime().gc(); (valid)
+</p>
+<p> 
+<u><strong>Note:</strong></u> gc() method present in System class is static, where as it is instance method in Runtime class.  <br> 
+<u><strong>Note: </strong></u>Over Runtime class gc() method , System class gc() method is recommended to use.   <br> 
+<u><strong>Note:</strong></u> in java it is not possible to find size of an object and address of an object.    
+</p>
+
+<h3 id="finalise"  style="background-color: rgb(0, 128, 64);"><font color="#ffffff">Finalization:</font></h3>
+<ul><li>
+Just before destroying any object gc always calls finalize() method to perform cleanup activities.</li><li>
+ If the corresponding class contains finalize() method then it will be executed otherwise Object class finalize() method will be executed.</li></ul>
+ which is  declared as follows.  <br>
+<b>protected void finalize() throws Throwable </b> </p> 
+ 
+<font color="#800000"><u><h4 id="case1" >Case 1: 
+</h4></u></font><p>	Just before destroying any object GC calls finalize() method on the object which is eligible for GC then the corresponding class finalize() method  will be executed. <br></p><p>For Example if String object is eligible for GC then String class finalize()method is executed but not Test class  finalize()method.</p> 
+ 
+<u>Example: 
+</u><pre>
+class Test
+{
+public static void main(String args[]){
+String s=new String("bhaskar");
+Test t=new Test();
+s=null;
+System.gc();
+System.out.println("End of main.");
+}
+public void finalize(){
+System.out.println("finalize() method is executed");
+}
+}
+Output:
+End of main.
+</pre>
+
+In the above program String class finalize()method got executed. Which has empty implementation.
+<p>If we replace String object with Test object then Test class finalize() method will be executed .</p><p>The following program is an Example of this.</p> 
+<u>Example: 
+ 
+</u><pre>
+class Test
+{
+public static void main(String args[]){
+String s=new String("bhaskar");
+Test t=new Test();
+t=null;
+System.gc();
+System.out.println("End of main.");
+}
+public void finalize(){
+System.out.println("finalize() method is executed");
+}
+}
+Output:
+finalize() method is executed
+End of main
+</pre> 
+ 
+<font color="#0000ff"><u><h4 id="case2" >Case 2: 
+</h4></u></font><p> We can call finalize() method explicitly then it will be executed just like a normal method call and object won't be destroyed. But before destroying any object GC always calls finalize() method.</p> 
+<u>Example: </u>
+<pre>
+class Test
+{
+public static void main(String args[]){
+Test t=new Test();
+t.finalize();
+t.finalize();
+t=null;
+System.gc();
+System.out.println("End of main.");
+}
+public void finalize(){
+System.out.println("finalize() method called");
+}
+}
+Output:
+finalize() method called.
+finalize() method called.
+finalize() method called.
+End of main.
+</pre>
+<p>
+In the above program finalize() method got executed 3 times in that 2 times explicitly by the programmer and one time by the gc. <br> 
+<u><strong>Note:</strong></u> In Servlets we can call destroy() method explicitly from init() and service() methods. Then it will be executed just like a normal method call and Servlet object won't be destroyed.</p> 
+<u>Diagram:</u><br><br><img alt="" src="flow/image154.png"><br><br>
+ <br> 
+<font color="#0080ff"><u><h4 id="case3" >Case 3: 
+</h4></u></font><p> 
+finalize() method can be call either by the programmer or by the GC . <br></p><p>If the programmer calls explicitly finalize() method and while executing  the finalize() method if an exception raised and uncaught then the program will be terminated abnormally.<br> 
+If GC calls finalize() method and while executing the finalize()method if an exception raised and uncaught then JVM simply ignores that exception and the program will be terminated normally.</p> 
+<u>Example: 
+</u><pre>
+class Test
+{
+public static void main(String args[]){
+Test t=new Test();
+//t.finalize();-------line(1)
+t=null;
+System.gc();
+System.out.println("End of main.");
+}
+public void finalize(){
+System.out.println("finalize() method called");
+System.out.println(10/0);
+}
+</pre>
+<p>
+If we are not comment line1 then programmer calling finalize() method  explicitly and while executing the finalize()method ArithmeticException raised which is uncaught hence the program terminated abnormally.<br>
+If we are comment line1 then GC calls finalize() method and JVM ignores ArithmeticException and program will be terminated normally.</p>
+
+<p> 
+<font color="#ff0000"><u><strong>Which of the following is true? </strong></u></font><br>
+While executing finalize() method JVM ignores every exception(invalid). <br>
+While executing finalize() method JVM ignores only uncaught exception(valid).
+</p> 
+ 
+<font color="#008000"><u><h4 id="case4" >Case 4: 
+</h4></u></font><p>On any object GC calls finalize() method only once.</p> 
+<u>Example: 
+</u><pre>
+class FinalizeDemo
+{
+static FinalizeDemo s;
+public static void main(String args[])throws Exception{
+FinalizeDemo f=new FinalizeDemo();
+System.out.println(f.hashCode());
+f=null;
+System.gc();
+Thread.sleep(5000);
+System.out.println(s.hashCode());
+s=null;
+System.gc();
+Thread.sleep(5000);
+System.out.println("end of main method");
+}
+public void finalize()
+{
+System.out.println("finalize method called");
+s=this;
+}
+}
+Output:
+D:\Enum&gt;java FinalizeDemo
+4072869
+finalize method called
+4072869
+End of main method
+</pre> 
+ 
+<u><strong>Note: </strong></u><br>
+The behavior of the GC is vendor dependent and varied from JVM to JVM hence we can't expert exact answer for the following.<br>
+<ol>
+<li> What is the algorithm followed by GC.</li>
+<li> Exactly at what time JVM runs GC.</li>
+<li> In which order GC identifies the eligible objects.</li>
+<li> In which order GC destroys the object etc.</li>
+<li> Whether GC destroys all eligible  objects or not.</li>
+</ol>
+<p>When ever the program runs with low memory then the JVM runs GC, but we can't except  exactly  at what time.
+<br>
+Most of the GC's followed <b>mark &amp; sweap</b> algorithm , but it doesn't mean every GC  follows the same algorithm.
+</p>
+
+<h3 id="leak"><u><font color="#800040">Memory leaks:</font></u></h3>
+<ul type="square">
+<li>An object which is not using in our application and it is not eligible for GC such type of objects are called "memory leaks".</li>
+<li>In the case of memory leaks GC also can't do anything the application will be crashed due to memory problems.</li>
+<li>In our program  if memory leaks present then certain point we will get <b>OutOfMemoryException</b>. Hence  if an object is no longer required then it's highly recommended to make that object eligible for GC.</li>
+<li>By using monitoring tools we can identify memory leaks.</li>
+</ul>
+<pre>
+Example:
+
+HPJ meter
+HP ovo
+IBM Tivoli		These are monitoring tools.
+J Probe			(or memory management tools)
+Patrol and etc
+
+</pre>
+
+
+
+
+    
+
+
+</td></tr></table><a href="index-2.html">BACK</a></div>
+
+
+
+     
+ <!-- infolinks  -->   
+<script type="text/javascript">
+ var infolinks_pid = 1921552;
+ var infolinks_wsid = 0;
+</script>
+<script type="text/javascript" src="../resources.infolinks.com/js/infolinks_main.js"></script>
+   
+
+
+
+
+
+
+  </body>
+
+<!-- Mirrored from java.scjp.jobs4times.com/gc.htm by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 22 Jun 2024 15:20:23 GMT -->
+</html>

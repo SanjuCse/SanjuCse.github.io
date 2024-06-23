@@ -1,0 +1,2285 @@
+<!DOCTYPE HTML>
+<html>
+  
+<!-- Mirrored from java.scjp.jobs4times.com/oops.htm by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 22 Jun 2024 15:20:23 GMT -->
+<head><meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+    <title>oops concepts | object oriented programming  concepts in java | Java OOPS  OverView | Java OOPS  Tutorial | Java  OOPS   Real Time Examples | Java  OOPS   concepts | Java  OOPS Class Room study material | Java  OOPS  Practical Demonstration | Java  OOPS  Interview Questions and Answers </title>
+	
+<meta http-equiv="keywords" content="Data Hiding,Abstraction,Encapsulation,Tightly Encapsulated Class,IS-A Relationship(Inheritance),Multiple inheritance,Cyclic inheritance,
+HAS-A Relationship,Composition,Aggregation,Method Signature,Polymorphism,Overloading,Automatic promotion,Overriding,Rules for overriding,Checked Vs Un-checked Exceptions,with respect to static methods,Var-arg methods,variables,Differences between overloading and overriding ?,Method Hiding,Static Control Flow,Static control flow parent to child relationship,Static block,Instance Control Flow,Instance control flow in Parent to Child relationship,Constructors,Constructor Vs instance block,Rules to write constructors,
+Default constructor,Prototype of default constructor,super() vs this(),Overloaded constructors,Recursive functions,Coupling,Cohesion,Object Type Casting,Compile time checking,
+Runtime checking,ArrayList l=new ArrayList(), List l=new ArrayList(),Singleton classes,Factory method ">
+    <meta http-equiv="description" content="Our internal data should not go out directly that is outside person can't access our internal data directly. Hide internal implementation and just highlight the set of services, is called abstraction.  Binding of data and corresponding methods into a single unit is called Encapsulation .   HAS-A relationship is also known as composition (or) aggregation.  By using extends keywords we can implement IS-A relationship.   In java, method signature consists of name of the method followed by argument types.  Same name with different forms is the concept of polymorphism.   Two methods are said to be overload if and only if both having the same name but different argument types.  Whenever we are creating an object some piece of the code will be executed automatically to perform initialization of an object this piece of the code is nothing but constructor. Calling a function within same function is called recursive call.   For any java class if we are allow to create only one object such type of class is said to be singleton class.  By using class name if we are calling a method and that method returns the same class object such type of method is called factory method.  Parent class reference can be used to hold Child class object but by using that reference we can't call Child specific methods.  The degree of dependency between the components is called coupling.  For every component we have to maintain a clear well defined functionality such type of component is said to be follow high cohesion. ">
+    
+ <link rel="shortcut icon" href="http://jobs4times.com/small.ico">   
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <style type="text/css">
+   
+    pre {
+    font-family: monospace;     
+    font-style: inherit;       
+    } 
+    
+    </style>
+    
+  
+
+  </head>
+  
+  <body  >
+  
+  <div  align="center"   >
+  <table   width="800px" border="4" ><tr><td>  
+  
+  
+   <table width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="">
+     <tr>
+<td width="50%" align="left"><a href="https://www.jobs4times.com/"><img alt="jobs4timesLogo"  src="../img.logos.jobs4times.com/banner%20J4T.jpg" width="700" height="200">   </a> </td> 
+   	<td  align="right"><a href="index-2.html"><img alt="jobs4timesLogo"  src="../img.logos.jobs4times.com/as2.jpg"  width="180" height="200" >  </a>  </td>
+    </tr>
+    </table>  	
+  
+  
+  
+  
+  <h1 style="background-color: rgb(0, 0, 64);"  align="center"><font color="#ffff00">Object Oriented Programming (OOPS)</font></h1>
+  
+  <u><font color="#FF3366">Agenda: </font></u>
+  <table    border="1"   >
+  <tr><td>
+  <ol>
+  <li><a href="#datahide">	Data Hiding</a> </li>
+  <li><a href="#abstraction">Abstraction</a></li>
+  <li><a href="#encapsulation">Encapsulation</a></li>
+  <li><a href="#tightly">Tightly Encapsulated Class</a></li>  
+  <li><a href="#isa">IS-A Relationship(Inheritance)</a><ul>
+  <li><a href="#multiple">	Multiple inheritance</a> </li>
+  <li><a href="#cyclic">	Cyclic inheritance</a> </li></ul></li>  
+  <li><a href="#hasa">HAS-A Relationship</a><ul>
+  <li><a href="#compo">Composition</a> </li>
+  <li><a href="#aggre">Aggregation</a> </li></ul></li>  
+  <li><a href="#methodsignature">Method Signature</a></li>  
+  <li><a href="#poly"> Polymorphism</a><ul>
+  <li><a href="#overloading">Overloading</a><ul> 
+  <li><a href="#auto">Automatic promotion in overloading</a></li></ul></li>  
+  <li><a href="#overriding">Overriding</a><ul>
+  <li><a href="#orules">Rules for overriding</a></li>
+  <li><a href="#ocheck">Checked Vs Un-checked Exceptions</a></li>  
+  <li><a href="#ostatic">Overriding with respect to static methods</a></li>
+  <li><a href="#ovararg">Overriding with respect to Var-arg methods</a></li>
+  <li><a href="#ovar">Overriding with respect to variables</a></li>
+  <li><a href="#diffoo">Differences between overloading and overriding ?</a></li></ul></li>  
+  <li><a href="#methodhiding">Method Hiding</a></li>  </ul></li>  
+  <li><a href="#staticflow">Static Control Flow</a> <ul>
+  <li><a href="#sfc">Static control flow parent to child relationship</a></li>
+  <li><a href="#sblock">Static block</a></li></ul></li>  
+  <li><a href="#instanceflow">Instance Control Flow</a><ul>
+  <li><a href="#ifc">Instance control flow in Parent to Child relationship</a></li></ul></li>  
+  <li><a href="#constructors">Constructors</a><ul>
+  <li><a href="#cinstance">Constructor Vs instance block</a></li>
+  <li><a href="#crules">Rules to write constructors</a></li>
+  <li><a href="#cdefault">Default constructor</a></li>
+  <li><a href="#cprototype">Prototype of default constructor</a></li>
+  <li><a href="#csuper">super() vs this():</a></li> 
+  <li><a href="#cover">Overloaded constructors</a></li> 
+  <li><a href="#crecursive">Recursive functions</a></li></ul> </li>  
+  <li><a href="#coupling">Coupling</a></li>
+  <li><a href="#cohesion">Cohesion</a></li>  
+  <li><a href="#typecast">Object Type Casting</a><ul>
+  <li><a href="#tcompile">Compile time checking</a></li>
+  <li><a href="#trun">Runtime checking</a></li> </ul> </li>  
+  </ol>
+  <hr>
+  <ul type="square">
+  <li><a href="#diffall">Difference between ArrayList l=new ArrayList() & List l=new ArrayList() ?</a></li>
+  <li><a href="#java">In how many ways get an object in java ?</a></li>
+  <li><a href="#single">Singleton classes</a></li>
+  <li><a href="#factory">  Factory method</a></li>
+ 
+  
+  </ul>
+  </td></tr>
+  </table>
+  
+  
+  
+  
+
+
+
+
+
+
+  <hr color="red">
+  
+  <h2  id="datahide"  style="background-color: rgb(0, 0, 255);"><font color="#ffff00"> Data Hiding : </font></h2> 
+  <ul>
+  <li>Our internal data should not go out directly that is outside person can't access our internal data directly.</li>
+  <li>By using private modifier we can implement data hiding.</li>
+  </ul>
+  <pre>
+Example:
+class Account  {
+	private double balance;
+	......................;
+	......................;
+}
+</pre>
+<p>After  providing  proper  username and password only , we can access  our  Account  information.</p>
+<p>	The main advantage of data hiding is security. <br> 
+<u><strong>Note: </strong></u>recommended modifier for data members is private. </p>
+<br>
+
+<h2  id="abstraction"  style="background-color: rgb(128, 0, 64);"><font color="#ffff00">Abstraction : </font></h2>
+<ul>
+<li>	Hide internal implementation and just highlight the set of services, is called abstraction.</li>
+<li>	By using abstract classes and interfaces we can implement abstraction.</li>
+</ul> 
+<u><strong>Example : </strong></u>
+<p>	By using ATM GUI screen bank people are highlighting the set of services what they are offering without highlighting internal implementation.</p> 
+ 
+<u><strong>The main advantages of Abstraction are: 
+</strong></u><ol>
+<li>	We can achieve security as we are not highlighting our internal implementation.(i.e., outside person doesn't aware our internal implementation.)</li>
+<li>	Enhancement will become very easy because without effecting end user we can able to perform any type of changes in our internal system.</li>
+<li>	It provides more flexibility to the end user to use system very easily.</li>
+<li>	It improves maintainability of the application.</li><li>	It improves modularity of the application.</li>
+<li>It improves easyness  to use our system.</li> 
+</ol>
+<p>By  using interfaces (GUI screens)  we can implement  abstraction</p>
+<br>
+
+
+<h2  id="encapsulation"	 style="background-color: rgb(255, 128, 64);"><font color="#0000FF">Encapsulation : </font></h2>
+<ul>
+<li>Binding  of  data and corresponding methods into a single unit is called  Encapsulation .</li>
+<li>	If any java class follows data hiding and abstraction such type of class is said to be encapsulated class.</li>
+</ul>
+<font color="#0000ff"><strong>Encapsulation=Datahiding+Abstraction</strong></font>
+<br/> 
+<u><strong>Example: 
+</strong></u><br>
+<img alt="Object-oriented-Programming-Image" src="oops/image001.png">
+<br>
+ 
+ <p>Every data member  should  be declared as private  and  for every  member  we have to maintain  getter &amp; Setter  methods.  </p> 
+  
+ <u><strong>The main advantages of encapsulation are : 
+ </strong></u><ol>
+ <li>We can achieve security.</li>
+ <li>Enhancement will become very easy.</li>
+ <li>It improves maintainability and modularity  of the application.</li>
+ <li>It provides flexibility to the user to use system very easily.</li>
+ </ol>
+ <p>The main<font color="#330099"> disadvantage of encapsulation</font> is it <font color="#FF0000">increases length of the code</font> and<font color="#FF0000"> slows down execution.</font></p>
+ 
+ <br>
+ 
+ <h2   id="tightly"    style="background-color: rgb(128, 0, 64);"><font color="#ffff00">Tightly encapsulated class : </font></h2>
+ <p>A class is said to be tightly encapsulated if and only if every variable of that class declared as private whether the variable has getter and setter methods or not , and whether these methods declared as public or not, these checkings are   not required to perform.</p>
+ <pre>
+Example:
+class Account   {
+	private double balance;
+	public double getBalance()  {
+		return balance;
+	}
+}
+</pre>
+Which of the following classes are tightly encapsulated?
+<br>
+<img alt="Object-oriented-Programming-Image" src="oops/image003.png">
+ <br>
+Which of the following classes are tightly encapsulated?
+
+<pre>
+class A {
+	int x=10;    //not
+}
+class B extends A {
+	private int y=20;  //not
+}
+class C extends B {
+	private int z=30;  //not
+}
+</pre> 
+<strong>Note: </strong>if the parent class is not tightly encapsulated then no child class is tightly encapsulated.
+ 
+<h2   id="isa"     style="background-color: rgb(255, 0, 255);"><font color="#ffff00">IS-A Relationship(inheritance) : </font></h2>
+<ol>
+<li>	Also known as inheritance.</li>
+<li>	By using "extends"   keywords we can implement IS-A relationship.</li>
+<li>	The main advantage of IS-A relationship is reusability.</li>
+</ol>
+<pre>
+Example:
+class Parent {
+	public void methodOne(){ }
+}
+class Child extends Parent {
+	public void methodTwo() { }
+}
+</pre>
+<br>
+<img alt="Object-oriented-Programming-Image" src="oops/image005.png"><br><br> 
+ 
+<font color="#800040"><strong>Conclusion : 
+</strong></font><ol>
+<li>	Whatever the parent has by default available to the child but whatever the child has by default not available to the parent. Hence on the child reference we can call both parent and child class methods. But on the parent reference we can call only methods available in the parent class and we can't call child specific methods.</li>
+<li>	Parent class reference can be used to hold child class object but by using that reference we can call only methods available in parent class and child specific methods we can't call.</li>
+<li>	Child class reference cannot be used to hold parent class object.</li>
+</ol> 
+ 
+ 
+<strong>Example:</strong> 
+ 
+<p>	The common methods which are required for housing loan, vehicle loan, personal loan and education loan we can define into a separate class in parent class loan. So that automatically these methods are available to every child loan class.</p>
+
+<pre>
+Example:
+class Loan {
+	//common methods which are required for any type of loan.
+}
+class HousingLoan extends Loan {
+	//Housing loan specific methods.
+}
+class EducationLoan extends Loan {
+	//Education Loan specific methods.
+}
+</pre>
+
+<ul>
+<li>	For all java classes the most commonly required functionality is define inside object class hence object class acts as a root for all java classes.</li>
+<li>	For all java exceptions and errors the most common required functionality defines inside Throwable class hence Throwable class acts as a root for exception hierarchy.</li>
+</ul>
+<br> 
+<strong>Diagram: 
+ </strong><br><img alt="Object-oriented-Programming-Image" src="oops/image007.png"><br><br>
+ 
+ 
+ 
+ <h2 id="multiple" ><u><font color="#0000ff">Multiple inheritance : </font></u></h2>
+ <p>Having more than one Parent class at the same level is called multiple inheritance.</p>
+Example:
+<br><img alt="Object-oriented-Programming-Image" src="oops/image009.png"><br><br>
+ 
+ <p>Any class can extends only one class at a time and can't extends more than one class simultaneously hence java won't provide support for multiple inheritance.</p>
+ 
+Example:
+ <br><img alt="Object-oriented-Programming-Image" src="oops/image011.png"><br>
+ 
+ <p>But an interface can extends any no. Of interfaces at a time hence java provides support for multiple inheritance through interfaces.</p>
+ 
+Example:<br><img alt="Object-oriented-Programming-Image" src="oops/image013.png"><br>
+
+<p>	If our class doesn't extends any other class then only our class is the direct child class of object.</p>
+
+Example:<br/><img alt="Object-oriented-Programming-Image" src="oops/image015.png"><br>
+ 
+ <p>If our class extends any other class then our class is not direct child class of object,  It is indirect child class of object , which forms  multilevel  inheritance.</p>
+ <br> 
+<strong>Example 1: 
+ </strong><br><img alt="Object-oriented-Programming-Image" src="oops/image017.png"><br>
+ <br> 
+<u><strong>Example 2: 
+ </strong></u><br><img alt="Object-oriented-Programming-Image" src="oops/image019.png"><br><br>
+ <font color="#0000CC">
+Why java won't provide support for multiple inheritance?</font>
+<p>	There may be a chance of raising ambiguity problems.</p>  
+<u><strong>Example: 
+</strong></u><br><img alt="Object-oriented-Programming-Image" src="oops/image021.png"><br><br>
+  <font color="#FF0033">
+Why ambiguity problem won't be there in interfaces?</font>
+<p>	Interfaces having dummy declarations and they won't have implementations hence no ambiguity problem.</p> 
+<u><strong>Example:</strong></u><br>
+<img alt="Object-oriented-Programming-Image" src="oops/image023.png"><br><br>
+
+ 
+<h2 id="cyclic" > <font color="#ffff00" style="background-color: rgb(128, 128, 192);">Cyclic inheritance :</font></h2> 
+<p>	Cyclic inheritance is not allowed in java.</p>
+Example 1:
+<br><img alt="Object-oriented-Programming-Image" src="oops/image025.png"><br><br>
+ 
+Example 2:
+<br><img alt="Object-oriented-Programming-Image" src="oops/image027.png"><br><br>
+ 
+ 
+ 
+ <h2   id="hasa"       style="background-color: rgb(0, 0, 160);"><font color="#ffff00">HAS-A relationship:</font></h2>
+ <ol>
+ <li>HAS-A relationship is also known as composition (or) aggregation.</li>
+ <li>There is no specific keyword to implement HAS-A relationship but mostly we can use new operator.</li>
+ <li>The main advantage of HAS-A relationship is reusability.</li>
+ </ol>
+<br> 
+ <pre>
+Example:
+class Engine 
+{
+	//engine specific functionality
+}
+class Car
+{
+	Engine e=new Engine();
+	//........................;
+	//........................;
+	//........................;
+}
+</pre>
+
+<ul>
+<li>	class Car HAS-A engine reference.</li>
+<li>The main dis-advantage of 	HAS-A relationship increases dependency between the components and creates maintains problems.</li>
+</ul>
+
+<br>
+<h2><u><font color="#0000ff">Composition vs Aggregation:</font></u></h2> 
+<u><h3 id="compo" > <font color="#330066">Composition: </font>
+</h3></u><p>Without existing container object if there is no chance of existing contained objects then the relationship between container object and contained object is called composition which is a strong association.</p>
+Example:
+<p>University consists of several departments whenever university object destroys automatically all the department objects will be destroyed that is without existing university object there is no chance of existing dependent object hence these are strongly associated and this relationship is called composition.</p>
+
+Example:
+<br><img alt="Object-oriented-Programming-Image" src="oops/image029.png">
+ <br><br> 
+  
+<u><h3 id="aggre" > <font color="#CC0066">Aggregation : </font>
+</h3></u><p>	Without existing container object if there is a chance of existing contained objects such type of relationship is called aggregation. In aggregation objects have weak association.</p>
+
+Example:
+<p>Within a department there may be a chance of several professors will work whenever we are closing department still there may be a chance of  existing professor object without existing department object the relationship between department and professor is called aggregation where the objects having weak association.</p>
+Example:
+<br><img alt="Object-oriented-Programming-Image" src="oops/image031.png">
+ <br><br>
+ Note :
+ <p>In composition  container , contained  objects are  strongly  associated, and but  container  object  holds contained objects  directly<br>
+ But  in  Aggregation  container and  contained  objects  are weakly  associated  and  container  object  just now  holds  the reference  of  contained objects.</p>
+ 
+ <h3> 
+<u><font color="#800040"   id="methodsignature"  >Method signature: </font></u></h3><p>  In java, method signature consists of name of the method followed by argument types.</p>
+
+Example:
+<br><img alt="Object-oriented-Programming-Image" src="oops/image033.png">
+<br><br>
+
+
+ <ul>
+ <li>In java return type is not part of the method signature.</li>
+ <li>Compiler will use method signature while resolving method calls.</li></ul>
+ <pre>
+ class Test {
+ public void m1(double d) {  }
+ public void m2(int i) { }
+ public static void main(String ar[]) {
+  Test t=new Test();
+  t.m1(10.5);
+  t.m2(10);
+  t.m3(10.5);  //CE
+ }
+ } 
+ CE : cannot find symbol
+ symbol : method m3(double)
+ location : class Test 
+</pre> 
+ 
+ Within the same class we can't take 2 methods with the same signature otherwise we will get compile time error.
+ 
+ <br>
+ 
+ <pre>
+Example:
+public void methodOne() {  }
+public int methodOne()  {
+	return 10;
+}
+Output:
+Compile time error
+methodOne() is already defined in Test
+</pre>
+<br>
+
+
+<h2 id="poly" style="background-color: rgb(128, 128, 255);"><font color="#ffff00">Polymorphism:</font></h2>
+	 Same name with different forms is the concept of polymorphism.
+	 
+	 <p>Example 1: We can use same abs() method for int type, long type, float type etc.</p>
+Example:
+<ol>
+<li>	abs(int)</li><li>	abs(long)</li><li>abs(float)</li></ol>
+
+<p>Example 2: <br>
+We can use the  parent  reference  to hold  any  child  objects.<br>
+
+ We can use the same List reference to hold ArrayList object, LinkedList object, Vector object, or Stack object.</p>
+
+Example:
+<ol>
+<li>	List l=new ArrayList();</li>
+<li>	List l=new LinkedList();</li>
+<li>	List l=new Vector();</li>
+<li>	List l=new Stack();</li>
+</ol>
+<br>
+Diagram:<br><img alt="Object-oriented-Programming-Image" src="oops/image069.png"><br><br>
+ <br>
+Diagram: <strong>3 Pillars of OOPS</strong><br><img alt="Object-oriented-Programming-Image" src="oops/image071.png"><br><br>
+ 
+1)	Inheritance talks about reusability. <br>
+2)	Polymorphism talks about flexibility.<br>
+3)	Encapsulation talks about security.
+
+<h3>Beautiful definition of polymorphism:</h3>
+<p>	A boy starts love with the word friendship, but girl ends love with the same word friendship, word is the same but with different attitudes. This concept is nothing but polymorphism.</p>
+
+
+
+<h2  id="overloading"   style="background-color: rgb(128, 0, 128);"><font color="#ffff00">Overloading :</font></h2>
+<ol>
+<li>	Two methods are said to be overload if and only if both having the same name but different argument types.</li>
+<li>	In 'C' language we can't take 2 methods with the same name and different types. If there is a change in argument type compulsory we should go for new method name.<br>
+
+Example :<br><img alt="Object-oriented-Programming-Image" src="oops/image035.png"><br> </li>
+<li>	Lack of overloading in "C" increases complexity of the programming.</li>
+<li>	But in java we can take multiple methods with the same name and different argument types.<br>
+Example:<br/><img alt="Object-oriented-Programming-Image" src="oops/image037.png"><br><br></li>
+<li>	Having the same name and different argument types is called method overloading.</li>
+<li>	All these methods are considered as overloaded methods.</li>
+<li>	Having overloading concept in java reduces complexity of the programming.<br>
+<pre>
+Example:
+ class Test {
+	public void methodOne() {
+		System.out.println("no-arg method");
+	}
+	public void methodOne(int i) {
+	 System.out.println("int-arg method"); //overloaded methods
+	}
+	public void methodOne(double d) {
+	 System.out.println("double-arg method");
+	}
+	public static void main(String[] args) 	{
+		Test t=new Test();
+		t.methodOne();//no-arg method
+		t.methodOne(10);//int-arg method
+		t.methodOne(10.5);//double-arg method
+	}
+}
+</pre>			
+<li><u><strong>Conclusion : 	</strong></u>In overloading compiler is responsible to perform method resolution(decision) based on the reference type(but not based on run time object). Hence overloading is also considered as compile time polymorphism(or) static polymorphism (or)early biding. 
+</li>
+</ol> 
+ 
+ 
+<u><font color="#0000ff"><h3  id="auto" >Case 1:      Automatic promotion in overloading.  
+</h3></font></u><ul>
+<li>	In overloading if compiler is unable to find the method with exact match we won't get any compile time error immediately.</li>
+<li>	1st compiler promotes the argument to the next level and checks whether the matched method is available or not if it is available then that method will be considered if it is not available then compiler promotes the argument once again to the next level. This process will be continued until all possible promotions still if the matched method is not available then we will get compile time error. This process is called automatic promotion in overloading.</li>
+</ul>
+<p>	The following are various possible automatic promotions in overloading.</p>
+<br>
+Diagram : <br><img alt="Object-oriented-Programming-Image" src="oops/image040.png"><br/><br>
+ 
+ <pre>
+Example:
+class Test
+{
+	public void methodOne(int i)
+	{
+		System.out.println("int-arg method");
+	}
+	public void methodOne(float f)		//overloaded methods
+	{
+		System.out.println("float-arg method");
+	}
+	public static void main(String[] args)
+	{
+		Test t=new Test();
+		//t.methodOne('a');//int-arg method
+		//t.methodOne(10l);//float-arg method
+		t.methodOne(10.5);//C.E:cannot find symbol
+	}
+}
+</pre> 
+ 
+<u><strong><font color="#0000ff">Case 2: 
+ 
+</font></strong></u><pre>
+class Test
+{
+	public void methodOne(String s)
+	{
+		System.out.println("String version");
+	}
+	public void methodOne(Object o)	  //Both methods are said to 
+					 //be overloaded methods.
+	{
+		System.out.println("Object version");
+	}
+	public static void main(String[] args)
+	{
+		Test t=new Test();
+		t.methodOne("arun");//String version
+		t.methodOne(new Object());//Object version
+		t.methodOne(null);//String version
+	}
+}
+</pre>
+<p> 
+<strong><em>Note : 
+</em></strong><br/>While resolving   overloaded  methods   exact  match  will always  get high  priority, <br>
+  While resolving  overloaded  methods  child class  will get the more  priority than  parent class
+	</p> 
+ 
+<u><strong><font color="#0000ff">Case 3: 
+ 
+</font></strong></u><pre>
+class Test{
+ public void methodOne(String s){
+  System.out.println("String version");
+ }
+ public void methodOne(StringBuffer s){
+  System.out.println("StringBuffer version");
+ }
+ public static void main(String[] args)	{
+  Test t=new Test();
+  t.methodOne("arun");//String version
+  t.methodOne(new StringBuffer("sai"));//StringBuffer version
+  t.methodOne(null);//CE : reference to m1() is ambiquous
+ }
+}
+</pre>
+Output:
+<br><img alt="Object-oriented-Programming-Image" src="oops/image044.png"><br><br> 
+ 
+  
+<font color="#0000ff"><u><strong>Case 4: 
+ 
+</strong></u></font><pre>
+class Test {
+public void methodOne(int i,float f) {
+ System.out.println("int-float method");
+}
+public void methodOne(float f,int i){
+ System.out.println("float-int method");
+}
+public static void main(String[] args)	{
+ Test t=new Test();
+ t.methodOne(10,10.5f);//int-float method
+ t.methodOne(10.5f,10);//float-int method
+ t.methodOne(10,10); //C.E:
+    //CE:reference to methodOne is ambiguous,
+    //both method methodOne(int,float) in Test 
+    //and method methodOne(float,int) in Test match
+	t.methodOne(10.5f,10.5f);
+	//C.E:cannot find symbol
+	 symbol : methodOne(float, float)
+	 location : class Test		
+}
+}
+</pre> 
+ 
+<font color="#0000ff"><u><strong>Case 5 :</strong></u></font>
+<pre>
+class Test{
+public void methodOne(int i)	{
+ System.out.println("general method");
+}
+public void methodOne(int...i)	{
+ System.out.println("var-arg method");
+}
+public static void main(String[] args)	{
+ Test t=new Test();
+ t.methodOne();//var-arg method
+ t.methodOne(10,20);//var-arg method
+ t.methodOne(10);//general method
+}
+}
+</pre>
+
+<p>	In general var-arg method will get less priority that is if no other method matched then only var-arg method will get chance for execution it is almost same as default case inside switch.</p> 
+ 
+<font color="#0000ff"><u><strong>Case 6: 
+ 
+</strong></u></font><pre>
+class Animal{ }
+class Monkey extends Animal{}
+
+class Test{
+public void methodOne(Animal a)	{
+ System.out.println("Animal version");
+}
+public void methodOne(Monkey m)	{
+ System.out.println("Monkey version");
+}
+public static void main(String[] args)	{
+ Test t=new Test();
+ Animal a=new Animal();
+ t.methodOne(a);//Animal version
+ Monkey m=new Monkey();
+ t.methodOne(m);//Monkey version
+ Animal a1=new Monkey();
+ t.methodOne(a1);//Animal version
+}
+}
+</pre>
+
+<p>	In overloading method resolution is always based on reference type and runtime object won't play any role in overloading.</p>
+
+<h2   id="overriding"  style="background-color: rgb(0, 0, 64);"><font color="#ffff00">Overriding : </font></h2>
+<ol>
+<li>	Whatever the Parent has by default available to the Child through inheritance, if the Child is   not satisfied with Parent class method implementation then Child is allow to redefine that Parent class method in Child class in its own way this process is called overriding.</li>
+<li>	The Parent class method which is overridden is called overridden method.</li>
+<li>	The Child class method which is overriding is called overriding method.
+<br>
+<br>
+
+
+<pre>
+Example 1:
+
+class Parent {
+ public void property(){
+  System.out.println("cash+land+gold");
+ }
+ public void marry()	{
+  System.out.println("subbalakshmi"); //overridden method
+ }
+}
+class Child extends Parent{     //overriding
+ public void marry()	{       
+  System.out.println("3sha/4me/9tara/anushka"); //overriding method
+ }
+}
+class Test {
+public static void main(String[] args)	{
+ Parent p=new Parent();
+ p.marry();//subbalakshmi(parent method)
+ Child c=new Child();
+ c.marry();//Trisha/nayanatara/anushka(child method)
+ Parent p1=new Child();
+ p1.marry();//Trisha/nayanatara/anushka(child method)
+}
+}
+</pre></li>
+<li>	In overriding method resolution is always takes care by JVM based on runtime object hence overriding is also considered as runtime polymorphism or dynamic polymorphism or late binding.</li>
+<li>	The process of overriding method resolution is also known as dynamic method dispatch.</li>
+</ol>
+<p><strong>Note</strong>: In overriding runtime object will play the role and reference type is dummy.</p>
+
+<h3 id="orules" ><u><font color="#8000ff">Rules for overriding :</font></u></h3>
+<ol>
+<li>	In overriding method names and arguments must be same. That is method signature must be same.</li>
+<li>	Until 1.4 version the return types must be same but from 1.5 version onwards co-variant return types are allowed.</li>
+<li>	According to this Child class method return type need not be same as Parent class method return type its Child types also allowed.
+<pre>
+Example:
+class Parent {
+public Object methodOne() {
+ return null;
+}
+}
+class Child extends Parent {
+public String methodOne() {
+ return null;
+}
+}
+
+C:&gt; javac -source 1.4  Parent.java //error 
+</pre>
+
+
+
+It is valid in  "1.5"  but invalid in  "1.4".
+<br><u><strong>Diagram:</strong></u><br><img alt="Object-oriented-Programming-Image" src="oops/image049.png"><br><br>
+ 
+
+	Co-variant return type concept is applicable only for object types but not for primitives.
+</li>
+ <li>
+	Private methods are not visible in the Child classes hence overriding concept is not applicable for private methods. Based on own requirement we can declare the same Parent class private method in child class also. It is valid but not overriding.
+	<br>
+Example:<br><img alt="Object-oriented-Programming-Image" src="oops/image051.png"><br><br>
+ 
+	Parent class final methods we can't override in the Child class.
+
+<pre>
+Example:
+class Parent {
+	public final void methodOne()	{}
+}
+class Child extends Parent{
+	public void methodOne(){}
+}
+Output:
+Compile time error: 
+ methodOne() in Child cannot override methodOne() 
+     in Parent; overridden method is final
+</pre>
+
+	Parent class non final methods we can override as final in child class. We can override native methods in the child classes.
+	</li>
+	<li>
+	We should override Parent class abstract methods in Child classes to provide implementation.
+<pre>
+Example:
+abstract class Parent {
+	public abstract void methodOne();
+}
+class Child extends Parent {
+	public void methodOne() { }
+}
+</pre>
+<br>
+Diagram:<br><img alt="Object-oriented-Programming-Image" src="oops/image053.png"> <br><br>
+ </li>
+ <li>
+We can override  a non-abstract   method as abstract<br>
+this approach is  helpful  to stop  availability of  Parent method  implementation  to the  next  level  child classes.<br>
+	
+<pre>
+Example:
+class Parent {
+     public void methodOne()  { }
+}
+abstract class Child extends Parent {
+     public abstract void methodOne();
+}
+</pre>
+
+Synchronized, strictfp, modifiers won't keep any restrictions on overriding.
+	<br>
+Diagram:<br><img alt="Object-oriented-Programming-Image" src="oops/image055.png"><br><br>
+ 
+ </li>
+ <li>
+	While overriding we can't reduce the scope of access modifier.
+	
+<pre>
+Example:
+class Parent {
+     public void methodOne() { }
+}
+class Child extends Parent {
+     protected void methodOne( )  { }
+}
+Output:
+Compile time error :
+methodOne() in Child cannot override methodOne() in Parent;
+ attempting to assign weaker access privileges; was public
+</pre>
+
+<br><br>
+
+Diagram:
+<br><img alt="Object-oriented-Programming-Image" src="oops/image057.png"><br><br>
+</li>
+</ol>
+<table border="4"  bordercolor="green"><tr><td> <strong>private &lt; default &lt; protected &lt; public </strong></td></tr></table>
+ 
+ <h2  id="ocheck"  style="background-color: rgb(128, 128, 192);"><font color="#ffff00">Checked Vs Un-checked Exceptions : </font></h2>
+
+<ul>
+<li>	The exceptions which are checked by the compiler for smooth execution of the program at runtime are called checked exceptions.</li>
+<li>	The exceptions which are not checked by the compiler are called un-checked exceptions.</li>
+<li>	RuntimeException and its child classes, Error and its child classes are unchecked except these the remaining are checked exceptions.</li>
+</ul>
+<br/>
+Diagram:<br><img alt="Object-oriented-Programming-Image" src="oops/image059.png"  width="999"  ><br/><br>
+
+<p><font color="#0000ff"><u><strong>Rule: </strong></u></font>While overriding if the child class method throws any checked exception compulsory the parent class method should throw the same checked exception or its parent otherwise we will get compile time error.</p>
+
+<p>	But there are no restrictions for un-checked exceptions.</p>
+<pre>
+Example:
+class Parent {
+     public void methodOne() {}
+}
+class Child extends Parent{
+     public void methodOne()throws Exception {}
+}
+Output:
+Compile time error : 
+methodOne() in Child cannot override methodOne() in Parent; 
+overridden method does not throw java.lang.Exception
+</pre>
+ <br>
+
+Examples : <br><img alt="Object-oriented-Programming-Image" src="oops/image061.png"  width="950"><br>     
+<img alt="Object-oriented-Programming-Image" src="oops/image063.png" width="950"><br><br>
+
+
+
+
+
+<br>
+
+
+
+
+<h2 id="ostatic" ><u><font color="#0000ff">  Overriding with respect to static methods:</font></u></h2> 
+<u><strong>Case 1:</strong></u> 
+<p>	We can't override a static method as non static.</p>
+
+<pre>
+Example:
+class Parent 
+{
+public static void methodOne(){}
+   //here static methodOne() method is a class level
+}
+class Child extends Parent
+{
+public void methodOne(){}
+//here methodOne() method is a object level hence
+   // we can't override methodOne() method
+}
+output :
+CE: methodOne in Child  can't  override  methodOne() in Parent ;
+  overriden method is  static
+</pre> 
+<u><strong>Case 2: 
+ 
+</strong></u><p>	Similarly we can't override a non static method as static.</p> 
+<u><strong>Case 3: 
+ 
+</strong></u><pre>
+class Parent 
+{
+     public static void methodOne() {}
+}
+class Child extends Parent {
+     public static void methodOne() {}
+}
+</pre>
+
+<p>	It is valid. It seems to be overriding concept is applicable for static methods but it is not overriding it is method hiding.</p>
+
+<h2  id="methodhiding"    style="background-color: rgb(0, 0, 255);"><font color="#ffff00">METHOD HIDING : <br></font></h2>
+<p>	All rules of method hiding are exactly same as overriding except the following differences.</p>
+<table  border="1">
+<tr><th>Overriding</th><th>	Method hiding</th></tr>
+<tr><td>1. Both Parent and Child class methods should be non static.</td><td>	1. Both Parent and Child class methods should be static.</td></tr>
+<tr><td>2. Method resolution is always takes care by JVM based on runtime object.</td><td>	2. Method resolution is always takes care by compiler based on reference type.</td></tr>
+<tr><td>3. Overriding is also considered as runtime polymorphism (or) dynamic polymorphism (or) late binding.</td><td>	3. Method hiding is also considered as compile time polymorphism (or) static polymorphism (or) early biding.</td></tr>
+</table>
+<pre>
+Example:
+class Parent {
+  public static void methodOne() {
+   System.out.println("parent class");
+ }
+}
+class Child extends Parent{
+ public static void methodOne(){
+  System.out.println("child class");
+ }
+}
+class Test{
+ public static void main(String[] args)	{
+		Parent p=new Parent();
+		p.methodOne();//parent class
+		Child c=new Child();
+		c.methodOne();//child class
+		Parent p1=new Child();
+		p1.methodOne();//parent class
+	}
+}
+</pre>
+<p><font color="#00CC33">Note:</font> If both Parent and Child class methods are non static then it will become overriding and method resolution is based on runtime object. In this case the output is</p>
+<pre> 
+Parent class
+Child class
+Child class
+</pre>
+
+<h2 id="ovararg" ><font color="#800040">Overriding with respect to Var-arg methods:</font></h2>
+<p>	A var-arg method should be overridden with var-arg method only. If we are trying to override with normal method then it will become overloading but not overriding.</p>
+
+<pre>
+Example:
+class Parent {
+public void methodOne(int... i){
+System.out.println("parent class");
+}
+}
+class Child extends Parent {   //overloading but not overriding.
+public void methodOne(int i) {
+System.out.println("child class");
+}
+}
+class Test {
+public static void main(String[] args) {
+Parent p=new Parent();
+p.methodOne(10);//parent class
+Child c=new Child();
+c.methodOne(10);//child class
+Parent p1=new Child();
+p1.methodOne(10);//parent class
+}
+}	
+</pre>
+<p>	In the above program if we replace child class method with var arg then it will become overriding. In this case the output is</p>
+<pre> 
+Parent class
+Child class
+Child class
+</pre>
+
+<br>
+
+
+<h2 id="ovar" ><font color="#8080ff">Overriding with respect to variables: </font></h2>
+<ul>
+<li>	Overriding concept is not applicable for variables.</li>
+<li>	Variable resolution is always takes care by compiler based on reference type.</li>
+</ul>
+
+<pre>
+Example:
+class Parent 
+{
+     int x=888;
+}
+class Child extends Parent
+{
+     int x=999;
+}
+class Test
+{
+	public static void main(String[] args)
+	{
+		Parent p=new Parent();
+		System.out.println(p.x);//888
+		Child c=new Child();
+		System.out.println(c.x);//999
+		Parent p1=new Child();
+		System.out.println(p1.x);//888
+	}
+}
+</pre>
+<p>
+<font color="#FF0000">Note:</font> In the above program Parent and Child class variables, whether both are static or non static whether one is static and the other one is non static there is no change in the answer.
+</p>
+
+<h3 id="diffoo" ><u><font color="#0000ff">Differences between overloading and overriding ?</font></u></h3>
+
+<table	  border="1"	>
+<tr><th>Property</th><th>   	Overloading</th><th>	Overriding</th></tr>
+<tr><td>1)	Method names	</td><td>	Must be same.</td><td>	Must be same.</td></tr>
+<tr><td>2)	Argument  type	 </td><td>	Must be different(at least order)</td><td>		Must be same including order.</td></tr>
+<tr><td>	3)	Method signature	</td><td>	Must be different.</td><td>	Must be same.</td></tr>
+<tr><td>4)	Return types</td><td>	No restrictions.	</td><td>	Must be same until 1.4v but from 1.5v onwards we can take co-variant return types also.</td></tr>
+<tr><td>5) private, static, final methods</td><td>	Can be overloaded.</td><td>	Can not be overridden.</td></tr>
+<tr><td>6) Access modifiers	</td><td>	No restrictions.	</td><td>	Weakering/reducing is not allowed.</td></tr>
+<tr><td>7) Throws clause	</td>	<td>No restrictions.</td>	<td>	If child class method throws any checked exception compulsory parent class method should throw the same checked exceptions or its parent but no restrictions for un-checked exceptions.</td></tr>
+<tr><td>8) Method resolution	</td><td>		Is always takes care by compiler based on referenced type.</td><td>	Is always takes care by JVM based on runtime object.</td></tr>
+<tr><td>9)	Also known as</td><td>Compile time polymorphism (or) static(or)early binding.</td><td>Runtime polymorphism (or) dynamic (or) late binding.</td></tr>
+</table>
+<br/>
+ Note: 
+ <ol>
+ <li>In overloading we have to check only method names (must be same) and arguments (must be different) the remaining things like return type extra not required to check.</li>
+ <li>But In overriding we should compulsory check everything like method names, arguments, return types, throws keyword, modifiers etc.</li>
+ </ol>
+ 
+ <p>Consider the method in parent class  <br>
+ <strong>Parent: public void methodOne(int i)throws IOException</strong> </p>
+
+
+In the child class which of the following methods we can take..
+<ol>
+<li>	public void methodOne(int i)//valid(overriding) </li>
+<li>	private void methodOne()throws Exception//valid(overloading)</li>
+<li>	public native void methodOne(int i);//valid(overriding)</li>
+<li>	public static void methodOne(double d)//valid(overloading)</li>
+<li>	public static void methodOne(int i) <br>
+
+Compile time error	:<p>methodOne(int) in Child cannot override methodOne(int) in Parent; overriding method is static	</p>	</li>
+
+<li>	public static abstract void methodOne(float f) <br>
+		Compile time error : <ol><li> illegal combination of modifiers: abstract and static</li><li>	Child is not abstract and does not override abstract method methodOne(float) in Child</li></ol></li>
+</ol>
+
+<br>
+
+<h4 id="diffall"><font color="#FF0099">What is the difference between ArrayList l=new ArrayList() &amp;  List l=new ArrayList() ?</font></h4>
+<table border="1"><tr><th>ArrayList al=new ArrayList();<br> [Child c=new Child();]</th><th>List l=new ArrayList();<br> [Parent p=new Child();]</th></tr>
+<tr><td> If we know runtime object type  exactly  then we  have to  used this approach </td><td>If we don't know  exact Runtime object type then we have to used this approach</td></tr>
+<tr><td>By using child reference  we can call both parent &amp;  child  calss methods. </td><td>By using parent  reference  we can call  only method  available  in parent  class  and  child specific  method  we can't  call.</td></tr>
+</table>
+<ul><li>We can use ArrayList reference to hold ArrayList object where as  we can use  List reference to hold any list implemented class object (ArrayList, LinkedList, Vector, Stack)</li><li>By using ArrayList reference we can call both List and ArrayList  methods  but by using List reference  we can call only List interface  specific methods  and  we can't  call  ArrayList specific  methods. </li></ul>
+
+
+<br>
+<h2 id="java" ><font color="#0000ff">IIQ : In how many ways  we can  create  an  object ? (or)  In how many  ways  get  an  object  in java ?</font></h2>
+<ol>
+<li><strong>By using new Operator : 
+</strong><pre>
+Test t = new Test();
+</pre>
+</li>
+<li><strong>By using  newInstance() :(Reflection Mechanism) 
+</strong><pre>
+Test t=(Test)Class.forName("Test").newInstance();
+</pre>
+</li>
+<li><strong>By using  Clone() : 
+</strong><pre>
+Test t1 = new Test();
+Test t2 = (Test)t1.Clone();
+</pre>
+</li>
+<li><strong>By using Factory methods : 
+</strong><pre>
+Runtime r = Runtime.getRuntime();
+DateFormat df = DateFormat.getInstance();
+</pre>
+</li>
+<li><strong>By using Deserialization : 
+</strong><pre>
+FileInputStream fis = new FileInputStream("abc.ser");
+ObjectInputStream ois = new ObjectInputStream(fis);
+Test t = (Test)ois.readObject();
+</pre>
+
+
+</ol>
+
+<br>
+
+<h2  id="constructors"   style="background-color: rgb(0, 64, 128);"><font color="#ffff00">Constructors : <br></font></h2>
+<ol>
+<li>	Object creation is not enough compulsory we should perform initialization then only the object is in a position to provide the response properly.</li>
+<li>	Whenever we are creating an object some piece of the code will be executed automatically to perform initialization of an object this piece of the code is nothing but constructor.</li>
+<li>	Hence the main objective of constructor is to perform initialization of an object.</li>
+</ol>
+
+<pre>
+Example:
+class Student 
+{
+	String name;
+	int rollno;
+	Student(String name,int rollno)  //Constructor
+	{
+		this.name=name;	        
+		this.rollno=rollno;
+	}
+	public static void main(String[] args)
+	{
+		Student s1=new Student("vijayabhaskar",101);
+		Student s2=new Student("bhaskar",102);
+	}
+}
+</pre>
+<br>
+Diagram:<br><img alt="Object-oriented-Programming-Image" src="oops/image074.png"><br><br>
+ 
+ 
+ <h3 id="cinstance" ><font color="#0000ff"><u>Constructor Vs instance block:</u></font></h3>
+ <ol>
+ <li>Both instance block and constructor will be executed automatically for every object creation but instance block 1st followed by constructor.</li>
+ <li>The main objective of constructor is to perform initialization of an object.</li>
+ <li>Other than initialization if we want to perform any activity for every object creation we have to define that activity inside instance block.</li>
+ <li>Both concepts having different purposes hence replacing one concept with another concept is not possible.</li>
+ <li>Constructor can take arguments but instance block can't take any arguments hence we can't replace constructor concept with instance block.</li>
+ <li>Similarly we can't replace instance block purpose with constructor.</li>
+ </ol>
+ <br>
+ 
+Demo program to track no of objects created for a class:
+
+<pre>
+class Test
+{
+	static int count=0;
+	{
+		count++;      //instance block
+	}
+	Test()
+	{}
+	Test(int i)
+	{}
+	public static void main(String[] args)
+	{
+		Test t1=new Test();
+		Test t2=new Test(10);
+		Test t3=new Test();
+		System.out.println(count);//3
+	}
+}
+</pre>
+
+<h3 id="crules" ><u><font color="#0000ff">Rules to write constructors:</font></u></h3>
+<ol>
+<li>	Name of the constructor and name of the class must be same.</li>
+<li>	Return type concept is not applicable for constructor even void also by mistake if we are declaring the return type for the constructor we won't get any compile time error and runtime error compiler simply treats it as a method.
+
+<pre>
+Example:
+class Test
+{
+	void Test()    //it is not a constructor and it is a method
+	{}
+}	
+</pre>
+</li>
+
+<li>	It is legal (but stupid) to have a method whose name is exactly same as class name.</li>
+<li>	The only applicable modifiers for the constructors are public, default, private, protected.</li>
+<li>	If we are using any other modifier we will get compile time error.</li>
+</ol>
+
+
+<pre>
+Example:
+class Test
+{
+	static Test()
+	{}
+}
+Output:
+Modifier static not allowed here
+</pre>
+
+<br>
+
+<h3 id="cdefault" ><font color="#0000ff"><u>Default constructor:</u></font></h3>
+<ol>
+<li>	For every class in java including abstract classes also constructor concept is applicable.</li>
+<li>	If we are not writing at least one constructor then compiler will generate default constructor.</li>
+<li>	If we are writing at least one constructor then compiler won't generate any default constructor. Hence every class contains either compiler generated constructor (or) programmer written constructor but not both simultaneously.</li>
+</ol>
+<br>
+
+<h3 id="cprototype" ><font color="#0000ff"><u>Prototype of default constructor:</u></font></h3>
+<ol>
+<li>It is always no argument constructor.</li>
+<li>	The access modifier of the default constructor is same as class modifier. (This rule is applicable only for public and default).</li>
+<li>	Default constructor contains only one line. super(); it is a no argument call to super class constructor.</li>
+</ol>
+<br>
+
+
+<table  border="1"  width="90%">
+<tr><th>Programmers code</th><th>	Compiler generated code</th></tr>
+<tr><td>
+class Test { }
+</td>
+<td>
+<pre>
+class Test {
+	Test()
+	{
+		super();
+	}
+}
+</pre></td></tr>
+
+<tr><td>
+public class Test { }
+</td>
+<td>
+<pre>
+public class Test {
+	public Test()
+	{
+		super();
+	}
+}	
+</pre>
+</td></tr>
+
+<tr>
+<td>
+<pre>
+class Test
+{
+	void Test(){}
+}
+</pre>
+</td>
+
+<td>
+<pre>
+class Test
+{
+	Test()
+	{
+		super();
+	}
+	void Test()
+	{}
+}
+</pre>	
+</td>
+</tr>
+
+
+<tr>
+<td>
+<pre>
+class Test
+{
+	Test(int i)
+	{}
+}	
+</pre>
+</td>
+
+<td>
+<pre>
+class Test
+{
+	Test(int i)
+	{
+		super();
+	}
+}	
+</pre>
+</td>
+</tr>
+
+
+<tr>
+<td>
+<pre>
+class Test
+{
+	Test()
+	{
+		super();
+	}
+}	
+</pre>
+</td>
+
+<td>
+<pre>
+class Test
+{
+	Test()
+	{
+		super();
+	}
+}
+</pre>
+</td>
+</tr>
+
+<tr>
+<td>
+<pre>
+class Test
+{
+	Test(int i)
+	{
+		this();
+	}
+	Test()
+	{}
+}	
+</pre>
+</td>
+
+<td>
+<pre>
+class Test
+{
+	Test(int i)
+	{
+		this();
+	}
+	Test()
+	{
+		super();
+	}
+}
+</pre>
+</td>
+
+</tr>
+</table>
+
+<h3 id="csuper"  style="background-color: rgb(0, 128, 192);"><font color="#ffff00">super() vs this():</font></h3>
+<p>	The 1st line inside every constructor should be either super() or this() if we are not writing anything compiler will always generate super().</p>
+<br/> 
+<font color="#0000ff"><u><strong>Case 1:</strong></u></font> We have to take super() (or) this() only in the 1st line of constructor. If we are taking anywhere else we will get compile time error. 
+ 
+<pre>
+Example:
+class Test
+{
+	Test()
+	{
+		System.out.println("constructor");
+		super();
+	}
+}
+Output:
+Compile time error.
+Call to super must be first statement in constructor
+</pre> 
+ 
+ 
+<font color="#0000ff"><u><strong>Case 2:</strong></u></font> We can use either super() (or) this() but not both simultaneously. 
+ 
+<pre>
+Example:
+class Test
+{
+	Test()
+	{
+		super();
+		this();
+	}
+}
+Output:
+Compile time error.
+Call to this must be first statement in constructor
+</pre> 
+ 
+<font color="#0000ff"><u><strong>Case 3:</strong></u></font> We can use super() (or) this() only inside constructor. If we are using anywhere else we will get compile time error. 
+ 
+<pre>
+Example:
+class Test
+{
+	public void methodOne()
+	{
+		super();
+	}
+}
+Output:
+Compile time error.
+Call to super must be first statement in constructor
+</pre>
+
+<p>	That is we can call a constructor directly from another constructor only.</p>
+
+Diagram:<br/><img alt="Object-oriented-Programming-Image" src="oops/image078.png">
+ <br><br>
+ 
+Example:
+<table border="1" >
+<tr><th  width="50%">super(), this()</th><th>	super, this</th></tr>
+<tr><td>These are constructors calls.	</td><td> These are keywords	</td></tr>
+<tr><td>We can use  these to invoke  super  class &amp; current  constructors  directly</td><td>     We can use refers  parent class and current class instance members.</td></tr>
+<tr><td>We should use only inside constructors  as  first line, if we are using outside of  constructor we will get compile time error.</td> <td> We can use anywhere (i.e., instance area) except static area , other wise we will get compile time error  .</td></tr>
+</table>
+
+<pre>
+Example:
+class Test
+{
+	public static void main(String[] args)
+	{
+		System.out.println(super.hashCode());
+	}
+}
+Output:
+Compile time error.
+Non-static variable super cannot be referenced from a static context.
+</pre>
+
+<h3 id="cover" ><font color="#0000ff"><u>Overloaded constructors : </u></font></h3>
+
+<p>	A class can contain more than one constructor and all these constructors having the same name but different arguments and hence these constructors are considered as overloaded constructors.</p>
+
+<pre> 
+Example: 
+class Test { 
+ Test(double d){ 
+   System.out.println(&quot;double-argument constructor&quot;); 
+	} 
+ Test(int i) { 
+	this(10.5); 
+	System.out.println(&quot;int-argument constructor&quot;); 
+	} 
+ Test() { 
+ 	this(10);
+   System.out.println(&quot;no-argument constructor&quot;); 
+	} 
+ public static void main(String[] args) { 
+	Test t1=new Test();  //no-argument constructor/int-argument 
+	                    //constructor/double-argument constructor 
+	Test t2=new Test(10);
+	           //int-argument constructor/double-argument constructor 
+	Test t3=new Test(10.5);//double-argument constructor 
+  } 
+} 
+</pre>
+
+
+<br/>
+
+<ul>
+<li>Parent class constructor by default  won't  available  to the Child. Hence  Inheritance concept is not applicable for constructors and hence overriding concept also not applicable to the constructors. But constructors can be overloaded.</li>
+<li>	We can take constructor in any java class including abstract class also but we can't take constructor inside interface.</li>
+</ul>
+<br>
+Example:<br><img alt="Object-oriented-Programming-Image" src="oops/image080.png"><br><br>
+ <br/>
+ <strong><font color="#ff0000">We can't create object for abstract class but abstract class can contain constructor what is the need ?</font> </strong>
+ <p>Abstract class constructor will be executed for every child class object creation  to perform initialization of child class object only.</p>
+ 
+ <font color="#ff0000"><strong>Which of the following statement is true ? </strong></font>
+ <ol>
+ <li>Whenever we are creating child class object then automatically parent class object will be created.(false)</li>
+ <li>Whenever we are creating child class object then parent class constructor will be executed.(true)</li>
+ </ol>
+ 
+ <pre>
+Example:
+abstract class Parent
+{
+	Parent()
+	{
+		System.out.println(this.hashCode());
+		         //11394033//here this means child class object
+	}
+}
+class Child extends Parent
+{
+	Child()
+	{
+		System.out.println(this.hashCode());//11394033
+	}
+}
+class Test
+{
+	public static void main(String[] args)
+	{
+		Child c=new Child();
+		System.out.println(c.hashCode());//11394033
+	}
+}
+</pre>
+
+<p><u><strong>Case 1:</strong></u>  recursive method call is always runtime exception where as recursive constructor invocation is a compile time error.</p>
+
+Note:
+<h3 id="crecursive" ><u><font color="#008080">Recursive functions:</font></u></h3>
+A function is called using two methods (types).
+<ol>
+<li>	Nested call</li>
+<li>	Recursive call</li>
+</ol>
+<br> 
+ 
+ 
+<u><strong><font color="#0080c0">Nested call:</font></strong></u>  
+<ul>
+<li>	Calling a function inside another function is called nested call.</li>
+<li>	In nested call there is a calling function which calls another function(called function).</li>
+</ul>
+
+<br>
+
+<pre>
+Example:
+public static void methodOne()
+	{
+		methodTwo();
+	}
+	public static void methodTwo()
+	{
+		methodOne();
+	}
+</pre>
+
+<br> 
+ 
+<font color="#800040"><u><strong>Recursive call</strong></u>: 
+</font><ul>
+<li>	Calling a function within same function is called recursive call.</li>
+<li>	In recursive call called and calling function is same.</li>
+</ul>
+
+<br/>
+
+<pre>
+Example:
+public void methodOne()
+	{
+		methodOne();
+	}
+</pre>
+
+Example: <br/><img alt="Object-oriented-Programming-Image" src="oops/image082.png"    width="999"><br><br/> 
+  
+<u><strong>Note: Compiler is responsible for the following checkings. 
+</strong></u><ol>
+<li>	Compiler will check whether the programmer wrote any constructor or not. If he didn't write at least one constructor then compiler will generate default constructor.</li>
+<li>	If the programmer wrote any constructor then compiler will check whether he wrote super() or this() in the 1st line or not. If his not writing any of these compiler will always write (generate) super().</li>
+<li>	Compiler will check is there any chance of recursive constructor invocation. If there is a possibility then compiler will raise compile time error.</li>
+</ol>
+
+<br>
+
+Case 2:<br><img alt="Object-oriented-Programming-Image" src="oops/image084.png"  width="999"><br><br>
+
+
+<ul>
+<li>	If the Parent class contains any argument constructors while writing Child classes we should takes special care with respect to constructors.</li>
+<li>	Whenever we are writing any argument constructor it is highly recommended to write no argument constructor also.</li>
+</ul>
+<br/>
+
+
+Case 3:
+<pre>
+class Parent
+{
+	Parent()throws java.io.IOException
+	{}
+}
+class Child extends Parent
+{}
+Output:
+Compile time error
+Unreported exception java.io.IOException in default constructor.
+</pre>
+
+
+
+<pre>
+Example:
+class Parent 
+{
+	Parent()throws java.io.IOException
+	{}
+}
+class Child extends Parent
+{
+	Child()throws Exception
+	{
+		super();
+	}
+}
+</pre>
+
+<p>	If Parent class constructor throws some checked exception compulsory Child class constructor should throw the same checked exception (or) its Parent.</p>
+
+
+<h3 id="single" ><font color="#0080ff"><u>Singleton classes : </u></font></h3>
+<p>	For any java class if we are allow to create only one object such type of class is said to be singleton class.</p>
+<pre>
+Example:
+1)	Runtime class 
+2)	ActionServlet
+3)	ServiceLocator
+4)	BusinessDelegate
+
+Runtime r1=Runtime.getRuntime();
+          //getRuntime() method is a factory method
+Runtime r2=Runtime.getRuntime();
+Runtime r3=Runtime.getRuntime();
+.................................................
+.................................................
+
+System.out.println(r1==r2);//true
+System.out.println(r1==r3);//true
+</pre>
+<br>
+Diagram:<br><img alt="Object-oriented-Programming-Image" src="oops/image086.png"><br><br>
+ 
+ 
+ <p><strong><font  color="#003399">Advantage of Singleton class :</font> </strong>      <br>        If the requirement is same then instead of creating a separate object for every person we will create only one object and we can share that object for every required  person we can achieve this by using singleton classes. That is the main advantages of singleton classes are Performance will be improved and memory utilization will be improved.</p>
+ 
+ <h3><font  color="#990033">Creation of our own singleton classes:</font></h3>
+ <p>We can create our own singleton classes for this we have to use private constructor, static  variable  and factory method.</p>
+ 
+ <pre>
+Example:
+class Test 
+{
+	private static Test t=null;
+	private Test()
+	{}
+	public static Test getTest()
+	              //getTest() method is a factory method
+	{
+		if(t==null)
+		{
+			t=new Test();
+		}
+		return t;
+	}
+}
+class Client
+{
+	public static void main(String[] args)
+	{
+		System.out.println(Test.getTest().hashCode());//1671711
+		System.out.println(Test.getTest().hashCode());//1671711
+		System.out.println(Test.getTest().hashCode());//1671711
+		System.out.println(Test.getTest().hashCode());//1671711
+	}
+}
+</pre>
+<br/>
+Diagram:<br/><img alt="Object-oriented-Programming-Image" src="oops/image088.png"><br><br>
+ 
+Note:
+<p><u><strong>	We can create any xxxton classes like(double ton,trible ton...etc) </strong></u></p>
+
+<pre>
+Example:
+class Test 
+{
+	private static Test t1=null;
+	private static Test t2=null;
+	private Test()
+	{}
+	public static Test getTest()
+	               //getTest() method is a factory method
+	{
+		if(t1==null)
+		{
+			t1=new Test();
+			return t1;
+		}
+		else if(t2==null)
+		{
+			t2=new Test();
+			return t2;
+		}
+		else
+		{
+			if(Math.random()&lt;0.5) //Math.random() limit : 0&lt;=x&lt;1
+				return t1;
+			else
+				return t2;
+		}
+	}
+}
+class Client
+{
+	public static void main(String[] args)
+	{
+		System.out.println(Test.getTest().hashCode());//1671711
+		System.out.println(Test.getTest().hashCode());//11394033
+		System.out.println(Test.getTest().hashCode());//11394033
+		System.out.println(Test.getTest().hashCode());//1671711
+	}
+}
+</pre>
+<br>
+<h4><font color="#990099"> IIQ : We are not allowed to create  child class  but class is not final , How it is Possible ?</font></h4>
+By declaring  every constructor  has private.
+<pre>
+class Parent {
+  private Parent() { 
+  }
+</pre>
+We can't create  child  class for this class
+<br>
+
+<br> 
+ 
+<strong>Note :</strong> When ever we are  creating   child class  object automatically  parent class  constructor  will be  executed  but  parent object won't be created. 
+ 
+<br>
+<pre>
+class Parent {
+ Parent() {
+  System.out.println(this.hashCode()); //123
+ }
+}
+class  Child extends Parent {
+Child() {
+ System.out.println(this.hashCode());//123
+ }
+}
+class Test {
+ public static void main(String ar[]) {
+  Child c=new Child();
+  System.out.println(c.hashCode());//123
+</pre> 
+
+
+
+<font color="#ff0000"><strong>Which of the following is true ? </strong></font>
+<ol>
+<li>	The name of the constructor and name of the class need not be same.(false)</li>
+<li>We can declare return type for the constructor but it should be void. (false)</li>
+<li>	We can use any modifier for the constructor. (false)</li>
+<li>	Compiler will always generate default constructor. (false)</li>
+<li>	The modifier of the default constructor is always default. (false)</li>
+<li>	The 1st line inside every constructor should be super always. (false)</li>
+<li>	The 1st line inside every constructor should be either super or this and if we are not writing anything compiler will always place this().(false)</li>
+<li>	Overloading concept is not applicable for constructor. (false)</li>
+<li>	Inheritance and overriding concepts are applicable for constructors. (false)</li>
+<li>	Concrete class can contain constructor but abstract class cannot. (false)</li>
+<li>	Interface can contain constructor. (false)</li>
+<li>	Recursive constructor call is always runtime exception. (false)</li>
+<li>	If Parent class constructor throws some un-checked exception compulsory Child class constructor should throw the same un-checked exception or it's Parent. (false)</li>
+<li>	Without using private constructor we can create singleton class. (false)</li>
+<li>	None of the above.(true)</li>
+</ol>
+
+<h3 id="factory" ><font color="#004080"><u>Factory method:</u></font></h3>
+<p>	By using class name if we are calling a method and that method returns the same class object such type of method is called factory method.</p>
+
+Example:
+<pre>
+Runtime r=Runtime.getRuntime();//getRuntime is a factory method.
+DateFormat df=DateFormat.getInstance();
+</pre>
+<p>	If object creation required under some constraints then we can implement by using factory method.</p>
+
+
+
+
+
+ 
+<h2   id="staticflow"    style="background-color: rgb(0, 0, 128);"><font color="#ffff00" style="background-color: rgb(0, 0, 64);">Static control flow</font><font color="#ffff00"> : </font></h2>
+<br> 
+<u><strong>Example</strong></u>:<img alt="Object-oriented-Programming-Image" src="oops/image090.png"> <br><br> 
+  
+<u><strong>Analysis:</strong></u><br><img alt="Object-oriented-Programming-Image" src="oops/image092.png"><br><br>
+
+<pre>
+Output:
+E:\scjp&gt;javac Base.java
+E:\scjp&gt;java Base
+0
+First static block
+Second static block
+20
+Main method
+</pre>
+
+<br>
+
+<h3><font color="#800040">Read indirectly write only state (or) RIWO : </font></h3>
+<p>With in the  static block  if we are  trying to read   any  variable  then that  read is  considered as  "direct read" <br> If we are  calling a method , and   with in  the method  if we are  trying  to read  a method , that  read is  called  Indirect read </p> 
+<p>If a variable is in RIWO state then we can't perform read operation directly otherwise we will get compile time error saying  " illegal forward reference ".</p>
+<br>
+Example:<br><img alt="Object-oriented-Programming-Image" src="oops/image094.png"  width="999"><br><br>
+<h3 id="sfc"  ><font color="#990000">
+Static control  flow  parent to  child  relationship :</font> </h3>
+<br><img alt="Object-oriented-Programming-Image" src="oops/image096.png"><br><br>
+
+Analysis:<br><img alt="Object-oriented-Programming-Image" src="oops/image098.png"><br><br>
+ <pre>
+Output:
+E:\scjp&gt;java Derived
+0
+Base static block
+0
+Derived first static block
+Derived second static block
+200
+Derived main
+</pre>
+<pre>
+Output:
+E:\scjp&gt;java Base
+0
+Base static block
+20
+Basic main 
+</pre>
+
+
+<strong><br> 
+Whenever we are executing Child class the following sequence of events will be performed automatically. 
+</strong><ol>
+<li>	Identification of static members from Parent to Child. [1 to 11] </li>
+<li>	Execution of static variable assignments and static blocks from Parent to Child.[12 to 22] </li>
+<li>	Execution of Child class main() method.[23 to 25].</li>
+</ol>
+<p><strong>Note :</strong> When ever  we are  loading  child class  autimatically   the parent  class will be  loaded but when  ever  we are  loading parent  class  the child class  don't be  loaded automatically.</p>
+ 
+<br> 
+<font color="#0000ff"><u><h3 id="sblock" >Static block: 
+</h3></u></font><ul>
+<li>	Static blocks will be executed at the time of class loading hence if we want to perform any activity at the time of class loading we have to define that activity inside static block.</li>
+<li>	With in a class we can take any no. Of static blocks and all these static blocks will be executed from top to bottom.</li>
+</ul>
+Example:
+<p>	The native libraries should be loaded at the time of class loading hence we have to define that activity inside static block.</p>
+
+<pre>
+Example:
+class Test 
+{
+	static
+	{
+		System.loadLibrary("native library path");
+	}
+}	
+</pre>
+
+<p>Ex 2 : 	Every JDBC driver class internally contains a static block to register the driver with DriverManager hence programmer is not responsible to define this explicitly.</p>
+
+<pre>
+Example:
+class Driver 
+{
+	static
+	{
+		//Register this driver with DriverManager
+	}
+}
+</pre>
+
+<strong >IIQ : Without using main() method is it possible to print some statements to the console?</strong><br>
+Ans : Yes, by using static block.
+
+<br>
+
+<pre>
+Example:
+class Google 
+{
+	static
+	{
+		System.out.println("hello i can print");
+		System.exit(0);
+	} 
+}
+Output:
+Hello i can print
+</pre>
+<strong>IIQ : Without using main() method and static block is it possible to print some statements to the console ? </strong>
+
+<pre>
+Example 1:
+class Test 
+{
+	static int i=methodOne();
+	public static int methodOne()
+	{
+		System.out.println("hello i can print");
+		System.exit(0);
+		return 10;
+	}
+}
+Output:
+Hello i can print
+</pre>
+Example 2:
+<pre>
+class Test 
+{
+	static Test t=new Test();
+	Test()
+	{
+		System.out.println("hello i can print");
+		System.exit(0);
+	}
+}
+Output:
+Hello i can print
+</pre>
+Example 3:
+<pre>
+class Test 
+{
+	static Test t=new Test();
+	{
+	System.out.println("hello i can print");
+	System.exit(0);
+	}
+}
+Output:
+Hello i can print
+</pre>
+<br/>
+
+<strong>IIQ : Without using System.out.println() statement is it possible to print some statement to the console ? </strong>
+<pre>
+Example:
+class Test 
+{
+	public static void main(String[] args)
+	{
+		System.err.println("hello");
+	}
+}
+</pre>
+<br>
+<p>Note : Without  using main() method  we can able to  print  some  statement  to the sonsole , but  this rule is applicable  untill  1.6 version from 1.7 version onwards  to run  java program  main() method is mandatory.
+</p>
+<pre>
+class Test {
+ static {
+  System.out.println("ststic block");
+  System.exit(0);
+  }
+ }
+</pre>
+It is valid in 1.6 version but invalid  or won't run in 1.7 version
+
+
+<br>
+
+
+<h2    id="instanceflow"       style="background-color: rgb(0, 0, 160);"><font color="#ffff00">Instance control flow:</font></h2>
+
+<img alt="Object-oriented-Programming-Image" src="oops/image100.png">
+<br>
+
+<pre> 
+Analysis:
+i=0[RIWO]
+j=0[RIWO]
+i=10[R&amp;W]
+j=20[R&amp;W]
+</pre>
+Output:
+<br><img alt="Object-oriented-Programming-Image" src="oops/image102.png"><br>
+ 
+ 
+ <br>Whenever we are executing a java class static control flow  will be executed. In the Static control flow  
+ Whenever we are creating an object the following sequence of events will be performed automatically.
+ <ol>
+ <li>Identification of instance members from top to bottom(3 to 8).</li>
+ <li>Execution of instance variable assignments and instance blocks from top to bottom(9 to 14).</li>
+ <li>Execution of constructor.</li>
+ </ol>
+ 
+ <p> 
+<strong>Note:</strong> static control flow is one time activity and it will be executed at the time of class loading.<br>
+	But instance control flow is not one time activity for every object creation it will be executed.
+</p>
+
+<h3 id="ifc" ><font color="#0000CC">Instance control flow in Parent to Child relationship : </font></h3>
+
+<pre>
+Example:
+class Parent 
+{
+	int x=10;
+	{
+		methodOne();
+		System.out.println("Parent first instance block");
+	}
+	Parent()
+	{
+		System.out.println("parent class constructor");
+	}
+	public static void main(String[] args)
+	{
+		Parent p=new Parent();
+		System.out.println("parent class main method");
+	}
+	public void methodOne()
+	{
+		System.out.println(y);
+	}
+	int y=20;
+}
+class Child extends Parent
+{
+	int i=100;
+	{
+		methodTwo();
+		System.out.println("Child first instance block");
+	}
+	Child()
+	{
+		System.out.println("Child class constructor");
+	}
+	public static void main(String[] args)
+	{
+		Child c=new Child();
+		System.out.println("Child class main method");
+	}
+	public void methodTwo()
+	{
+		System.out.println(j);
+	}
+	{
+		System.out.println("Child second instance block");
+	}
+	int j=200;
+}
+
+Output:
+E:\scjp&gt;javac Child.java
+E:\scjp&gt;java Child
+0
+Parent first instance block
+Parent class constructor
+0
+Child first instance block
+Child second instance block
+Child class constructor
+Child class main method
+</pre>
+
+<br>
+
+Whenever we are creating child class object the following sequence of events will be executed automatically.
+<ol>
+<li>	Identification of instance members from Parent to Child.</li>
+<li>	Execution of instance variable assignments and instance block only in Parent class.</li>
+<li>	Execution of Parent class constructor.</li>
+<li>	Execution of instance variable assignments and instance blocks in Child class.</li>
+<li>	Execution of Child class constructor.</li>
+</ol>
+<p><strong>Note:</strong> Object creation is the most costly operation in java and hence if there is no specific requirement never recommended to crate objects.</p>
+
+<pre>
+Example 1:
+public class Initilization
+{
+	private static String methodOne(String msg)  //--&gt;1
+	{
+		System.out.println(msg);
+		return msg;
+	}
+	public Initilization()  //--&gt;4
+	{
+		m=methodOne("1");  //--&gt;9
+	}
+	{                             //--&gt;5 
+		m=methodOne("2");             //--&gt;7
+	}
+	String m=methodOne("3");      //--&gt;6 , //--&gt;8
+	public static void main(String[] args) //--&gt;2
+	{
+		Object obj=new Initilization();   //--&gt;3
+	}
+}
+</pre>
+Analysis:
+<br><img alt="Object-oriented-Programming-Image" src="oops/image104.png"><br><br/>
+ <pre>
+Output:
+2
+3
+1
+</pre>
+
+<pre>
+Example 2:
+public class Initilization
+{
+	private static String methodOne(String msg)  //--&gt;1
+	{
+		System.out.println(msg);
+		return msg;
+	}
+	static String m=methodOne("1");  //--&gt;2,      //--&gt;5
+	{
+		m=methodOne("2");
+	}
+	static                         //--&gt;3
+	{
+		m=methodOne("3");                         //--&gt;6
+	}
+	public static void main(String[] args)  //--&gt;4
+	{
+		Object obj=new Initilization();
+	}
+}  
+Output:
+1
+3
+2
+</pre>
+
+<p>	We can't access instance variables directly from static area because at the time of execution of static area JVM may not identify those members.</p>
+
+Example:<br><img alt="Object-oriented-Programming-Image" src="oops/image106.png">
+ 
+ 
+ <ul>
+ <li>But from the instance area we can access instance members directly.</li>
+ <li>Static members we can access from anywhere directly because these are identified already at the time of class loading only.</li>
+ </ul>
+ 
+ 
+ 
+ <br>
+ <h2  id="typecast"   style="background-color: rgb(128, 0, 64);"><font color="#ffff00">Type casting:</font></h2>
+ <p>Parent class reference can be used to hold Child class object but by using that reference we can't call Child specific methods.</p>
+<pre>
+Example: 
+Object o=new String(&quot;ashok&quot;);//valid 
+System.out.println(o.hashCode());//valid 
+System.out.println(o.length());//<br>	C.E:cannot find symbol,<br>         symbol  : method length(),<br>	location: class java.lang.Object 
+</pre>
+<p>	Similarly we can use interface reference to hold implemented class object.</p>
+
+
+Example:<br>
+Runnable r=new Thread();
+<br>
+<strong>Type casting syntax:</strong>
+<br><img alt="Object-oriented-Programming-Image" src="oops/image108.png"><br><br>
+ 
+ <h2 id="tcompile" ><font color="#0000ff">Compile time checking : </font></h2>
+ <p><font color="#FF00FF"> Rule 1:</font> The type of "d" and "c" must have some relationship [either Child to Parent (or) Parent to Child (or) same type] otherwise we will get compile time error saying inconvertible types.</p>
+ 
+ <br>
+ 
+Example 1:<br><img alt="Object-oriented-Programming-Image" src="oops/image110.png"><br><br>
+ 
+Example 2:<br><img alt="Object-oriented-Programming-Image" src="oops/image112.png"><br><br>
+ 
+ <p><font color="#FF00FF"> Rule 2:</font> "C" must be either same (or) derived type of "A" otherwise we will get compile time error saying incompatible types.<br>                                               
+Found: C <br>
+Required: A
+</p>
+
+Example 1:<br><img alt="Object-oriented-Programming-Image" src="oops/image114.png"><br><br>
+ 
+Example 2:<br><img alt="Object-oriented-Programming-Image" src="oops/image116.png"><br><br>
+ 
+ <h3 id="trun" ><u><font color="#0000ff">Runtime checking : </font></u></h3>
+ <p>The underlying object type of  "d" must be either same (or) derived type of  "C"  otherwise we will get runtime exception saying ClassCastException.</p>
+ 
+Example:<br><img alt="Object-oriented-Programming-Image" src="oops/image118.png"><br><br>
+ 
+Diagram:<br><img alt="Object-oriented-Programming-Image" src="oops/image120.png"><br><br>
+ 
+ <pre>
+Base1 b=new Derived2();//valid
+Object o=(Base1)b;//valid
+Object o1=(Base2)o;//invalid
+Object o2=(Base2)b;//invalid
+Base2 b1=(Base1)(new Derived1());//invalid
+Base2 b2=(Base2)(new Derived3());//valid
+Base2 b2=(Base2)(new Derived1());//invalid
+</pre>
+
+<p>Through Type Casting just we are converting the type of object but not object itself that is we are performing type casting but not object casting.</p><p>Through Type Casting  we are not create any  new objects  for the  existing  objects  we are  providing  another  type of  reference  variable(mostly Parent type). </p>
+<br>
+Example: <br><br>
+   
+   <img alt="Object-oriented-Programming-Image" src="oops/image122.png"> <br><br>
+Example 1:<br>
+ <img alt="Object-oriented-Programming-Image" src="oops/image124.png"  width="900"><br><br>
+Example 2:<br>
+ <img alt="Object-oriented-Programming-Image" src="oops/image126.png"><br><br>
+ 
+ 
+	It is overriding and method resolution is based on runtime object.
+	
+<pre>
+C c=new C();
+c.methodOne();//c
+((B)c).methodOne();//c
+((A)((B)c)).methodOne();//c
+</pre>
+<br>
+Example 3:<img alt="Object-oriented-Programming-Image" src="oops/image128.png"><br><br>
+ 
+ 
+ 
+It is method hiding and method resolution is based on reference type.
+
+<pre>
+C c=new C();
+c.methodOne();//C
+((B)c).methodOne();//B
+((A)((B)c)).methodOne();//A
+</pre>
+<br>
+Example 4:<br>	<img alt="Object-oriented-Programming-Image" src="oops/image130.png"><br><br>
+
+
+
+<pre> 
+C c=new C();
+System.out.println(c.x);//999
+System.out.println(((B)c).x);//888
+System.out.println(((A)((B)c)).x);//777
+</pre>
+
+<ul>
+<li>	Variable resolution is always based on reference type only.</li>
+<li>	If we are changing variable as static then also we will get the same output.</li>
+</ul>
+
+<h2   id="coupling"   style="background-color: rgb(0, 0, 255);"><font color="#ffff00">Coupling :</font></h2>
+
+The degree of dependency between the components is called coupling.
+<pre>
+Example:
+class A
+{
+	static int i=B.j;
+}
+class B extends A
+{
+	static int j=C.methodOne();
+}
+class C extends B
+{
+	public static int methodOne()
+	{
+		return D.k;
+	}
+}
+class D extends C
+{
+	static int k=10;
+	public static void main(String[] args)
+	{
+		D d=new D();
+	}
+}
+</pre>
+
+
+	The above components are said to be tightly coupled to each other because the dependency between the components is more.
+<p>	Tightly coupling is not a good programming practice because it has several serious disadvantages.</p>
+<ol>
+<li>	Without effecting remaining components we can't modify any component hence enhancement(development) will become difficult.</li>
+<li>	It reduces maintainability of the application.</li>
+<li>	It doesn't promote reusability of the code.</li>
+</ol>
+<p>	It is always recommended to maintain loosely coupling between the components.</p>
+
+<h2  id="cohesion"   style="background-color: rgb(0, 0, 160);"><font color="#ffff00">Cohesion:</font></h2>
+
+<p>	For every component we have to maintain a clear well defined functionality such type of component is said to be follow high cohesion.</p>
+<br>
+Diagram:<br><img alt="Object-oriented-Programming-Image" src="oops/image132.png" width="900"><br><br>
+ 
+High cohesion is always good programming practice because it has several advantages.
+
+<ol>
+<li>	Without effecting remaining components we can modify any component hence enhancement will become very easy.</li>
+<li>	It improves maintainability of the application.</li>
+<li>	It promotes reusability of the application.(where ever validation is  required  we can  reuse  the same  validate  servlet  without  rewriting )		</li>
+</ol>
+
+<p>Note: It is highly recommended to follow loosely coupling and high cohesion.</p>
+
+
+	
+  
+  
+  
+  <br>
+  
+  
+  </td></tr></table>
+  <table ><tr><td><a href="index-2.html">BACK</a></td></tr>	</table>
+  </div>
+  
+
+
+     
+ <!-- infolinks  -->   
+<script type="text/javascript">
+ var infolinks_pid = 1921552;
+ var infolinks_wsid = 0;
+</script>
+<script type="text/javascript" src="../resources.infolinks.com/js/infolinks_main.js"></script>
+   
+
+
+  
+  </body>
+
+<!-- Mirrored from java.scjp.jobs4times.com/oops.htm by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 22 Jun 2024 15:20:40 GMT -->
+</html>

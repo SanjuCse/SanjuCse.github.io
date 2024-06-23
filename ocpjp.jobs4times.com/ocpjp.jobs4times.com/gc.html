@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from ocpjp.jobs4times.com/gc.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 22 Jun 2024 15:29:37 GMT -->
+<head>
+<meta charset="ISO-8859-1">
+
+<title> Garbage Collections </title>
+<link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+
+<div align="center">   
+<table border="1"> <tr><td width="700px">
+    
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td width="50%" align="left"><a href="http://www.jobs4times.com/"><img alt="jobs4timesLogo"  src="../img.logos.jobs4times.com/banner%20J4T.jpg" width="500" height="200">   </a> </td> 
+<td  align="right"><a href="http://jobs4times.com/J4T/allmaterial.html"><img alt="jobs4timesLogo"  src="../img.logos.jobs4times.com/as2.jpg"  width="180" height="200" >  </a>  </td> 	  	
+</tr>
+</table> 			
+    
+    
+	
+<h1 align="center"  style="background-color: rgb(64, 0, 64);"> <font color="#ffff00">Garbage Collections </font>  </h1>
+
+	
+
+
+
+
+<h3>Q: 01 Given:</h3> 
+<pre>
+1. public class GC { 
+2. private Object o; 
+3. private void doSomethingElse(Object obj) { o = obj; } 
+4. public void doSomething() { 
+5. Object o = new Object(); 
+6. doSomethingElse(o); 
+7. o = new Object(); 
+8. doSomethingElse(null); 
+9. o = null; 
+10. } 
+11. }
+</pre>
+<p>
+When the doSomething method is called, after which line does the Object created in line 5 become available for garbage collection ?</p>
+
+<ol start="A">
+  <li> Line 5 </li><li> Line 6</li><li> Line 7</li><li> Line 8</li><li> Line 9</li><li> Line 10</li>
+</ol>
+ Answer: D
+ 
+ <h3> Q: 02 Given:</h3>
+ <pre>
+ 11. public void genNumbers() { 
+ 12. ArrayList numbers = new ArrayList(); 
+ 13. for (int i=0; i&lt;10; i++) { 
+ 14. int value = i * ((int) Math.random()); 
+ 15. Integer intObj = new Integer(value); 
+ 16. numbers.add(intObj); 
+ 17. } 
+ 18. System.out.println(numbers); 
+ 19. } 
+ </pre>
+ <p> Which line of code marks the earliest point that an object referenced by intObj becomes a candidate for garbage collection ?</p>
+<ol style="A"> 
+ <li> Line 16</li><li> Line 17 </li><li> Line 18</li><li> Line 19</li><li> The object is NOT a candidate for garbage collection.</li>
+</ol>
+
+ Answer: D
+
+<h3>Q: 03 Given:</h3>
+<pre>
+11. rbo = new ReallyBigObject(); 
+12. // more code here 
+13. rbo = null; 
+14. /* insert code here */ 
+</pre>
+
+<p>Which statement should be placed at line 14 to suggest that the virtual machine expend effort toward recycling the memory used by the object rbo ?</p>
+ 
+<ol> <li> System.gc();</li><li> Runtime.gc();</li><li> System.freeMemory();</li>
+<li> Runtime.getRuntime().growHeap();</li><li> Runtime.getRuntime().freeMemory();</li></ol>
+
+ Answer: A 
+
+<h3>Q: 04 Given:</h3> 
+<pre>
+11. class Snoochy { 
+12. Boochy booch; 
+13. public Snoochy() { booch = new Boochy(this); } 
+14. } 
+15. 
+16. class Boochy { 
+17. Snoochy snooch; 
+18. public Boochy(Snoochy s) { snooch = s; } 
+19. } And the statements: 
+21. public static void main(String[] args) { 
+22. Snoochy snoog = new Snoochy(); 
+23. snoog = null; 
+24. // more code here 
+25. } 
+</pre>
+
+<p>Which statement is true about the objects referenced by snoog, snooch, and booch immediately after line 23 executes ? </p>
+<ol style="A">
+<li> None of these objects are eligible for garbage collection.</li>
+<li> Only the object referenced by booch is eligible for garbage collection.</li>
+<li> Only the object referenced by snoog is eligible for garbage collection.</li>
+<li> Only the object referenced by snooch is eligible for garbage collection.</li>
+<li> The objects referenced by snooch and booch are eligible for garbage collection.</li></ol>
+
+ Answer: E 
+ 
+<h3> Q : 05 Which two are true ? (Choose two.)</h3>
+<ol style="A">
+<li> A finalizer may NOT be invoked explicitly.</li>
+<li> The finalize method declared in class Object takes no action.</li>
+<li> super.finalize() is called implicitly by any overriding finalize method.</li>
+<li> The finalize method for a given object will be called no more than once by the garbage collector.</li>
+<li> The order in which finalize will be called on two objects is based on the order in which the two objects became finalizable.</li>
+</ol>
+ Answer: B , D
+
+<h3>Q: 06</h3>
+
+ Which statement is true ? 
+<ol style="A">
+<li> A class's finalize() method CANNOT be invoked explicitly.</li>
+<li>super.finalize() is called implicitly by any overriding finalize() method.</li>
+<li> The finalize() method for a given object is called no more than once by the garbage collector.</li>
+<li> The order in which finalize() is called on two objects is based on the order in which the two objects became finalizable.</li></ol>
+
+ Answer: C 
+ 
+ <h3> Question: 07 Given:</h3>
+
+<pre> 
+3. interface Animal { void makeNoise(); } 
+4. class Horse implements Animal { 
+5. Long weight = 1200L; 
+6. public void makeNoise() { System.out.println("whinny"); } 
+7. } 
+8. public class Icelandic extends Horse { 
+9. public void makeNoise() { System.out.println("vinny"); } 
+10. public static void main(String[] args) { 
+11. Icelandic i1 = new Icelandic(); 
+12. Icelandic i2 = new Icelandic(); 12. Icelandic i3 = new Icelandic(); 
+13. i3 = i1; i1 = i2; i2 = null; i3 = i1; 
+14. } 
+15. }
+</pre>
+<p>
+When line 14 is reached, how many objects are eligible for the garbage collector ?</p>
+
+<ol style="A">
+<li> 0</li><li> 1</li><li> 2</li><li> 3</li><li> 4</li><li> 6</li></ol>
+ Answer: E 
+ 
+<h3> Q : 07 Given:</h3>
+<pre>
+5. public class Tahiti { 
+6. Tahiti t; 
+7. public static void main(String[] args) { 
+8. Tahiti t = new Tahiti(); 
+9. Tahiti t2 = t.go(t); 
+10. t2 = null; 
+11. // more code here 
+12. } 
+13. Tahiti go(Tahiti t) { 
+14. Tahiti t1 = new Tahiti(); Tahiti t2 = new Tahiti(); 
+15. t1.t = t2; t2.t = t1; t.t = t2; 
+16. return t1;
+17. } 
+18. } 
+</pre>
+When line 11 is reached, how many objects are eligible for garbage collection ?
+<ol style="A">
+<li> 0</li><li> 1</li><li> 2</li><li> 3 </li><li> Compilation fails.</li></ol>
+ Answer: A 
+ 
+<h3> 08. Given:</h3> 
+<pre>
+class CardBoard { 
+ Short story = 5; 
+ CardBoard go(CardBoard cb) { 
+   cb = null; return cb; 
+ } 
+ public static void main(String[] args) { 
+  CardBoard c1 = new CardBoard(); 
+  CardBoard c2 = new CardBoard(); 
+  CardBoard c3 = c1.go(c2); 
+   c1 = null; // do Stuff 
+} }
+</pre>
+
+ When // doStuff is reached, how many objects are eligible for GC ?
+<ol style="A">
+<li> 0</li><li> 1</li><li> 2</li><li> Compilation fails.</li><li> It is not possible to know.</li><li> An exception is thrown at runtime.</li></ol>
+
+ Answer: 
+ <ul><li> C is correct. Only one CardBoard object (c1) is eligible, but it has an associated Short wrapper object that is also eligible.</li>
+ <li>A, B, D, E, and F are incorrect based on the above.</li></ul>
+ 
+<h3>  09. Which is true? (Choose all that apply.)</h3>
+<ol style="A">
+<li> The invocation of an object‘s finalize() method is always the last thing that happens before an object is garbage collected (GCed).</li>
+<li> When a stack variable goes out of scope it is eligible for GC.</li>
+<li> Some reference variables live on the stack, and some live on the heap.</li>
+<li> Only objects that have no reference variables referring to them can be eligible for GC.</li>
+<li> It's possible to request the GC via methods in either java.lang.Runtime or java.lang.System classes.</li>
+</ol>
+
+Answer: 
+<ul>
+<li> C and E are correct. When an object has a reference variable, the reference variable lives inside the object, on the heap.</li>
+<li>A is incorrect, because if, the first time an object's finalize() method runs, the object is saved from the GC, then the second time that object is about to be GCed, finalize() will not run. B is incorrect—stack variables are not dealt with by the GC. D is incorrect because objects can live in "islands of isolation" and be GC eligible.</li></ul>
+
+<h3>10. Given:</h3>
+<pre>
+1. class Eco { 
+2. public static void main(String[] args) { 
+3. Eco e1 = new Eco(); 
+4. Eco e2 = new Eco(); 
+5. Eco e3 = new Eco(); 
+6. e3.e = e2; 
+7. e1.e = e3; 
+8. e2 = null; 
+9. e3 = null; 
+10. e2.e = e1; 
+11. e1 = null; 
+12. } 
+13. Eco e; 
+14. } 
+</pre>
+
+At what point is only a single object eligible for GC ? 
+<ol style="A">
+<li> After line 8 runs.</li><li> After line 9 runs.</li><li> After line 10 runs.</li><li> After line 11 runs.</li><li> Compilation fails.</li>
+<li> Never in this program.</li><li> An exception is thrown at runtime.</li>
+</ol>
+
+  Answer: 
+  <ul><li> G is correct. An error at line 10 causes a NullPointerException to be thrown because e2 was set to null in line 8.<br> 
+      If line 10 was moved between lines 7 and 8, then F would be correct, <br>
+      because until the last reference is nulled none of the objects is eligible, and once the last reference is nulled, all three are eligible.</li>
+<li>A, B, C, D, E, and F are incorrect based on the above.</li></ul>
+
+
+
+
+
+
+
+
+
+<br><br>
+</td></tr></table>
+<a href="scjpHomePage.html">BACK</a>
+
+</div>
+
+</body>
+
+<!-- Mirrored from ocpjp.jobs4times.com/gc.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 22 Jun 2024 15:29:37 GMT -->
+</html>

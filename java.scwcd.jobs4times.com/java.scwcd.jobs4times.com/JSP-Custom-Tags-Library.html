@@ -1,0 +1,2838 @@
+<!DOCTYPE HTML>
+<html>
+
+<!-- Mirrored from java.scwcd.jobs4times.com/JSP-Custom-Tags-Library.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 22 Jun 2024 15:25:23 GMT -->
+<head>
+ <title> Tutorials FOR JSP  Custom   Tag  Library</title>
+ <meta name="keywords" content="
+ Components of Custom tag applications
+Tag Handler Class
+TLD(Tag Library descriptor)
+Taglib directive
+Flow of Custom Tag Application
+Tag Extension API
+Classic Tag Model
+Tag interface
+IterationTag (I)
+TagSupport (C)
+BodyTag (I)
+BodyContent (AC)
+Comparision between TagSupport and BodyTagSupport classes
+Nested Tags (or) co-operative tags
+Getting Arbitrary Ancestor Object
+SimpleTag Model : (jsp 2.0v)
+SimpleTag interface
+Jsp implicit objects and attributes in SimpleTag Model
+Key differences between ClassictagModel and SimpleTagModel
+DynamicAttributes
+TagFiles (jsp2.0v)
+Building & Using a Simple tag file
+Declaring body-content for tag file
+TagFiles with DynamicAttributes">
+ <meta name="description" content="Standard Actions, EL, JSTL are not succeeded to complete elimination of java code from Jsp.
+Our requirement is to communicate with EJP or DB there is no standard action is defined for this requirement, we can defined our own tag from Jsp 1.1v onwards to meet our programming requirement such types of tags are nothing but Custom Tags.
+Classic Tag Model (Jsp1.1)
+Simple Tag Model(2.0)
+Tag files (Jsp2.0)">
+ <meta name="content-type" content="text/html; charset=ISO-8859-1">
+ <link rel="stylesheet" type="text/css" href="styles1.css">
+</head>
+  
+<body>
+<div align="center" >
+<table width="800px" border="3" ><tr><td>
+
+    <table width="100%" cellpadding="0" cellspacing="0" border="0">
+     <tr>
+     <td align="left"><a href="https://www.jobs4times.com/"><img alt="jobs4timesLogo"  src="../img.logos.jobs4times.com/banner%20J4T.jpg" width="100%" height="250px">   </a> </td>
+     
+   	<td  align="right"><a href="index-2.html"><img alt="jobs4timesLogo"  src="../img.logos.jobs4times.com/as2.jpg"  width="180px" height="200px" >  </a>  </td> 
+   	 
+    </tr>
+    </table> 
+  
+<h1 align="center" style="background-color: rgb(0, 0, 128);"><font color="#ffff00">JSP  Custom   Tag  Library</font></h1>
+
+
+<strong>Agenda :</strong>
+<ul>
+
+
+<li><a href="#Introduction">Introduction </a></li>
+<li><a href="#Components-of-Custom-tag">Components of Custom tag applications </a><ul>
+<li><a href="#Tag-Handler-Class">Tag Handler Class</a></li>
+<li><a href="#TLD">TLD(Tag Library descriptor)</a></li>
+<li><a href="#Taglib-directive">Taglib directive</a></li> </ul>  </li>
+
+<li><a href="#Flow-of-Custom-Tag">Flow of Custom Tag Application</a></li>
+<li><a href="#Tag-Extension-API">Tag Extension API</a></li>
+</ul>
+<ol>
+<li><a href="#Classic-Tag-Model">Classic Tag Model</a><ol>
+<li><a href="#Tag-interface">Tag interface</a></li>
+<li><a href="#IterationTag">IterationTag (I)</a></li>
+<li><a href="#TagSupport">TagSupport (C)</a></li>
+<li><a href="#BodyTag">BodyTag (I) </a></li>
+<li><a href="#BodyContent">BodyContent (AC)</a></li></ol><ul>
+
+<li><a href="#Comparision-TagSupport">Comparision between TagSupport and BodyTagSupport classes</a></li>
+<li><a href="#Nested-Tags">Nested Tags (or) co-operative tags</a></li>
+<li><a href="#Arbitrary-Ancestor-Object">Getting Arbitrary Ancestor Object</a></li></ul>  </li>
+
+
+<li><a href="#SimpleTag-Model">SimpleTag Model : (jsp 2.0v)</a> <ul>
+<li><a href="#SimpleTag-interface">SimpleTag interface</a></li>
+<li><a href="#Jsp-implicit-SimpleTag-Model">Jsp implicit objects and attributes in SimpleTag Model</a></li>
+
+<li><a href="#Key-differences">Key differences between ClassictagModel and SimpleTagModel</a></li> 
+<li><a href="#DynamicAttributes">DynamicAttributes</a></li>  </ul>  </li>
+
+<li><a href="#TagFiles">TagFiles (jsp2.0v) </a> <ul>
+<li><a href="#Building">Building &amp; Using a Simple tag file</a></li>
+<li><a href="#body-content">Declaring body-content for tag file</a></li>
+<li><a href="#TagFiles-DynamicAttributes">TagFiles with DynamicAttributes</a></li>   </ul></li>
+</ol>
+
+<hr>
+
+<h2 id="Introduction">Introduction :</h2>
+Standard Actions, EL, JSTL are not succeeded to complete elimination of java code from Jsp.
+<p><b>Ex:</b>
+Our requirement is to communicate with EJP or DB there is no standard action is defined for this requirement, we can defined our own tag from Jsp 1.1v onwards to meet our programming requirement such types of tags are nothing but Custom Tags.
+</p>
+
+All Custom tags can be divided into 3 parts   
+<ol>
+   <li>Classic Tag Model (Jsp1.1)</li>
+   <li>Simple Tag Model(2.0) </li>
+   <li>Tag files (Jsp2.0)</li>
+</ol>  
+<h3 id="Components-of-Custom-tag">Components of Custom tag applications :</h3>
+Custom tag application contains the following 3 components
+<ol>
+<li>
+<b id="Tag-Handler-Class">Tag Handler Class :</b>
+ <ul>
+ <li>It is a simple java class which defines entire required functionality.</li>
+ <li>Every Tag Handler class should compulsory implements Tag interface either directly or indirectly.</li>
+ <li>Web-container is responsible for  creation of Tag handler class object for this always invokes public no-arg constructor , hence every tag handler class should compulsory contains public no-arg constructor.</li> 
+ </ul></li><li>
+ <b id="TLD">TLD(Tag Library descriptor) :</b><br>
+ It is an xml file which provides mapping between Jsp(where custom tag functionality is required) and Tag handler class (where custom tag functional available).
+ </li><li>
+ <b id="Taglib-directive">Taglib directive :</b><br>
+ We can use Taglib directive to make custom tag functionality available to the Jsp, it provides location of TLD file.
+ </li>
+</ol>
+
+<h3 id="Flow-of-Custom-Tag">Flow of Custom Tag Application :</h3>
+<br><img alt="Flow" src="custom/custom-flow.png"><br>
+<ul><li>When ever Jsp engine encounters a custom tag it identifies prefix and checks for corresponding taglib directive with matched prefix from the taglib directive Jsp engine identifies location of TLD file.</li>
+<li>From the TLD file Jsp engine identifies corresponding Tag handler class Jsp engine execute the THC and provides required functionality to the Jsp.</li></ul>
+
+<h2 id="Tag-Extension-API">Tag Extension API : </h2>
+We can define custom tags  by using only one package <strong>javax.servlet.jsp.tagext;</strong>
+<p>This package contains the following interfaces and class:</p>
+<ul>
+<li>Tag (I)</li>
+<li>IterationTag (I)</li>
+<li>BodyTag (I)</li>
+<li>TagSupport (C)</li>
+<li>BodyTagSupport (C)</li>
+<li>BodyContext (C)</li>
+</ul>
+
+<h3>Tag (I) :</h3>
+<ul>
+<li> It act as a base interface for all THC </li>
+<li>Every THC should implement Tag interface  either directly or indirectly.</li>
+<li>This interface defines 6 methods , these methods can be applicable on any THC object.</li>
+<li>If we want to include Tag body at most once without manipulation then we should go for Tag interface.</li>
+</ul>
+
+<h3>IterationTag (I) :</h3>
+<ul>
+<li>It is the child interface of Tag , if we want to include Tag body multiple times without any manipulation then we should go for IterationTag interface.</li>
+<li>It defines one extra method <strong>doAfterBody()</strong>.</li>
+</ul>
+
+<h3>BodyTag (I) :</h3>
+<p>
+It is the child interface of IterationTag, if we want to manipulate the TagBody then we should go for BodyTag interface.
+</p>It defines the following 2 methods
+<ol>
+<li>setBodyContent()</li><li>doInitBody()</li>
+</ol>
+
+<h3>TagSupport (C) :</h3>
+<ol>
+<li>It implements IterationTag interface and provides default implementation for all methods and hence this class act as base class to develop Tag Handler class  where TagBody can be included any no.of times without manipulation.</li>
+<li>This class act as a adaptor for Tag and IterationTag interfaces.</li>
+</ol>
+
+<h3>BodyTagSupport (C) :</h3>
+<ol>
+<li>This class implements BodyTag interface and provides default implementation for all its methods and it is child class of TagSupport class.</li>
+<li>We can use this class as a base class for implementing  custom tag that can process the tag body.</li> 
+<li>This class act as a adaptor for BodyTag interface.</li>
+</ol> 
+
+<h3>BodyContext (C) : </h3> 
+<ol>
+<li>BodyContext object act as a buffer for Tag body, it is the child class of JspWriter.</li>
+<li>We can use this  BodyContext class only with in BodyTag  interface and BodyTagSupport class.</li>
+</ol>
+
+<br><img alt="JspTag" src="custom/jspTag.png"><br>
+JspTag interface just for  polymorphism purpose and doesn't contain any methods.
+
+
+<h2 id="Classic-Tag-Model">Classic Tag Model</h2>
+
+<h3 id="Tag-interface">Tag interface :</h3>
+<strong>Tag interface defines the following 6 methods : </strong>
+<ol>
+<li>setPageContext()</li>
+<li>setParent()</li>
+<li>doStartTag()</li>
+<li>doEndTag()</li>
+<li>getParent()</li>
+<li>release() </li>
+</ol>
+
+
+<strong>Tag interface defines the following 4 constants :</strong>
+<ol>
+<li>EVAL_BODY_INCLUDE</li>
+<li>SKIP_BODY</li>
+<li>EVAL_PAGE</li>
+<li>SKIP_PAGE</li>
+</ol>
+
+
+<h4>LifeCycle of Tag Handler class that implements Tag interface : </h4>
+<ol>
+<li>When ever Jsp engine encounters a Custom tag invocation it will identify corresponding tag handler class through taglib directive and TLD file.</li>
+<li>Web-container will checks whether the corresponding Tag handler class object is available or not , if it is not available Jsp engine creating an object by executing public no-arg constructor , hence  every Tag handler class should compulsory contains public no-arg constructor , violation  leads we will get instantiation exception.</li>
+<li>Jsp engine calls setPageContext(-) to make PageContext object available to the Tag handler class.<br/>
+            <strong>public void setPageContext(PageContext pcontext)</strong> </li>
+<li>THC can use this PageContext object to get all other Jsp implicit attributes.</li>
+<li>Jsp engine calls setParent() to make parent tag object available to Tag Handler class <br> <strong>public void setParent(Tag tag)</strong><br>This method is useful in nesting </li>
+</ol>
+
+<h5>Setting Attributes :</h5>
+<ul>
+<li>A custom tag can be invoked with attributes also for every attribute the corresponding THC  should contains one instance variable  and corresponding setter methods like a bean , these are exactly same as properties of bean class for every custom tag attributes Jsp engine will execute corresponding  setter method to make attribute values make its available to THC.</li>
+<li>Jsp engine will invoke doStartTag()<br> 
+    <strong>public int doStartTag() throws JspException</strong></li>
+<li>Entire custom tag functionality we have to define in this method only , this method can return either EVAL_BODY_INCLUDE or SKIP_BODY </li>
+<li>If this method return EVAL_BODY_INCLUDE  then Tag Body will be included in the result  of Jsp (output of the Jsp).</li>
+<li>If this method return a SKIP_BODY , then Jsp engine don't  consider Tag Body.</li>
+<li>Jsp engine calls doEndTag()<strong> public int doEndTag() throws JspException </strong> doEndTag() can returns if this method return EVAL_PAGE the rest of the Jsp will be executed  normally.</li>
+<li>If the returns SKIP_PAGE then Jsp engine will return without executing  rest of the Jsp.</li>
+<li>Finally Jsp engine calls <strong>release()</strong> to perform cleanup activities when ever Tag Handler Object is no longer required.<br/> <strong>public void release()</strong> </li>
+</ul>
+
+<h6>For every custom tag invocation the following sequence of events will be happened (Flow Chart)  </h6>
+<br/><img alt="Setting-Attributes" src="custom/events.jpg"><br/>
+
+But release() method will not  be called for every custom tag invocation.
+
+
+<h6>custom tag example :</h6>
+
+index.jsp
+<pre>
+&lt;%@taglib uri="customtags" prefix="mine" %&gt;
+ Hello this is Tag demo Jsp
+&lt;mine:welcome&gt;
+  This is body of the custom tag
+&lt;/mine:welcome&gt;
+ This is after  tag
+</pre>
+
+TagDemo.java
+<pre>
+package com.tag;
+
+import java.io.IOException;
+
+import javax.servlet.jsp.JspException;
+import javax.servlet.jsp.JspWriter;
+import javax.servlet.jsp.PageContext;
+import javax.servlet.jsp.tagext.Tag;
+
+
+public class TagDemo implements Tag {
+	
+public PageContext pageContext;
+	
+static {
+System.out.println("class loading");
+}
+
+public TagDemo(){
+System.out.println("instantiation");
+}
+
+public void setPageContext(PageContext pageContext) {
+this.pageContext=pageContext;
+System.out.println("pagecontext object setted");
+}
+
+public void setParent(Tag tag) {
+System.out.println("parent tag setted");
+}
+
+public int doStartTag() throws JspException {
+ System.out.println("This is doStartTag() method");
+ JspWriter out=null;
+ try{
+  out=pageContext.getOut();
+  out.println("Welcome to custom tag developers");
+  out.println("Welcome to custom Tag handler class");
+ }catch (IOException e) {
+  e.printStackTrace();
+}
+ //return SKIP_BODY; // output 1
+  return EVAL_BODY_INCLUDE; //output 2 
+}
+
+public int doEndTag() throws JspException {
+System.out.println("This is doEndTag() method");
+ return EVAL_PAGE; //output 1
+//return SKIP_PAGE; //output 2
+
+}
+
+public Tag getParent() {
+System.out.println("getParent() method");
+return null;
+}
+
+public void release() {
+System.out.println("release() method");
+pageContext=null;
+}
+
+}
+</pre>
+same program using annotations :
+<pre>
+package com.tag;
+
+import java.io.IOException;
+import javax.servlet.jsp.JspException;
+import javax.servlet.jsp.JspWriter;
+import javax.servlet.jsp.PageContext;
+import javax.servlet.jsp.tagext.Tag;
+
+
+public class TagDemo implements Tag {
+	
+private PageContext pageContext;
+	
+static {
+System.out.println("class loading");
+}
+
+public TagDemo(){
+System.out.println("instantiation");
+}
+
+@Override
+public void setPageContext(PageContext pageContext) {
+this.pageContext=pageContext;
+System.out.println("pagecontext object setted");
+}
+
+@Override
+public void setParent(Tag tag) {
+System.out.println("parent tag setted");
+}
+
+@Override
+public int doStartTag() throws JspException {
+ System.out.println("This is doStartTag() method");
+ 
+ @SuppressWarnings("UnusedAssignment")
+ JspWriter out=null;
+ try{
+  out=getPageContext().getOut();
+  out.println("Welcome to custom tag developers&lt;br&gt;");
+  out.println("Welcome to custom Tag handler class&lt;br&gt;");
+ }catch (IOException e) {
+}
+ //return SKIP_BODY; // output 1
+  return EVAL_BODY_INCLUDE; //output 2 
+}
+
+@Override
+public int doEndTag() throws JspException {
+System.out.println("This is doEndTag() method");
+return EVAL_PAGE; //output 1
+//return SKIP_PAGE; //output 2
+
+}
+
+@Override
+public Tag getParent() {
+System.out.println("getParent() method");
+return null;
+}
+
+ @Override
+public void release() {
+System.out.println("release() method");
+  setPageContext(null);
+}
+
+public PageContext getPageContext() {
+  return pageContext;
+ }
+
+}
+</pre>
+
+
+myTld.tld
+<pre>
+&lt;taglib version="2.1"&gt;
+ &lt;tlib-version&gt;1.2&lt;/tlib-version&gt;
+ &lt;uri&gt;customtags&lt;/uri&gt;
+ &lt;tag&gt;
+  &lt;name&gt;welcome&lt;/name&gt;
+  &lt;tag-class&gt;com.tag.TagDemo&lt;/tag-class&gt;
+ &lt;/tag&gt;
+&lt;/taglib&gt;
+</pre> 
+
+In the above program , if doStartTag() returns EVAL_BODY_INCLUDE  and doEndTag returns EVAL_PAGE then the following is output :
+<pre>
+Hello this is Tag demo Jsp 
+Welcome to custom tag developers 
+Welcome to custom Tag handler class 
+This is body of the custom tag 
+This is after tag
+
+in console :
+Info:   class loading
+Info:   instantiation
+Info:   pagecontext object setted
+Info:   parent tag setted
+Info:   This is doStartTag() method
+Info:   This is doEndTag() method
+</pre>
+
+
+<h5>Mapping of the Jsp with tld file : </h5>
+
+<h6>approach 1 :</h6>
+We can hard code the location of tld file  for the uri attribute of taglib directive 
+<p>Ex: </p>
+<pre>
+&lt;%@taglib uri="/WEB-INF/myTld.tld" prefix="mine" %&gt; 
+</pre>
+
+The problem in this approach is if there is change in name of the tld file or location of the tld file we have perform that which is complex to the programmer.
+
+<h6>approach 2 :</h6>Instead of hard coding the location of tld file we can define mapping through web.xml 
+<p>Ex: </p>
+<pre>
+&lt;%@taglib uri="http://jobs4times.com/scwcd/tags" prefix="mine" %&gt; 
+</pre>
+
+web.xml
+<pre>
+&lt;web-app&gt;
+&lt;jsp-config&gt;
+  &lt;taglib&gt;
+    &lt;taglib-uri&gt;http://jobs4times.com/scwcd/tags&lt;/taglib-uri&gt;
+    &lt;taglib-location&gt;/WEB-INF/myTld.tld&lt;/taglib-location&gt;
+  &lt;/taglib&gt;
+&lt;/jsp-config&gt;
+&lt;/web-app&gt;
+</pre>
+
+This approach is highly recommended to use because there is any change in location of tld, just change in web.xml is enough not required to change in all Jsps
+
+
+<h6>approach 3 :</h6> We can map taglib uri attribute directly with uri attribute of tld file
+
+<pre>
+&lt;%@taglib prefix="mine" uri="customtags" %&gt;
+</pre>
+
+myTld.tld
+<pre>
+&lt;taglib version="2.1"&gt;
+ &lt;tlib-version&gt;1.2&lt;/tlib-version&gt;
+ &lt;uri&gt;mycustomtags&lt;/uri&gt;
+  ------------------
+&lt;/taglib&gt;
+</pre> 
+
+This approach is not recommended because all web-servers may not be supported.
+
+
+<h4>Structure of TLD file : </h4>
+<pre>
+&lt;taglib version="2.1"&gt;
+ &lt;tlib-version&gt;1.2&lt;/tlib-version&gt;
+ &lt;uri&gt;www.jobs4times.com&lt;/uri&gt;
+ &lt;tag&gt;
+  &lt;name&gt;welcome&lt;/name&gt;
+  &lt;tag-class&gt;com.tag.CustomTagDemo&lt;/tag-class&gt;
+  &lt;body-content&gt;XXXX&lt;/body-content&gt;
+  &lt;attribute &gt;
+   &lt;name&gt;msg&lt;/name&gt;
+   &lt;required&gt;true&lt;/required&gt;
+   &lt;rtexprvalue&gt;true&lt;/rtexprvalue&gt;
+  &lt;/attribute&gt;
+  -----------
+ &lt;/tag&gt; 
+&lt;/taglib&gt;
+</pre>
+
+In the above tld file we can write EL functions also.
+
+<h5>&lt;body-content&gt; : </h5>
+It describes the type of content allow inside tag body the allowed values are 
+<ol>
+<li><strong>empty :</strong> The body of custom tag should be empty i.e., we can't  take any tag body in this case we can invoke custom tag as follows <strong> &lt;mine:mytag/&gt; </strong> </li>
+<li><strong>tagdependent :</strong> Entire tag body will be treated plain text, Jsp engine sends tag body to the tag handler class without any processing.</li>
+<li><strong>scriptless :</strong> Tag body should not contains any scripting elements scriptlet, expression, declarations are not allowed but standard actions and EL expressions are allowed.  </li>
+<li><strong>jsp :</strong> There are no restrictions on tag body whatever allowed in Jsp by default allowed in tag body also(including scripting elements).<br>Note : The default value of &lt;body-content&gt; is "jsp".</li>
+</ol> 
+
+<h5>&lt;attribute &gt; : </h5>
+
+A custom tag can be invoked with attribute also we have to declare these  attributes by using attribute tag , this tag contains the following child tags
+<ol>
+<li><strong>&lt;name&gt; :</strong> name of the attribute </li>
+<li><strong>&lt;required&gt; :</strong> true means mandatory attribute, false means optional attribute, the default value is false </li>
+<li><strong>&lt;rtexprvalue&gt; (runtime expression value) :</strong>true means runtime expressions are allowed, false  means runtime expressions are not allowed
+<pre>
+&lt;mime:mytag color="${param.color}" /&gt;
+</pre>
+we  have to provide only literals 
+<pre>
+&lt;mime:mytag color="red" /&gt; 
+</pre>
+The default value is false  
+</li>
+</ol>
+
+
+<h6>Write a demo program : empty custom tag with mandatory attribute : </h6>
+
+A tag contain attribute also for each attribute we have to do the following things
+<ul>
+<li>We have to declare that attribute in the TLD file by using &lt;attribute&gt; tag </li>
+<li>For each attribute THC should contain one instance variable and corresponding setter methods.</li>
+<li>In the case of optional attribute there may be a chance of NullPointerException will raise hence we have to handle carefull. </li>
+</ul>
+
+
+test.jsp
+<pre>
+&lt;%@taglib uri="http://jobs4times.com/tags" prefix="mine" %&gt;
+&lt;%@page isELIgnored="false"%&gt;
+
+&lt;mine:double number="3"/&gt;
+&lt;mine:double number="${param.number}"/&gt;
+</pre>
+
+TagAttributeDemo.java
+<pre>
+package com.tag;
+
+import java.io.IOException;
+import javax.servlet.jsp.JspException;
+import javax.servlet.jsp.JspWriter;
+import javax.servlet.jsp.PageContext;
+import javax.servlet.jsp.tagext.Tag;
+
+public class TagAttributeDemo implements Tag {
+	
+public PageContext pageContext=null;
+private int number=0;	
+
+@Override
+public void setPageContext(PageContext pageContext) {
+this.pageContext=pageContext;
+System.out.println("pagecontext object setted");
+}
+
+@Override
+public void setParent(Tag tag) {
+System.out.println("parent tag setted");
+}
+
+public void setNumber(int number){
+ this.number=number;
+}
+
+@Override
+@SuppressWarnings("CallToPrintStackTrace")
+public int doStartTag() throws JspException {
+ System.out.println("This is doStartTag() method");
+ 
+ @SuppressWarnings("UnusedAssignment")
+ JspWriter out=null;
+ try{
+  out=pageContext.getOut();
+  out.println("The double of the given no "+number+" is "+(2*number));  
+ }catch (IOException e) {
+  e.printStackTrace();
+}
+ return SKIP_BODY; 
+ // return EVAL_BODY_INCLUDE;
+}
+
+@Override
+public int doEndTag() throws JspException {
+System.out.println("This is doEndTag() method");
+//return EVAL_PAGE; 
+return SKIP_PAGE;
+
+}
+
+@Override
+public Tag getParent() {
+System.out.println("getParent() method");
+return null;
+}
+
+ @Override
+public void release() {
+System.out.println("release() method");
+  pageContext=null;
+}
+
+}
+</pre>
+
+myTld.tld
+<pre>
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;taglib version="2.1" xmlns="http://java.sun.com/xml/ns/javaee"&gt;
+  &lt;tlib-version&gt;1.2&lt;/tlib-version&gt;
+  &lt;uri&gt;www.jobs4times.com&lt;/uri&gt;
+  &lt;tag&gt;
+   &lt;description&gt;double of number&lt;/description&gt;
+   &lt;name&gt;double&lt;/name&gt;
+   &lt;tag-class&gt;com.tag.TagAttributeDemo&lt;/tag-class&gt;
+   &lt;body-content&gt;empty&lt;/body-content&gt;
+   &lt;attribute&gt;
+    &lt;name&gt;number&lt;/name&gt;
+    &lt;required&gt;true&lt;/required&gt;
+    &lt;rtexprvalue&gt;true&lt;/rtexprvalue&gt;
+   &lt;/attribute&gt;
+  &lt;/tag&gt;
+&lt;/taglib&gt;
+</pre>
+
+
+web.xml
+<pre>
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;web-app version="3.1" 
+  xmlns="http://xmlns.jcp.org/xml/ns/javaee" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee 
+       http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"&gt;
+ 
+&lt;jsp-config&gt;
+  &lt;taglib&gt;
+    &lt;taglib-uri&gt;http://jobs4times.com/tags&lt;/taglib-uri&gt;
+    &lt;taglib-location&gt;/WEB-INF/myTld.tld&lt;/taglib-location&gt;
+  &lt;/taglib&gt;
+ &lt;/jsp-config&gt;
+&lt;/web-app&gt;
+</pre>
+
+<strong>http://localhost:8080/jstl/test.jsp?number=7</strong>
+
+
+<h6>Write a demo program : empty custom tag with optional attribute : </h6>
+
+
+demo.jsp
+<pre>
+&lt;%@taglib uri="http://jobs4times.com/tags" prefix="mine" %&gt;
+&lt;%@page isELIgnored="false"%&gt;
+
+&lt;mine:welcome name="Ashok"/&gt; &lt;br&gt;
+&lt;mine:welcome name="Arun"/&gt; &lt;br&gt;
+&lt;mine:welcome /&gt; &lt;br&gt;
+&lt;mine:welcome name="Agastya"/&gt; &lt;br&gt;
+</pre>
+
+TagOptional.java
+<pre>
+package com.tag;
+
+import java.io.IOException;
+import javax.servlet.jsp.JspException;
+import javax.servlet.jsp.JspWriter;
+import javax.servlet.jsp.PageContext;
+import javax.servlet.jsp.tagext.Tag;
+
+public class TagOptional implements Tag {
+	
+public PageContext pageContext=null;
+private String name=null;	
+
+@Override
+public void setPageContext(PageContext pageContext) {
+this.pageContext=pageContext;
+System.out.println("pagecontext object setted");
+}
+
+@Override
+public void setParent(Tag tag) {
+System.out.println("parent tag setted");
+}
+
+public void setName(String name){
+ this.name=name;
+}
+
+@Override
+@SuppressWarnings("CallToPrintStackTrace")
+public int doStartTag() throws JspException {
+ System.out.println("This is doStartTag() method");
+ 
+ @SuppressWarnings("UnusedAssignment")
+ JspWriter out=null;
+ try{
+  out=pageContext.getOut();
+  if(name==null){
+   out.println("<br>Hi Guest welcome to Custom Tags");
+  }
+  else{
+   out.println("<br>Hi "+name+" welcome to Custom Tags");
+  }
+ }catch (IOException e) {
+  e.printStackTrace();
+}
+ return SKIP_BODY; 
+ // return EVAL_BODY_INCLUDE;
+}
+
+@Override
+public int doEndTag() throws JspException {
+System.out.println("This is doEndTag() method");
+ return EVAL_PAGE; 
+//return SKIP_PAGE;
+
+}
+
+@Override
+public Tag getParent() {
+System.out.println("getParent() method");
+return null;
+}
+
+ @Override
+public void release() {
+System.out.println("release() method");
+  pageContext=null;
+}
+
+}
+</pre>
+
+myTld.tld
+<pre>
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;taglib version="2.1" xmlns="http://java.sun.com/xml/ns/javaee"&gt;
+  &lt;tlib-version&gt;1.2&lt;/tlib-version&gt;
+  &lt;uri&gt;www.jobs4times.com&lt;/uri&gt;
+  &lt;tag&gt;
+    &lt;name&gt;welcome&lt;/name&gt;
+    &lt;tag-class&gt;com.tag.TagOptional&lt;/tag-class&gt;
+    &lt;body-content&gt;empty&lt;/body-content&gt;
+    &lt;attribute&gt;
+      &lt;name&gt;name&lt;/name&gt;
+      &lt;required&gt;false&lt;/required&gt;
+    &lt;/attribute&gt;
+  &lt;/tag&gt;
+&lt;/taglib&gt;
+</pre>
+
+web.xml
+<pre>
+ same as previous
+</pre>
+output:
+<pre>
+Hi Ashok welcome to Custom Tags
+Hi Arun welcome to Custom Tags 
+Hi Guest welcome to Custom Tags
+Hi Agastya welcome to Custom Tags 
+</pre>
+
+<h3 id="IterationTag">IterationTag(I) :</h3>
+<ol>
+<li>It is child interface of Tag</li>
+<li>If we want to include tag body multiple times  without manipulation then we should go for IterationTag.</li>
+<li>IterationTag interface contains one extra  method doAfterBody() one extra constant is EVAL_BODY_AGAIN </li>
+</ol>
+
+<h5>doAfterBody() : </h5>
+<strong> public int doAfterBody() throws JspException </strong>
+<ul>
+<li>This method will be executed after doStartTag() and it can return either EVAL_BODY_AGAIN  or SKIP_BODY </li>
+<li>If it returns EVAL_BODY_AGAIN then tag body will be consider once again followed by execution of  doStartBody() </li>
+</ul>
+
+<h4>Flow Chart of IterationTag :</h4>
+<br><img alt="IterationTagFlowChart" src="custom/iteration-tag-flow.png"><br>
+
+<h6>Write a program for IterationTag :</h6>
+
+test.jsp
+<pre>
+&lt;%@taglib uri="http://jobs4times.com/tags" prefix="mine" %&gt;
+
+&lt;mine:myTag count="3"&gt;
+ This is Iteration Tag Demo &lt;br&gt;
+&lt;/mine:myTag&gt;
+Hi, This is afterBody
+</pre>
+
+IterationTagDemo.java
+<pre>
+package com.tag;
+
+import javax.servlet.jsp.JspException;
+import javax.servlet.jsp.PageContext;
+import javax.servlet.jsp.tagext.IterationTag;
+import javax.servlet.jsp.tagext.Tag;
+
+public class IterationTagDemo implements IterationTag {
+	
+@SuppressWarnings("PublicField")
+public PageContext pageContext=null;
+private int count=0;
+private Tag tag=null;
+
+@Override
+public void setPageContext(PageContext pageContext) {
+this.pageContext=pageContext;
+System.out.println("pagecontext object setted");
+}
+
+@Override
+public void setParent(Tag tag) {
+ this.tag=tag;
+System.out.println("parent tag setter");
+}
+
+public void setCount(int count){
+ this.count=count;
+}
+
+@Override
+public int doStartTag() throws JspException {
+ System.out.println("This is doStartTag() method");
+ 
+  if(count&gt;0){
+   return EVAL_BODY_INCLUDE;
+  }
+  else{
+   return SKIP_BODY;
+  }
+}
+
+@Override
+public int doAfterBody() throws JspException{
+ if(--count&gt;0)
+  return EVAL_BODY_AGAIN;
+ else
+  return SKIP_BODY;
+}
+
+@Override
+public int doEndTag() throws JspException {
+System.out.println("This is doEndTag() method");
+ return EVAL_PAGE; 
+}
+
+@Override
+public Tag getParent() {
+System.out.println("getParent() method");
+return tag;
+}
+
+ @Override
+public void release() {
+System.out.println("release() method");
+  pageContext=null;
+  count=0;
+  tag=null;
+}
+
+}
+</pre>
+
+myTld.tld
+<pre>
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;taglib version="2.1" xmlns="http://java.sun.com/xml/ns/javaee"&gt;
+  &lt;tlib-version&gt;1.2&lt;/tlib-version&gt;
+  &lt;uri&gt;www.jobs4times.com&lt;/uri&gt;
+  &lt;tag&gt;
+    &lt;name&gt;myTag&lt;/name&gt;
+    &lt;tag-class&gt;com.tag.IterationTagDemo&lt;/tag-class&gt;
+    &lt;body-content&gt;tagdependent&lt;/body-content&gt;
+    &lt;attribute&gt;
+      &lt;name&gt;count&lt;/name&gt;
+      &lt;required&gt;true&lt;/required&gt;
+    &lt;/attribute&gt;
+  &lt;/tag&gt;
+&lt;/taglib&gt;
+</pre>
+
+
+web.xml
+<pre>
+&lt;jsp-config&gt;
+ &lt;taglib&gt;
+  &lt;taglib-uri&gt;http://jobs4times.com/tags&lt;/taglib-uri&gt;
+  &lt;taglib-location&gt;/WEB-INF/myTld.tld&lt;/taglib-location&gt;
+ &lt;/taglib&gt;
+&lt;/jsp-config&gt;
+</pre>
+
+output :
+<pre>
+This is Iteration Tag Demo 
+This is Iteration Tag Demo 
+This is Iteration Tag Demo 
+Hi, This is afterBody
+</pre>
+
+
+<h4 id="TagSupport">TagSupport (C) :</h4>
+<ul>
+<li>The main drawback of implements Tag and IterationTag interfaces directly  is we have to provide implementation for all methods even though most of the times we have to consider doStartTag(), doAfterBody(), doEndTag() </li>
+<li>We can resolve this problem by using TagSupport class can implement  IterationTag and provides default implementation for all its methods  and it is very easy to extend TagSupport class  and  override  required  methods instead of implementing all methods.</li>    
+</ul>   
+   
+<h5>Internal implementation of TagSupport class : </h5>
+
+<pre>
+import java.io.Serializable;
+import javax.servlet.jsp.JspException;
+import javax.servlet.jsp.PageContext;
+import javax.servlet.jsp.tagext.IterationTag;
+import javax.servlet.jsp.tagext.Tag;
+
+public class TagSupport implements IterationTag,Serializable {
+ private static final long serialVersionUID = 1L;
+	
+private Tag parent;
+protected PageContext pageContext;
+
+@Override
+public void setPageContext(PageContext pageContext) {
+this.pageContext=pageContext;
+System.out.println("pagecontext object setted");
+}
+
+@Override
+public void setParent(Tag parent) {
+ this.parent=parent;
+System.out.println("parent tag setter");
+}
+
+@Override
+public int doStartTag() throws JspException {
+ System.out.println("This is doStartTag() method");
+ return SKIP_BODY;
+}
+
+@Override
+public int doAfterBody() throws JspException{
+ System.out.println("This is doAfterBody() method");
+ return SKIP_BODY;
+}
+
+@Override
+public int doEndTag() throws JspException {
+System.out.println("This is doEndTag() method");
+ return EVAL_PAGE; 
+}
+
+@Override
+public Tag getParent() {
+System.out.println("getParent() method");
+return parent;
+}
+
+ @Override
+public void release() {
+System.out.println("release() method");
+  pageContext=null;
+  parent=null;
+}
+
+}
+</pre>
+   
+Note : 
+<ol>
+<li>The default return type of doStartTag(), doAfterBody() is SKIP_BODY </li>
+<li>The default return type of doEndTag() is EVAL_PAGE </li>
+</ol>   
+   
+pageContext variable is by default variable to the child  classes  hence we can use this variable directly in our  tag handler  classes 
+
+<h6>Write a demo program for TagSupport class :</h6> 
+  
+test.jsp
+<pre>
+&lt;%@taglib uri="http://jobs4times.com/tags" prefix="mine" %&gt;
+
+This is before custom tag &lt;br&gt;
+&lt;mine:myTag&gt;
+ This is Tag body &lt;br&gt;
+&lt;/mine:myTag&gt;
+This is after custom tag
+</pre>   
+
+TagSupportDemo.java
+<pre>
+package com.tag;
+
+import java.io.IOException;
+import javax.servlet.jsp.JspException;
+import javax.servlet.jsp.JspWriter;
+import javax.servlet.jsp.tagext.TagSupport;
+
+public class TagSupportDemo extends TagSupport {
+ private static final long serialVersionUID = 1L;
+
+@Override
+public int doStartTag() throws JspException {
+ JspWriter out=null;
+ try{
+  out=pageContext.getOut();
+ out.println("This is THC using TagSupport class&lt;br&gt;");
+ }
+ catch(IOException e){
+  e.printStackTrace();
+ }
+ 
+ return EVAL_BODY_INCLUDE;
+}
+
+}
+</pre>
+myTld.tld
+<pre>
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;taglib version="2.1" xmlns="http://java.sun.com/xml/ns/javaee"&gt;
+  &lt;tlib-version&gt;1.2&lt;/tlib-version&gt;
+  &lt;uri&gt;www.jobs4times.com&lt;/uri&gt;
+  &lt;tag&gt;
+    &lt;name&gt;myTag&lt;/name&gt;
+    &lt;tag-class&gt;com.tag.TagSupportDemo&lt;/tag-class&gt;
+    &lt;body-content&gt;tagdependent&lt;/body-content&gt;
+  &lt;/tag&gt;
+&lt;/taglib&gt;
+</pre>
+
+web.xml
+<pre>
+&lt;jsp-config&gt;
+  &lt;taglib&gt;
+    &lt;taglib-uri&gt;http://jobs4times.com/tags&lt;/taglib-uri&gt;
+    &lt;taglib-location&gt;/WEB-INF/myTld.tld&lt;/taglib-location&gt;
+  &lt;/taglib&gt;
+ &lt;/jsp-config&gt;
+</pre>
+
+<strong>http://localhost:8080/jstl/test.jsp?</strong> <br>
+output :
+<pre>
+This is before custom tag 
+This is THC using TagSupport class
+This is Tag body 
+This is after custom tag
+</pre>
+
+<h6>Example : 2</h6>
+
+test.jsp
+<pre>
+&lt;%@taglib uri="http://jobs4times.com/tags" prefix="mine" %&gt;
+
+&lt;mine:myTag count="3"&gt;
+ This is Iteration body &lt;br&gt;
+&lt;/mine:myTag&gt;
+This is after Iteration
+</pre>   
+
+TagSupportDemo.java
+<pre>
+package com.tag;
+
+import javax.servlet.jsp.JspException;
+import javax.servlet.jsp.tagext.TagSupport;
+
+public class TagSupportDemo extends TagSupport {
+ private static final long serialVersionUID = 1L;
+ 
+ private int count=0;
+ 
+public void setCount(int count){
+ this.count=count;
+}
+
+@Override
+public int doStartTag() throws JspException {
+ if(count&gt;0)
+  return EVAL_BODY_INCLUDE;
+ else
+  return SKIP_BODY;
+}
+
+ @Override
+ public int doAfterBody() throws JspException{
+ if(--count&gt;0)
+  return EVAL_BODY_AGAIN;
+ else
+  return SKIP_BODY;
+}
+
+}
+</pre>
+myTld.tld
+<pre>
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;taglib version="2.1" xmlns="http://java.sun.com/xml/ns/javaee"&gt;
+  &lt;tlib-version&gt;1.2&lt;/tlib-version&gt;
+  &lt;uri&gt;www.jobs4times.com&lt;/uri&gt;
+  &lt;tag&gt;
+    &lt;name&gt;myTag&lt;/name&gt;
+    &lt;tag-class&gt;com.tag.TagSupportDemo&lt;/tag-class&gt;
+    &lt;body-content&gt;tagdependent&lt;/body-content&gt;
+    &lt;attribute&gt;
+     &lt;name&gt;count&lt;/name&gt;
+     &lt;required&gt;true&lt;/required&gt;
+    &lt;/attribute&gt;
+  &lt;/tag&gt;
+&lt;/taglib&gt;
+</pre>
+web.xml
+<pre>
+&lt;jsp-config&gt;
+  &lt;taglib&gt;
+    &lt;taglib-uri&gt;http://jobs4times.com/tags&lt;/taglib-uri&gt;
+    &lt;taglib-location&gt;/WEB-INF/myTld.tld&lt;/taglib-location&gt;
+  &lt;/taglib&gt;
+ &lt;/jsp-config&gt;
+</pre>
+   
+ output :
+<pre>
+This is Iteration body 
+This is Iteration body 
+This is Iteration body 
+This is after Iteration
+</pre>
+   
+   
+<h2 id="BodyTag">BodyTag (I) :</h2>
+<ul>
+<li>It is the child interface of IterationTag </li>
+<li>If we want to manipulate the body then we should go for BodyTag interface.</li>
+<li>BodyTag interface defines the following 2 extra methods
+  <ol>
+  <li>public void setBodyContent(BodyContent bodyContent) </li>
+  <li>public void doInitBody() throws JspException </li>
+  </ol>  </li>
+<li>BodyTag interface defines the following 2 extra constants
+  <ol>
+  <li>EVAL_BODY_BUFFERED </li>
+  <li>EVAL_BODY_TAG (deprecated) </li> 
+  </ol> </li>
+</ul>
+
+<h3 id="BodyContent">BodyContent (AC) :</h3>
+<ul>
+<li>We can use this BodyContent object to hold tag body </li>
+<li>BodyContent class is the child class of JspWriter </li>
+<li>BodyContent class is an abstract class  and vendor is responsible to provide implementation </li>
+</ul>
+
+<p>Note : BodyContent class object act as a buffer for tag body , if we want to manipulate that tag body,  first we have to retrieve  that tag body  from the BodyContent object , for that BodyContent  class  defines the following  methods</p>
+<ol>
+<li><strong> public String getString() : </strong> returns tag body in the form of String. </li>
+<li><strong> public Reader getReader() : </strong> return a Reader object to extract  tag body.</li>
+<li><strong> public JspWriter getEnclosingWriter() : </strong> It returns JspWriter to print data to the jsp page.</li>
+<li><strong> public void ClearBody() : </strong> To clear body present in BodyContent object i.e., entire tag body present in BodyContent will be removed.</li> 
+</ol>
+   
+<h4>Flow Chart of BodyTag interface : </h4>
+
+<br><img alt="body-tag" src="custom/body-tag.png"> <br>
+
+<h3>Life Cycle of BodyTag interface :</h3>
+<ul>
+<li>Life Cycle of BodyTag interface  is exactly similar to IterationTag handler, and difference is doStartTag() returns either EVAL_BODY_INCLUDE or EVAL_BODY_BUFFERED. </li>
+<li>If the method returns EVAL_BODY_BUFFERED and tag contains body  then jsp engine creates BodyContent object and invoke setBodyContent() by passing BodyContent object as a argument followed by doInitBody().</li>
+</ul>
+Note : we can write a logic to manipulate the tag body with in doAfterBody()
+<h6>setBodyContent(-) and  doInitBody()  won't be executed in the following cases </h6>
+<p><b>case 1 :</b> If doStartTag()  returns either EVAL_BODY_INCLUDE  or SKIP_BODY.</p>
+<p><b>CASE 2 :</b> If doStartTag() returns either EVAL_BODY_BUFFERED  and  tag  doesn't contain body.</p>
+
+<h4>Implementation of BodyTagSupport class :</h4>
+<ul>
+<li>This class extends TagSupport  class  and implements BodyTag interface.</li>
+<li>This class provides default implementation for all 9 methods available in BodyTag interface.</li>
+<li>It is very easy to write Tag handler class  by extending BodyTagSupport class instead of implementing BodyTag interface directly.</li>
+<li>In this case we have to provide implementation only for required methods  but not for all 9 methods.</li>
+</ul>
+<h5>Internal Implementation of BodyTagSupport class :</h5>
+
+BodyTagSupport.java
+<pre>
+import javax.servlet.jsp.JspException;
+import javax.servlet.jsp.tagext.BodyContent;
+import javax.servlet.jsp.tagext.BodyTag;
+import javax.servlet.jsp.tagext.TagSupport;
+
+public class BodyTagSupport extends TagSupport implements BodyTag{
+ private static final long serialVersionUID = 1L;
+ protected BodyContent bodyContent;
+ 
+ @Override
+ public void setBodyContent(BodyContent bodyContent){
+ this.bodyContent=bodyContent;
+}
+
+ @Override
+ public void doInitBody(){
+  System.out.println(" doInitBody method");
+}
+
+ @Override
+ public int doStartTag() throws JspException{
+ return EVAL_BODY_BUFFERED;
+}
+ 
+}
+</pre>
+
+<ul>
+<li>pageContext, bodyContent  variables are by default available to our tag handler classes we can use directly.</li>
+<li>The default return type doStartTag() in BodyTagSupport is EVAL_BODY_BUFFERED, doAfterBody() is SKIP_BODY  and doEndTag is EVAL_PAGE.</li>
+</ul>
+
+
+
+<h5>Write a demo program for the usage of BodyTagSupport class</h5>  
+
+test.jsp
+<pre>
+&lt;%@taglib uri="http://jobs4times.com/tags" prefix="mine" %&gt;
+
+&lt;mine:myTag&gt;
+ This is Body Tag Support Demo body &lt;br&gt;
+&lt;/mine:myTag&gt;
+</pre>  
+ 
+BodyTagSupportDemo.java
+<pre>
+package com.tag;
+
+import java.io.IOException;
+import javax.servlet.jsp.JspException;
+import javax.servlet.jsp.JspWriter;
+import javax.servlet.jsp.tagext.BodyTagSupport;
+
+public class BodyTagSupportDemo extends BodyTagSupport{
+ private static final long serialVersionUID = 1L;
+
+ @Override
+ public int doAfterBody() throws JspException{
+ JspWriter out=null;
+ try{
+  String data=bodyContent.getString();
+  data=data.toUpperCase();
+  out=bodyContent.getEnclosingWriter();
+  out.println(data);
+ }
+ catch(IOException e){
+  e.printStackTrace();
+ }
+return SKIP_BODY;
+}
+ 
+}
+</pre>
+
+myTld.tld
+<pre>
+&lt;taglib version="2.1" xmlns="http://java.sun.com/xml/ns/javaee"&gt;
+  &lt;tlib-version&gt;1.2&lt;/tlib-version&gt;
+  &lt;uri&gt;www.jobs4times.com&lt;/uri&gt;
+  &lt;tag&gt;
+    &lt;name&gt;myTag&lt;/name&gt;
+    &lt;tag-class&gt;com.tag.BodyTagSupportDemo&lt;/tag-class&gt;
+  &lt;/tag&gt;
+&lt;/taglib&gt;
+</pre>   
+
+
+web.xml
+<pre>
+Same as previous
+</pre>
+output :
+<pre>
+THIS IS BODY TAG SUPPORT DEMO BODY 
+</pre>
+
+<h2 id="Comparision-TagSupport">Comparision between TagSupport and BodyTagSupport  classes :</h2>
+
+<table border="1">
+<tr><th>Method </th><th>TagSupport (C)</th><th>BodyTagSupport (C)</th></tr>
+<tr><th><b>doStartTag() :</b></th></tr>
+<tr><td> Possible return values </td><td>EVAL_BODY_INCLUDE <br/> SKIP_BODY </td><td>EVAL_BODY_BUFFERED <br>EVAL_BODY_INCLUDE <br/> SKIP_BODY </td></tr>
+<tr><td> Default return values from implemented classes </td><td>SKIP_BODY</td><td>EVAL_BODY_BUFFERED</td></tr>
+<tr><td> no.of times invoke per tag</td><td>only once</td><td>only once</td></tr>
+
+<tr><th><b>doAfterBody() :</b></th></tr>
+<tr><td> Possible return values</td><td>EVAL_BODY_AGAIN <br/>SKIP_BODY </td><td>EVAL_BODY_AGAIN <br/>SKIP_BODY </td></tr>
+<tr><td> Default return values from implemented classes </td><td>SKIP_BODY</td><td>SKIP_BODY</td></tr>
+<tr><td> no.of times invoke per tag</td><td>0 or more</td><td> 0 or more</td></tr>
+
+<tr><th><b>doEndTag() :</b></th></tr>
+<tr><td> Possible return values</td><td>EVAL_PAGE <br/> SKIP_PAGE</td><td>EVAL_PAGE <br/> SKIP_PAGE</td></tr>
+<tr><td> Default return values from implemented classes </td><td>EVAL_PAGE</td><td>EVAL_PAGE </td></tr>
+<tr><td> no.of times invoke per tag</td><td>only once</td><td>only once</td></tr>
+
+<tr><th><b>setBodyContent() &amp; doInitBody() :</b></th></tr>
+<tr><td>circumstances under which these methods no.of times call per tag ? </td><td>not applicable</td><td>executed only once iff doStartTag() return EVAL_BODY_BUFFERED  and tag has body.</td></tr>
+</table>
+
+<h4 id="Nested-Tags">Nested Tags (or) co-operative tags : </h4>
+
+Some times a group of tags  work together will perform certain functionality such type of tags are called Nested tags
+
+<p>Ex : In JSTL <strong> &lt;c:choose&gt;, &lt;c:when&gt;, &lt;c:otherwise&gt; </strong> tags work together to implement core java <strong> if-else</strong> and <strong>switch statement</strong> such type of tags are called Co-operative &amp; Nested Tags </p>
+
+Ex:
+<pre>
+&lt;c:choose&gt;
+ &lt;c:when&gt;
+    Action
+ &lt;/c:when&gt;
+ &lt;c:otherwise&gt;
+    Default Action
+ &lt;/c:otherwise&gt;
+&lt;/c:choose&gt;
+</pre>
+Ex:
+<pre>
+&lt;mine:myTag&gt;
+ &lt;mine:myDetails /&gt;
+&lt;/mine:myTag&gt;
+</pre>   
+
+From child tag handler if we want to get parent tag object we have to use  getParent() method
+
+<h6>Write a demo program for nested custom tags :</h6>
+test.jsp
+<pre>
+&lt;%@taglib uri="http://jobs4times.com/tags" prefix="mine" %&gt;
+
+&lt;mine:myTag&gt;
+  &lt;mine:myTag&gt;  
+     &lt;mine:myTag&gt;
+        &lt;mine:myTag /&gt;
+      &lt;/mine:myTag&gt;
+  &lt;/mine:myTag&gt;
+&lt;/mine:myTag&gt;
+</pre> 
+
+NestedTagDemo.java
+<pre>
+package com.tag;
+
+import java.io.IOException;
+import javax.servlet.jsp.JspException;
+import javax.servlet.jsp.JspWriter;
+import javax.servlet.jsp.tagext.Tag;
+import javax.servlet.jsp.tagext.TagSupport;
+
+public class NestedTagDemo extends TagSupport {
+ private static final long serialVersionUID = 1L;
+
+ @Override
+ public int doStartTag() throws JspException{
+  int nestedLevel=0;
+  JspWriter out=null;
+  Tag tag=getParent();
+   while(tag!=null){
+    nestedLevel++;
+    tag=tag.getParent();
+   }
+  try{
+   out=pageContext.getOut();
+   out.println("&lt;br&gt;Nested Level : "+nestedLevel);
+  }
+  catch(IOException e){
+   e.printStackTrace();
+  }
+  return EVAL_BODY_INCLUDE;
+ }
+ 
+}
+</pre>
+
+myTld.tld
+<pre>
+&lt;taglib version="2.1" xmlns="http://java.sun.com/xml/ns/javaee"&gt;
+  &lt;tlib-version&gt;1.2&lt;/tlib-version&gt;
+  &lt;uri&gt;www.jobs4times.com&lt;/uri&gt;
+  &lt;tag&gt;
+    &lt;name&gt;myTag&lt;/name&gt;
+    &lt;tag-class&gt;com.tag.NestedTagDemo&lt;/tag-class&gt;
+  &lt;/tag&gt;
+&lt;/taglib&gt;
+</pre>
+web.xml
+<pre>
+Same as previous
+</pre>
+
+output :
+<pre>
+Nested Level : 0 
+Nested Level : 1 
+Nested Level : 2 
+Nested Level : 3
+</pre>
+
+
+
+<h4>Example :</h4>
+
+menu.jsp
+<pre>
+&lt;%@taglib uri="http://jobs4times.com/tags" prefix="mine" %&gt;
+
+&lt;mine:menu&gt;
+ &lt;mine:menuItem item="chicken"/&gt;
+ &lt;mine:menuItem item="mutton"/&gt;
+ &lt;mine:menuItem item="fish"/&gt;
+ &lt;mine:menuItem item="noodles"/&gt;
+&lt;/mine:menu&gt;
+</pre>
+
+<h6>Write a Tag handler class(THC) that takes the menu items fron its child and print it</h6>
+
+MenuTag.java
+<pre>
+package com.tag;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import javax.servlet.jsp.JspException;
+import javax.servlet.jsp.JspWriter;
+import javax.servlet.jsp.tagext.TagSupport;
+
+public class MenuTag extends TagSupport {
+ private static final long serialVersionUID = 1L;
+ 
+ArrayList&lt;String&gt; menuList=null;
+
+public void addItem(String item){
+ menuList.add(item);
+}
+
+@Override
+public int doStartTag() throws JspException{
+ menuList=new ArrayList&lt;String&gt;();
+ return EVAL_BODY_INCLUDE;
+}
+ 
+@Override
+public int doEndTag() throws JspException{
+ JspWriter out=null;
+ try{
+  out=pageContext.getOut();
+  out.println("The menu items are : "+menuList);
+ }
+ catch(IOException e){
+   e.printStackTrace();
+ }
+ return EVAL_PAGE;
+}
+
+}
+</pre>
+
+<h6>Write a program to accept the menu items and add to menu list of its parent</h6> 
+MenuItemTag.java
+<pre>
+package com.tag;
+
+import javax.servlet.jsp.JspException;
+import javax.servlet.jsp.tagext.TagSupport;
+
+public class MenuItemTag extends TagSupport {
+ private static final long serialVersionUID = 1L;
+ 
+public String item=null;
+
+public void setItem(String item){
+ this.item=item;
+}
+
+ @Override
+ public int doStartTag() throws JspException{
+ MenuTag menuTag=(MenuTag)getParent();
+ menuTag.addItem(item);
+ return SKIP_BODY;
+}
+
+}
+</pre>
+
+myTld.tld
+<pre>
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;taglib version="2.1" xmlns="http://java.sun.com/xml/ns/javaee"&gt;
+  &lt;tlib-version&gt;1.2&lt;/tlib-version&gt;
+  &lt;uri&gt;www.jobs4times.com&lt;/uri&gt;
+  &lt;tag&gt;
+    &lt;name&gt;menu&lt;/name&gt;
+    &lt;tag-class&gt;com.tag.MenuTag&lt;/tag-class&gt;
+  &lt;/tag&gt;
+  &lt;tag&gt;
+   &lt;name&gt;menuItem&lt;/name&gt;
+   &lt;tag-class&gt;com.tag.MenuItemTag&lt;/tag-class&gt;     
+    &lt;attribute&gt;
+     &lt;name&gt;item&lt;/name&gt;
+     &lt;required&gt;true&lt;/required&gt;
+    &lt;/attribute&gt;
+  &lt;/tag&gt;
+&lt;/taglib&gt;
+</pre>
+
+web.xml
+<pre>
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;web-app version="3.1" 
+  xmlns="http://xmlns.jcp.org/xml/ns/javaee" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee 
+       http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"&gt;
+ 
+&lt;jsp-config&gt;
+  &lt;taglib&gt;
+    &lt;taglib-uri&gt;http://jobs4times.com/tags&lt;/taglib-uri&gt;
+    &lt;taglib-location&gt;/WEB-INF/myTld.tld&lt;/taglib-location&gt;
+  &lt;/taglib&gt;
+ &lt;/jsp-config&gt;
+&lt;/web-app&gt;
+</pre>
+output :
+<pre>
+The menu items are : [chicken, mutton, fish, noodles]
+</pre>
+
+
+
+
+<h4 id="Arbitrary-Ancestor-Object">Getting Arbitrary Ancestor Object : </h4>  <!-- (Tag Handler class)  -->
+
+We can get immediate parent by using getParent(), TagSupport class defines the following method  to get an arbitrary ancestor class object
+<p><b>public static Tag findAncestorWithClass(Tag t, Class c);</b></p>
+
+<ul>
+<li>Accessing jsp implicit objects and attributes in  tag handler class with in the tag handler class  we can get jsp implicit objects by using PageContext object.</li>
+<li>Tag handler class  can get PageContext object an argument to setPageContext().</li>  
+</ul>
+<strong>PageCotext class  defines the following methods to get jsp implicit objects : </strong> 
+<table>
+<tr><td>request</td><td> ----&gt; </td><td>getRequest()</td></tr>
+<tr><td>response</td><td> ----&gt; </td><td>getResponse()</td></tr>
+<tr><td>config</td><td> ----&gt; </td><td>getServletConfig()</td></tr>
+<tr><td>application</td><td> ----&gt; </td><td>getServletContext()</td></tr>
+<tr><td>session</td><td> ----&gt; </td><td>getSession()</td></tr>
+<tr><td>out</td><td> ----&gt; </td><td>getOut()</td></tr>
+<tr><td>page</td><td> ----&gt; </td><td>getPage()</td></tr>
+<tr><td>exception</td><td> ----&gt; </td><td>getException()</td></tr>
+</table>
+ All the methods we have to call on PageContext object
+<p><b>Note : </b> exception implicit object is available only in error pages , if the enclosing jsp is not error page then getException() returns null.</p>
+ 
+<h5>Accessing attributes by using PageContext object : </h5>
+PageContext class defines the following methods to perform attribute management in any scope (we can perform attribute management in tag handler classes also )
+<ol>
+<li><strong>public void setAttribute(String name, Object value); </strong></li>
+<li><strong>public void setAttribute(String name, Object value, int scope); </strong></li>
+<li><strong>public Object getAttribute(String name); </strong></li>
+<li><strong>public Object getAttribute(String name, int scope); </strong></li>
+<li><strong>public void removeAttribute(String name); </strong></li>
+<li><strong>public void removeAttribute(String name, int scope); </strong></li>
+<li><strong>public Object findAttribute(String name); </strong></li>
+<li><strong>public Enumeration getAttributeNamesInScope(int scope); </strong></li>
+</ol>
+<br>
+myJsp.jsp
+<pre>
+&lt;%@taglib uri="http://jobs4times.com/tags" prefix="mine" %&gt;
+
+JSP Implicit Objects from Custom Tags&lt;br&gt;
+&lt;mine:jspImplicitObjects/&gt;
+</pre>
+
+JspImplicitObj.java
+<pre>
+package com.tag;
+
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletContext;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpSession;
+import javax.servlet.jsp.JspException;
+import javax.servlet.jsp.JspWriter;
+import javax.servlet.jsp.tagext.TagSupport;
+
+public class JspImplicitObj extends TagSupport {
+ private static final long serialVersionUID = 1L;
+ private String mail="Ask";
+ 
+@Override
+public int doStartTag() throws JspException{
+ JspWriter out=null;
+ try{
+  ServletRequest request=pageContext.getRequest();
+  ServletResponse response=pageContext.getResponse();
+  ServletConfig config=pageContext.getServletConfig();
+  ServletContext application=pageContext.getServletContext();
+  HttpServlet page=(HttpServlet)pageContext.getPage();
+  HttpSession session=pageContext.getSession();
+   out=pageContext.getOut();
+   Throwable exception=pageContext.getException();
+   
+   out.println("&lt;br&gt;The Server details:"+request.getServerName()+" "
+                                       +request.getServerPort());
+   out.println("&lt;br&gt;The content-type:"+response.getContentType());
+   out.println("&lt;br&gt;The Session Id:"+session.getId());
+   out.println("&lt;br&gt;The Current Servlet:"+page);
+   out.println("&lt;br&gt;The Context Parameter value:"
+                        +application.getInitParameter("uname"));
+   
+   if(exception==null){
+    out.println("&lt;br&gt;exception is null because there is no exception code");
+   }
+   else{
+    out.println("&lt;br&gt;The exception value :"+exception);
+   }
+   
+   
+   String formParamValue=config.getInitParameter("mail");
+   
+   if(formParamValue==null || mail==null){
+          
+   if(formParamValue==null){
+    out.println("&lt;br&gt;If you want to access form parameter, "
+            + "you send param name in the form of query String");
+   }
+   else{
+    out.println("&lt;br&gt;The form parameter value:"+formParamValue);
+   }
+   
+   if(mail==null){
+    out.println("&lt;br&gt;If want to get the init parameter values"
+            + " then you can send a request using url-pattern");
+   }
+   else{
+    out.println("&lt;br&gt;The init parameter value:"+mail);
+   }
+   
+   }
+   else{
+    out.println("&lt;br&gt;The form param value:"+formParamValue);
+    out.println("&lt;br&gt;The init param value:"+mail);
+   }   
+ }
+ catch(Exception e){
+  e.printStackTrace();
+ }
+ 
+ return EVAL_BODY_INCLUDE;
+} 
+
+}
+</pre>
+
+myTld.tld
+<pre>
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;taglib version="2.1" xmlns="http://java.sun.com/xml/ns/javaee"&gt;
+  &lt;tlib-version&gt;1.2&lt;/tlib-version&gt;
+  &lt;uri&gt;www.jobs4times.com&lt;/uri&gt;
+  &lt;tag&gt;
+    &lt;name&gt;jspImplicitObjects&lt;/name&gt;
+    &lt;tag-class&gt;com.tag.JspImplicitObj&lt;/tag-class&gt;
+  &lt;/tag&gt;
+&lt;/taglib&gt;
+</pre>
+
+web.xml
+<pre>
+&lt;web-app&gt; 
+&lt;jsp-config&gt;
+  &lt;taglib&gt;
+    &lt;taglib-uri&gt;http://jobs4times.com/tags&lt;/taglib-uri&gt;
+    &lt;taglib-location&gt;/WEB-INF/myTld.tld&lt;/taglib-location&gt;
+  &lt;/taglib&gt;
+ &lt;/jsp-config&gt;
+ 
+&lt;context-param&gt;
+ &lt;param-name&gt;uname&lt;/param-name&gt;
+ &lt;param-value&gt;SaiCharan&lt;/param-value&gt;
+&lt;/context-param&gt;
+
+&lt;servlet&gt;
+ &lt;servlet-name&gt;implicitObj&lt;/servlet-name&gt;
+ &lt;jsp-file&gt;/myJsp.jsp&lt;/jsp-file&gt;
+ 
+ &lt;init-param&gt;
+  &lt;param-name&gt;mail&lt;/param-name&gt;
+  &lt;param-value&gt;jobs4times@gmail.com&lt;/param-value&gt;
+ &lt;/init-param&gt;
+&lt;/servlet&gt;
+
+&lt;servlet-mapping&gt;
+ &lt;servlet-name&gt;implicitObj&lt;/servlet-name&gt;
+ &lt;url-pattern&gt;/test&lt;/url-pattern&gt;
+&lt;/servlet-mapping&gt;
+ 
+&lt;/web-app&gt;
+</pre>
+<strong>http://localhost:8080/jstl/test</strong><br>
+output :
+<pre>
+JSP Implicit Objects from Custom Tags
+
+The Server details:ashok 8080 
+The content-type:text/html 
+The Session Id:089ea14fea88884de1b6f490bafe 
+The Current Servlet:org.apache.jsp.test_jsp@63c3024d 
+The Context Parameter value:SaiCharan 
+exception is null because there is no exception code 
+The form param value:jobs4times@gmail.com 
+The init param value:Ask
+</pre>
+
+ <hr color="green">
+ <hr color="red"> 
+   
+
+<h2 id="SimpleTag-Model">SimpleTag Model : (jsp 2.0v)</h2>  
+Implementing Custom tags by using Classic Tag Model (i.e., Tag, IterationTag, BodyTag, TagSupport, BodyTagSupport) is very complex because  each tag has its own life cycle and different possible return types for every method to resolve this complexity Sun people introduced SimpleTagModel in jsp 2.0 version
+
+<p>In SimpleTag model we can built custom tags by using SimpleTag interface and its implementation  class SimpleTagSupport.</p>
+
+<img alt="Simple-Tag-Model" src="custom/jspTag.png">    
+
+<h3 id="SimpleTag-interface">SimpleTag interface :</h3>
+
+It is child interface of JspTag  and defines the following 5 methods
+<ol>
+<li><strong>public void setJspContext(JspContext context)  </strong>  <br/> by using setJspContext() method we can make JspContext object available to Tag Handler  class by using this object we can get all jsp implicit objects and attributes in our tag handler classes. </li>
+<li><strong>public void setParent(JspTag parent)   </strong><br> This method will executed iff the tag has another tag (nested tag)  </li>
+<li><strong>public void setJspBody(JspFragment jspBody)   </strong></li>
+<li><strong>public void doTag() throws JspException, IOException  </strong></li>
+<li><strong>public  JspTag	getParent()   </strong></li>
+</ol>
+These methods are life cycle methods Jsp engine called automatically for every custom tag invocation , but not getParent() method.
+
+<h4> Life Cycle of SimpleTag Model : </h4> 
+<ol>
+<li>When ever the jsp engine encounters a custom tag in jsp it will identify corresponding tag handler class by using taglib directive  and  TLD file.</li>
+<li>It creates a new instance of TH class by executing public no-argument constructor.</li>
+<li>SimpleTag handler objects are never reused by the WC for each tag invocation in new tag handler class  created.</li>
+<li>Web-container executes setJspContext() to make JspContext object available to tag handler class by using this JspContext object tag handler class get all jsp implicit objects and attributes.</li>
+<li>Jsp engine will call setParent() to make parent tag object available to tag handler class , this method is useful in nested tags( setParent() is only called  if the element is nested in another tag invocation )</li>
+<li>If a custom tag invoked with attribute then for each attribute jsp engine will call corresponding setter methods to make attribute value available to tag handler class (for every attribute one instance variable and corresponding setter method should required)</li>
+<li>If a custom tag invoke with body then setJspBody() will be executed by taking JspFragment object as argument, JspFragment object represents  tag body in SimpleTagModel  tag body should  not contains scripting elements i.e., the allowed values for the body-content tag is empty, tagdependent, scriptless from Jsp2.0v onwards body-content tag is optional, in SimpleTagModel default value is scriptless.</li>
+<li>If a custom tag is empty then setJspBody() won't be called , there is no default value in body-content  in SimpleTagModel.</li>
+<li>Finally jsp engine will invoke doTag() to required functionality this method is equivalent to doStartTag(), doEndTag(), doAfterBody() </li>
+<li>Once doTag() completes tag handler class object will be destroy by the WC.</li>   
+</ol>
+
+<h3>Flow chart for SimpleTagModel  : </h3>
+<img alt="SimpleTagModel-flow-chart" src="custom/simple-flow-chart.png">
+
+<h5>Internal implementation of SimpleTagSupport class : </h5>
+
+SimpleTagSupport.java
+<pre>
+package com.tag;
+
+import java.io.IOException;
+import javax.servlet.jsp.JspContext;
+import javax.servlet.jsp.JspException;
+import javax.servlet.jsp.tagext.JspFragment;
+import javax.servlet.jsp.tagext.JspTag;
+import javax.servlet.jsp.tagext.SimpleTag;
+
+public class SimpleTagSupport implements SimpleTag {
+ private static final long serialVersionUID = 1L;
+ 
+  @Override
+ public void setJspContext(JspContext pc) {
+  throw new UnsupportedOperationException("Not supported yet."); 
+//To change body of generated methods, choose Tools | Templates.
+ }
+ 
+ @Override
+ public void setParent(JspTag parent) {
+  throw new UnsupportedOperationException("Not supported yet."); 
+//To change body of generated methods, choose Tools | Templates.
+ }
+
+ @Override
+ public JspTag getParent() {
+  throw new UnsupportedOperationException("Not supported yet."); 
+//To change body of generated methods, choose Tools | Templates.
+ }
+
+
+
+ @Override
+ public void setJspBody(JspFragment jspBody) {
+  throw new UnsupportedOperationException("Not supported yet."); 
+//To change body of generated methods, choose Tools | Templates.
+ }
+
+ @Override
+public void doTag() throws JspException, IOException {
+  throw new UnsupportedOperationException("Not supported yet."); 
+//To change body of generated methods, choose Tools | Templates.
+}
+ 
+}
+</pre>
+
+(OR)
+<br>Sample code :
+<pre>
+import java.io.IOException;
+import javax.servlet.jsp.JspContext;
+import javax.servlet.jsp.JspException;
+import javax.servlet.jsp.tagext.JspFragment;
+import javax.servlet.jsp.tagext.JspTag;
+import javax.servlet.jsp.tagext.SimpleTag;
+
+public class SimpleTagSupport implements SimpleTag {
+ private static final long serialVersionUID = 1L;
+ 
+ private JspContext jspContext;
+ private JspFragment jspBody;
+ private JspTag parent;
+ 
+  @Override
+ public void setJspContext(JspContext jspContext) {
+  this.jspContext=jspContext;
+ }
+ 
+protected JspContext getJspContext(){
+ return jspContext;
+}
+ 
+ @Override
+ public void setParent(JspTag parent) {
+  this.parent=parent;
+ }
+
+ @Override
+ public JspTag getParent() {
+  return parent;
+ }
+
+ @Override
+ public void setJspBody(JspFragment jspBody) {
+  this.jspBody=jspBody;
+ }
+ 
+ public JspFragment getJspBody() {
+  return jspBody;
+ }
+
+ @Override
+public void doTag() throws JspException, IOException { 
+}
+
+public static final JspTag findAncesterWithClass(JspTag tag,Class c){ 
+ //return null;
+}
+
+}
+</pre>
+<hr>
+
+<h6> Write a demo program to SimpleTagSupport class : </h6>
+
+test.jsp
+<pre>
+&lt;%@taglib uri="http://jobs4times.com/tags" prefix="mine" %&gt;
+
+This is before Custom Tag &lt;br&gt;
+&lt;mine:myTag&gt;
+ This is the body of the tag &lt;br&gt;
+&lt;/mine:myTag&gt;
+ This is rest of the Jsp page
+</pre>
+
+<strong>Tag Handler Class</strong><br> 
+
+SimpleTagSupportDemo.java
+<pre>
+package com.tag;
+
+import java.io.IOException;
+import javax.servlet.jsp.JspException;
+import javax.servlet.jsp.JspWriter;
+import javax.servlet.jsp.SkipPageException;
+import javax.servlet.jsp.tagext.SimpleTagSupport;
+
+public class SimpleTagSupportDemo extends SimpleTagSupport {
+ private static final long serialVersionUID = 1L;
+ 
+
+ @Override
+ public void doTag() throws JspException, IOException {
+ JspWriter out=getJspContext().getOut();
+ out.println("This is SimpleTagSupport class&lt;br&gt;");
+ //throw new SkipPageException();
+}
+
+}
+</pre>
+
+myTld.tld
+<pre>
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;taglib version="2.1" xmlns="http://java.sun.com/xml/ns/javaee"&gt;
+  &lt;tlib-version&gt;1.2&lt;/tlib-version&gt;
+  &lt;uri&gt;www.jobs4times.com&lt;/uri&gt;
+  &lt;tag&gt;
+    &lt;name&gt;myTag&lt;/name&gt;
+    &lt;tag-class&gt;com.tag.SimpleTagSupportDemo&lt;/tag-class&gt;
+    &lt;body-content&gt;scriptless&lt;/body-content&gt;
+  &lt;/tag&gt;
+&lt;/taglib&gt;
+</pre>
+
+web.xml
+<pre>
+&lt;web-app&gt; 
+&lt;jsp-config&gt;
+  &lt;taglib&gt;
+    &lt;taglib-uri&gt;http://jobs4times.com/tags&lt;/taglib-uri&gt;
+    &lt;taglib-location&gt;/WEB-INF/myTld.tld&lt;/taglib-location&gt;
+  &lt;/taglib&gt;
+ &lt;/jsp-config&gt; 
+&lt;/web-app&gt;
+</pre>
+
+
+<p>Note : if doTag() is not throwing a SkipPageException  then following is the output :</p>
+<pre>
+This is before Custom Tag 
+This is SimpleTagSupport class
+This is rest of the Jsp page
+</pre>
+
+If <strong>doTag()</strong> method throws SkipPageException()
+<pre>
+This is before Custom Tag 
+This is SimpleTagSupport class
+</pre>
+Bydefault the Tag Body should not be include of JSP if we want to include then we have to arrange some extra arrangement.( i.e., getterMethods, .....) 
+
+
+<h6>SkipPageException  hierarchy :</h6>
+
+<img alt="SkipPageException" src="custom/skip-page.png">
+
+<h6>Accessing Tag Body in SimpleTagModel</h6>
+We  can access tag body simple tag handler by using getJspBody() this method returns JspFragment object
+<br><br><b>public JspFragment getJspBody() </b><br><br>
+
+
+JspFragment is an abstract class at translation time, the container generate the implementation of the JspFragment abstract class capable of executing the defined fragment(tag body)
+
+<ol>
+<li>public JspContext getJspContext() </li>
+<li>public void invoke(java.io.Writer  out) </li>
+</ol> 
+<ul><li>It causes evaluation of tag body  and return to the supplied writer</li>
+<li>If we pass null argument to invoke() then it will write directly to the jsp page</li>
+</ul>
+
+
+index.jsp
+<pre>
+&lt;%@taglib uri="http://jobs4times.com/tags" prefix="mine" %&gt;
+
+&lt;title&gt;Tag body in Simple tag model&lt;/title&gt;
+This is before Custom Tag &lt;br&gt;
+&lt;mine:myTag&gt;
+ This is the body of the tag &lt;br&gt;
+&lt;/mine:myTag&gt;
+ This is rest of the Jsp page
+</pre> 
+
+SimpleTagSupportBodyDemo.java
+<pre>
+package com.tag;
+
+import java.io.IOException;
+import javax.servlet.jsp.JspException;
+import javax.servlet.jsp.JspWriter;
+import javax.servlet.jsp.tagext.JspFragment;
+import javax.servlet.jsp.tagext.SimpleTagSupport;
+
+public class SimpleTagSupportBodyDemo extends SimpleTagSupport {
+ private static final long serialVersionUID = 1L; 
+
+ @Override
+ public void doTag() throws JspException, IOException {
+ JspWriter out=getJspContext().getOut();
+ out.println("This is SimpleTagSupport class&lt;br&gt;");
+ JspFragment body=getJspBody();
+ body.invoke(null);
+}
+
+}
+</pre> 
+
+myTld.tld
+<pre>
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;taglib version="2.1" xmlns="http://java.sun.com/xml/ns/javaee"&gt;
+  &lt;tlib-version&gt;1.2&lt;/tlib-version&gt;
+  &lt;uri&gt;www.jobs4times.com&lt;/uri&gt;
+  &lt;tag&gt;
+    &lt;name&gt;myTag&lt;/name&gt;
+    &lt;tag-class&gt;com.tag.SimpleTagSupportBodyDemo&lt;/tag-class&gt;
+    &lt;body-content&gt;scriptless&lt;/body-content&gt;
+  &lt;/tag&gt;
+&lt;/taglib&gt;
+</pre>
+
+web.xml 
+<pre>
+same as previous
+</pre> 
+<strong>http://localhost:8080/jstl/index.jsp</strong> <br>
+output :
+<pre>
+This is before Custom Tag 
+This is SimpleTagSupport class
+This is the body of the tag 
+This is rest of the Jsp page
+</pre> 
+
+
+<h5>Manipulating tag body in SimpleTagModel : </h5>
+
+index.jsp
+<pre>
+&lt;%@taglib uri="http://jobs4times.com/tags" prefix="mine" %&gt;
+
+&lt;title&gt;Manipulating Tag body in Simple tag model&lt;/title&gt;
+This is before Custom Tag &lt;br&gt;
+&lt;mine:myTag&gt;
+ This is body of the tag &lt;br&gt;
+&lt;/mine:myTag&gt;
+ This is rest of the Jsp page
+</pre> 
+
+ManipulateSimpleTagSupportBodyDemo.java
+<pre>
+package com.tag;
+
+import java.io.IOException;
+import java.io.StringWriter;
+import javax.servlet.jsp.JspException;
+import javax.servlet.jsp.JspWriter;
+import javax.servlet.jsp.tagext.JspFragment;
+import javax.servlet.jsp.tagext.SimpleTagSupport;
+
+public class ManipulateSimpleTagSupportBodyDemo extends SimpleTagSupport{
+ private static final long serialVersionUID = 1L; 
+
+ @Override
+ public void doTag() throws JspException, IOException {
+ JspWriter out=getJspContext().getOut();
+ out.println("This is SimpleTagSupport class&lt;br&gt;");
+ JspFragment body=getJspBody();
+ StringWriter stringWriter=new StringWriter();
+ body.invoke(stringWriter);
+ //it returns tag body into StringWriter object
+ out.println(stringWriter.toString().toUpperCase());
+}
+
+}
+</pre> 
+
+myTld.tld
+<pre>
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;taglib version="2.1" xmlns="http://java.sun.com/xml/ns/javaee"&gt;
+  &lt;tlib-version&gt;1.2&lt;/tlib-version&gt;
+  &lt;uri&gt;www.jobs4times.com&lt;/uri&gt;
+  &lt;tag&gt;
+    &lt;name&gt;myTag&lt;/name&gt;
+    &lt;tag-class&gt;com.tag.ManipulateSimpleTagSupportBodyDemo&lt;/tag-class&gt;
+    &lt;body-content&gt;scriptless&lt;/body-content&gt;
+  &lt;/tag&gt;
+&lt;/taglib&gt;
+</pre> 
+
+web.xml
+<pre>
+Same as previous
+</pre> 
+
+output :
+<pre>
+This is before Custom Tag 
+This is SimpleTagSupport class
+THIS IS BODY OF THE TAG 
+This is rest of the Jsp page
+</pre>
+
+<h4 id="Jsp-implicit-SimpleTag-Model">Jsp implicit objects and attributes in SimpleTag Model :</h4>
+
+JspContext class contains getOut() but not remaining jsp implicit object methods
+<br>
+<br><img alt="implicit-object-methods" src="custom/implicit-object-methods.png"><br>
+<br>
+
+In Tag Handler  class :
+
+<pre>
+package com.tag;
+
+import java.io.IOException;
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletContext;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.servlet.jsp.JspException;
+import javax.servlet.jsp.JspWriter;
+import javax.servlet.jsp.PageContext;
+import javax.servlet.jsp.tagext.SimpleTagSupport;
+
+public class SimpleTagSupportImplicitDemo extends SimpleTagSupport {
+ private static final long serialVersionUID = 1L; 
+
+ @Override
+ public void doTag() throws JspException, IOException {
+  PageContext pageContext=(PageContext)getJspContext();
+  HttpSession session=pageContext.getSession();
+  JspWriter out=pageContext.getOut();
+   out.println("The session id :"+session.getId()+"&lt;br&gt;");
+  ServletConfig config=pageContext.getServletConfig();
+  ServletContext application=pageContext.getServletContext();
+  ServletRequest request=pageContext.getRequest();
+  ServletResponse response=pageContext.getResponse();
+  Object page=pageContext.getPage();
+  Throwable excetion=pageContext.getException();
+}
+
+}
+</pre> 
+<hr>
+
+index.jsp
+<pre>
+&lt;%@taglib uri="http://jobs4times.com/tags" prefix="mine" %&gt;
+&lt;%@page isELIgnored="false" %&gt;
+
+&lt;title&gt;Setting attributes in Simple tag handler &lt;/title&gt;
+This is before Tag invocation&lt;br&gt;
+&lt;mine:myTag&gt;
+ ${movie} &lt;br&gt;
+&lt;/mine:myTag&gt;
+ This is after tag invocation
+</pre> 
+
+AttributeSimpleTagDemo.java
+<pre>
+package com.tag;
+
+import java.io.IOException;
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletContext;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.servlet.jsp.JspException;
+import javax.servlet.jsp.JspWriter;
+import javax.servlet.jsp.PageContext;
+import javax.servlet.jsp.tagext.SimpleTagSupport;
+
+public class AttributeSimpleTagDemo extends SimpleTagSupport {
+ private static final long serialVersionUID = 1L; 
+ 
+ String movies[]={"movieA","MovieB","MovieC"};
+ @Override
+ public void doTag() throws JspException, IOException {
+  System.out.println("Welcome to Attribute Mgt");
+  JspWriter out=getJspContext().getOut();
+  for(int i=0;i&lt;movies.length;i++){
+   getJspContext().setAttribute("movie", movies[i]);
+   getJspBody().invoke(null);
+  }
+}
+
+}
+</pre> 
+<p>Each loop of the tag handler resets the "movie" attribute value and calls <strong>getJspBody().invoke(-)</strong> again.</p>
+
+
+myTld.tld
+<pre>
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;taglib version="2.1" xmlns="http://java.sun.com/xml/ns/javaee"&gt;
+  &lt;tlib-version&gt;1.2&lt;/tlib-version&gt;
+  &lt;uri&gt;www.jobs4times.com&lt;/uri&gt;
+  &lt;tag&gt;
+    &lt;name&gt;myTag&lt;/name&gt;
+    &lt;tag-class&gt;com.tag.AttributeSimpleTagDemo&lt;/tag-class&gt;
+    &lt;body-content&gt;scriptless&lt;/body-content&gt;
+  &lt;/tag&gt;
+&lt;/taglib&gt;
+</pre> 
+
+web.xml
+<pre>
+Same as previous
+</pre>
+
+output :
+<pre>
+This is before Tag invocation
+movieA 
+MovieB 
+MovieC 
+This is after tag invocation
+</pre>
+
+<h5> What happens when the tag is invoked  from on included page ? </h5>
+
+index.jsp
+<pre>
+&lt;%@taglib uri="http://jobs4times.com/tags" prefix="mine" %&gt;
+
+&lt;title&gt;includes test Jsp &lt;/title&gt;
+This is before Jsp inclusion &lt;br&gt;
+ &lt;jsp:include page="test.jsp"/&gt; &lt;br&gt;
+This is after Jsp inclusion
+</pre>
+
+test.jsp
+<pre>
+&lt;%@taglib uri="http://jobs4times.com/tags" prefix="mine" %&gt;
+
+&lt;title&gt;Included file&lt;/title&gt;
+This is before Custom Tag &lt;br&gt;
+&lt;mine:myTag&gt;
+ This is the body of the tag &lt;br&gt;
+&lt;/mine:myTag&gt;
+ This is rest of the Jsp page
+</pre>
+
+SimpleTagDemo.java
+<pre>
+package com.tag;
+
+import java.io.IOException;
+import javax.servlet.jsp.JspException;
+import javax.servlet.jsp.JspWriter;
+import javax.servlet.jsp.SkipPageException;
+import javax.servlet.jsp.tagext.SimpleTagSupport;
+
+public class SimpleTagDemo extends SimpleTagSupport {
+ private static final long serialVersionUID = 1L; 
+ 
+ @Override
+ public void doTag() throws JspException, IOException {
+  JspWriter out=getJspContext().getOut();
+   out.println("Hello, this is from tag handler&lt;br&gt;");
+   //throw new SkipPageException();
+  }
+}
+</pre>
+
+myTld.tld
+<pre>
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;taglib version="2.1" xmlns="http://java.sun.com/xml/ns/javaee"&gt;
+  &lt;tlib-version&gt;1.2&lt;/tlib-version&gt;
+  &lt;uri&gt;www.jobs4times.com&lt;/uri&gt;
+  &lt;tag&gt;
+    &lt;name&gt;myTag&lt;/name&gt;
+    &lt;tag-class&gt;com.tag.SimpleTagDemo&lt;/tag-class&gt;
+    &lt;body-content&gt;scriptless&lt;/body-content&gt;
+  &lt;/tag&gt;
+&lt;/taglib&gt;
+</pre> 
+
+web.xml
+<pre>
+Same as previous
+</pre>
+
+output :
+<pre>
+This is before Jsp inclusion 
+This is before Custom Tag 
+Hello, this is from tag handler
+This is rest of the Jsp page 
+This is after Jsp inclusion
+</pre>
+
+<p>remove comment on above THC</p>
+output :
+<pre>
+This is before Jsp inclusion 
+This is before Custom Tag 
+Hello, this is from tag handler
+
+This is after Jsp inclusion
+</pre>
+
+
+<h6>What is the difference between ClassicTagModel and SimpleTagModel with respect to tag body :</h6>
+<ul>
+<li>In ClassicTagModel the tag body can contains scripting elements hence the allowed values for body-content types are <strong>empty, tagdependent, scriptless, jsp</strong> and default value is <strong>jsp</strong>. </li>
+<li>But in SimpleTagModel the tag body should not contains scripting elements hence the allowed values for body-content types are <strong>empty, tagdependent, scriptless</strong>  and default value is <strong>scriptless</strong>. </li>
+</ul>
+
+<h4 id="Key-differences">Key differences between ClassictagModel and SimpleTagModel :</h4>
+<table border="1">
+<tr><th>Property</th><th>ClassictagModel</th><th>SimpleTagModel</th></tr>
+<tr><td>key interfaces </td><td>Tag(I)<br> IterationTag(I)<br> BodyTag(I)</td><td>SimpleTag(I)</td></tr>
+<tr><td>supporting implementation classes </td><td>TagSupport(C) <br> BodyTagSupport(C) </td><td>SimpleTagSupport(C) </td></tr>
+<tr><td>key life cycle methods that we have to implement </td><td> doStartTag() <br/>doEndTag() <br> doAfterBody()  </td><td> doTag() </td></tr>
+<tr><td>how to write response to jsp output stream </td><td><strong> pageContext(). getOut().println()</strong><br> we should enclose this statement by using  try, catch </td><td><strong>getPageContext(). getOut().println()</strong> <br> it is not required enclose try, catch </td></tr>
+<tr><td>how to access jsp implicit  objects and attributes </td><td> by  using PageContext <br/> pageContext.getOut(); </td><td>by  using JspContext</td></tr>
+<tr><td>how to include tag body in the result</td><td>in the case of Tag, IterationTag interfaces doStartTag() should return EVAL_BODY_INCLUDE but in BodyTag interface doStartTag() should return  EVAL_BODY_BUFFERED    </td><td>getJspBody().invoke(null); </td></tr>
+<tr><td>how to stop current jsp execution </td><td>doEndTag() should return SKIP_PAGE   </td><td> in side doTag() we should throw SkipPageException  </td></tr>
+</table>
+
+<h3 id="DynamicAttributes">DynamicAttributes : </h3>
+<ul>
+<li>In general tags can contain attributes for which we have to declare in the tld file by using attribute tag for these attributes we have to maintain one instance variable and corresponding setter methods in tag handler class such type of attributes are calling static attributes.</li>
+<li>But we can use attributes even though tld file doesn't contain any &lt;attribute&gt; tag declaration such type of attributes are called dynamic attributes.</li>
+<li>Dynamic attributes concept applicable for both classic and simple tag models</li>
+<li>Dynamic attributes concept  introduced jsp2.0v </li>
+</ul>
+<strong>To support Dynamic attribute concept we have to do the following  things :</strong> 
+<ol>
+<li>In the tld file we have to declare  &lt;dynamic-attributes&gt; tag
+<pre>
+&lt;taglib version="2.1"&gt;
+  &lt;tlib-version&gt;1.2&lt;/tlib-version&gt;
+  &lt;uri&gt;www.jobs4times.com&lt;/uri&gt;
+  &lt;tag&gt;
+    .....................................
+    &lt;dynamic-attributes&gt;true&lt;/dynamic-attributes&gt;
+    .....................................
+  &lt;/tag&gt;
+&lt;/taglib&gt;
+</pre> </li>
+<li>The corresponding tag handler class should implements DynamicAttributes interface, this interface introduced  jsp2.0v  and contains only one method.
+<pre>
+ public void setDynamicAttribute(String nameSpace,
+          String name,Object value) throws JspException{ }
+</pre>
+For every DynamicAttribute  this method will be executed
+</li> 
+</ol>
+
+test.jsp
+<pre>
+&lt;%@taglib uri="http://jobs4times.com/tags" prefix="mine" %&gt;
+
+This is before Custom Tag &lt;br&gt;
+&lt;mine:myTag name="Nandu" wife="Renu" brother="Tinku" habbits="sleep,lunch"/&gt;
+ This is rest of the Jsp page
+</pre>
+
+DynamicAttributesDemo.java
+<pre>
+package com.tag;
+
+import java.io.IOException;
+import java.util.HashMap;
+import javax.servlet.jsp.JspException;
+import javax.servlet.jsp.JspWriter;
+import javax.servlet.jsp.tagext.DynamicAttributes;
+import javax.servlet.jsp.tagext.SimpleTagSupport;
+
+public class DynamicAttributesDemo extends SimpleTagSupport 
+                                implements DynamicAttributes{
+ private static final long serialVersionUID = 1L; 
+ 
+HashMap h=new HashMap();
+
+ @Override
+ public void setDynamicAttribute(String nameSpace,
+          String name,Object value) throws JspException{
+ h.put(name, value);
+}
+ 
+ @Override
+ public void doTag() throws JspException, IOException {
+  JspWriter out=getJspContext().getOut();
+   out.println(h +"&lt;br&gt;");
+  }
+}
+</pre>
+
+myTld.tld
+<pre>
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;taglib version="2.1" xmlns="http://java.sun.com/xml/ns/javaee"&gt;
+  &lt;tlib-version&gt;1.2&lt;/tlib-version&gt;
+  &lt;uri&gt;www.jobs4times.com&lt;/uri&gt;
+  &lt;tag&gt;
+    &lt;name&gt;myTag&lt;/name&gt;
+    &lt;tag-class&gt;com.tag.DynamicAttributesDemo&lt;/tag-class&gt;
+    &lt;body-content&gt;scriptless&lt;/body-content&gt;
+    &lt;dynamic-attributes&gt;true&lt;/dynamic-attributes&gt;
+  &lt;/tag&gt;
+&lt;/taglib&gt;
+</pre>
+web.xml
+<pre>
+Same as previous
+</pre>
+
+output :
+<pre>
+This is before Custom Tag 
+{wife=Renu, name=Nandu, brother=Tinku, habbits=sleep,lunch}
+This is rest of the Jsp page
+</pre>
+
+
+<h6>Combination of static &amp; dynamic attributes :</h6>
+
+index.jsp
+<pre>
+&lt;%@taglib uri="http://jobs4times.com/tags" prefix="mine" %&gt;
+
+This is before Custom Tag &lt;br&gt;
+&lt;mine:myTag num="2" min="5" max="10" pow="3"/&gt;
+ This is rest of the Jsp page
+</pre>
+
+DynamicAttributesDemo.java
+<pre style="height:650px">
+package com.tag;
+
+import java.io.IOException;
+import javax.servlet.jsp.JspException;
+import javax.servlet.jsp.JspWriter;
+import javax.servlet.jsp.tagext.DynamicAttributes;
+import javax.servlet.jsp.tagext.SimpleTagSupport;
+
+public class DynamicAttributesDemo extends SimpleTagSupport 
+                                implements DynamicAttributes{
+ private static final long serialVersionUID = 1L; 
+ 
+String output=" ";
+private int num;
+
+public void setNum(int num){
+ this.num=num;
+ output=output+" The Given No is : "+num;
+}
+
+ @Override
+public void setDynamicAttribute(String nameSpace,
+          String name,Object value) throws JspException{
+ int n=Integer.parseInt((String) value);
+ 
+if(name=="min"){
+ output=output+"&lt;br&gt;minimum value of "+num+","+n+" is : "+Math.min(num, n);
+}
+else if(name=="max"){
+ output=output+"&lt;br&gt;maximum value of "+num+","+n+" is : "+Math.max(num, n);
+}
+else if(name=="pow"){
+ output=output+"&lt;br&gt;power value of "+num+","+n+" is "+Math.pow(num, n); 
+}
+
+}
+ 
+ @Override
+ public void doTag() throws JspException, IOException {
+  JspWriter out=getJspContext().getOut();
+   out.println(output +"&lt;br&gt;");
+  }
+}
+</pre>
+
+myTld.tld
+<pre>
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;taglib version="2.1" xmlns="http://java.sun.com/xml/ns/javaee"&gt;
+  &lt;tlib-version&gt;1.2&lt;/tlib-version&gt;
+  &lt;uri&gt;www.jobs4times.com&lt;/uri&gt;
+  &lt;tag&gt;
+    &lt;name&gt;myTag&lt;/name&gt;
+    &lt;tag-class&gt;com.tag.DynamicAttributesDemo&lt;/tag-class&gt;
+    &lt;body-content&gt;scriptless&lt;/body-content&gt;
+    &lt;dynamic-attributes&gt;true&lt;/dynamic-attributes&gt;
+    &lt;attribute&gt;
+     &lt;name&gt;num&lt;/name&gt;
+     &lt;required&gt;true&lt;/required&gt;
+     &lt;rtexprvalue&gt;true&lt;/rtexprvalue&gt;
+    &lt;/attribute&gt;
+  &lt;/tag&gt;
+&lt;/taglib&gt;
+</pre>
+
+web.xml
+<pre>
+Same as previous
+</pre>
+
+output :
+<pre>
+This is before Custom Tag 
+The Given No is : 2
+minimum value of 2,5 is : 2
+maximum value of 2,10 is : 10
+power value of 2,3 is 8.0
+This is rest of the Jsp page
+</pre>
+
+
+<h2 id="TagFiles">TagFiles  (jsp2.0v) :</h2>
+objectives:
+<ol>
+<li>Describes the semantics of tag file model</li>
+<li>Describes application structure  of tag file</li>
+<li>Write a tag file and explain the constraints on jsp content in tag body </li> 
+<li>TagFiles concept introduced in Jsp2.0v</li>
+<li>Tagfile is a jsp page or jsp document designed to be used as a custom action</li>
+<li>The main advantage of tag files when compared with classic and simple tag model is we can built custom tag very easily and we are not required  to write  tld file and the corresponding tag handler classes </li>
+<li>The main limitation of tag files is won't suggestible will doing must processing</li>
+</ol>
+
+<h4 id="Building">Building &amp; Using a Simple tag file :</h4>
+<ol>
+<li>Write a Jsp page or Jsp document and save it with <strong>.tag</strong> extension.</li>
+<li>Place this tag file inside <strong>/WEB-INF/tags</strong> folder</li>
+<li>Write a <strong>taglib directive</strong> in Jsp with "tagdir" attribute</li>
+</ol>
+
+
+
+index.jsp
+<pre>
+&lt;%@taglib prefix="mine" tagdir="/WEB-INF/tags"%&gt;
+&lt;%@taglib prefix="wish" tagdir="/WEB-INF/tags/myTags"%&gt;
+
+&lt;html&gt;
+&lt;title&gt;Tag Files Demo&lt;/title&gt;
+&lt;body&gt;
+&lt;h1&gt;THis is Tag File Demo&lt;/h1&gt;
+&lt;mine:myTag /&gt;
+&lt;wish:welcome/&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+
+welcome.tag
+<pre>
+&lt;h1&gt;This is Welcome tag file&lt;/h1&gt;
+</pre>
+
+myTag.tag
+<pre>
+&lt;h1&gt;This is MyTag File&lt;/h1&gt;
+</pre>
+
+output:
+<pre>
+THis is Tag File Demo
+This is MyTag File
+This is Welcome tag file
+</pre>
+
+
+<strong>Note :</strong>
+Internally tag files will be converted into simple Tag Handlers , 
+which are generated by JSP Engine, and it is available in <strong>work</strong> folder.
+
+<h5>Declare tag files with attributes :</h5>
+We can declare attributes for Tag files by using <strong>attribute directive</strong>.
+<pre>
+&lt;%@attribute name="title" required="true" rtexprvalue="true"%&gt;
+</pre>
+<strong>attribute directive</strong> is not part of JSP, It's part of Tag files
+<br><br>
+
+test.jsp
+<pre>
+&lt;%@taglib prefix="mine" tagdir="/WEB-INF/tags"%&gt;
+
+&lt;title&gt;Tag Files Demo&lt;/title&gt;
+&lt;h1&gt;THis is Tag File Demo&lt;/h1&gt;
+&lt;mine:myTag title="Ashok"/&gt;
+</pre>
+
+myTag.tag
+<pre>
+&lt;%@attribute name="title" required="true" rtexprvalue="true"%&gt;
+
+&lt;h1&gt;This is MyTag File&lt;/h1&gt;
+title : ${title}
+</pre>
+
+output :
+<pre>
+THis is Tag File Demo
+This is MyTag File
+title : Ashok
+</pre>
+
+<h4 id="body-content">Declaring body-content for tag file :</h4>
+
+Tag file invocation can contain body but we are not use scripting elements i.e., inside tag body doesn't contain scriptlets, expressions, declarations but it contains EL-expressions ans Jsp standard actions.
+
+<pre>
+&lt;%@tag body-content="tagdependent"%&gt;
+</pre>
+
+<ul>
+<li><strong>tag directive</strong> is not part of JSp, it is part of Tag files.</li>
+<li>body-content allowed values are empty, tagdependent, scriptless.</li>
+<li>The default value is <strong>scriptless</strong>.</li>
+</ul>
+
+index.jsp
+<pre>
+&lt;%@taglib prefix="wish" tagdir="/WEB-INF/tags/myTags"%&gt;
+
+
+This is Tag Files with attributes and tag body &lt;br&gt;
+&lt;wish:welcome fontColor="#660099"&gt;
+ This is Tag Body
+&lt;/wish:welcome&gt;
+</pre>
+
+welcome.tag
+<pre>
+&lt;%@attribute name="fontColor" required="true"%&gt;
+&lt;%@tag body-content="tagdependent"%&gt;
+
+&lt;FONT color="${fontColor}"&gt;
+ &lt;jsp:doBody/&gt;
+&lt;/FONT&gt;
+</pre>
+
+output :
+<pre>
+This is Tag Files with attributes and tag body 
+This is Tag Body //colour
+</pre>
+
+With in the tag file, we can access tag body by using <strong>&lt;jsp:doBody/&gt;</strong>
+<br><br>
+ 
+<table border="1">
+<tr><th>Classic Tag Model </th><td>EVAL_BODY_INCLUDE, EVAL_BODY_BUFFERED </td></tr>
+<tr><th>Simple Tag Model </th><td> getJspBody().invoke(null) </td></tr>
+<tr><th>Tag Files </th><td> &lt;jsp:doBody/&gt; </td></tr>
+</table>
+<br><br>
+
+<ul>
+<li>Either directly or indirectly inside <strong>WEB-INF/tags</strong> folder</li>
+<li>Either directly or indirectly inside <strong>META-INF/tags</strong> present in jar file <strong>WEB-INF/lib</strong> folder.</li>
+</ul>
+Note : If we deploy Tag file in some jar file compulsory we have to write TLD file , we have to plate it inside <strong>META-INF</strong> folder.
+
+<br><br>
+
+myTld.tld (in META-INF)
+<pre>
+&lt;taglib version="2.1"&gt;
+  &lt;tlib-version&gt;1.2&lt;/tlib-version&gt;
+  &lt;uri&gt;www.jobs4times.com&lt;/uri&gt;
+  &lt;tag-file&gt;
+   &lt;name&gt;myTag&lt;/name&gt;
+   &lt;path&gt;/META-INF/tags/myTag.tag&lt;/path&gt;
+  &lt;/tag-file&gt;
+&lt;/taglib&gt;
+</pre>
+
+<h6>Ex :</h6>
+
+test.jsp
+<pre>
+&lt;%@taglib prefix="wish" uri="jobs4times"%&gt;
+
+Tag Files deployed in the form of Jar files &lt;br&gt;
+&lt;wish:welcome /&gt;
+</pre>
+
+welcome.tag
+<pre>
+This is Welcome tag file
+ deploying in some jar file
+</pre>
+
+myTld.tld
+<pre>
+&lt;taglib version="2.1"&gt;
+  &lt;tlib-version&gt;1.2&lt;/tlib-version&gt;
+  &lt;uri&gt;jobs4times&lt;/uri&gt;
+  &lt;tag-file&gt;
+   &lt;name&gt;welcome&lt;/name&gt;
+   &lt;path&gt;/META-INF/tags/welcome.tag&lt;/path&gt;
+  &lt;/tag-file&gt;
+&lt;/taglib&gt;
+</pre>
+
+
+
+
+<h4 id="TagFiles-DynamicAttributes">TagFiles with DynamicAttributes :</h4>
+<ul><li>TagFiles can also include DynamicAttributes the mechanism is basically same ClassicTagModel and SimpleTagModel but with TagFiles.</li>
+<li>The jsp engine provide the map object for you, you can inspect and iterate over the map of attribute key-value pair using for-each JSTL .</li> 
+</ul>
+
+
+<pre>
+&lt;%@tag body-content="scriptless" dynamic-attributes="${mapObj}"%&gt;
+</pre>
+
+The value of dynamic attributes is page scoped variable that holds map or Hashmap reference.
+
+
+<pre>
+&lt;c:forEach items="mapObj" var="x"&gt;
+  ${x.key} and ${x.value}
+&lt;/c:forEach&gt;
+</pre>
+
+
+
+<pre>
+&lt;tag&gt;
+ &lt;name&gt;myTag&lt;/name&gt;
+ &lt;tag-class&gt;com.tag.SimpleTagDemo&lt;/tag-class&gt;
+ &lt;body-content&gt;scriptless&lt;/body-content&gt;
+&lt;/tag&gt;
+</pre>
+
+
+<pre>
+&lt;mine:myTag&gt;
+  ${2*3}
+&lt;/mine:myTag&gt;
+</pre>
+ output :
+ <pre>
+ 6
+ </pre>
+
+
+
+<h6>If it works, which of the following Simple tag Model in tag handler life cycle methods  will be executed ?</h6>
+
+<ol>
+<li>void doTag()</li>
+<li>void setParent()</li>
+<li>void setJspContext()</li>
+<li>JspTag getParent()</li>
+<li>void setJspBody()</li>
+</ol>
+<strong>Ans : 1, 3, 5</strong>
+
+
+<ul><li>The setParent() is  called only when tag is  involved from with in anotther tag, since this tag was not nested setParent()  was not executed.</li>
+<li>In the case of Classic Tag Model whether the tag contains nested or not in all cases setParent() will executed i.e., setParent() is part of lifecycle method.</li>
+</ul>
+
+<h5>Disabling scripting language in web.xml </h5>
+
+<ul><li>we can disable scripting language &lt;scripting-invalid&gt; tag</li>
+<li>If we are disabling EL that time jsp engine will consider EL syntax as template text.</li></ul>
+
+<pre>
+&lt;web-app&gt;
+ &lt;jsp-config&gt;
+  &lt;jsp-property-group&gt;
+   &lt;url-pattern&gt;*.jsp&lt;/url-pattern&gt;
+   &lt;scripting-invalid&gt;true&lt;/scripting-invalid&gt;
+  &lt;/jsp-property-group&gt;
+ &lt;/jsp-config&gt;
+&lt;/web-app&gt;
+</pre>
+
+
+Once the &lt;scripting-invalidate&gt; if we are not allowed to use scripting elements in jsp violation leads translation time error we will get.
+
+ 
+
+<h5>Disabling expression language globally</h5>
+
+We can disable EL for a perticular jsp by using isELIgnored attribute of page directive.
+<pre>
+&lt;%@page isELIgnored="true"%&gt;
+</pre>
+
+We can disable expression language at application level as follows.
+<pre>
+&lt;web-app&gt;
+ &lt;jsp-config&gt;
+  &lt;jsp-property-group&gt;
+   &lt;url-pattern&gt;*.jsp&lt;/url-pattern&gt;
+   &lt;el-ignored&gt;true&lt;/el-ignored&gt;
+  &lt;/jsp-property-group&gt;
+ &lt;/jsp-config&gt;
+&lt;/web-app&gt;
+</pre>
+
+
+
+
+<p></p>
+<br/>   
+</td></tr></table><a href="index-2.html"><strong>BACK</strong></a></div>
+</body>
+
+<!-- Mirrored from java.scwcd.jobs4times.com/JSP-Custom-Tags-Library.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 22 Jun 2024 15:25:25 GMT -->
+</html>

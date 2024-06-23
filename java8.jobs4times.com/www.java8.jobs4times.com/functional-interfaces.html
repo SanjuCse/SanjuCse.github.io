@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from www.java8.jobs4times.com/functional-interfaces.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 22 Jun 2024 15:39:32 GMT -->
+<head>
+<meta charset="ISO-8859-1">
+<title> Java8 New Features - Functional Interfaces</title>
+<link href="java8.css" rel="stylesheet"/>
+</head>
+<body>
+<div align="center" >
+<table border="1"><tr><td width="780px">
+
+ <script src="header.js"></script>
+<hr color="blue"><hr color="red"><hr color="green">
+
+
+<h2>Functional Interfaces</h2>
+
+If an interface contain only one abstract method, such type of interfaces are called functional interfaces and the method is called functional method or single abstract method (SAM).
+<pre>
+Ex:
+1) Runnable -> It contains only run() method
+2) Comparable -> It contains only compareTo() method
+3) ActionListener -> It contains only actionPerformed()
+4) Callable -> It contains only call() method
+</pre>
+
+Inside functional interface in addition to single Abstract method (SAM) we write any number of default and static methods.
+<pre>
+Ex: 
+1) interface Interface { 
+2) public abstract void m1(); 
+3) default void m2() { 
+4) System.out.println ("hello"); 
+5) } 
+6) }
+</pre>
+
+In Java 8, Sun MicroSystem introduced @FunctionalInterface annotation to specify that the interface is Functional Interface.
+<pre>
+Ex:
+@FunctionalInterface
+interface Interf { //This code compiles without any compilation errors.
+public void m1();
+}
+</pre>
+Inside Functional Interface we can take only one abstract method, 
+if we take more than one abstract method then compiler raise an error message that is called we will get compilation error.
+
+<pre>
+Ex:
+@FunctionalInterface 
+interface Interf { 
+public void m1(); //This code gives compilation error.
+public void m2();
+}
+</pre>
+
+Inside Functional Interface we have to take exactly only one abstract method.
+If we are not declaring that abstract method then compiler gives an error message.
+<pre>
+Ex:
+@FunctionalInterface
+interface Interface { //compilation error
+}
+</pre>
+
+<h3>Functional Interface with respect to Inheritance:</h3>
+
+
+If an interface extends Functional Interface and child interface doesn't contain any abstract method then child interface is also Functional Interface
+
+<pre>
+Ex: 
+1) @FunctionalInterface 
+2) interface A { 
+3) public void methodOne(); 
+4) } 
+
+5) @FunctionalInterface 
+6) interface B extends A {  //No Compile Time Error
+7) }
+</pre>
+
+In the child interface we can define exactly same parent interface abstract method.
+<pre>
+Ex: 
+1) @FunctionalInterface 
+2) interface A { 
+3) public void methodOne(); 
+4) } 
+
+5) @FunctionalInterface 
+6) interface B extends A { 
+7) public void methodOne();  //No Compile Time Error
+8) }
+</pre>
+
+In the child interface we can't define any new abstract methods otherwise child interface won't be Functional Interface and if we are trying to use @FunctionalInterface annotation then compiler gives an error message.
+
+
+<pre>
+1) @FunctionalInterface { 
+2) interface A { 
+3) public void methodOne();
+4) } 
+5) @FunctionalInterface 
+6) interface B extends A { 
+7) public void methodTwo();  //Compile Time Error
+8) }
+</pre>
+
+<pre>
+Ex:
+@FunctionalInterface
+interface A {
+public void methodOne(); //No Compile Time Error
+}
+interface B extends A {
+public void methodTwo(); //This's Normal interface so that code compiles without error
+}
+</pre>
+
+In the above example in both parent &amp; child interface we can write any number of default methods and there are no restrictions. Restrictions are applicable only for abstract methods.
+
+   
+</td></tr></table></div>
+</body>
+
+<!-- Mirrored from www.java8.jobs4times.com/functional-interfaces.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 22 Jun 2024 15:39:32 GMT -->
+</html>

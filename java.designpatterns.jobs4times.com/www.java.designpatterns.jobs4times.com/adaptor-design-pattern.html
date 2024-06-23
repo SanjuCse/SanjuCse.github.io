@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from www.java.designpatterns.jobs4times.com/adaptor-design-pattern.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 22 Jun 2024 15:36:41 GMT -->
+<head>
+<meta charset="ISO-8859-1">
+<title>Java design patterns - Adaptor Design Pattern </title>
+<link style="text/css" rel="stylesheet" href="styles.css">
+<link rel="shortcut icon" href="small.html">
+</head>
+
+
+<body>
+
+<div align="center" >
+<table border="1" style="width: 887px"><tr><td>
+ 
+<table>
+<tr>
+<td width="50%" align="left"><a href="http://www.jobs4times.com/"><img alt="jobs4timesLogo"  src="../img.logos.jobs4times.com/banner%20J4T.jpg" width="500" height="200">   </a> </td> 
+<td  align="right"><a href="http://jobs4times.com/J4T/allmaterial.html"><img alt="jobs4timesLogo"  src="../img.logos.jobs4times.com/as2.jpg"  width="180" height="200" >  </a>  </td> 
+</tr>
+</table>
+
+ 
+ 
+<h1 style="border-bottom-color: blue; background-color: yellow;font: monospace;color: red;text-align: center;" >Adaptor Design Pattern </h1> 
+
+<ul>
+<li>Adaptor pattern helps you in converting interfaces of a class into another interface clients expects.</li>
+<li>We can apply this to our real world examples also. The best example for this is an AC power adapter.</li>
+<li>When we buy some imported items from other countries, they come with sockets of different model, which cannot be plugged into  our plugs.</li>
+<li>To make them compatible, we attach converts in between so that they can be plugged-in.<br><br></li>
+</ul>
+
+<ul>
+<li>Let's take an example to understand better. We have an algorithm; it takes the name of the city and returns the temperature in the city.</li>
+<li>But the user inputs the zipCode of the location he lives rather than the city name.</li>
+<li>So to find the temperature our algorithm will not accept zipCode rather expects the city name.<br><br></li>
+</ul>
+
+  
+
+<p>
+In this case we can write an Adaptor class with takes the zipCode and maps to a city and passes this city name as input in finding the temperature at that location.
+</p>
+
+<pre>
+package design;
+
+public interface IWeatherFinder {
+
+ public int find(String city);
+	
+}
+</pre>
+
+
+<pre>
+package design;
+
+public class WeatherFinder implements IWeatherFinder{
+
+ @Override
+ public int find(String city) {	 
+  return 22;
+ }
+	
+}
+</pre>
+
+<p>
+The above class contains the logic for finding the temperature in a city.<br>
+Now my client instead of having name of the city, he has zipCode for which we need to find the temperature.
+</p>
+
+<p>
+In this case the interface the client expected is different from the actual algorithm which has been designed. <br>
+To fix this problem we need to write one adaptor class.
+</p>
+
+
+<pre>
+package design;
+
+public class WeatherAdaptor {
+
+ public int findTemperature(int zipCode) {
+	 
+	 //maps this zipCode to city name
+	 String city=null;
+	 
+	 //actually looks into a source (db or file)
+	 if(zipCode==506001){
+		 city="hyderabad";
+   	 }
+	 
+   IWeatherFinder finder=new WeatherFinder();
+   return finder.find(city);
+ }
+
+}
+</pre> 
+
+<p>
+Now the client can find the temperature by passing the zipCode, <br>
+ where the zipCode will be mapped to the city by adaptor and talks to respective class to find the temperature. 
+</p>
+
+<pre>
+package design;
+
+public class WeatherWidget {
+
+ public void showTemparature(int zipCode){
+  WeatherAdaptor wa=new WeatherAdaptor();
+  System.out.println(wa.findTemperature(zipCode));
+ }
+
+}
+</pre>
+
+<p>
+Even adaptor pattern makes in-compatible interfaces compatible, <br>
+it introduces one more level of in-direction the code which makes it complicated to understand  and sometimes tough to debug.
+</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br><br> 
+</td></tr></table>
+<a href="index-2.html"><strong>BACK</strong></a>
+</div>
+  
+
+</body>
+
+<!-- Mirrored from www.java.designpatterns.jobs4times.com/adaptor-design-pattern.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 22 Jun 2024 15:36:41 GMT -->
+</html>

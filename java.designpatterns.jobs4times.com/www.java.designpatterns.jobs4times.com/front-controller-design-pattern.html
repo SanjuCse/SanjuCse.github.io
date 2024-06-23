@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from www.java.designpatterns.jobs4times.com/front-controller-design-pattern.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 22 Jun 2024 15:36:42 GMT -->
+<head>
+<meta charset="ISO-8859-1">
+<title>Java design patterns </title>
+<link style="text/css" rel="stylesheet" href="styles.css">
+<link rel="shortcut icon" href="small.html">
+</head>
+
+
+<body>
+<div align="center" >
+<table border="1" style="width: 887px"><tr><td>
+ 
+<table>
+<tr>
+<td width="50%" align="left"><a href="http://www.jobs4times.com/"><img alt="jobs4timesLogo"  src="../img.logos.jobs4times.com/banner%20J4T.jpg" width="500" height="200"></a> </td> 
+<td align="right"><a href="http://jobs4times.com/J4T/allmaterial.html"><img alt="jobs4timesLogo"  src="../img.logos.jobs4times.com/as2.jpg"  width="180" height="200"></a> </td> 
+</tr>
+</table>
+
+ 
+ 
+<h1 style="border-bottom-color: blue; background-color: yellow;color: red;text-align: center;" >Front Controller Design Pattern </h1> 
+ 
+
+
+index.jsp
+<pre>
+&lt;%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+&lt;!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+&lt;html>
+&lt;head>
+&lt;meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+
+&lt;title>Home Page&lt;/title>
+&lt;/head>
+&lt;body>
+
+&lt;a href="StudentView.do">Show Student&lt;/a>
+
+&lt;/body>
+&lt;/html>
+</pre>
+
+<pre>
+package design;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public interface Command {
+ String execute(HttpServletRequest request,HttpServletResponse response);
+}
+</pre>
+
+<pre>
+package design;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+
+public class StudentViewCommand implements Command {
+
+@Override
+public String execute(HttpServletRequest request, HttpServletResponse response) {
+
+ String page=null;
+ StudentVO studentVo=null;
+	 
+ //query data using delegate and dao populate in Value Object
+ studentVo=new StudentVO(1,"Ashok");
+
+ request.setAttribute("student", studentVo);
+ page="showStudent";
+	 
+ return page;
+}
+
+
+}
+</pre>
+
+<pre>
+package design;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class FrontController extends HttpServlet {
+
+ private static final long serialVersionUID = 1L;
+
+@Override
+protected void service(HttpServletRequest request, HttpServletResponse response)
+		                                  throws ServletException, IOException{
+
+ String page=null;
+ Command command=null;
+ String requestUri=null;
+ CommandHelper helper=null;
+ Dispatcher dispatcher=null;
+
+ requestUri=request.getRequestURI();
+ helper=new CommandHelper();
+ System.out.println("Request URI : "+requestUri);
+ command=helper.getCommand(requestUri);
+ 
+ page=command.execute(request, response);
+
+ dispatcher=new Dispatcher();
+ dispatcher.dispatch(request, response, page);
+ }
+}
+</pre>
+
+<pre>
+package design;
+
+public class CommandHelper {
+
+ public Command getCommand(String uri) {
+   if(uri.contains("StudentView.do")){
+	   return new StudentViewCommand();
+   }
+   
+   return null;
+ }
+
+}
+</pre>
+
+<pre>
+package design;
+
+import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class Dispatcher {
+
+ public void dispatch(HttpServletRequest request, HttpServletResponse response, String page) {
+
+ RequestDispatcher dispatcher=null;
+ if(page!=null){
+  dispatcher=request.getRequestDispatcher(mapPageToView(page));
+   try{
+	  dispatcher.forward(request, response);
+   }catch(ServletException e){
+	   e.printStackTrace();
+   }catch (IOException e) {
+	   e.printStackTrace();
+   }
+ }//if
+	 
+ }
+
+private String mapPageToView(String page) {
+  
+  if(page.equals("showStudent")){
+	 return "viewStudent.jsp";
+  }
+
+  return null;
+}
+
+}
+</pre>
+
+<pre>
+package design;
+
+public class StudentVO {
+
+ private int id;
+ private String name;
+ 
+ public StudentVO(int id, String name){
+	this.id=id;
+	this.name=name;
+ }
+
+ //setters and getters
+ 
+public int getId() {
+	return id;
+}
+public void setId(int id) {
+	this.id = id;
+}
+
+public String getName() {
+	return name;
+}
+public void setName(String name) {
+	this.name = name;
+}
+ 
+}
+</pre>
+
+<br><br>
+
+viewStudent.jsp
+<pre>
+&lt;%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+
+&lt;jsp:useBean id="student" type="design.StudentVO" scope="request" beanName="studentVO"/>
+
+
+&lt;!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+&lt;html>
+&lt;head>
+&lt;meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+&lt;title>Student Information&lt;/title>
+&lt;/head>
+&lt;body>
+
+&lt;p style="color: blue;font-size: large;font-family: sans-serif;">
+Student Id : &lt;jsp:getProperty property="id" name="student"/>&lt;br>
+Student Name : &lt;jsp:getProperty property="name" name="student"/>
+&lt;/p>
+
+&lt;/body>
+&lt;/html>
+</pre>
+
+<pre>
+&lt;web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"   
+xmlns="http://java.sun.com/xml/ns/javaee"   
+xsi:schemaLocation="http://java.sun.com/xml/ns/javaee   
+http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"   
+id="WebApp_ID" version="3.0">  
+  
+&lt;servlet>
+ &lt;servlet-name>front&lt;/servlet-name>
+ &lt;servlet-class>design.FrontController&lt;/servlet-class>
+&lt;/servlet>
+&lt;servlet-mapping>
+ &lt;servlet-name>front&lt;/servlet-name>
+ &lt;url-pattern>*.do&lt;/url-pattern>
+&lt;/servlet-mapping>
+
+&lt;welcome-file-list>
+&lt;welcome-file>index.jsp&lt;/welcome-file>
+&lt;/welcome-file-list>
+ 
+&lt;/web-app>
+</pre>
+
+<br><br>
+result :
+<pre>
+http://localhost:8001/javaT/
+
+http://localhost:8001/javaT/StudentView.do
+
+browser :
+Student Id : 1
+Student Name : Ashok
+
+console :
+Request URI : /javaT/StudentView.do
+</pre>
+
+
+
+
+
+
+
+ 
+
+
+</td></tr></table>
+<a href="index-2.html"><strong>BACK</strong></a>
+</div>
+  
+
+</body>
+
+<!-- Mirrored from www.java.designpatterns.jobs4times.com/front-controller-design-pattern.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 22 Jun 2024 15:36:42 GMT -->
+</html>

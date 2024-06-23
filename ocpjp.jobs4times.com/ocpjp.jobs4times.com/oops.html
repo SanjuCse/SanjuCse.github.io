@@ -1,0 +1,2191 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from ocpjp.jobs4times.com/oops.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 22 Jun 2024 15:29:37 GMT -->
+<head>
+<meta charset="ISO-8859-1">
+
+<title> OOPS OCJP Exam Objectives | Object Oriented Programming Certification Programs</title>
+<link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+
+<div align="center">   
+<table border="1"> <tr><td width="900px">
+    
+    
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td width="50%" align="left"><a href="http://www.jobs4times.com/"><img alt="jobs4timesLogo"  src="../img.logos.jobs4times.com/banner%20J4T.jpg" width="500" height="200">   </a> </td> 
+<td  align="right"><a href="http://jobs4times.com/J4T/allmaterial.html"><img alt="jobs4timesLogo"  src="../img.logos.jobs4times.com/as2.jpg"  width="180" height="200" >  </a>  </td> 	  	
+</tr>
+</table> 			
+    
+    
+	
+<h1 align="center"  style="background-color: rgb(64, 0, 64);"> <font color="#ffff00">Object Oriented Programming Certification Programs </font>  </h1>
+
+<h3>Q: 01</h3>
+ Click the Task button.
+<p>Place the output options in the Actual Output Sequence to indicate the output from this code :</p>
+
+<pre>
+class Alpha{
+public void foo(String... args)
+ { System.out.print(" Alpha:foo "); }
+public void bar(String a)
+ { System.out.print(" Alpha:bar "); }
+}
+
+public class Beta extends Alpha {
+public void foo(String a)
+ { System.out.print(" Beta:foo "); }
+public void bar(String a)
+ { System.out.print(" Beta:bar "); }
+public static void main(String[] argv) {
+Alpha a=new Beta();
+Beta b=(Beta)a;
+a.foo("test"); //Alpha:foo
+a.bar("test"); //Beta:bar
+b.foo("test"); //Beta:foo 
+b.bar("test"); //Beta:bar
+}
+
+}
+</pre>
+
+
+Solution:
+<p>
+Alpha.foo Beta.bar Beta.foo Beta.bar
+</p>
+
+
+
+<h3>Q: 02</h3>
+ Given:
+<pre>
+1. public class Plant {
+2. private String name;
+3. public Plant(String name) { this.name = name; }
+4. public String getName() { return name; }
+5. }
+
+1. public class Tree extends Plant {
+2. public void growFruit() { }
+3. public void dropLeaves() { }
+4. }
+</pre>
+Which statement is true?
+<ol start="A">
+<li> The code will compile without changes.</li>
+<li>The code will compile if public Tree() { Plant(); } is added to the Tree class.</li>
+<li> The code will compile if public Plant() { Tree(); } is added to the Plant class.</li>
+<li> The code will compile if public Plant() { this("fern"); } is added to the Plant class.</li>
+<li> The code will compile if public Plant() { Plant("fern"); } is added to the Plant class.</li>
+</ol>
+Answer: D
+
+<h3>Q: 03 </h3>
+Click the Exhibit button.
+<p>Which statement is true about the classes and interfaces in the exhibit?</p>
+<pre>
+1. public interface A {
+2.  public void doSomething(String thing);
+3. }
+</pre>
+<pre>
+1. public class AImpl implements A {
+2.  public void doSomething(String thing) { }
+3. }
+</pre>
+<pre>
+1. public class B {
+2.  public A doIt(){
+3.	 //more code here
+4.  }
+5.
+6.  public String execute(){
+7. 	 //more code here
+8.  }
+9. }
+</pre>
+<pre>
+1. public class C extends B {
+2.  public AImpl doIt(){
+3.    //more code here
+4.  }
+5. 
+6.  public Object execute(){
+7.   //more code here
+8.  }
+9. }
+</pre>
+<ol start="A">
+<li> Compilation will succeed for all classes and interfaces.</li>
+<li> Compilation of class C will fail because of an error in line 2.</li>
+<li> Compilation of class C will fail because of an error in line 6.</li>
+<li> Compilation of class AImpl will fail because of an error in line 2.</li>
+</ol>
+Answer: C
+
+<h3>Q: 04</h3>
+
+Given:
+<pre>
+public class Yikes {
+
+public static void go(Long n) {System.out.println("Long ");}
+public static void go(Short n) {System.out.println("Short ");}
+public static void go(int n) {System.out.println("int ");}
+public static void main(String [] args) {
+short y = 6;
+long z = 7;
+go(y);
+go(z);
+}
+}
+</pre>
+What is the result?
+<ol start="A">
+<li>int Long</li>
+<li> Short Long</li>
+<li> Compilation fails.</li>
+<li> An exception is thrown at runtime.</li>
+</ol>
+
+Answer: A
+
+
+<h3>Q: 05 </h3>
+
+Click the Task button.
+<pre>
+class A {
+ String name= "A";
+ String getName(){
+	 return name;
+ }
+ String greeting(){
+	 return "class A";
+ }
+}
+
+class B extends A {
+ String name="B";
+ String greeting(){
+	 return "class B";
+ }
+}
+
+public class Client {
+ public static void main(String[] args){
+  A a=new A();
+  B b=new B();
+  System.out.println(a.greeting()+ " has name "+a.getName());
+  System.out.println(b.greeting()+ " has name "+b.getName());
+ }
+}
+</pre>
+<pre>
+Solution:
+class A has name A
+class B has name A
+</pre>
+
+<h3>Q: 06 </h3>
+Which two statements are true about has-a and is-a relationships? (Choose two.)
+<ol start="A">
+<li>Inheritance represents an is-a relationship.</li>
+<li> Inheritance represents a has-a relationship.</li>
+<li> Interfaces must be used when creating a has-a relationship.</li>
+<li> Instance variables can be used when creating a has-a relationship.</li>
+</ol>
+Answer: A, D
+
+
+<h3>Q: 07</h3> Given:
+<pre>
+10: public class Hello {
+11: String title;
+12: int value;
+13: public Hello() {
+14: title += " World";
+15: }
+16: public Hello(int value) {
+17: this.value = value;
+18: title = "Hello";
+19: Hello();
+20: }
+21: }
+and:
+30: Hello c = new Hello(5);
+31: System.out.println(c.title);
+</pre>
+What is the result?
+<ol start="A">
+<li> Hello</li>
+<li> Hello World</li>
+<li> Compilation fails.</li>
+<li> Hello World 5</li>
+<li> The code runs with no output.</li>
+<li> An exception is thrown at runtime.</li>
+</ol>
+Answer: C
+
+
+<h3>Q: 08</h3> 
+
+Given:
+<pre>
+1. class Super {
+2. private int a;
+3. protected Super(int a) { this.a = a; }
+4. }
+...
+11. class Sub extends Super {
+12. public Sub(int a) { super(a); }
+13. public Sub() { this.a = 5; }
+14. }
+</pre>
+Which two, independently, will allow Sub to compile? (Choose two.)
+
+<ol start="A">
+<li> Change line 2 to :public int a;</li>
+<li> Change line 2 to :protected int a;</li>
+<li> Change line 13 to :public Sub() { this(5); }</li>
+<li> Change line 13 to :public Sub() { super(5); }</li>
+<li> Change line 13 to :public Sub() { super(a); }</li>
+</ol>
+
+Answer: C, D
+
+<h3>Q: 09</h3>
+ Click the Task button.
+
+
+Solution: Car is a Vehicle class A 
+and     &lt; ==================&gt; implements B , 
+C car is a Collectable { } Car has a &lt; ==================&gt; class A { 
+Steering Wheel B b; } car has Wheels &lt; ==================&gt; class A{ List &lt;B&gt; b; } 
+Mini is a Car &lt; ==================&gt; class A extends B{ }
+ Car is an Object &lt; ==================&gt; class A { } 
+ 
+ <img alt="img" src="#">
+
+<h3> Q: 10 Given:</h3> 
+<pre>
+class ClassA { 
+ public int numberOfInstances; 
+ protected ClassA(int numberOfInstances) { 
+ this.numberOfInstances = numberOfInstances; 
+ } 
+} 
+
+public class ExtendedA extends ClassA { 
+ private ExtendedA(int numberOfInstances) { 
+ super(numberOfInstances); 
+ } 
+ public static void main(String[] args) { 
+ ExtendedA ext = new ExtendedA(420); 
+ System.out.print(ext.numberOfInstances); 
+ } 
+} 
+</pre>
+Which statement is true? 
+<ol start="A">
+<li> 420 is the output. </li>
+<li> An exception is thrown at runtime. </li>
+<li> All constructors must be declared public. </li>
+<li> Constructors CANNOT use the private modifier. </li>
+<li> Constructors CANNOT use the protected modifier. </li>
+</ol>
+
+Answer: A 
+
+
+<h3>Q: 11 Given:</h3> 
+<pre>
+1. interface A { public void aMethod(); } 
+2. interface B { public void bMethod(); } 
+3. interface C extends A,B { public void cMethod(); } 
+4. class D implements B { 
+5. public void bMethod(){}
+6. } 
+7. class E extends D implements C { 
+8. public void aMethod(){} 
+9. public void bMethod(){} 
+10. public void cMethod(){} 
+11. } 
+</pre>
+What is the result? 
+<ol start="A">
+<li> Compilation fails because of an error in line 3. </li>
+<li> Compilation fails because of an error in line 7. </li>
+<li> Compilation fails because of an error in line 9. </li>
+<li> If you define D e = new E(), then e.bMethod() invokes the version of bMethod() defined in Line 5. </li>
+<li> If you define D e = (D)(new E()), then e.bMethod() invokes the version of bMethod() defined in Line 5. </li>
+<li> If you define D e = (D)(new E()), then e.bMethod() invokes the version of bMethod() defined in Line 9. </li>
+</ol>
+
+Answer: F 
+
+<h3>Q: 12  Given:</h3>
+<pre>
+public class Base { 
+public static final String FOO = "foo"; 
+public static void main(String[] args) { 
+Base b = new Base(); 
+Sub s = new Sub(); 
+System.out.print(Base.FOO); 
+System.out.print(Sub.FOO); 
+System.out.print(b.FOO); 
+System.out.print(s.FOO); 
+System.out.print(((Base)s).FOO); 
+} } 
+class Sub extends Base {public static final String FOO="bar";}
+</pre>
+What is the result?
+<ol start="A">
+<li>  foofoofoofoofoo </li>
+<li> foobarfoobarbar </li>
+<li> foobarfoofoofoo </li>
+<li> foobarfoobarfoo </li>
+<li> barbarbarbarbar </li>
+<li> foofoofoobarbar </li>
+<li> foofoofoobarfoo </li>
+</ol>
+
+Answer: D 
+
+<h3>Q: 13 Which two statements are true? (Choose two.)</h3>  
+<ol start="A">
+<li> An encapsulated, public class promotes re-use. </li>
+<li> Classes that share the same interface are always tightly encapsulated. </li>
+<li> An encapsulated class allows subclasses to overload methods, but does NOT allow overriding methods.</li>
+<li> An encapsulated class allows a programmer to change an implementation without affecting outside code. </li>
+</ol>
+
+Answer: A, D 
+
+
+<h3>Q: 14 Given :</h3>  
+<pre>
+11. public static void test(String str) { 
+12. if (str == null | str.length() == 0) { 
+13. System.out.println("String is empty"); 
+14. } else { 
+15. System.out.println("String is not empty"); 
+16. } 
+17. } 
+And the invocation: 
+31. test(null); 
+</pre>
+What is the result?
+<ol start="A">
+<li> An exception is thrown at runtime. </li>
+<li> "String is empty" is printed to output. </li>
+<li> Compilation fails because of an error in line 12. </li>
+<li> "String is not empty" is printed to output. </li>
+</ol>
+
+Answer: A 
+
+
+<h3>Q: 15 Given :</h3>  
+<pre>
+public class Wow { 
+ public static void go(short n) {System.out.println("short");} 
+ public static void go(Short n) {System.out.println("SHORT");} 
+ public static void go(Long n) {System.out.println(" LONG");} 
+ public static void main(String [] args) { 
+ Short y = 6; 
+ int z = 7; 
+ go(y); 
+ go(z); 
+ } 
+} 
+</pre>
+What is the result?
+<ol start="A">
+<li> short LONG </li>
+<li> SHORT LONG </li>
+<li> Compilation fails.</li>
+<li> An exception is thrown at runtime. </li>
+</ol>
+Answer: C
+
+<h3>Q : 16 Click the Exhibit button.</h3>
+<p>
+Which three code fragments, added individually at line 29, produce the output 100 ? (Choose three.)</p>
+<pre>
+10. class Inner{
+11.  private int x;
+12.  public void setX(int x){ this.x=x; }
+13.  public int getX(){ return x; }
+14. }
+15.
+16. class Outer{
+17.  private Inner y;
+18.  public void setY(Inner y){ this.y=y; }
+19.  public Inner getY(){ return y; }
+20. }
+21.
+22. public class Gamma {
+23.  public static void main(String [] args) { 
+24.   Outer o=new Outer();
+25.   Inner i=new Inner();
+26.   int n=10;
+27.   i.setX(n);
+28.   o.setY(i);
+29.   //insert code here
+30.   System.out.println(o.getY().getX());
+31.  } 
+32. }
+</pre>
+<ol start="A">
+<li> n = 100;</li>
+<li> i.setX( 100 );</li>
+<li> o.getY().setX( 100 );</li>
+<li> i = new Inner(); i.setX( 100 );</li>
+<li> o.setY( i ); i = new Inner(); i.setX( 100 );</li>
+<li> i = new Inner(); i.setX( 100 ); o.setY( i );</li>
+</ol>
+
+Answer: B, C, F
+
+<h3>Q: 17 Given:</h3>
+
+<pre>
+class One {
+ public One() { System.out.print(1); }
+}
+
+class Two extends One {
+ public Two() { System.out.print(2); }
+}
+
+class Three extends Two {
+ public Three() { System.out.print(3); }
+}
+
+public class Numbers{
+ public static void main( String[] argv ) { 
+	 new Three();
+ }
+}
+</pre>
+What is the result when this code is executed?
+<ol start="A">
+<li> 1</li>
+<li> 3</li>
+<li> 123</li>
+<li> 321</li>
+<li> The code runs with no output.</li>
+</ol>
+
+Answer: C
+
+<h3>Q: 18 Click the Exhibit button.</h3>
+
+<p>
+What is the outcome of the code?
+</p>
+<pre>
+public class Item{
+ private String desc;
+ public String getDescription() {
+	 return desc;
+ }
+ public void setDescription(String d) {
+  this.desc=d;
+ }
+ public static void modifyDesc(Item item, String desc){
+	 item=new Item();
+	 item.setDescription(desc);
+ }
+ public static void main( String[] args ) { 
+  Item it=new Item();
+  it.setDescription("Gobstopper");
+  Item it2=new Item();
+  it2.setDescription("Fizzylifting");
+  modifyDesc(it,"Scrundiddlyumptious");
+  System.out.println(it.getDescription());
+  System.out.println(it2.getDescription());
+ }
+</pre>
+<ol start="A">
+<li> Compilation fails.</li>
+<li> Gobstopper<br>Fizzylifting</li>
+<li> Gobstopper <br>Scrumdiddlyumptious</li>
+<li> Scrumdiddlyumptious <br>Fizzylifting</li>
+<li> Scrumdiddlyumptious</li>
+</ol>
+
+Answer: B
+
+<h3>Q: 19 Given:</h3>
+
+<pre>
+class One {
+ public One foo() { return this; }
+}
+
+class Two extends One {
+ public One foo() { return this; }
+}
+
+class Three extends Two {
+ // insert method here
+}
+</pre>
+<p>Which two methods, inserted individually, correctly complete the Three class? (Choose two.)</p>
+
+<ol start="A">
+<li> public void foo() {}</li>
+<li> public int foo() { return 3; }</li>
+<li> public Two foo() { return this; }</li>
+<li> public One foo() { return this; }</li>
+<li> public Object foo() { return this; }</li>
+</ol>
+
+Answer: C, D
+
+<h3>Q: 20 Click the Exhibit button.</h3>
+<p>What is the output of the program shown in the exhibit?</p>
+<pre style="overflow: auto;height:600px ">
+class Foo {
+ private int x;
+ public Foo(int x) { this.x=x ;}
+ public void setX(int x) { this.x=x; }
+ public int getX() { return x; }
+}
+
+public class Gamma{
+	
+ static Foo fooBar(Foo foo) {
+  foo=new Foo(100);
+  return foo;
+ }
+ public static void main( String[] args ) {
+	 
+  Foo foo=new Foo(300);
+  System.out.print(foo.getX()+"-");
+  
+  Foo fooFoo=fooBar(foo);
+  System.out.print(foo.getX()+"-");
+  System.out.print(fooFoo.getX()+"-");
+  
+  foo=fooBar(fooFoo);
+  System.out.print(foo.getX()+"-");
+  System.out.print(fooFoo.getX());
+ }
+
+}
+</pre>
+<ol start="A">
+<li> 300-100-100-100-100</li>
+<li> 300-300-100-100-100</li>
+<li> 300-300-300-100-100</li>
+<li> 300-300-300-300-100</li>
+</ol>
+
+Answer: B
+ 
+<h3>Q: 21  Click the Task button.</h3>
+
+<p>Add methods to the Beta class to make it compile correctly.</p>
+<pre>
+class Alpha {
+ public void bar(int... x){ }
+ public void bar(int x){ }
+}
+
+public class Beta extends Alpha{
+ //Place here
+ //Place here
+ //Place here
+}
+</pre>
+Methods
+<pre>
+private void bar(int x){}
+
+public void bar(int x){}
+
+public int bar(String x){ return 1;}
+
+public Alpha bar(int x){ }
+
+public void bar(int x,int y){ }
+
+public int bar(int x){ return x; }
+</pre>
+Solution:
+<pre>
+public void bar(int x){ }
+public int bar(String x){ return 1; }
+public void bar(int x,int y) { }
+</pre>
+
+
+
+<h3>Q: 22 Given:</h3>
+<pre>
+10. interface A { public int getValue(); }
+11. class B implements A {
+12. public int getValue() { return 1; }
+13. }
+14. class C extends B {
+15. // insert code here
+16. }
+</pre>
+<p>Which three code fragments, inserted individually at line 15, make use of polymorphism ? (Choose three.)</p>
+<ol start="A">
+<li> public void add(C c) { c.getValue(); }</li>
+<li> public void add(B b) { b.getValue(); }</li>
+<li> public void add(A a) { a.getValue(); }</li>
+<li> public void add(A a, B b) { a.getValue(); }</li>
+<li> public void add(C c1, C c2) { c1.getValue(); }</li>
+</ol>
+
+Answer: B, C, D
+
+<h3>Q: 23 Click the Exhibit button.</h3>
+<p>What is the result ?</p>
+<ol start="A">
+<li> snootchy 420 third second first</li>
+<li> snootchy 420 first second third</li>
+<li> first second third snootchy 420</li>
+<li> third second first snootchy 420</li>
+<li> third first second snootchy 420</li>
+<li> first second first third snootchy 420</li>
+</ol>
+
+Answer: D
+
+<h3>Q: 24 Given: </h3>
+<pre>
+10. abstract class A {
+11. abstract void a1();
+12. void a2() { }
+13. }
+14. class B extends A {
+15. void a1() { }
+16. void a2() { }
+17. }
+18. class C extends B { void c1() { } }
+and:
+A x = new B(); 
+C y = new C(); 
+A z = new C();
+</pre>
+<p>What are four valid examples of polymorphic method calls ? (Choose four.)</p>
+
+<ol start="A">
+<li> x.a2(); </li>
+<li> z.a2();</li>
+<li> z.c1();</li>
+<li> z.a1();</li>
+<li> y.c1();</li>
+<li> x.a1();</li>
+</ol>
+
+Answer: A, B, D, F
+
+<h3>Q: 25  Click the Exhibit button.</h3> 
+<p>What is the result?</p>
+
+<ol start="A">
+<li> Value is: 8</li>
+<li> Compilation fails.</li>
+<li> Value is: 12</li>
+<li> Value is: -12</li>
+<li> The code runs with no output.</li>
+<li> An exception is thrown at runtime.</li>
+</ol>
+
+Answer: A
+
+<h3>Q: 26 Given:</h3>
+<pre>
+20. public class CreditCard {
+21.
+22. private String cardID;
+23. private Integer limit;
+24. public String ownerName;
+25.
+26. public void setCardInformation(String cardID,
+27. String ownerName,
+28. Integer limit) {
+29. this.cardID = cardID;
+30. this.ownerName = ownerName;
+31. this.limit = limit;
+32. }
+33. }
+</pre>
+Which statement is true?
+
+<ol start="A">
+<li> The class is fully encapsulated.</li>
+<li> The code demonstrates polymorphism.</li>
+<li> The ownerName variable breaks encapsulation.</li>
+<li> The cardID and limit variables break polymorphism.</li>
+<li> The setCardInformation method breaks encapsulation.</li>
+</ol>
+Answer: C
+
+<h3>Q: 27 Given:</h3>
+<pre>
+11. class Animal { public String noise() { return "peep"; } }
+12. class Dog extends Animal {
+13. public String noise() { return "bark"; }
+14. }
+15. class Cat extends Animal {
+16. public String noise() { return "meow"; }
+17. }
+...
+30. Animal animal = new Dog();
+31. Cat cat = (Cat)animal;
+32. System.out.println(cat.noise());
+</pre>
+What is the result?
+<ol start="A">
+<li> peep</li>
+<li> bark</li>
+<li> meow</li>
+<li> Compilation fails.</li>
+<li> An exception is thrown at runtime.</li>
+</ol>
+Answer: E
+
+<h3>Q: 28  Click the Task button.</h3>
+
+Solution: Dog is-a Animal Forest has-a Tree Rectangle has-a Side JavaBook is-a ProgrammingBook 
+<img alt="img" src="#">
+
+<h3>Q: 29  Which three statements are true? (Choose three.)</h3>
+<ol start="A">
+<li> A final method in class X can be abstract if and only if X is abstract. </li>
+<li> A protected method in class X can be overridden by any subclass of X. </li>
+<li> A private static method can be called only within other static methods in class X. </li>
+<li> A non-static public final method in class X can be overridden in any subclass of X. </li>
+<li> A public static method in class X can be called by a subclass of X without explicitly referencing the class X.</li> 
+<li> A method with the same signature as a private final method in class X can be implemented in a subclass of X. </li>
+<li> A protected method in class X can be overridden by a subclass of A only if the subclass is in the same package as X. </li>
+</ol>
+Answer: B, E, F 
+
+<h3>Q: 30  Which four statements are true? (Choose four.)</h3>
+<ol start="A">
+<li> Has-a relationships should never be encapsulated. </li>
+<li> Has-a relationships should be implemented using inheritance. </li>
+<li> Has-a relationships can be implemented using instance variables. </li>
+<li> Is-a relationships can be implemented using the extends keyword. </li>
+<li> Is-a relationships can be implemented using the implements keyword. </li>
+<li> The relationship between Movie and Actress is an example of an is-a relationship. </li>
+<li> An array or a collection can be used to implement a one-to-many has-a relationship. </li>
+</ol>
+Answer: C, D, E, G 
+
+<h3>Q: 31  Given : </h3> 
+<pre>
+10. interface Jumper { public void jump(); } ... 
+20. class Animal {} ... 
+30. class Dog extends Animal { 
+31. Tail tail; 32. } ... 
+40. class Beagle extends Dog implements Jumper{ 
+41. public void jump() {} 
+42. } ... 
+50. class Cat implements Jumper{ 
+51. public void jump() {} 
+52. } 
+</pre>
+<p>Which three are true? (Choose three.)</p> 
+<ol start="A">
+<li> Cat is-a Animal</li>
+<li> Cat is-a Jumper</li>
+<li> Dog is-a Animal</li>
+<li> Dog is-a Jumper</li>
+<li> Cat has-a Animal</li>
+<li> Beagle has-a Tail</li>
+<li> Beagle has-a Jumper</li>
+</ol>
+
+Answer: B, C, F
+
+<h3>Q: 32  Click the Exhibit button.</h3>
+<p>What two must the programmer do to correct the compilation errors? (Choose two.)</p>
+
+<ol start="A">
+<li> insert a call to this() in the Car constructor</li>
+<li> insert a call to this() in the MeGo constructor</li>
+<li> insert a call to super() in the MeGo constructor</li>
+<li> insert a call to super(vin) in the MeGo constructor</li>
+<li> change the wheelCount variable in Car to protected</li>
+<li> change line 3 in the MeGo class to super.wheelCount = 3;</li>
+</ol>
+
+Answer: D, E
+
+<h3>Q: 33  Given:</h3>
+<pre>
+10. public class SuperCalc {
+11. protected static int multiply(int a, int b) { return a * b;}
+12. }
+and:
+20. public class SubCalc extends SuperCalc{
+21. public static int multiply(int a, int b) {
+22. int c = super.multiply(a, b);
+23. return c; 
+24. } 
+25. } 
+and: 
+30. SubCalc sc = new SubCalc (); 
+31. System.out.println(sc.multiply(3,4)); 
+32. System.out.println(SubCalc.multiply(2,2)); 
+</pre>
+<p>What is the result ?</p>
+<ol start="A">
+<li> 12 4 </li>
+<li> The code runs with no output. </li>
+<li> An exception is thrown at runtime. </li>
+<li> Compilation fails because of an error in line 21. </li>
+<li> Compilation fails because of an error in line 22. </li>
+<li> Compilation fails because of an error in line 31. </li>
+</ol>
+
+Answer: E 
+
+<h3>Q: 34  Given:</h3> 
+<pre>
+1.public class Blip { 
+2. protected int blipvert(int x) { return 0; } 
+3. } 
+4. class Vert extends Blip { 
+5. // insert code here 
+6. } 
+</pre>
+<p>Which five methods, inserted independently at line 5, will compile? (Choose five.)</p> 
+<ol start="A">
+<li> public int blipvert(int x) { return 0; } </li>
+<li> private int blipvert(int x) { return 0; } </li>
+<li> private int blipvert(long x) { return 0; } </li>
+<li> protected long blipvert(int x) { return 0; } </li>
+<li> protected int blipvert(long x) { return 0; } </li>
+<li> protected long blipvert(long x) { return 0; } </li>
+<li> protected long blipvert(int x, int y) { return 0; }</li>
+</ol>
+ 
+Answer: A, C, E, F, G 
+
+<h3>Q: 35  Given:</h3>
+<pre> 
+1. class Pizza { 
+2. java.util.ArrayList toppings; 
+3. public final void addTopping(String topping) { 
+4. toppings.add(topping); 
+5. } 
+6. } 
+7. public class PepperoniPizza extends Pizza { 
+8. public void addTopping(String topping) { 
+9. System.out.println("Cannot add Toppings"); 
+10. } 
+11. public static void main(String[] args) { 
+12. Pizza pizza = new PepperoniPizza(); 
+13. pizza.addTopping("Mushrooms"); 
+14. } 
+15. }
+</pre>
+What is the result?
+<ol start="A">
+<li> Compilation fails.</li>
+<li> Cannot add Toppings</li>
+<li> The code runs with no output.</li>
+<li> A NullPointerException is thrown in Line 4.</li>
+</ol>
+Answer: A
+
+<h3>Q: 36  Given:</h3>
+<pre>
+1. interface DoStuff2 {
+2. float getRange(int low, int high); }
+3.
+4. interface DoMore {
+5. float getAvg(int a, int b, int c); }
+6.
+7. abstract class DoAbstract implements DoStuff2, DoMore { }
+8.
+9. class DoStuff implements DoStuff2 {
+10. public float getRange(int x, int y) { return 3.14f; } }
+11.
+12. interface DoAll extends DoMore {
+13. float getAvg(int a, int b, int c, int d); }
+</pre>
+What is the result?
+<ol start="A">
+<li> The file will compile without error.</li>
+<li> Compilation fails. Only line 7 contains an error.</li>
+<li> Compilation fails. Only line 12 contains an error.</li>
+<li> Compilation fails. Only line 13 contains an error.</li>
+<li> Compilation fails. Only lines 7 and 12 contain errors.</li>
+<li> Compilation fails. Only lines 7 and 13 contain errors.</li>
+<li> Compilation fails. Lines 7, 12, and 13 contain errors.</li>
+</ol>
+
+Answer: A
+
+<h3>Q: 37  Click the Exhibit button.</h3>
+<p>Given:</p>
+<pre>
+25. A a = new A();
+26. System.out.println(a.doit(4, 5));
+</pre>
+What is the result?
+<ol start="A">
+<li> Line 26 prints "a" to System.out.</li>
+<li> Line 26 prints "b" to System.out.</li>
+<li> An exception is thrown at line 26 at runtime.</li>
+<li> Compilation of class A will fail due to an error in line 6.</li>
+</ol>
+Answer: A
+
+<h3>Q: 38 Given:</h3>
+<pre>
+1. class TestA {
+2. public void start() { System.out.println("TestA"); }
+3. }
+4. public class TestB extends TestA {
+5. public void start() { System.out.println("TestB"); }
+6. public static void main(String[] args) {
+7. ((TestA)new TestB()).start();
+8. }
+9. }
+</pre>
+What is the result?
+<ol start="A">
+<li> TestA</li>
+<li> TestB</li>
+<li> Compilation fails.</li>
+<li> An exception is thrown at runtime.</li>
+</ol>
+Answer: B
+
+<h3>Q: 39  Given:</h3>
+<pre>
+1. interface TestA { String toString(); }
+2. public class Test {
+3. public static void main(String[] args) {
+4. System.out.println(new TestA() { 
+5. public String toString() { return "test"; } 
+6. }); 
+7. } 
+8. } 
+</pre>
+What is the result?
+<ol start="A">
+<li>  test </li>
+<li> null </li>
+<li> An exception is thrown at runtime. </li>
+<li> Compilation fails because of an error in line 1. </li>
+<li> Compilation fails because of an error in line 4. </li>
+<li> Compilation fails because of an error in line 5. </li>
+</ol>
+
+Answer: A 
+
+<h3>Q: 40  Given:</h3> 
+<pre>
+11. public class ItemTest { 
+12. private final int id; 
+13. public ItemTest(int id) { this.id = id; } 
+14. public void updateId(int newId) { id = newId; } 
+15. 
+16. public static void main(String[] args) { 
+17. ItemTest fa = new ItemTest(42); 18. fa.updateId(69); 
+19. System.out.println(fa.id); 
+20. } 
+21. } 
+</pre>
+What is the result? 
+<ol start="A">
+<li> Compilation fails.</li>
+<li> An exception is thrown at runtime. </li>
+<li> The attribute id in the Item object remains unchanged. </li>
+<li> The attribute id in the Item object is modified to the new value. </li>
+<li> A new Item object is created with the preferred value in the id attribute. </li>
+</ol>
+Answer: A 
+
+<h3>Q: 41  Given:</h3> 
+<pre>
+10. class One { 
+11. void foo() { } 
+12. } 
+13. class Two extends One { 
+14. //insert method here 
+15. } 
+</pre>
+<p>Which three methods, inserted individually at line 14, will correctly complete class Two? (Choose three.)</p> 
+<ol start="A">
+<li> int foo() { /* more code here */ } </li>
+<li> void foo() { /* more code here */ } </li>
+<li> public void foo() { /* more code here */ }</li> 
+<li> private void foo() { /* more code here */ } </li>
+<li> protected void foo() { /* more code here */ } </li>
+</ol>
+Answer: B, C, E
+
+<h3>Q: 42 Given:</h3> 
+<pre>
+10. interface Data { public void load(); } 
+11. abstract class Info { public abstract void load(); } 
+</pre>
+<p>Which class correctly uses the Data interface and Info class ?</p>
+<ol start="A">
+<li> A. public class Employee extends Info implements Data { public void load() { /*do something*/ } } </li>
+<li> public class Employee implements Info extends Data { public void load() { /*do something*/ } } </li>
+<li> public class Employee extends Info implements Data public void load(){ /*do something*/ } public void Info.load(){ /*do something*/ } } </li>
+<li> public class Employee implements Info extends Data { public void Data.load(){ /*do something*/ } public void load(){ /*do something*/ } } </li>
+<li> public class Employee implements Info extends Data { public void load(){ /*do something*/ } public void Info.load(){ /*do something*/ } } </li>
+<li> public class Employee extends Info implements Data{ public void Data.load() { /*do something*/ } public void Info.load() { /*do something*/ } } 
+</li>
+</ol>
+Answer: A 
+
+<h3>Q: 43 Given:</h3> 
+<pre>
+11. public abstract class Shape { 
+12. int x; 
+13. int y; 
+14. public abstract void draw(); 
+15. public void setAnchor(int x, int y) { 
+16. this.x = x; 
+17. this.y = y; 
+18. } 
+19. } 
+</pre>
+<p>and a class Circle that extends and fully implements the Shape class. Which is correct ?</p>
+<ol start="A">
+<li> Shape s = new Shape(); s.setAnchor(10,10); s.draw(); </li>
+<li> Circle c = new Shape(); c.setAnchor(10,10); c.draw(); </li>
+<li> Shape s = new Circle(); s.setAnchor(10,10); s.draw(); </li>
+<li> Shape s = new Circle(); s->setAnchor(10,10); s->draw();</li>
+<li> Circle c = new Circle();
+c.Shape.setAnchor(10,10);
+c.Shape.draw();
+</li></ol>
+Answer: C
+
+<h3>Q: 44 Click the Exhibit button.</h3>
+<p>What is the result?</p>
+<ol start="A">
+<li> 4321</li>
+<li> 0000</li>
+<li> An exception is thrown at runtime.</li>
+<li> Compilation fails because of an error in line 18.</li>
+</ol>
+Answer: D
+
+<h3>Q: 45  Given:</h3>
+<pre>
+10. interface Foo {}
+11. class Alpha implements Foo {}
+12. class Beta extends Alpha {}
+13. class Delta extends Beta {
+14. public static void main( String[] args ) {
+15. Beta x = new Beta();
+16. // insert code here
+17. }
+18. }
+</pre>
+<p>Which code, inserted at line 16, will cause a java.lang.ClassCastException ?</p>
+<ol start="A">
+<li> Alpha a = x;</li>
+<li> Foo f = (Delta)x;</li>
+<li> Foo f = (Alpha)x;</li>
+<li> Beta b = (Beta)(Alpha)x;</li>
+</ol>
+Answer: B
+
+
+<h3>Q: 46  Given:</h3>
+<pre>
+1. class SuperClass {
+2. public A getA() {
+3. return new A();
+4. }
+5. }
+6. class SubClass extends SuperClass { 
+7. public B getA(){ 
+8. return new B(); 
+9. } 
+10. } 
+</pre>
+<p>Which statement is true ?</p> 
+<ol start="A">
+<li> Compilation will succeed if A extends B. </li>
+<li> Compilation will succeed if B extends A. </li>
+<li> Compilation will always fail because of an error in line 7. </li>
+<li> Compilation will always fail because of an error in line 8. </li>
+</ol>
+Answer: B 
+
+<h3>Q: 47  Given:</h3>
+<pre> 
+11. static class A { 
+12. void process() throws Exception { throw new Exception(); } 
+13. } 
+14. static class B extends A { 
+15. void process() { System.out.println("B"); } 
+16. } 
+17. public static void main(String[] args) { 
+18. new B().process(); 
+19. } 
+</pre>
+<p>What is the result ?</p>  
+<ol start="A">
+<li> B </li>
+<li> The code runs with no output. </li>
+<li> Compilation fails because of an error in line 12. </li>
+<li> Compilation fails because of an error in line 15. </li>
+<li> Compilation fails because of an error in line 18. </li>
+</ol>
+Answer: A 
+
+
+<h3>Q: 48  Given:</h3>
+<pre> 
+11. class ClassA {} 
+12. class ClassB extends ClassA {} 
+13. class ClassC extends ClassA {} and: 
+21. ClassA p0 = new ClassA(); 
+22. ClassB p1 = new ClassB(); 
+23. ClassC p2 = new ClassC(); 
+24. ClassA p3 = new ClassB(); 
+25. ClassA p4 = new ClassC(); 
+</pre>
+<p>Which three are valid? (Choose three.)</p> 
+<ol start="A">
+<li> p0 = p1; </li>
+<li> p1 = p2; </li>
+<li> p2 = p4; </li>
+<li> p2 = (ClassC)p1; </li>
+<li> p1 = (ClassB)p3; </li>
+<li> p2 = (ClassC)p4; </li>
+</ol>
+Answer: A, E, F
+
+<h3>Q: 49  Given:</h3> 
+<pre>
+11. abstract class Vehicle { public int speed() { return 0; } 
+12. class Car extends Vehicle { public int speed() { return 60; } 
+13. class RaceCar extends Car { public int speed() { return 150; } ... 
+21. RaceCar racer = new RaceCar(); 22. Car car = new RaceCar(); 
+23. Vehicle vehicle = new RaceCar(); 
+24. System.out.println(racer.speed() + ", " + car.speed() 
+25. + ", " + vehicle.speed()); 
+</pre>
+<p>What is the result ?</p>
+<ol start="A">
+<li>  0, 0, 0 </li>
+<li> 150, 60, 0 </li>
+<li> Compilation fails.</li> 
+<li> 150, 150, 150 </li>
+<li> An exception is thrown at runtime. </li>
+</ol>
+Answer: D 
+
+<h3>Q: 50  Given code in separate source files:</h3> 
+<pre>
+10. public class Foo { 
+11. public int a; 
+12. public Foo() { a = 3; } 
+13. public void addFive() { a += 5;} 
+14. } 
+and: 
+20. public class Bar extends Foo { 
+21. public int a; 
+22. public Bar() { a = 8; } 
+23. public void addFive() { this.a += 5; } 
+24. } 
+invoked with: 
+30. Foo foo = new Bar(); 
+31. foo.addFive(); 
+32. System.out.println("Value: " + foo.a); 
+</pre>
+<p>What is the result ?</p>
+<ol start="A">
+<li> Value: 3 </li>
+<li> Value: 8 </li>
+<li> Value: 13 </li>
+<li> Compilation fails. </li>
+<li> The code runs with no output. </li>
+<li> An exception is thrown at runtime. </li>
+</ol>
+Answer: A 
+
+<h3>Q: 51  Which Man class properly represents the relationship "Man has a best friend who is a Dog" ?</h3>
+<ol start="A">
+<li> class Man extends Dog { }</li> 
+ <li> class Man implements Dog { } </li>
+ <li> class Man { private BestFriend dog; }</li> 
+ <li> class Man { private Dog bestFriend; } </li>
+ <li> class Man { private Dog&lt;bestFriend&gt;; } </li>
+ <li> class Man { private BestFriend&lt;dog&gt;; } </li>
+ </ol>
+ Answer: D
+
+<h3>Q: 52  Given:</h3>
+<pre>
+10. interface Foo { int bar(); }
+11. public class Sprite {
+12. public int fubar( Foo foo ) { return foo.bar(); }
+13. public void testFoo() {
+14. fubar(
+15. // insert code here
+16. );
+17. }
+18. }
+</pre>
+Which code, inserted at line 15, allows the class Sprite to compile?
+<ol start="A">
+<li> Foo { public int bar() { return 1; }</li>
+<li> new Foo { public int bar() { return 1; }</li>
+<li> new Foo() { public int bar() { return 1; }</li>
+<li> new class Foo { public int bar() { return 1; }</li>
+</ol>
+Answer: C
+
+
+<h3>Q: 53 Click the Task button.</h3>
+Solution:
+1. int 2. h 3. amount.
+
+<h3>Q: 54 Given classes defined in two different files:</h3> 
+<pre>
+1. package packageA; 
+2. public class Message { 
+3. String getText() { return "text"; } 
+4. } 
+and: 
+1. package packageB; 
+2. public class XMLMessage extends packageA.Message { 
+3. String getText() { return "&lt;msg&gt;text&lt;/msg&gt;";} 
+4. public static void main(String[] args) { 
+5. System.out.println(new XMLMessage().getText()); 
+6. } 
+7. } 
+</pre>
+<p>What is the result of executing XMLMessage.main ?</p> 
+<ol start="A">
+<li> text</li> 
+<li> An exception is thrown at runtime.</li> 
+<li> Compilation fails because of an error in line 2 of XMLMessage.</li> 
+<li> Compilation fails because of an error in line 3 of XMLMessage. </li>
+</ol>
+Answer: D 
+
+
+<h3>Q: 55 Given:</h3> 
+<pre>
+1. public class A { 
+2. public void doit() { 
+3. } 
+4. public String doit() { 
+5. return "a"; 
+6. } 
+7. public double doit(int x) { 
+8. return 1.0; 
+9. } 
+10. } 
+</pre>
+What is the result? 
+<ol start="A">
+<li> An exception is thrown at runtime.</li> 
+<li> Compilation fails because of an error in line 7.</li> 
+<li> Compilation fails because of an error in line 4. </li>
+<li> Compilation succeeds and no runtime errors with class A occur.</li>
+</ol> 
+Answer: C 
+
+
+
+<h3>Q: 56  Click the Exhibit button.</h3>
+<pre> 
+1. public class GoTest { 
+2. public static void main(String[] args) { 
+3. Sente a = new Sente(); a.go(); 
+4. Goban b = new Goban(); b.go(); 
+5. Stone c = new Stone(); c.go(); 
+6. } 
+7. }
+8. 
+9. class Sente implements Go { 
+10. public void go() { System.out.println("go in Sente."); } 
+11. } 
+12. 
+13. class Goban extends Sente { 
+14. public void go() { System.out.println("go in Goban"); } 
+15. } 
+16. 
+17. class Stone extends Goban implements Go { } 
+18. 
+19. interface Go { public void go(); } 
+</pre>
+<p>What is the result ?</p>
+<ol start="A">
+<li> go in Goban go in Sente go in Sente</li> 
+<li> go in Sente go in Sente go in Goban </li>
+<li> go in Sente go in Goban go in Goban </li>
+<li> go in Goban go in Goban go in Sente </li>
+<li> Compilation fails because of an error in line 17.</li>
+</ol> 
+Answer: C 
+
+
+<h3>Q : 57 Click the Exhibit button.</h3>
+<pre> 
+1. public class Employee { 
+2. String name; 
+3. double baseSalary; 
+4. Employee(String name, double baseSalary) { 
+5. this.name = name; 
+6. this.baseSalary = baseSalary; 
+7. } 
+8. } 
+And: 
+1. public class Salesperson extends Employee { 
+2. double commission; 
+3. public Salesperson(String name, double baseSalary, 
+4. double commission) { 
+5. // insert code here 
+6. } 
+7. } 
+</pre>
+<p>Which code, inserted at line 7, completes the Salesperson constructor ?</p>
+<ol start="A">
+<li> this.commission = commission;</li>
+<li> superb(); commission = commission;</li> 
+<li> this.commission = commission; superb();</li> 
+<li> super(name, baseSalary); this.commission = commission;</li> 
+<li> super(); this.commission = commission; </li>
+<li> this.commission = commission; super(name, baseSalary);</li>
+</ol> 
+Answer: D 
+
+
+<h3>Q : 58 Given:</h3> 
+<pre>
+1. public class Team extends java.util.LinkedList { 
+2. public void addPlayer(Player p) { 
+3. add(p); 
+4. } 
+5. public void compete(Team opponent) { /* more code here */ } 
+6. } 
+7. class Player { /* more code here */ } 
+</pre>
+Which two are true? (Choose two.)
+<ol start="A">
+<li> This code will compile.</li> 
+<li> This code demonstrates proper design of an is-a relationship.</li> 
+<li> This code demonstrates proper design of a has-a relationship. </li>
+<li> A Java programmer using the Team class could remove Player objects from a Team object.</li>
+</ol> 
+Answer: A,D 
+
+
+<h3>Q : 59  Given:</h3> 
+<pre>
+5. class Atom { 
+6. Atom() { System.out.print("atom "); } 
+7. } 
+8. class Rock extends Atom { 
+9. Rock(String type) { System.out.print(type); } 
+10. } 
+11. public class Mountain extends Rock { 
+12. Mountain() { 
+13. super("granite "); 
+14. new Rock("granite "); 
+15. } 
+16. public static void main(String[] a) { new Mountain(); } 
+17. } 
+</pre>
+What is the result?
+<ol start="A">
+<li> Compilation fails.</li> 
+<li> atom granite </li>
+<li> granite granite </li>
+<li> atom granite granite</li>
+<li> An exception is thrown at runtime.</li> 
+<li> atom granite atom granite </li>
+</ol>
+Answer: F 
+
+
+<h3>Q : 60  Given:</h3> 
+<pre>
+5. class Building { } 
+6. public class Barn extends Building { 
+7. public static void main(String[] args) { 
+8. Building build1 = new Building(); 
+9. Barn barn1 = new Barn(); 
+10. Barn barn2 = (Barn) build1; 
+11. Object obj1 = (Object) build1; 
+12. String str1 = (String) build1; 
+13. Building build2 = (Building) barn1; 
+14. } 
+15. } 
+</pre>
+Which is true? 
+<ol start="A">
+<li> If line 10 is removed, the compilation succeeds.</li> 
+<li> If line 11 is removed, the compilation succeeds. </li>
+<li> If line 12 is removed, the compilation succeeds. </li>
+<li> If line 13 is removed, the compilation succeeds. </li>
+<li> More than one line must be removed for compilation to succeed.</li>
+</ol> 
+Answer: C 
+
+
+<h3>Q : 61 </h3> 
+A company has a business application that provides its users with many different reports receivables reports, 
+payables reports, revenue projects, and so on. The company has just purchased some new, state-of-the-art, 
+wireless printers, and a programmer has been assigned the task of enhancing all of the reports to use not only the company's old printers, 
+but the new wireless printers as well. When the programmer starts looking into the application, 
+the programmer discovers that because of the design of the application, 
+it is necessary to make changes to each report to support the new printers.
+
+<p>Which two design concepts most likely explain this situation? (Choose two.)</p> 
+<ol start="A">
+<li> Inheritance</li> 
+<li> Low cohesion </li>
+<li> Tight coupling </li>
+<li> High cohesion </li>
+<li> Loose coupling </li>
+<li> Object immutability </li>
+</ol>
+Answer: B,C 
+
+
+
+<h3>Q : 62 Given:</h3>
+
+<pre>
+31. class Foo { 
+32. public int a = 3; 
+33. public void addFive() { a += 5; System.out.print("f "); } 
+34. } 
+35. class Bar extends Foo {
+36. public int a = 8; 
+37. public void addFive() { this.a += 5; System.out.print("b " ); } 
+38. } 
+Invoked with: 
+Foo f = new Bar(); 
+f.addFive(); 
+System.out.println(f.a);
+</pre> 
+<p>What is the result ?</p>
+<ol start="A">
+<li> b 3</li> 
+<li> b 8 </li>
+<li> b 13 </li>
+<li> f 3 </li>
+<li> f 8 </li>
+<li> f 13 </li>
+<li> Compilation fails.</li> 
+<li> An exception is thrown at runtime.</li>
+</ol> 
+Answer: A 
+
+
+<h3>Q : 63</h3>  
+A company that makes Computer Assisted Design (CAD) software has, within its application, 
+some utility classes that are used to perform 3D rendering tasks. 
+The company's chief scientist has just improved the performance of one of the utility classes' key rendering algorithms, 
+and has assigned a programmer to replace the old algorithm with the new algorithm. 
+When the programmer begins researching the utility classes, 
+she is happy to discover that the algorithm to be replaced exists in only one class. 
+The programmer reviews that class's API, and replaces the old algorithm with the new algorithm, 
+being careful that her changes adhere strictly to the class's API. Once testing has begun, 
+the programmer discovers that other classes that use the class she changed are no longer working properly. 
+
+<p>What design flaw is most likely the cause of these new bugs?</p> 
+<ol start="A">
+<li> Inheritance</li> 
+<li> Tight coupling </li>
+<li> Low cohesion </li>
+<li> High cohesion </li>
+<li> Loose coupling </li>
+<li> Object immutability </li>
+</ol>
+Answer: B 
+
+
+
+<h3>Q : 64  Given: </h3> 
+<pre>
+5. class Thingy { Meter m = new Meter(); } 
+6. class Component { void go() { System.out.print("c"); } } 
+7. class Meter extends Component { void go() { System.out.print("m"); } } 
+8. 
+9. class DeluxeThingy extends Thingy { 
+10. public static void main(String[] args) { 
+11. DeluxeThingy dt = new DeluxeThingy(); 
+12. dt.m.go(); 
+13. Thingy t = new DeluxeThingy();
+14. t.m.go(); 
+15. } 
+16. } 
+</pre>
+Which two are true? (Choose two.) 
+<ol start="A">
+<li> The output is mm.</li> 
+<li> The output is mc. </li>
+<li> Component is-a Meter. </li>
+<li> Component has-a Meter. </li>
+<li> DeluxeThingy is-a Component.</li> 
+<li> DeluxeThingy has-a Component. </li>
+</ol>
+Answer: A,F 
+
+
+
+<h3>Q : 65 Given:</h3>
+<pre> 
+1. class X { 
+2. X() { System.out.print(1); } 
+3. X(int x) { 
+4. this(); System.out.print(2); 
+5. } 
+6. } 
+7. public class Y extends X { 
+8. Y() { super(6); System.out.print(3); } 
+9. Y(int y) { 
+10. this(); System.out.println(4); 
+11. } 
+12. public static void main(String[] a) { new Y(5); } 
+13. } 
+</pre>
+What is the result? 
+<ol start="A">
+<li> 13</li> 
+<li> 134 </li>
+<li> 1234 </li>
+<li> 2134 </li>
+<li> 2143 </li>
+<li> 4321 </li>
+</ol>
+Answer: C 
+
+
+<h3>Q : 66  Given:</h3> 
+<pre>
+2. public class Hi { 
+3. void m1() { } 
+4. protected void() m2 { } 
+5. } 
+6. class Lois extends Hi { 
+7. // insert code here 
+8. } 
+</pre>
+<p>Which four code fragments, inserted independently at line 7, will compile? (Choose four.)</p> 
+<ol start="A">
+<li> public void m1() { }</li> 
+<li> protected void m1() { }</li>
+<li> private void m1() { } </li>
+<li> void m2() { } </li>
+<li> public void m2() { }</li> 
+<li> protected void m2() { } </li>
+<li> private void m2() { } </li>
+</ol>
+Answer: A,B,E,F 
+
+
+<h3>Q : 67 Given:</h3> 
+<pre>
+11. public interface A { public void m1(); } 
+12. 
+13. class B implements A { } 
+14. class C implements A { public void m1() { } } 
+15. class D implements A { public void m1(int x) { } } 
+16. abstract class E implements A { } 
+17. abstract class F implements A { public void m1() { } } 
+18. abstract class G implements A { public void m1(int x) { } }
+</pre> 
+What is the result? 
+<ol start="A">
+<li> Compilation succeeds. </li>
+<li> Exactly one class does NOT compile. </li>
+<li> Exactly two classes do NOT compile. </li>
+<li> Exactly four classes do NOT compile. </li>
+<li> Exactly three classes do NOT compile. </li>
+</ol>
+Answer: C 
+
+<h3>Q : 68 Given:</h3>
+<pre> 
+3. interface Fish { } 
+4. class Perch implements Fish { } 
+5. class Walleye extends Perch { } 
+6. class Bluegill { } 
+7. public class Fisherman { 
+8. public static void main(String[] args) { 
+9. Fish f = new Walleye(); 
+10. Walleye w = new Walleye(); 
+11. Bluegill b = new Bluegill(); 
+12. if(f instanceof Perch) System.out.print("f-p "); 
+13. if(w instanceof Fish) System.out.print("w-f "); 
+14. if(b instanceof Fish) System.out.print("b-f "); 
+15. } 
+16. } 
+</pre>
+What is the result? 
+<ol start="A">
+<li> w-f </li>
+<li> f-p w-f </li>
+<li> w-f b-f </li>
+<li> f-p w-f b-f </li>
+<li> Compilation fails. </li>
+<li> An exception is thrown at runtime. </li>
+</ol>
+Answer: B
+
+
+<h3>Q : 69</h3> 
+<pre>
+11. public interface A111 { 
+12. String s = "yo"; 
+13. public void method1(); 
+14. } 
+17. interface B { } 
+20. interface C extends A111, B { 
+21. public void method1(); 
+22. public void method1(int x); 
+23. }
+</pre>
+
+<p> What is the result ?</p> 
+ <ol start="A">
+<li> Compilation succeeds. </li>
+<li> Compilation fails due to multiple errors. </li>
+<li> Compilation fails due to an error only on line 20. </li>
+<li> Compilation fails due to an error only on line 21. </li>
+<li> Compilation fails due to an error only on line 22. </li>
+<li> Compilation fails due to an error only on line 12. </li>
+</ol>
+Answer: A 
+
+
+<h3>Q : 70</h3>
+<pre> 
+10. import java.io.*; 
+11. class Animal { 
+12. Animal() { System.out.print("a"); } 
+13. } 
+14. class Dog extends Animal implements Serializable { 
+15. Dog() { System.out.print("d"); } 
+16. } 
+17. public class Beagle extends Dog { } 
+</pre>
+<p>If an instance of class Beagle is created, 
+then Serialized, then deSerialized, what is the result ?</p> 
+<ol start="A">
+<li> ad </li>
+<li> ada </li>
+<li> add </li>
+<li> adad </li>
+<li> Compilation fails. </li>
+<li> An exception is thrown at runtime. </li>
+</ol>
+Answer: B 
+
+
+<h3>Q : 71</h3> 
+A team of programmers is involved in reviewing a proposed design for a new utility class. 
+After some discussion, they realize that the current design allows other classes to access methods in the utility class 
+ that should be accessible only to methods within the utility class itself. 
+What design issue has the team discovered?
+<ol start="A">
+<li> Tight coupling </li>
+<li> Low cohesion </li>
+<li> High cohesion </li>
+<li> Loose coupling </li>
+<li> Weak encapsulation </li>
+<li> Strong encapsulation </li>
+</ol>
+Answer: E
+
+
+<h3>Q : 72 Given that:</h3> 
+Gadget has-a Sprocket and Gadget has-a Spring and Gadget is-a Widget and Widget has-a Sprocket<br> 
+Which two code fragments represent these relationships? (Choose two.)
+<ol start="A">
+<li> class Widget { Sprocket s; } class Gadget extends Widget { Spring s; } </li>
+<li> class Widget { } class Gadget extends Widget { Spring s1; Sprocket s2; } </li>
+<li> class Widget { Sprocket s1; Spring s2; } class Gadget extends Widget { } </li>
+<li> class Gadget { Spring s; } class Widget extends Gadget{ Sprocket s; } </li>
+<li> class Gadget { } class Widget extends Gadget{ Sprocket s1; Spring s2; } </li>
+<li> class Gadget { Spring s1; Sprocket s2; } class Widget extends Gadget{ } </li>
+</ol>
+Answer: A,C 
+
+
+<h3>Q : 73</h3> 
+<pre>
+11. class Alpha { 
+12. public void foo() { System.out.print("Afoo "); } 
+13. } 
+14. public class Beta extends Alpha { 
+15. public void foo() { System.out.print("Bfoo "); } 
+16. public static void main(String[] args) { 
+17. Alpha a = new Beta(); 
+18. Beta b = (Beta)a; 
+19. a.foo(); 
+20. b.foo(); 
+21. } 
+22. } 
+</pre>
+What is the result? 
+<ol start="A">
+<li> Afoo Afoo </li>
+<li> Afoo Bfoo </li>
+<li> Bfoo Afoo </li>
+<li> Bfoo Bfoo </li>
+<li> Compilation fails. </li>
+<li> An exception is thrown at runtime. </li>
+</ol>
+Answer: D 
+
+
+<h3>Q : 74 Click the Exhibit button.</h3>
+<pre> 
+11. class Payload { 
+12. private int weight; 
+13. public Payload(int wt) { weight = wt; } 
+13. public void setWeight(mt w) { weight = w; } 
+15. public String toString { return Integer.toString(weight); } 
+16. } 
+17. 
+18. public class TestPayload { 
+19. static void changePayload(Payload p) { 
+20. /* insert code here */ 
+21. } 
+22. 
+23. public static void main(String[] args) { 
+24. Payload p = new Payload();
+25. p.setWeight(1024); 
+26. changePayload(p); 
+27. System.out.println("The value of p is "+ p); 
+28. } 
+29. }
+</pre> 
+Which statement, placed at line 20, causes the code to print "The value of p is 420."? 
+<ol start="A">
+<li> p.setWeight(420); </li>
+<li> p.changePayload(420); </li>
+<li> p = new Payload(420); </li>
+<li> Payload.setWeight(420); </li>
+<li> p = Payload.setWeight(420); </li>
+<li> p = new Payload(); p.setWeight(420); </li>
+</ol>
+Answer: A 
+
+
+<h3>Q : 75, Which statement(s) are true? (Choose all that apply.)</h3> 
+<ol start="A">
+<li> Has-a relationships always rely on inheritance. </li>
+<li> Has-a relationships always rely on instance variables. </li>
+<li> Has-a relationships always require at least two class types.</li> 
+<li> Has-a relationships always rely on polymorphism. </li>
+<li> Has-a relationships are always tightly coupled. </li>
+</ol>
+Answer: ->? B is correct. -> A and D describe other OO topics. 
+C is incorrect because a class can have an instance of itself. 
+E is incorrect because while has-a relationships can lead to tight coupling, it is by no means always the case. 
+
+
+<h3>76. Given:</h3>
+<pre> 
+class Clidders { 
+ public final void flipper() { 
+ System.out.println("Clidder"); 
+ }
+} 
+
+public class Clidlets extends Clidders { 
+ public void flipper() { 
+  System.out.println("Flip a Clidlet"); 
+  super.flipper(); 
+ } 
+public static void main(String [] args) { 
+   new Clidlets().flipper(); 
+} 
+} 
+</pre>   
+What is the result? 
+<ol start="A">
+<li> Flip a Clidlet </li>
+<li> Flip a Clidder </li>
+<li> Flip a Clidder Flip a Clidlet </li>
+<li> Flip a Clidlet Flip a Clidder </li>
+<li> Compilation fails. </li>
+</ol>
+
+Answer:
+<ul><li> E is correct. final methods cannot be overridden.</li> 
+<li>A, B, C, and D are incorrect based on the above.</li></ul> 
+
+
+<h3>77. Given:</h3>
+<pre> 
+public abstract interface Frobnicate { 
+ public void twiddle(String s); 
+} 
+</pre>
+Which is a correct class? (Choose all that apply.) 
+<ol start="A">
+<li> public abstract class Frob implements Frobnicate { public abstract void twiddle(String s) { } } </li>
+<li> public abstract class Frob implements Frobnicate { } </li>
+<li> public class Frob extends Frobnicate { public void twiddle(Integer i) { } } </li>
+<li> public class Frob implements Frobnicate { public void twiddle(Integer i) { } } </li>
+<li> public class Frob implements Frobnicate { public void twiddle(String i) { } public void twiddle(Integer s) { } } </li>
+</ol>
+Answer: 
+<ul>
+<li>B is correct, an abstract class need not implement any or all of an interface's methods. <br>
+   E is correct, the class implements the interface method and additionally overloads the twiddle() method.</li>
+ <li>A is incorrect because abstract methods have no body.<br> 
+  C is incorrect because classes implement interfaces they don't extend them.<br> 
+  D is incorrect because overloading a method is not implementing it. </li></ul>
+  
+<h3>78. Given:</h3> 
+<pre>
+class Top {
+ public Top(String s) {
+ System.out.print("B");
+ } } 
+public class Bottom2 extends Top {
+ public Bottom2(String s) {
+ System.out.print("D");
+ }
+public static void main(String [] args) {
+ new Bottom2("C");
+ System.out.println(" ");
+} 
+} 
+</pre>
+What is the result ? 
+<ol start="A">
+<li> BD </li>
+<li> DB </li>
+<li> BDC </li>
+<li> DBC </li>
+<li> Compilation fails. </li>
+</ol>
+
+Answer: 
+<ul>
+<li> E is correct. The implied super() call in Bottom2's constructor cannot be satisfied because there isn't a no-arg constructor in Top.<br>
+  A default, no-arg constructor is generated by the compiler only if the class has no constructor defined explicitly.</li>
+  <li>A, B, C, and D are incorrect based on the above.</li></ul> 
+
+
+<h3>79. Select the two statements that best indicate a situation with low coupling. (Choose two.)</h3>
+<ol start="A">
+<li> The attributes of the class are all private. </li>
+<li> The class refers to a small number of other objects. </li>
+<li> The object contains only a small number of variables. </li>
+<li> The object is referred to using an anonymous variable, not directly. </li>
+<li> The reference variable is declared for an interface type, not a class. The interface provides a small number of methods. </li>
+<li> It is unlikely that changes made to one class will require any changes in another. </li>
+</ol>
+
+Answer: 
+<ul>
+<li> E and F are correct. Only having access to a small number of methods implies limited coupling.<br>
+  If the access is via a reference of interface type, <br>
+  it may be argued that there is even less opportunity for coupling as the class type itself is not visible. <br>
+  Stating that changes in one part of a program are unlikely to cause consequences in another part is really the essence of low coupling.<br> 
+  There is no such thing as an anonymous variable. Referring to only a small number of other objects might imply low coupling, but if each object has many methods, and all are used, then coupling is high.<br> 
+  Variables (attributes) in a class should usually be private, but this describes encapsulation, rather than low coupling. <br>
+  Of course, good encapsulation tends to reduce coupling as a consequence. </li>
+<li>A, B, C and D are incorrect based on the preceding treatise.</li></ul>
+ 
+
+
+<h3>80. Given:</h3>
+<pre> 
+class Clidder {
+ private final void flipper() {
+ System.out.println("Clidder");
+ } 
+} 
+public class Clidlet extends Clidder {
+ public final void flipper() {
+ System.out.println("Clidlet");
+ } 
+public static void main(String [] args) {
+ new Clidlet().flipper(); 
+} 
+} 
+</pre>
+<p>What is the result ?</p>
+<ol start="A">
+<li> Clidlet </li>
+ <li> Clidder </li>
+ <li> Clidder Clidlet </li>
+ <li> Clidlet Clidder </li>
+ <li> Compilation fails. </li>
+ </ol>
+ Answer: 
+ <ul>
+ <li>A is correct.<br> 
+ Although a final method cannot be overridden, in this case, the method is private, and therefore hidden. <br>
+ The effect is that a new, accessible, method flipper is created. Therefore, no polymorphism occurs in this example,<br> 
+ the method invoked is simply that of the child class, and no error occurs. </li>
+ <li>B, C, D, and E are incorrect based on the preceding.</li>
+ </ul>
+
+
+<h3>81. Given:</h3>
+<pre> 
+1. class Plant { 
+2. String getName() { return "plant"; } 
+3. Plant getType() { return this; } 
+4. } 
+5. class Flower extends Plant { 
+6. // insert code here 
+7. } 
+8. class Tulip extends Flower { } 
+</pre>
+
+Which statement(s), inserted at line 6, will compile? (Choose all that apply.)
+<ol start="A">
+<li>  Flower getType() { return this; } </li>
+<li> String getType() { return "this"; } </li>
+<li> Plant getType() { return this; } </li>
+<li> Tulip getType() { return new Tulip(); }</li>
+</ol> 
+Answer: 
+<ul><li> A, C, and D are correct. A and D are examples of co-variant returns,<br> 
+  i.e., Flower and Tulip are both subtypes of Plant. </li>
+  <li>B is incorrect, String is not a subtype of Plant.</li></ul> 
+
+
+<h3>82. Given:</h3> 
+<pre>
+1. class Zing { 
+2. protected Hmpf h; 
+3. } 
+4. class Woop extends Zing { } 
+5. class Hmpf { } 
+</pre>
+<p>Which is true? (Choose all that apply.)</p> 
+<ol start="A">
+<li> Woop is-a Hmpf and has-a Zing. </li>
+<li> Zing is-a Woop and has-a Hmpf. </li>
+<li> Hmpf has-a Woop and Woop is-a Zing. </li>
+<li> Woop has-a Hmpf and Woop is-a Zing. </li>
+<li> Zing has-a Hmpf and Zing is-a Woop. </li>
+</ol>
+
+Answer: 
+<ul><li> D is correct, Woop inherits a Hmpf from Zing.</li><li>A, B, C, and E are incorrect based on the preceding.</li></ul>
+ 
+
+<h3>83. Given:</h3> 
+<pre>
+1. class Programmer { 
+2. Programmer debug() { return this; } 
+3. } 
+4. class SCJP extends Programmer { 
+5. // insert code here 
+6. } 
+</pre>
+<p>Which, inserted at line 5, will compile? (Choose all that apply.)</p>
+<ol start="A">
+<li> Programmer debug() { return this; } </li>
+<li> SCJP debug() { return this; } </li>
+<li> Object debug() { return this; } </li>
+<li> int debug() { return 1; } </li>
+<li> int debug(int x) { return 1; } </li>
+<li> Object debug(int x) { return this; }</li>
+</ol> 
+
+Answer: 
+<ul><li> A, B, E, and F are correct. A and B are examples of overriding, specifically,<br> 
+         B is an example of overriding using a covariant return. E and F are examples of overloading.</li>
+<li>C and D are incorrect. They are illegal overrides because their return types are incompatible.<br> 
+       They are illegal overloads because their arguments did not change. </li></ul>
+       
+
+
+<h3>84. Given:</h3> 
+<pre>
+class Uber { 
+ static int y = 2; 
+ Uber(int x) { 
+ this(); 
+ y = y * 2; 
+ } 
+Uber() { 
+ y++; 
+ } 
+} 
+
+class Minor extends Uber { 
+ Minor() { super(y); y = y + 3; } 
+ public static void main(String [] args) { 
+  new Minor(); 
+  System.out.println(y); 
+ } 
+} 
+</pre>
+<p>What is the result ?</p> 
+<ol start="A">
+<li> 6 </li>
+<li> 7 </li>
+<li> 8 </li>
+<li> 9 </li>
+<li> Compilation fails. </li>
+<li> An exception is thrown. </li>
+</ol>
+
+Answer: 
+<ul>
+<li> D is correct. Minor's constructor makes an explicit call to Uber's 1-arg constructor, <br> 
+  which makes an explicit (this) call to Uber's no-arg constructor, <br>
+  which increments y, then returns to the 1-arg constructor, which multiples y * 2, and then returns to Minor's constructor,<br> 
+  which adds 3 to y. </li><li>A, B, C, E, and F are incorrect based on the preceding.</li></ul> 
+
+<h3>85. Which statement(s) are true? (Choose all that apply.)</h3> 
+<ol start="A">
+<li> Cohesion is the OO principle most closely associated with hiding implementation details. </li>
+<li> Cohesion is the OO principle most closely associated with making sure that classes know about other classes only through their APIs. </li>
+<li> Cohesion is the OO principle most closely associated with making sure that a class is designed with a single, well-focused purpose. </li>
+<li> Cohesion is the OO principle most closely associated with allowing a single object to be seen as having many types. </li>
+</ol>
+
+Answer: 
+<ul><li> Answer C is correct.</li><li>A refers to encapsulation, B refers to coupling, and D refers to polymorphism.</li></ul> 
+
+
+<h3>86. Given:</h3>
+<pre> 
+1. class Dog { } 
+2. class Beagle extends Dog { } 
+3. 
+4. class Kennel { 
+5. public static void main(String [] arfs) { 
+6. Beagle b1 = new Beagle(); 
+7. Dog dog1 = new Dog(); 
+8. Dog dog2 = b1; 
+9. // insert code here 
+10. } 
+11. }
+</pre>
+<p>Which, inserted at line 9, will compile? (Choose all that apply.)</p>
+<ol start="A">
+<li>  Beagle b2 = (Beagle) dog1; </li>
+<li> Beagle b3 = (Beagle) dog2; </li>
+<li> Beagle b4 = dog2; </li>
+<li> None of the above statements will compile </li>
+</ol>
+
+Answer: 
+<ul><li> A and B are correct. However, at runtime, A will throw a ClassCastException because dog1 refers to a Dog object,<br> 
+             which can't necessarily do Beagle stuff. </li><li>C and D are incorrect based on the preceding.</li></ul> 
+
+<h3>87. Given the following,</h3> 
+<pre>
+1. class X { void do1() { } } 
+2. class Y extends X { void do2() { } } 
+3. 
+4. class Chrome { 
+5. public static void main(String [] args) { 
+6. X x1 = new X(); 
+7. X x2 = new Y(); 
+8. Y y1 = new Y(); 
+9. // insert code here 10. } 
+11. } 
+</pre>
+<p>Which, inserted at line 9, will compile? (Choose all that apply.)</p> 
+<ol start="A">
+<li> x2.do2(); </li>
+<li> (Y)x2.do2(); </li>
+<li> ((Y)x2).do2(); </li>
+<li> None of the above statements will compile. </li>
+</ol>
+
+Answer: 
+<ul><li> C is correct. Before you can invoke Y's do2 method you have to cast x2 to be of type Y.<br> 
+ Statement B looks like a proper cast but without the second set of parentheses, the compiler thinks it's an incomplete statement.</li>
+ <li> A, B and D are incorrect based on the preceding.</li></ul> 
+
+
+<h3>88. Given:</h3> 
+<pre>
+class Bird { { System.out.print("b1 "); } 
+public Bird() { System.out.print("b2 "); } 
+} 
+
+class Raptor extends Bird { 
+static { System.out.print("r1 "); } 
+public Raptor() { System.out.print("r2 "); } { System.out.print("r3 "); } 
+static { System.out.print("r4 "); } } 
+class Hawk extends Raptor { 
+public static void main(String[] args) { System.out.print("pre "); 
+new Hawk(); System.out.println("hawk "); } } 
+</pre>
+<p>What is the result ?</p> 
+<ol start="A">
+<li>pre b1 b2 r3 r2 hawk </li>
+<li> pre b2 b1 r2 r3 hawk </li>
+<li> pre b2 b1 r2 r3 hawk r1 r4</li> 
+<li> r1 r4 pre b1 b2 r3 r2 hawk</li>
+<li> r1 r4 pre b2 b1 r2 r3 hawk </li>
+<li> pre r1 r4 b1 b2 r3 r2 hawk </li>
+<li> pre r1 r4 b2 b1 r2 r3 hawk </li>
+<li> The order of output cannot be predicted. </li>
+<li> Compilation fails. </li>
+</ol>
+
+Answer: 
+<ul><li>D is correct. Static init blocks are executed at class loading time, instance init blocks run right after the call to super() in a constructor.<br> 
+  When multiple init blocks of a single type occur in a class, they run in order, from the top down. </li>
+  <li>A, B, C, E, F, G, H, and I are incorrect based on the above.</li></ul>
+
+
+<br><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</td></tr></table>
+<a href="index-2.html">BACK</a>
+
+</div>
+
+</body>
+
+<!-- Mirrored from ocpjp.jobs4times.com/oops.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 22 Jun 2024 15:29:37 GMT -->
+</html>

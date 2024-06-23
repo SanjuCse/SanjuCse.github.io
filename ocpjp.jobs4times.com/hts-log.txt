@@ -1,0 +1,16 @@
+HTTrack3.49-2+htsswf+htsjava launched on Sat, 22 Jun 2024 20:59:12 at https://ocpjp.jobs4times.com/ +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar
+(winhttrack -qwC2%Ps2u1%s%uN0%I0p3DaK0H0%kf2A25000%f#f -F "Mozilla/4.5 (compatible; HTTrack 3.0x; Windows 98)" -%F "<!-- Mirrored from %s%s by HTTrack Website Copier/3.x [XR&CO'2014], %s -->" -%l "en, *" https://ocpjp.jobs4times.com/ -O1 "D:\html\java\ocpjp.jobs4times.com" +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar )
+
+Information, Warnings and Errors reported for this mirror:
+note:	the hts-log.txt file, and hts-cache folder, may contain sensitive information,
+	such as username/password authentication for websites mirrored in this project
+	do not share these files/folders if you want these information to remain private
+
+20:59:37	Error: 	"Not Found" (404) at link https://ocpjp.jobs4times.com/small.ico (from https://ocpjp.jobs4times.com/)
+20:59:38	Error: 	"Not Found" (404) at link https://ocpjp.jobs4times.com/white.gif (from https://ocpjp.jobs4times.com/styles.css)
+20:59:38	Error: 	"Not Found" (404) at link https://ocpjp.jobs4times.com/ricebk.jpg (from https://ocpjp.jobs4times.com/styles.css)
+20:59:38	Error: 	"Not Found" (404) at link https://ocpjp.jobs4times.com/scjpHomePage.html (from https://ocpjp.jobs4times.com/fundamental.html)
+20:59:38	Error: 	"Not Found" (404) at link https://ocpjp.jobs4times.com/development.png (from https://ocpjp.jobs4times.com/development.html)
+
+HTTrack Website Copier/3.49-2 mirror complete in 26 seconds : 26 links scanned, 20 files written (825843 bytes overall) [603277 bytes received at 23202 bytes/sec], 330109 bytes transferred using HTTP compression in 18 files, ratio 28%, 3.7 requests per connection
+(5 errors, 0 warnings, 0 messages)

@@ -1,0 +1,1313 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from ocpjp.jobs4times.com/collections.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 22 Jun 2024 15:29:37 GMT -->
+<head>
+<meta charset="ISO-8859-1">
+
+<title> Collections and Generics</title>
+<link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+
+<div align="center">   
+<table border="1"> <tr><td width="700px">
+    
+    
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td width="50%" align="left"><a href="http://www.jobs4times.com/"><img alt="jobs4timesLogo"  src="../img.logos.jobs4times.com/banner%20J4T.jpg" width="500" height="200">   </a> </td> 
+<td  align="right"><a href="http://jobs4times.com/J4T/allmaterial.html"><img alt="jobs4timesLogo"  src="../img.logos.jobs4times.com/as2.jpg"  width="180" height="200" >  </a>  </td> 	  	
+</tr>
+</table>			
+    
+    
+	
+<h1 align="center"  style="background-color: rgb(64, 0, 64);"> <font color="#ffff00">Collections and Generics </font>  </h1>
+
+	
+
+<h3>Q: 01 Given:</h3>
+<pre>
+34. HashMap props = new HashMap();
+35. props.put("key45", "some value");
+36. props.put("key12", "some other value");
+37. props.put("key39", "yet another value");
+38. Set s = props.keySet();
+39. // insert code here
+</pre>
+
+What, inserted at line 39, will sort the keys in the props HashMap ?
+<ol>
+<li> Arrays.sort(s);</li>
+<li> s = new TreeSet(s);</li><li> Collections.sort(s);</li><li> s = new SortedSet(s);</li></ol>
+
+Answer: B
+
+<h3>Q: 02 Click the Exhibit button.</h3>
+Which statement is true about the set variable on line 12 ?
+<ol>
+<li> The set variable contains all six elements from the coll collection, and the order is guaranteed to be preserved.</li>
+<li> The set variable contains only three elements from the coll collection, and the order is guaranteed to be preserved.</li>
+<li> The set variable contains all six elements from the coll collection, but the order is NOT guaranteed to be preserved.</li>
+<li> The set variable contains only three elements from the coll collection, but the order is NOT guaranteed to be preserved.</li>
+</ol>
+Answer: D
+
+<h3>Q: 03 Given:</h3>
+<pre>
+23. Object [] myObjects = {
+24. new Integer(12),
+25. new String("foo"),
+26. new Integer(5),
+27. new Boolean(true)
+28. };
+29. Arrays.sort(myObjects);
+30. for(int i=0; i&lt;myObjects.length; i++) {
+31. System.out.print(myObjects[i].toString());
+32. System.out.print(" ");
+33. }
+</pre>
+
+What is the result ?
+<ol>
+<li> Compilation fails due to an error in line 23.</li>
+<li> Compilation fails due to an error in line 29.</li>
+<li> A ClassCastException occurs in line 29.</li>
+<li> A ClassCastException occurs in line 31.</li>
+<li> The value of all four objects prints in natural order.</li>
+</ol>
+Answer: C
+
+<h3>Q: 04 Click the Task button.</h3>
+
+Solution:
+<pre>
+1.Gen&lt;T>
+2.T
+3.Gen
+4.T
+5.T
+</pre>
+<h3>Q: 05 Click the Task button.</h3>
+Solution:
+<pre>
+1. list.add("foo"); ----------- Compilation fails
+2. list = new ArrayList&lt;String>(); ------Compilation succeeds
+3.list=new ArrayList&lt;Object>( ); ---- Compilation fails
+4. String s = list.get(0); ------ Compilation succeeds
+5. Object o = list; ----- Compilation succeeds
+</pre>
+
+<h3>Q: 06 Given:</h3>
+<pre>
+1. public class Person {
+2. private String name;
+3. public Person(String name) { this.name = name; }
+4. public boolean equals(Person p) {
+5. return p.name.equals(this.name);
+6. }
+7. }
+</pre>
+
+Which statement is true?
+<ol>
+<li>The equals method does NOT properly override the Object.equals method.</li>
+<li> Compilation fails because the private attribute p.name cannot be accessed in line 5.</li>
+<li> To work correctly with hash-based data structures, this class must also implement the hashCode method.</li>
+<li> When adding Person objects to a java.util.Set collection, the equals method in line 4 will prevent duplicates.</li></ol>
+
+Answer: A
+
+<h3>Q: 07 Given:</h3>
+<pre>
+1. import java.util.*; 
+2. public class Old { 
+3. public static Object get0(List list) { 
+4. return list.get(0); 
+5. } 
+6. }
+</pre>
+ Which three will compile successfully? (Choose three.) 
+<ol>
+<li> Object o = Old.get0(new LinkedList());</li>
+<li> Object o = Old.get0(new LinkedList&lt;?>());</li>
+<li> String s = Old.get0(new LinkedList&lt;String>());</li>
+<li> Object o = Old.get0(new LinkedList&lt;Object>());</li>
+<li> String s = (String)Old.get0(new LinkedList&lt;String>());</li>
+</ol>
+ Answer: A, D, E 
+ 
+ <h3> Q: 08 Given:</h3>
+<pre>
+1. import java.util.*; 
+2. public class Example { 
+3. public static void main(String[] args) { 
+4. // insert code here 
+5. set.add(new Integer(2)); 
+6. set.add(new Integer(1)); 
+7. System.out.println(set); 
+8. } 
+9. }
+</pre>
+
+Which code, inserted at line 4, guarantees that this program will output [1, 2] ?
+<ol><li> Set set = new TreeSet();</li>
+<li> Set set = new HashSet();</li>
+<li> Set set = new SortedSet();</li>
+<li> List set = new SortedList();</li>
+<li> Set set = new LinkedHashSet();</li></ol>
+Answer: A 
+<h3>Q: 09 Given:</h3>
+<pre>
+11. public static Collection get() { 
+12. Collection sorted = new LinkedList(); 
+13. sorted.add("B"); sorted.add("C"); sorted.add("A"); 
+14. return sorted; 
+15. } 
+16. public static void main(String[] args) { 
+17. for (Object obj: get()) { 
+18. System.out.print(obj + ", "); 
+19. } 
+20. }
+</pre>
+
+
+ What is the result ?
+<ol><li> A, B, C,</li><li> B, C, A,</li><li> Compilation fails.</li><li> The code runs with no output.</li>
+<li> An exception is thrown at runtime.</li></ol>
+ Answer: B
+
+<h3>Q:10 given Click the Task button.</h3>
+Solution:
+<ol><li>Compilation of the first statement succeeds ,but compilation fails due to an error in the second statement.</li>
+<li> Compilation fails due to an error in the first statement</li>
+<li> Compilation succeeds</li>
+<li> Compilation succeeds</li></ol>
+
+<h3>Q: 11 Given:</h3>
+<pre>
+11. public static Iterator reverse(List list) {
+12. Collections.reverse(list);
+13. return list.iterator();
+14. }
+15. public static void main(String[] args) {
+16. List list = new ArrayList();
+17. list.add("1"); list.add("2"); list.add("3");
+18. for (Object obj: reverse(list))
+19. System.out.print(obj + ", ");
+20. }
+</pre>
+What is the result ?
+<ol>
+<li> 3, 2, 1,</li><li> 1, 2, 3,</li><li> Compilation fails.</li><li> The code runs with no output.</li>
+<li> An exception is thrown at runtime.</li></ol>
+
+Answer: C
+
+<h3>Q: 12 Click the Task button.</h3>
+
+============does not compile================
+1.m1(listO );
+2.m2(listB);
+3.m2(listO);
+=====compiles and runs with out error=========
+1.m1(listA);
+2.m1(listB);
+3.m2(listA);
+
+<h3>Q: 13 Given:</h3>
+<pre>
+1. import java.util.*;
+2. public class PQ {
+3. public static void main(String[] args) {
+4. PriorityQueue&lt;String> pq = new PriorityQueue&lt;String>();
+5. pq.add("carrot");
+6. pq.add("apple");
+7. pq.add("banana");
+8. System.out.println(pq.poll() + ":" + pq.peek());
+9. }
+10. }
+</pre>
+What is the result ?
+<ol><li> apple:apple</li><li> carrot:apple</li><li> apple:banana</li><li> banana:apple</li><li> carrot:carrot</li>
+<li> carrot:banana</li></ol>
+ Answer: C
+ 
+ <h3>Q: 14 Given:</h3> 
+<pre>
+1. import java.util.*; 
+2. public class WrappedString { 
+3. private String s; 
+4. public WrappedString(String s) { this.s = s; } 
+5. public static void main(String[] args) { 
+6. HashSet&lt;Object> hs = new HashSet&lt;Object>(); 
+7. WrappedString ws1 = new WrappedString("aardvark"); 
+8. WrappedString ws2 = new WrappedString("aardvark"); 
+9. String s1 = new String("aardvark"); 
+10. String s2 = new String("aardvark"); 
+11. hs.add(ws1); hs.add(ws2); hs.add(s1); hs.add(s2); 
+12. System.out.println(hs.size()); } }
+</pre>
+ What is the result ?
+<ol><li> 0</li><li> 1</li><li> 2</li><li> 3</li><li> 4</li><li> Compilation fails.</li><li> An exception is thrown at runtime.</li></ol>
+ Answer: D 
+ 
+<h3> Q: 15 Given:</h3>
+<pre>
+11. public class Key { 
+12. private long id1; 
+13. private long id2; 
+14. 
+15. // class Key methods 
+16. }
+</pre>
+ A programmer is developing a class Key, that will be used as a key in a standard java.util.HashMap. 
+ Which two methods should be overridden to assure that Key works correctly as a key? (Choose two.)
+<ol><li> public int hashCode()</li>
+<li> public boolean equals(Key k)</li>
+<li> public int compareTo(Object o)</li>
+<li> public boolean equals(Object o)</li>
+<li> public boolean compareTo(Key k)</li></ol>
+ Answer: A, D
+
+<h3>Q: 16 Given a pre-generics implementation of a method:</h3>
+<pre>
+11. public static int sum(List list) { 
+12. int sum = 0; 
+13. for ( Iterator iter = list.iterator(); iter.hasNext(); ) { 
+14. int i = ((Integer)iter.next()).intValue(); 
+15. sum += i; 
+16. } 
+17. return sum; 
+18. } 
+</pre>
+
+Which three changes must be made to the method sum to use generics ? (Choose three.)
+<ol><li> remove line 14</li>
+<li> replace line 14 with "int i = iter.next();"</li>
+<li> replace line 13 with "for (int i : intList) {"</li>
+<li> replace line 13 with "for (Iterator iter : intList) {"</li>
+<li> replace the method declaration with "sum(List&lt;int> intList)"</li>
+<li> replace the method declaration with "sum(List&lt;Integer> intList)" </li>
+</ol>
+ Answer: A, C, F 
+ <h3> Q: 17 Given:</h3>
+<pre>
+11. // insert code here 
+12. private N min, max; 
+13. public N getMin() { return min; } 
+14. public N getMax() { return max; } 
+15. public void add(N added) { 
+16. if (min == null || added.doubleValue() &lt; min.doubleValue()) 
+17. min = added; 
+18. if (max == null || added.doubleValue() > max.doubleValue()) 
+19. max = added; 
+20. } 
+21. } 
+</pre>
+Which two, inserted at line 11, will allow the code to compile? (Choose two.)
+
+<ol>
+<li> public class MinMax&lt;?&gt; { </li>
+<li> public class MinMax&lt;? extends Number> {</li>
+<li> public class MinMax&lt;N extends Object> {</li>
+<li> public class MinMax&lt;N extends Number> { </li>
+<li> public class MinMax&lt;? extends Object> { </li>
+<li> public class MinMax&lt;N extends Integer> { </li>
+</ol>
+
+
+ Answer: D, F 
+
+<h3>Q: 18 Given:</h3>
+<pre>
+1. import java.util.*; 
+2. 
+3. public class LetterASort{ 
+4. public static void main(String[] args) { 
+5. ArrayList&lt;String> strings = new ArrayList&lt;String>(); 
+6. strings.add("aAaA"); 
+7. strings.add("AaA"); 
+8. strings.add("aAa"); 
+9. strings.add("AAaa"); 
+10. Collections.sort(strings); 
+11. for (String s : strings) { System.out.print(s + " "); } 
+12. } 
+13. }
+</pre>
+
+What is the result?
+<ol>
+<li> Compilation fails.</li><li> aAaA aAa AAaa AaA</li>
+<li> AAaa AaA aAa aAaA</li><li> AaA AAaa aAaA aAa</li>
+<li> aAa AaA aAaA AAaa</li><li> An exception is thrown at runtime.</li></ol>
+
+Answer: C
+
+<h3>Q: 19 Click the Task button.</h3>
+Solution:
+<pre>
+public class NumberNames{
+private HashMap&lt; String , Integer> map=
+new HashMap&lt; String , Integer >( );
+public void put(String name . int Value) {
+map.put(name , Value);
+}
+public Set&lt;String> getNames( ) {
+return map.keySet( );
+}
+}
+</pre>
+
+<h3>Q: 20 Which two statements are true about the hashCode method? (Choose two.)</h3>
+<ol>
+<li> The hashCode method for a given class can be used to test for object equality and object inequality for that class.</li>
+<li> The hashCode method is used by the java.util.SortedSet collection class to order the elements within that set.</li>
+<li> The hashCode method for a given class can be used to test for object inequality, but NOT object equality, for that class.</li>
+<li> The only important characteristic of the values returned by a hashCode method is that the distribution of values must follow a Gaussian distribution.</li>
+<li> The hashCode method is used by the java.util.HashSet collection class to group the elements within that set into hash buckets for swift retrieval.</li>
+</ol>
+Answer: C, E
+
+<h3>Q: 21 Click the Task button.</h3>
+Solution:
+<pre>
+1.implements
+2.comparable
+3.public
+4.coompareTo(Object o)
+5. i
+</pre>
+
+<h3>Q: 22</h3>
+
+<p> A programmer has an algorithm that requires a java.util.List that provides
+an efficient implementation of add(0, object), but does NOT need to support quick random
+access.</p>
+What supports these requirements ?
+<ol>
+<li> java.util.Queue </li>
+<li> java.util.ArrayList</li>
+<li> java.util.LinearList</li>
+<li> java.util.LinkedList</li>
+</ol>
+Answer: D
+
+<h3>Q: 23 Click the Task button.</h3>
+Solution:
+( 1)-------( 3) ( 2)---------(1) (3)-------(4) (4)---------(2)
+
+<h3>Q: 24 Given:</h3>
+<pre>
+10. interface A { void x(); }
+11. class B implements A { public void x() {} public void y() {} }
+12. class C extends B { public void x() {} }
+And:
+20. java.util.List&lt;A> list = new java.util.ArrayList&lt;A>();
+21. list.add(new B());
+22. list.add(new C());
+23. for (A a : list) {
+24. a.x();
+25. a.y();
+26. }
+</pre>
+
+What is the result ?
+<ol>
+<li> The code runs with no output.</li>
+<li> An exception is thrown at runtime.</li>
+<li> Compilation fails because of an error in line 20.</li>
+<li> Compilation fails because of an error in line 21.</li>
+<li> Compilation fails because of an error in line 23.</li>
+<li> Compilation fails because of an error in line 25.</li>
+</ol>
+Answer: F
+
+<h3>Q: 25 Click the Task button.</h3>
+Solution:
+
+4. Compilation of the first statement succeeds ,but compilation fails due to an error in
+the second statement.
+5. Compilation fails due to an error in the first statement
+6. Compilation succeeds
+7. Compilation succeeds
+
+
+<h3>Q: 26 Click the Task button.</h3>
+Solution:
+<pre>
+1. list.add("foo"); ----------- Compilation fails
+2. list = new ArrayList&lt;String>(); ------Compilation succeeds
+3.list=new ArrayList&lt;Object>( ); ---- Compilation fails
+4. String s = list.get(0); ------ Compilation succeeds
+5. Object o = list; ----- Compilation succeeds
+</pre>
+
+<h3>Q: 27 Given:</h3>
+<pre>
+1. public class Drink implements Comparable {
+2. public String name;
+3. public int compareTo(Object o) {
+4. return 0;
+5. }
+6. }
+and:
+20. Drink one = new Drink();
+21. Drink two = new Drink();
+22. one.name= "Coffee";
+23. two.name= "Tea";
+23. TreeSet set = new TreeSet();
+24. set.add(one);
+25. set.add(two);
+</pre>
+<p>A programmer iterates over the TreeSet and prints the name of each Drink object.</p>
+What is the result ?
+<ol>
+<li> Tea</li>
+<li> Coffee</li>
+<li> Coffee Tea</li>
+<li> Compilation fails.</li>
+<li> The code runs with no output.</li>
+<li> An exception is thrown at runtime.</li></ol>
+
+Answer: B
+
+<h3>Q:28 Click the Task button.</h3>
+Solutions:
+compilation fails:
+Public void takeList(ArrayList&lt;Animal> list) { }
+Public void takeList(ArrayList&lt;Object> list) { }
+compilation Succeeds
+All the remaining
+
+
+<h3>Q: 29 Click the Task button.</h3>
+Solution:
+<pre>
+import java.util.*;
+public class TestGenericConversion {
+public static void main(String s[ ]){
+List&lt;String> list=new LinkedList&lt;String>( );
+list.add("one");
+list.add("two");
+System.out.println(list.get(0).length(); }
+} }
+</pre>
+
+<h3>Q: 30 Given:</h3>
+<pre>
+10. abstract public class Employee {
+11. protected abstract double getSalesAmount();
+12. public double getCommision() {
+13. return getSalesAmount() * 0.15;
+14. }
+15. }
+16. class Sales extends Employee {
+17. // insert method here
+18. }
+</pre>
+Which two methods, inserted independently at line 17, correctly complete the Sales class?
+(Choose two.)
+<ol>
+<li> double getSalesAmount() { return 1230.45; }</li>
+<li> public double getSalesAmount() { return 1230.45; }</li>
+<li> private double getSalesAmount() { return 1230.45; }</li>
+<li> protected double getSalesAmount() { return 1230.45; }</li>
+</ol>
+Answer: B, D
+
+<h3>Q: 31 Given:</h3>
+<pre>
+13. public static void search(List&lt;String> list) { 
+14. list.clear(); 
+15. list.add("b"); 
+16. list.add("a"); 
+17. list.add("c"); 
+18. System.out.println(Collections.binarySearch(list, "a")); 
+19. } 
+</pre>
+
+What is the result of calling search with a valid List implementation ?
+<ol><li> 0 </li><li> 1</li><li> 2</li><li> a</li><li>  b</li><li> c</li><li> The result is undefined.</li></ol> Answer: G 
+
+<h3>Q: 32 Given:</h3>
+<pre>
+11. public static void append(List list) { list.add("0042"); } 
+12. public static void main(String[] args) { 
+13. List&lt;Integer> intList = new ArrayList&lt;Integer>(); 
+14. append(intList); 
+15. System.out.println(intList.get(0)); 
+16. } 
+</pre>
+What is the result ?
+<ol><li> 42</li><li> 0042</li><li> An exception is thrown at runtime.</li><li> Compilation fails because of an error in line 13.</li>
+<li> Compilation fails because of an error in line 14.</li></ol> Answer: B 
+
+<h3>Q: 33 Given:</h3>
+<pre>
+11. public class Person { 
+12. private name; 
+13. public Person(String name) { 
+14. this.name = name; 
+15. } 
+16. public int hashCode() { 
+17. return 420; 
+18. } 
+19. }
+</pre>
+ Which statement is true ?
+<ol><li> The time to find the value from HashMap with a Person key depends on the size of the map.</li>
+<li> Deleting a Person key from a HashMap will delete all map entries for all keys of type Person.</li>
+<li> Inserting a second Person object into a HashSet will cause the first Person object to be removed as a duplicate.</li>
+<li> The time to determine whether a Person object is contained in a HashSet is constant and does NOT depend on the size of the map.</li></ol>
+ Answer: A
+
+<h3>Q: 34</h3>
+<p> A programmer must create a generic class MinMax and the type parameter of MinMax must implement Comparable.</p> 
+Which implementation of MinMax will compile ?
+<ol><li> class MinMax&lt;E extends Comparable&lt;E>> { E min = null; E max = null; public MinMax() {} public void put(E value) { /* store min or max */ }</li>
+<li> class MinMax&lt;E implements Comparable&lt;E>> { E min = null; E max = null; public MinMax() {} public void put(E value) { /* store min or max */ }</li>
+<li> class MinMax&lt;E extends Comparable&lt;E>> { &lt;E> E min = null; &lt;E> E max = null; public MinMax() {} public &lt;E> void put(E value) { /* store min or max */ } </li>
+<li> class MinMax&lt;E implements Comparable&lt;E>> { &lt;E> E min = null; &lt;E> E max = null; public MinMax() {} public &lt;E> void put(E value) { /* store min or max */ }</li></ol>
+ Answer: A 
+ 
+ <h3> Q: 35 Given:</h3>
+ <p> int[] myArray = new int[] {1, 2, 3, 4, 5};</p>
+  What allows you to create a list from this array ?
+ <ol>
+ <li> List myList = myArray.asList();</li><li> List myList = Arrays.asList(myArray);</li>
+ <li> List myList = new ArrayList(myArray);</li><li> List myList = Collections.fromArray(myArray);</li></ol>
+  Answer: B
+  
+ <h3>Question: 36 Given:</h3> 
+ <pre>
+ 1. public class Score implements Comparable&lt;Score> { 
+ 2. private int wins, losses; 
+ 3. public Score(int w, int 1) { wins = w; losses = 1; } 
+ 4. public int getWins() { return wins; } 
+ 5. public int getLosses() { return losses; } 
+ 6. public String toString() { 
+ 7. return "&lt;" + wins + "," + losses + ">"; 
+ 8. } 
+ 9. // insert code here 
+ 10. } 
+ </pre>
+ Which method will complete this class ?
+ <ol>
+ <li> public int compareTo(Object o) {/*mode code here*/}</li>
+ <li> public int compareTo(Score other) {/*more code here*/}</li>
+ <li> public int compare(Score s1,Score s2){/*more code here*/}</li>
+ <li> public int compare(Object o1,Object o2){/*more code here*/}</li></ol>
+ 
+  Answer: B
+
+<h3>Question: 37 Click the Exhibit button.</h3> 
+<pre>
+1. import java.util.*; 
+2. class KeyMaster { 
+3. public int i; 
+4. public KeyMaster(int i) { this.i = i; } 
+5. public boolean equals(Object o) { return i == ((KeyMaster)o).i; } 
+6. public int hashCode() { return i; } 
+7. } 
+8. public class MapIt { 
+9. public static void main(String[] args) { 
+10. Set&lt;KeyMaster> set = new HashSet&lt;KeyMaster>(); 
+11. KeyMaster k1 = new KeyMaster(1); 
+12. KeyMaster k2 = new KeyMaster(2); 
+13. set.add(k1); set.add(k1); 
+14. set.add(k2); set.add(k2); 
+15. System.out.print(set.size() + ":"); 
+16. k2.i = 1; 
+17. System.out.print(set.size() + ":"); 
+18. set.remove(k1); 
+19. System.out.print(set.size() + ":"); 
+20. set.remove(k2); 
+21. System.out.print(set.size()); 
+22. } 
+23. }
+</pre>
+ What is the result ?
+ <ol><li> 4:4:2:2</li><li> 4:4:3:2</li><li> 2:2:1:0</li><li> 2:2:0:0</li><li> 2:1:0:0</li>
+ <li> 2:2:1:1</li><li> 4:3:2:1</li></ol>
+  Answer: F 
+
+<h3>Question: 38 Given:</h3>
+<pre>
+1. import java.util.*; 
+2. public class Test { 
+3. public static void main(String[] args) { 
+4. List&lt;String> strings = new ArrayList&lt;String>(); 
+5. // insert code here 
+6. } 
+7. }
+</pre>
+ Which four, inserted at line 5, will allow compilation to succeed ? (Choose four.)
+<ol>
+<li> String s = strings.get(0);</li>
+<li> Iterator i1 = strings.iterator();</li>
+<li> String[] array1 = strings.toArray();</li>
+<li> Iterator&lt;String> i2 = strings.iterator();</li>
+<li> String[] array2 = strings.toArray(new String[1]);</li>
+<li> Iterator&lt;String> i3 = strings.iterator&lt;String>();</li>
+</ol>
+ Answer: A, B, D, E
+
+<h3>Question: 39 Given:</h3>
+<pre>
+classA {} 
+class B extends A {} 
+class C extends A {} 
+class D extends B {}
+</pre>
+ Which three statements are true ? (Choose three.)
+<ol>
+<li> The type List&lt;A> is assignable to List.</li>
+<li> The type List&lt;B> is assignable to List&lt;A>.</li>
+<li> The type List&lt;Object> is assignable to List&lt;?>.</li>
+<li> The type List&lt;D> is assignable to List&lt;? extends B>.</li>
+<li> The type List&lt;? extends A> is assignable to List&lt;A>.</li>
+<li> The type List&lt;Object> is assignable to any List reference.</li>
+<li> The type List&lt;? extends B> is assignable to List&lt;? extends A>.</li>
+</ol>
+
+Answer: C, D, G 
+ 
+<h3> Question:40 Given:</h3>
+<pre>
+11. public void addStrings(List list) { 
+12. list.add("foo"); 
+13. list.add("bar"); 
+14. } 
+</pre>
+
+What must you change in this method to compile without warnings ?
+<ol>
+<li> add this code after line 11:
+<pre>list = (List&lt;String>) list;</pre></li>
+<li> change lines 12 and 13 to: 
+<pre>list.add&lt;String>("foo"); 
+list.add&lt;String>("bar");</pre></li>
+<li> change the method signature on line 11 to: 
+<pre>public void addStrings(List&lt;? extends String> list) {</pre></li>
+<li> change the method signature on line 11 to: 
+<pre>public void addStrings(List&lt;? super String> list) {</pre> </li>
+<li> No changes are necessary. This method compiles without warnings.</li></ol>
+
+ Answer: D 
+ 
+<h3> Question: 41 Given:</h3> 
+<pre>
+1. public class Test { 
+2. public &lt;T extends Comparable> T findLarger(T x, T y) { 
+3. if(x.compareTo(y) > 0) { 
+4. return x; 
+5. } else { 
+6. return y; 
+7. } 
+8. } 
+9. } 
+and: 
+22. Test t = new Test();
+23. // insert code here
+</pre>
+ Which two will compile without errors when inserted at line 23 ? (Choose two.) 
+
+<ol>
+<li> Object x = t.findLarger(123, "456");</li>
+<li> int x = t.findLarger(123, new Double(456));</li>
+<li> int x = t.findLarger(123, new Integer(456));</li>
+<li> int x = (int) t.findLarger(new Double(123), new Double(456));</li></ol>
+ Answer: A C
+ 
+<h3>  Question: 42 Given:</h3>
+<pre>
+11. List list = // more code here 
+12. Collections.sort(list, new MyComparator()); 
+</pre>
+
+Which code will sort this list in the opposite order of the sort in line 12 ?
+<ol>
+<li> Collections.reverseSort(list, new MyComparator());</li>
+<li> Collections.sort(list, new MyComparator()); list.reverse();</li>
+<li> Collections.sort(list, new InverseComparator( new MyComparator()));</li>
+<li> Collections.sort(list, Collections.reverseOrder( new MyComparator()));</li>
+</ol>
+ Answer: D 
+ 
+<h3> Question: 43 Given:</h3>
+<pre>
+ArrayList a = new ArrayList(); 
+containing the values {"1", "2", "3", "4", "5", "6", "7", "8"} 
+</pre>
+
+Which code will return 2 ?
+<ol>
+<li>
+<pre>Collections. sort(a, a.reverse()); 
+int result = Collections.binarySearch(a, "6");</pre></li>
+<li>
+<pre>Comparator c = Collections.reverseOrder(); 
+Collections.sort(a, c); 
+int result = Collections.binarySearch(a, "6");</pre></li>
+<li>
+<pre>Comparator c = Collections.reverseOrder(); 
+Collections.sort(a, c); 
+int result = Collections.binarySearch(a, "6",c);</pre></li>
+<li>
+<pre>Comparator c = Collections.reverseOrder(a); 
+Collections.sort(a, c); 
+int result = Collections.binarySearch(a, "6",c);</pre></li>
+<li>
+<pre>Comparator c = new InverseComparator(new Comparator()); 
+Collections.sort(a); 
+int result = Collections.binarySearch(a,"6",c);</pre> </li>
+</ol>
+ Answer: C
+
+
+<h3>Question: 44 Given:</h3>
+<pre>
+11. public class Counter { 
+12. public static void main(String[] args) { 
+13. int numArgs = /* insert code here */; 
+14. } 
+15. }
+</pre>
+
+and the command line: java Counter one fred 42 Which code, inserted at line 13, captures the number of arguments passed into the program ?
+<ol>
+<li> args.count</li>
+<li> args.length</li>
+<li> args.count()</li>
+<li> args.length()</li>
+<li> args.getLength()</li>
+</ol>
+
+ Answer: B
+
+<h3>Question: 45 Given:</h3>
+<pre>
+3. import java.util.*; 
+4. public class Mapit { 
+5. public static void main(String[] args) { 
+6. Set&lt;Integer> set = new HashSet&lt;Integer>(); 
+7. Integer i1 = 45; 
+8. Integer i2 = 46; 
+9. set.add(i1); 
+10. set.add(i1); 
+11. set.add(i2); System.out.print(set.size() + " "); 
+12. set.remove(i1); System.out.print(set.size() + " "); 
+13. i2 = 47; 
+14. set.remove(i2); System.out.print(set.size() + " "); 
+15. } 
+16. }
+</pre>
+What is the result ?
+<ol><li> 2 1 0</li><li> 2 1 1</li><li> 3 2 1</li><li> 3 2 2</li><li> Compilation fails.</li><li> An exception is thrown at runtime.</li></ol>
+ Answer: B
+ 
+<h3> Question: 46 Given:</h3> 
+<pre>
+12. import java.util.*; 
+13. public class Explorer1 { 
+14. public static void main(String[] args) { 
+15. TreeSet&lt;Integer> s = new TreeSet&lt;Integer>();
+16. TreeSet&lt;Integer> subs = new TreeSet&lt;Integer>(); 
+17. for(int i = 606; i &lt; 613; i++) 
+18. if(i%2 == 0) s.add(i); 
+19. subs = (TreeSet)s.subSet(608, true, 611, true); 
+20. s.add(609); 
+21. System.out.println(s + " " + subs); 
+22. } 
+23. }
+</pre>
+ What is the result ?
+<ol><li> Compilation fails.</li><li> An exception is thrown at runtime.</li>
+<li> [608, 609, 610, 612] [608, 610] </li><li> [608, 609, 610, 612] [608, 609, 610] </li>
+<li> [606, 608, 609, 610, 612] [608, 610] </li>
+<li> [606, 608, 609, 610, 612] [608, 609, 610] </li>
+</ol>
+  Answer: F 
+  
+<h3>Question: 47 Given:</h3> 
+<pre>
+3. import java.util.*; 
+4. public class Quest { 
+5. public static void main(String[] args) { 
+6. String[] colors = {"blue", "red", "green", "yellow", "orange"}; 
+7. Arrays.sort(colors); 
+8. int s2 = Arrays.binarySearch(colors, "orange"); 
+9. int s3 = Arrays.binarySearch(colors, "violet"); 
+10. System.out.println(s2 + " " + s3); 
+11. } 
+12. }
+</pre>
+
+What is the result ?
+<ol><li> 2 -1</li><li> 2 -4</li><li> 2 -5</li><li> 3 -1</li><li> 3 -4</li><li> 3 -5</li><li> Compilation fails.</li>
+<li> An exception is thrown at runtime.</li></ol>
+ Answer: C
+ 
+<h3>Question: 48 Given:</h3>
+<pre>
+5. import java.util.*; 
+6. public class SortOf { 
+7. public static void main(String[] args) { 
+8. ArrayList&lt;Integer> a = new ArrayList&lt;Integer>(); 
+9. a.add(1); a.add(5); a.add(3); 
+
+11. Collections.sort(a); 
+12. a.add(2); 
+13. Collections.reverse(a); 
+14. System.out.println(a); 
+15. }
+16. }
+</pre>
+
+What is the result ?
+<ol>
+<li> [1, 2, 3, 5]</li><li> [2, 1, 3, 5]</li>
+<li>[2, 5, 3, 1]</li><li> [5, 3, 2, 1]</li><li> [1, 3, 5, 2]</li><li> Compilation fails.</li><li> An exception is thrown at runtime.</li></ol>
+ Answer: C 
+
+<h3> Question: 49 Given:</h3> 
+<pre>
+3. import java.util.*; 
+4. public class Hancock { 
+5. // insert code here 
+6. list.add("foo"); 
+7. } 
+8. }
+</pre>
+ Which two code fragments, inserted independently at line 5, will compile without warnings ? (Choose two.)
+<ol>
+<li> public void addStrings(List list) {</li>
+<li> public void addStrings(List&lt;String> list) {</li>
+<li> public void addStrings(List&lt;? super String> list) {</li>
+<li> public void addStrings(List&lt;? extends String> list) {</li></ol>
+ Answer: B, C 
+
+<h3>Question: 50</h3>
+
+Given a class whose instances, when found in a collection of objects, are sorted by using the compareTo() method, 
+which two statements are true? (Choose two.) 
+<ol>
+<li> The class implements java.lang.Comparable.</li>
+<li> The class implements java.util.Comparator.</li>
+<li> The interface used to implement sorting allows this class to define only one sort sequence.</li>
+<li> The interface used to implement sorting allows this class to define many different sort sequences.</li>
+</ol> Answer: A,C 
+
+<h3>51. Given:</h3>
+<pre>
+import java.util.*; 
+class Test { 
+public static void main(String[] args) { 
+ // insert code here 
+ x.add("one"); 
+ x.add("two"); 
+ x.add("TWO"); 
+ System.out.println(x.poll()); 
+} }
+</pre>
+ Which, inserted at // insert code here, will compile? (Choose all that apply.)
+<ol><li> List&lt;String> x = new LinkedList&lt;String>();</li>
+<li> TreeSet&lt;String> x = new TreeSet&lt;String>();</li>
+<li> HashSet&lt;String> x = new HashSet&lt;String>();</li>
+<li> Queue&lt;String> x = new PriorityQueue&lt;String>();</li>
+<li> ArrayList&lt;String> x = new ArrayList&lt;String>();</li>
+<li>LinkedList&lt;String> x = new LinkedList&lt;String>();</li></ol>
+ Answer:
+ <ul><li> D and F are correct. The poll() method is associated with Queues. The LinkedList class implements the Queue interface.</li>
+ <li>A is incorrect because the List interface does not implement Queue, and the polymorphic instantiation would restrict x to invoking only those methods declared in the List interface. B, C, and E are incorrect, based on the above.</li></ul>
+ 
+ <h3>  52. Given:</h3>
+<pre>
+public static void main(String[] args) { 
+// INSERT DECLARATION HERE 
+for (int i = 0; i &lt;= 10; i++) { 
+ List&lt;Integer> row = new ArrayList&lt;Integer>(); 
+ for (int j = 0; j &lt;= 10; j++)
+    row.add(i * j); 
+    table.add(row); 
+ } 
+ for (List&lt;Integer> row : table) 
+  System.out.println(row); 
+}
+</pre>
+
+ Which statements could be inserted at // INSERT DECLARATION HERE to allow this code to compile and run? (Choose all that apply.) 
+ <ol>
+ <li> List&lt;List&lt;Integer>> table = new List&lt;List&lt;Integer>>();</li>
+ <li> List&lt;List&lt;Integer>> table = new ArrayList&lt;List&lt;Integer>>();</li>
+ <li> List&lt;List&lt;Integer>> table = new ArrayList&lt;ArrayList&lt;Integer>>();</li>
+ <li> List&lt;List, Integer> table = new List&lt;List, Integer>();</li>
+ <li> List&lt;List, Integer> table = new ArrayList&lt;List, Integer>();</li>
+ <li> List&lt;List, Integer> table = new ArrayList&lt;ArrayList, Integer>();</li>
+ <li> None of the above.</li>
+ </ol>
+  Answer:
+  <ul><li> B is correct.</li>
+  <li> A is incorrect because List is an interface, so you can't say new List() regardless of any generic types. D, E, and F are incorrect because List only takes one type parameter (a Map would take two, not a List). C is tempting, but incorrect. The type argument &lt;List&lt;Integer>> must be the same for both sides of the assignment, even though the constructor new ArrayList() on the right side is a subtype of the declared type List on the left. 
+  </li></ul>
+  
+  <h3>  53. Given:</h3>
+  <pre>
+  import java.util.*; 
+  class Flubber { 
+  public static void main(String[] args) { 
+   List&lt;String> x = new ArrayList&lt;String>(); 
+   x.add(" x"); 
+   x.add("xx"); 
+   x.add("Xx"); 
+   // insert code here 
+   for(String s: x) 
+    System.out.println(s); 
+  }
+}
+</pre>
+
+ And the output: xx Xx x Which code, inserted at // insert code here, will produce the preceding output ? (Choose all that apply.)
+ 
+<ol><li> Collections.sort(x);</li>
+<li> Comparable c = Collections.reverse(); Collections.sort(x,c);</li>
+<li> Comparator c = Collections.reverse(); Collections.sort(x,c);</li>
+<li> Comparable c = Collections.reverseOrder(); Collections.sort(x,c);</li>
+<li> Comparator c = Collections.reverseOrder(); Collections.sort(x,c);</li>
+</ol>
+ Answer:
+ <ul><li> E is correct. Natural ordering would produce output in reverse sequence to that listed. The Collections.reverseOrder() method takes a Comparator not a Comparable to re-sort a Collection.</li>
+ <li> A, B, C, and D are incorrect based on the above.</li></ul>
+ 
+ <h3>54. Given:</h3>
+ <pre>
+ 10. public static void main(String[] args) { 
+ 11. Queue&lt;String> q = new LinkedList&lt;String>(); 
+ 12. q.add("Veronica"); 
+ 13. q.add("Wallace"); 
+ 14. q.add("Duncan"); 
+ 15. showAll(q); 
+ 16. } 
+ 17. 
+ 18. public static void showAll(Queue q) { 
+ 19. q.add(new Integer(42)); 
+ 20. while (!q.isEmpty()) 
+ 21. System.out.print(q.remove() + " "); 
+ 22. }
+ </pre>
+  What is the result ?
+ <ol><li> Veronica Wallace Duncan</li><li> Veronica Wallace Duncan 42</li>
+ <li> Duncan Wallace Veronica</li><li> 42 Duncan Wallace Veronica</li>
+ <li> Compilation fails.</li><li> An exception occurs at runtime.</li></ol>
+  Answer:
+  <ul><li> B is correct. There is a compiler warning at line 19 because of an unchecked assignment, but other than that everything compiles and runs fine. Although q was originally declared as Queue&lt;String>, in showAll() it's passed as an untyped Queue-nothing in the compiler or JVM prevents us from adding an Integer after that. The add() method puts things at the end of the queue, while remove() takes them from the beginning, so everything prints in the order they were put in.</li>
+  <li>A, C, D, E, and F are incorrect based on the above.</li></ul>
+  
+<h3>55. Given:</h3>
+<pre>
+public static void before() { 
+ Set set = new TreeSet(); 
+ set.add("2"); 
+ set.add(3); 
+ set.add("1"); 
+ Iterator it = set.iterator(); 
+ while (it.hasNext()) 
+ System.out.print(it.next() + " "); 
+}
+</pre>
+
+Which of the following statements are true ?
+<ol><li> The before() method will print 1 2</li>
+<li> The before() method will print 1 2 3</li>
+<li> The before() method will print three numbers, but the order cannot be determined.</li>
+<li> The before() method will not compile.</li>
+<li> The before() method will throw an exception at runtime.</li></ol>
+
+Answer:
+<ul><li> E is correct. You can't put both Strings and ints into the same TreeSet. Without generics, the compiler has no way of knowing what type is appropriate for this TreeSet, so it allows everything to compile. At runtime, the TreeSet will try to sort the elements as they're added, and when it tries to compare an Integer with a String it will throw a ClassCastException. Note that although the before() method does not use generics, it does use autoboxing. Watch out for code that uses some new features and some old features mixed together.</li>
+<li>A, B, C, and D are incorrect based on the above.</li></ul>
+
+<h3> 56. Given:</h3>
+<pre>
+import java.util.*; 
+class MapEQ { 
+ public static void main(String[] args) { 
+  Map&lt;ToDos, String> m = new HashMap&lt;ToDos, String>(); 
+  ToDos t1 = new ToDos("Monday"); 
+  ToDos t2 = new ToDos("Monday"); 
+  ToDos t3 = new ToDos("Tuesday"); 
+  m.put(t1, "doLaundry"); 
+  m.put(t2, "payBills"); 
+  m.put(t3, "cleanAttic"); 
+  System.out.println(m.size()); 
+ } 
+}
+
+class ToDos{ 
+ String day; 
+ ToDos(String d) { day = d; } 
+ public boolean equals(Object o) { return ((ToDos)o).day == this.day; } 
+  // public int hashCode() {
+  return 9; 
+ } 
+}
+</pre>
+ Which is correct? (Choose all that apply.)
+ 
+<ol><li> As the code stands it will not compile.</li>
+<li> As the code stands the output will be 2.</li>
+<li> As the code stands the output will be 3.</li>
+<li>If the hashCode() method is uncommented the output will be 2.</li>
+<li> If the hashCode() method is uncommented the output will be 3.</li>
+<li> If the hashCode() method is uncommented the code will not compile.</li></ol>
+ Answer:
+ <ul>
+ <li> C and D are correct. If hashCode() is not overridden then every entry will go into its own bucket, and the overridden equals() method will have no effect on determining equivalency. If hashCode() is overridden, then the overridden equals() method will view t1 and t2 as duplicates.</li>
+ <li>A, B, E, and F are incorrect based on the above.</li></ul>
+ 
+ <h3>57. Given:</h3>
+<pre>
+12. public class AccountManager { 
+13. private Map accountTotals = new HashMap(); 
+14. private int retirementFund; 
+15. 
+16. public int getBalance(String accountName) { 
+17. Integer total = (Integer) accountTotals.get(accountName); 
+18. if (total == null) 
+19. total = Integer.valueOf(0); 
+20. return total.intValue(); 
+21. } 
+23. public void setBalance(String accountName, int amount) { 
+24. accountTotals.put(accountName, Integer.valueOf(amount)); 
+25. } }
+</pre>
+
+This class is to be updated to make use of appropriate generic types, with no changes in behavior (for better or worse). 
+Which of these steps could be performed? (Choose three.)
+<ol>
+<li> Replace line 13 with private Map&lt;String, int> accountTotals = new HashMap&lt;String, int>();</li>
+<li> Replace line 13 with private Map&lt;String, Integer> accountTotals = new HashMap&lt;String, Integer>();</li>
+<li> Replace line 13 with private Map&lt;String&lt;Integer>> accountTotals = new HashMap&lt;String&lt;Integer>>();</li>
+<li> Replace lines 17–20 with int total = accountTotals.get(accountName); if (total == null) total = 0; return total;</li>
+<li> Replace lines 17–20 with Integer total = accountTotals.get(accountName); if (total == null) total = 0; return total;</li>
+<li> Replace lines 17–20 with return accountTotals.get(accountName);</li>
+<li> Replace line 24 with accountTotals.put(accountName, amount);</li>
+<li> Replace line 24 with accountTotals.put(accountName, amount.intValue());</li>
+</ol>
+
+ Answer:
+ <ul><li> B , E, and G are correct.</li>
+ <li>A is wrong because you can't use a primitive type as a type parameter.</li>
+ <li> C is wrong because a Map takes two type parameters separated by a comma. D is wrong because an int can't autobox to a null, and F is wrong because a null can't unbox to 0. H is wrong because you can't autobox a primitive just by trying to invoke a method with it.</li></ul>
+ 
+ 
+ <h3> 58.</h3> Given a properly prepared String array containing five elements, 
+ which range of results could a proper invocation of Arrays.binarySearch() produce ?
+ <ol>
+ <li> 0 through 4</li><li> 0 through 5</li><li> -1 through 4</li><li> -1 through 5</li>
+ <li> -5 through 4</li><li> -5 through 5</li>
+ <li> -6 through 4</li> <li> -6 through 5</li></ol>
+ 
+  Answer:
+  <ul><li> G is correct. If a match is found, binarySearch()will return the index of the element that was matched. If no match is found, binarySearch() will return a negative number that, if inverted and then decremented, gives you the insertion point (array index) at which the value searched on should be inserted into the array to maintain a proper sort.</li>
+  <li>A, B, C, D, E, F, and H are incorrect based on the above.</li></ul>
+  
+<h3> 59. Given:</h3> 
+<pre>
+interface Hungry&lt;E> { 
+ void munch(E x); 
+} 
+interface Carnivore&lt;E extends Animal> extends Hungry&lt;E> {} 
+interface Herbivore&lt;E extends Plant> extends Hungry&lt;E> {} 
+abstract class Plant {} 
+class Grass extends Plant {} 
+abstract class Animal {} 
+class Sheep extends Animal implements Herbivore&lt;Sheep> {
+ public void munch(Sheep x) {} 
+} 
+class Wolf extends Animal implements Carnivore&lt;Sheep> { 
+ public void munch(Sheep x) {} 
+}
+</pre>
+
+Which of the following changes (taken separately) would allow this code to compile? (Choose all that apply.)
+<ol><li> Change the Carnivore interface to interface Carnivore&lt;E extends Plant> extends Hungry&lt;E> {}</li>
+<li> Change the Herbivore interface to interface Herbivore&lt;E extends Animal> extends Hungry&lt;E> {}</li>
+<li> Change the Sheep class to class Sheep extends Animal implements Herbivore&lt;Plant> { public void munch(Grass x) {} }</li>
+<li> Change the Sheep class to class Sheep extends Plant implements Carnivore&lt;Wolf> { public void munch(Wolf x) {} }</li>
+<li> Change the Wolf class to class Wolf extends Animal implements Herbivore&lt;Grass> { public void munch(Grass x) {} }</li>
+<li> No changes are necessary.</li></ol>
+
+Answer:
+<ul><li> B is correct. The problem with the original code is that Sheep tries to implement Herbivore&lt;Sheep> and Herbivore declares that its type parameter E can be any type that extends Plant. Since a Sheep is not a Plant, Herbivore&lt;Sheep> makes no sense- the type Sheep is outside the allowed range of Herbivore's parameter E.
+ Only solutions that either alter the definition of a Sheep or alter the definition of Herbivore will be able to fix this. 
+ So A, E, and F are eliminated. B works, changing the definition of an Herbivore to allow it to eat Sheep solves the problem. 
+ C doesn't work because an Herbivore&lt;Plant> must have a munch(Plant) method, not munch(Grass). 
+ And D doesn't work, because in D we made Sheep extend Plant, now the Wolf class breaks because its munch(Sheep) method no longer fulfills the contract of Carnivore. 
+</li></ul>
+
+<h3>60.</h3>
+ Which collection class(es) allows you to grow or shrink its size and provides indexed access to its elements, 
+ but whose methods are not synchronized? (Choose all that apply.) 
+ <ol>
+ <li> java.util.HashSet</li><li> java.util.LinkedHashSet</li>
+ <li> java.util.List</li><li> java.util.ArrayList</li><li> java.util.Vector</li>
+ <li> java.util.PriorityQueue</li></ol>
+ 
+  Answer:<ul><li> D is correct. All of the collection classes allow you to grow or shrink the size of your collection. 
+  ArrayList provides an index to its elements. 
+  The newer collection classes tend not to have synchronized methods. 
+  Vector is an older implementation of ArrayList functionality and has synchronized methods; it is slower than ArrayList.</li>
+  <li>A, B, C, E, and F are incorrect based on the logic described above; Notes: C, List is an interface, and F, PriorityQueue does not offer access by index.</li></ul>
+  
+  
+ <h3> 61. Given:</h3> 
+ <pre>
+ import java.util.*; 
+ public class Group extends HashSet&lt;Person> {
+  public static void main(String[] args) {
+   Group g = new Group(); 
+   g.add(new Person("Hans")); 
+   g.add(new Person("Lotte")); 
+   g.add(new Person("Jane")); 
+   g.add(new Person("Hans")); 
+   g.add(new Person("Jane")); 
+   System.out.println("Total: " + g.size()); 
+  }
+ public boolean add(Object o) { 
+  System.out.println("Adding: " + o); 
+   return super.add(o); 
+  } 
+ } 
+class Person {
+ private final String name; 
+ public Person(String name) { this.name = name; } 
+ public String toString() { return name; } 
+}
+</pre>
+
+ Which of the following occur at least once when the code is compiled and run ? (Choose all that apply.)
+ 
+<ol><li>Adding Hans</li><li> Adding Lotte </li><li> Adding Jane</li><li> Total: 3</li><li> Total: 5</li><li> The code does not compile.</li><li> An exception is thrown at runtime.</li></ol>
+
+ Answer:<ul><li> F is correct. The problem here is in Group's add() method-it should have been add(Person), since the class extends HashSet&lt;Person>. So this doesn't compile. Pop Quiz: What would happen if you fixed this code, changing add(Object) to add(Person)? Try running the code to see if the results match what you thought.</li>
+ <li>A, B, C, D, E, and G are incorrect based on the above.</li></ul>
+ 
+ <h3> 62. Given:</h3>
+<pre>
+import java.util.*; 
+class AlgaeDiesel {
+ public static void main(String[] args) {
+  String[] sa = {"foo", "bar", "baz" };
+   // insert method invocations here 
+ } 
+}
+</pre>
+
+ What java.util.Arrays and/or java.util.Collections methods could you use to convert sa to a List and then search the List to find the index of the element whose value is "foo"? (Choose from one to three methods.)
+ 
+ <ol><li> sort()</li><li> asList()</li><li>toList()</li><li> search()</li><li> sortList()</li><li> contains()</li><li> binarySearch()</li></ol>
+  Answer:<ul><li> A, B, and G are required. The as List() method converts an array to a List. You can find the index of an element in a List with the binarySearch() method, but before you do that you must sort the list using sort().</li>
+  <li>F is incorrect because contains() returns a boolean, not an index. C, D, and E are incorrect, because these methods are not defined in the List interface.</li></ul>
+  
+  
+  <h3> 63.</h3>
+   Given that String implements java.lang.CharSequence, and: 
+  
+<pre> 
+import java.util.*; 
+public class LongWordFinder {
+ public static void main(String[] args) {
+  String[] array = { "123", "12345678", "1", "12", "1234567890"}; 
+  List&lt;String> list = Arrays.asList(array); 
+  Collection&lt;String> resultList = getLongWords(list); } 
+  // INSERT DECLARATION HERE { 
+   Collection&lt;E> longWords = new ArrayList&lt;E>(); 
+   for (E word : coll)
+    if (word.length() > 6) longWords.add(word); 
+     return longWords; 
+    } 
+}
+</pre>
+ Which declarations could be inserted at // INSERT DECLARATION HERE so that the program will compile and run? (Choose all that apply.)
+ 
+ <ol><li> public static &lt;E extends CharSequence> Collection&lt;? extends CharSequence> getLongWords(Collection&lt;E> coll)</li>
+ <li> public static &lt;E extends CharSequence> List&lt;E> getLongWords(Collection&lt;E> coll)</li>
+ <li> public static Collection&lt;E extends CharSequence> getLongWords(Collection&lt;E> coll)</li>
+ <li> public static List&lt;CharSequence> getLongWords(Collection&lt;CharSequence> coll)</li>
+ <li> public static List&lt;? extends CharSequence> getLongWords(Collection&lt;? extends CharSequence> coll)</li>
+ <li> static public &lt;E extends CharSequence> Collection&lt;E> getLongWords(Collection&lt;E> coll)</li>
+ <li> static public &lt;E super CharSequence> Collection&lt;E> getLongWords(Collection&lt;E> coll)</li>
+ </ol>
+  Answer:<ul><li> F is correct.</li>
+  <li>A is close, but it's wrong because the return value is too vague. 
+  The last line of the method expects the return value to be Collection&lt;String>, not Collection&lt;? extends CharSequence>. 
+  B is wrong because longWords has been declared as a Collection&lt;E>, and that can't be implicitly converted to a List&lt;E> to match the declared return value. (Even though we know that longWords is really an ArrayList&lt;E>, the compiler only know what it's been declared as.) 
+  C, D, and E are wrong because they do not declare a type variable E (there's no &lt;> before the return value) so the getLongWords() method body will not compile. 
+  G is wrong because E super CharSequence makes no sense-super could be used in conjunction with a wildcard but not a type variable like E.</li></ul>
+  
+  
+  <h3> 64. Given:</h3> 
+  <pre>
+  12. TreeSet map = new TreeSet(); 
+  13. map.add("one"); 
+  14. map.add("two"); 
+  15. map.add("three"); 
+  16. map.add("four"); 
+  17. map.add("one"); 
+  18. Iterator it = map.iterator(); 
+  19. while (it.hasNext() ) { 
+  20. System.out.print( it.next() + " " ); 
+  21. }
+  </pre>
+   What is the result ?
+   <ol><li> Compilation fails.</li><li> one two three four</li><li> four three two one</li><li> four one three two</li>
+   <li>one two three four one</li><li> one four three two one</li><li> An exception is thrown at runtime.</li>
+   <li> The print order is not guaranteed.</li></ol>
+
+Answer:<ul><li> D is correct. TreeSet assures no duplicate entries; also, when it is accessed it will return elements in natural order, which for Strings means alphabetical.</li>
+<li>A, B, C, E, F, G, and H are incorrect based on the logic described above. Note, even though as of Java 5 you don't have to use an Iterator, you still can.</li></ul>
+
+<h3> 65. Given a method declared as:</h3>
+
+public static &lt;E extends Number> List&lt;? super E> process(List&lt;E> nums) 
+A programmer wants to use this method like this: // INSERT DECLARATIONS HERE output = process(input);
+ Which pairs of declarations could be placed at // INSERT DECLARATIONS HERE to allow the code to compile? (Choose all that apply.)
+ 
+<ol><li> ArrayList&lt;Integer> input = null; ArrayList&lt;Integer> output = null;</li>
+<li> ArrayList&lt;Integer> input = null; List&lt;Integer> output = null;</li>
+<li> ArrayList&lt;Integer> input = null; List&lt;Number> output = null;</li>
+<li> List&lt;Number> input = null; ArrayList&lt;Integer> output = null;</li>
+<li> List&lt;Number> input = null; List&lt;Number> output = null;</li>
+<li> List&lt;Integer> input = null; List&lt;Integer> output = null;</li>
+<li> None of the above.</li></ol>
+
+ Answer:<ul><li> B, E, and F are correct.</li>
+ <li>The return type of process is definitely declared as a List, not an ArrayList, so A and D are wrong. 
+ C is wrong because the return type evaluates to List&lt;Integer>, and that can't be assigned to a variable of type List&lt;Number>. 
+ Of course all these would probably cause a NullPointerException since the variables are still null-but the question only asked us to get the code to compile.</li></ul>
+ 
+
+
+
+
+
+
+
+
+
+<br><br>
+
+
+
+</td></tr></table>
+<a href="index-2.html">BACK</a>
+
+</div>
+
+</body>
+
+<!-- Mirrored from ocpjp.jobs4times.com/collections.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 22 Jun 2024 15:29:37 GMT -->
+</html>

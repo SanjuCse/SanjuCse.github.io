@@ -1,0 +1,1207 @@
+<!DOCTYPE HTML>
+<html>
+
+<!-- Mirrored from java.scwcd.jobs4times.com/JSP-Actions.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 22 Jun 2024 15:25:22 GMT -->
+<head>
+<title>Tutorial for JSP  Actions : SERVLETS, JSP (J2SE/EE/SCWCD)</title>
+	
+<meta name="keywords" content="JSP Action Tags :<jsp:useBean>,<jsp:setProperty>,<jsp:getProperty>,
+     <jsp:include>,<jsp:forward>,<jsp:param>,<jsp:plug-in>,<jsp:params>,<jsp:fallback>,Summary of Standard actions,JSP Documentation ">
+<meta name="description" content="Defined for JSP Action Tags : It is never recommended to write scriptlets, expressions, declarations and business logic with in the Jsp. ">
+<meta name="content-type" content="text/html; charset=ISO-8859-1">
+<meta name="robots" content="nofollow" />
+<meta name="googlebot-news" content="nosnippet">
+<meta name="googlebot" content="noindex">
+<link rel="shortcut icon" href="https://java.scwcd.jobs4times.com/small.ico">
+
+<meta name="alexaVerifyId" content="007JYeZ56b-psQxnAu0mwUYTtKk">  
+<meta name="msvalidate.01" content="5E6AA9EBEF5779EFBFC5EABF3ACF5319" /> 
+
+<!-- Google analytics code    -->
+<script  type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','http://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-49487029-1', 'jobs4times.com');
+  ga('send', 'pageview');
+
+</script>
+    
+<link rel="stylesheet" type="text/css" href="https://java.scwcd.jobs4times.com/styles.css">
+</head>
+  
+<body>
+<div align="center" >
+<table width="75%" border="3" ><tr><td>
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td width="50%" align="left"><a href="https://www.jobs4times.com/"><img alt="jobs4timesLogo"  src="https://img.logos.jobs4times.com/banner J4T.jpg" width="700" height="200">   </a> </td> 
+   	<td  align="right"><a href="https://java.scwcd.jobs4times.com/index.html"><img alt="jobs4timesLogo"  src="https://img.logos.jobs4times.com/as2.jpg"  width="180" height="200" >  </a>  </td> 
+</tr> 
+</table> 
+
+  
+<h1 align="center" style="background-color: rgb(0, 0, 128);"><font color="#ffff00">JSP  Standard  Actions</font> </h1>
+ <u><font color="#FF3366">Agenda: </font></u>
+    <ol>
+    <li><a href="#useBean">&lt;jsp:useBean&gt; tag </a> </li>    
+    <li><a href="#setProperty">   &lt;jsp:setProperty&gt; tag </a>  </li>    
+    <li><a href="#getProperty">   &lt;jsp:getProperty&gt; tag </a></li>
+    <li><a href="#include">   &lt;jsp:include&gt; tag </a></li>
+    <li><a href="#forward">   &lt;jsp:forward&gt; tag </a></li>
+    <li> <a href="#param">  &lt;jsp:param&gt; tag </a></li>
+    <li> <a href="#plug-in">  &lt;jsp:plug-in&gt; tag </a></li>
+    <li> <a href="#params"> &lt;jsp:params&gt; tag</a></li>
+    <li><a href="#fallback">   &lt;jsp:fallback&gt; tag </a></li>    
+    
+    <li> <a href="#Summary-of-Standard-actions">  Summary of Standard actions </a></li>
+    <li> <a href="#JSP-Documentation">  JSP  Documentation </a></li>
+    </ol>
+    
+   
+    
+    
+    
+    
+    
+    
+    
+    
+    
+<h2>Introduction :</h2>
+
+case 1 : problem
+<pre>
+public class JspDemoServlet extends HttpServlet {
+
+public void doGet(HttpServletRequest request, 
+                      HttpServletResponse response)
+			throws ServletException, IOException {
+			
+String uname=request.getParameter("userName");
+request.setAttribute("UserName", uname);
+RequestDispatcher rd=request.getRequestDispatcher("view.jsp");
+rd.forward(request, response);
+}
+}
+</pre>
+
+view.jsp
+<pre>
+Welcome to : &lt;%= (String)request.getAttribute("UserName") %&gt;
+</pre>
+
+<p><strong>OR</strong></p>
+    
+case 2 :
+<pre>
+public class JspDemoServlet extends HttpServlet {
+	
+public void doGet(HttpServletRequest request, 
+		HttpServletResponse response)
+          throws ServletException, IOException {
+
+String uname=request.getParameter("userName");
+foo.Person p=new foo.Person();
+p.setName(uname);
+request.setAttribute("person",p);
+RequestDispatcher rd=request.getRequestDispatcher("view1.jsp");
+rd.forward(request, response);
+}
+}
+</pre> 
+   
+view1.jsp
+<pre>
+Welcome to : 
+&lt;%@page import="foo.Person"%&gt;
+Welcome to : 
+&lt;% 
+Person p=(Person)request.getAttribute("person");
+out.println(p.getName());
+%&gt;
+</pre>
+
+Person.java
+<pre>
+package foo;
+
+public class Person {
+ String name;
+ public void setName(String name) {
+  this.name=name;		
+ }
+ public String getName() {
+  return name;
+ }
+}
+</pre>
+
+<hr>
+Solution : view1.jsp
+<pre>
+&lt;jsp:useBean id="person" class="foo.Person" scope="request" /&gt;
+Welcome to : &lt;jsp:getProperty property="name" name="person" /&gt;
+</pre>
+<hr>
+Problem : demo.jsp
+<pre>
+&lt;%!
+public int squareIt(int n){
+ return n*n;
+}
+%&gt;
+&lt;h1&gt;The square of 4 is : &lt;%= squareIt(4) %&gt;&lt;/h1&gt;
+&lt;h1&gt;The square of 2 is : &lt;%= squareIt(2) %&gt;&lt;/h1&gt; 
+</pre>
+
+This approach has several serious dis-advantages :
+<ul>
+<li>There is no clear separation of presentation logic and business logic. The person who is writing the jsp should have compulsory knowledge on both java &amp; html which may not be possible always, this approach doesn't promote re-usability .  </li>
+<li>It reduces readability.</li>
+<li>We can resolve  these problem by separating entire business logic inside java bean.</li> 
+</ul>
+
+javabean :
+<pre>
+package foo;
+public class Calculator {
+ public int squareIt(){
+  return n*n;
+ }
+}
+</pre>
+  
+view.jsp
+<pre>
+&lt;jsp:useBean id="calc" class="foo.Calculator" scope="session" /&gt;
+The square of 4 is : &lt;%= calc.squareIt(4) %&gt;
+</pre> 
+
+This approach has several advantages :
+<ul>
+<li>Separation of presentation and business logic (presentation logic available in Jsp and business logic available in java bean) , so that readability is improved.</li>
+<li>Java developer can concentration on business logic where as Html developer can concentration on presentation logic as both can work simultaneously so that we can reduce development time and  increases productivity.</li>
+<li>It promotes re-usability of the code i.e., where ever this squareIt() functionality is used we can reuse the same bean with rewriting.</li>
+<li>We can purchase bean for file uploading and we can start uploading of the file with in minutes.</li>
+</ul>
+<p><b>Note : </b> It is never recommended to write scriptlets, expressions, declarations and business logic with in the Jsp.</p>
+
+<p><strong>java bean :</strong> java bean is a simple java class </p>
+To use useBean inside jsp the bean class has to follow the following rules
+<ul>
+<li>Jsp engine is responsible to perform instantiation of Java bean for this always executes public no argument constructor otherwise <strong> &lt;jsp:useBean&gt; </strong> tag won't be work. (because it internally calls that setter method only)</li>
+<li>For every property bean class should contains public getter methods otherwise <strong> &lt;jsp:getProperty&gt; </strong> tag won't be work.(because it internally calls corresponding getter method only)</li>
+<li>It is highly recommended to keep bean class as part of some package.</li>
+</ul>
+
+<h2>Jsp Standard Actions : </h2>
+<h3 id="useBean"> &lt;jsp:useBean&gt; : </h3>
+We  can use this tag to make bean functionality available to the Jsp, There are 2 forms of &lt;jsp:useBean&gt;
+
+<p><strong>without body :</strong></p>
+<pre>
+&lt;jsp:useBean id="c" class="CustomerBean" /&gt;
+</pre>
+
+ 
+<p><strong>with body :</strong></p>
+<pre>
+&lt;jsp:useBean id="c" class="CustomerBean" &gt;
+    ---------------------
+&lt;jsp:useBean&gt;
+</pre>
+
+The main objective of body is to perform initialization for the newly created bean object, The bean object is already available then it won't be created new bean object it will reuse existing object only , in this case body won't be executed.
+
+<h5>Attribute list of &lt;jsp:useBean&gt; : </h5>
+<ol>
+<li>id</li><li>class</li><li>type</li><li>scope</li><li>beanName</li>
+</ol> 
+
+<h6>id :</h6>
+<ul>
+<li>This id attribute represents name of the reference variable of the bean object.</li>
+<li>By means of this id attribute only we can access bean  in rest of the Jsp's </li>
+<li>This attribute is a mandatory attribute.</li> 
+</ul>
+
+<pre>
+&lt;jsp:useBean id="c" class="CustomerBean" /&gt;
+
+  // the appropriate equivalent java code
+  
+CustomerBean c = new CustomerBean();
+</pre>
+
+<h6>class :</h6>
+<ul>
+<li>This attribute represents fully qualified name of the Java bean class, for this class only jsp engine perform instantiation  hence the value of class attribute should be concrete class.</li>
+<li>abstract class and interfaces are not allowed.</li>
+<li>The bean class compulsory should contain public no-arg constructor  otherwise we will get instantiation problem.</li>
+<li>This attribute is optional but when ever we are not specify class attribute compulsory we should specify type attribute.</li>
+</ul>
+
+
+<h6>type :</h6>
+<ul>
+<li>We can use type attribute to specify the type of reference variable.</li>
+<li>The value of type attribute can be concrete class or abstract class or interface.</li>
+<li>This attribute is optional but when ever we are not specify type attribute compulsory we should specify class attribute.</li>
+</ul>
+<pre>
+&lt;jsp:useBean id="p" type="foo.Person" class="foo.Student" /&gt;
+
+  // equivalent java code
+  
+foo.Person p = new foo.Student();
+</pre>
+
+
+<h6>scope :</h6>
+<ul>
+<li>This attribute specifies in which scope jsp engine has to search for the required bean object, in that scope if the bean object is not already available then Jsp engine creates a bean object and store into specified scope for the future purpose.</li>
+<li>The allowed values for the scope attributes are page, request, session, application.</li>
+<li>This attribute is optional and default scope is "page".</li>
+</ul>
+
+<pre>
+&lt;jsp:useBean id="c" class="CustomerBean" scope="session" /&gt;
+
+//equivalent java code
+
+CustomerBean c=null;
+syncronized(session){
+c=(CustomerBean)pageContext.getAttribute("c",
+                     pageContext.SESSION_SCOPE);
+ if(c==null){
+ c=new CustomBean();
+ pageContext.setAttribute("c",c,pageConext.SESSION_SCOPE);
+   ----------------
+ }
+}
+</pre>  
+
+If we specify only type attribute without class attribute then bean object should be already available with in the specified scope if it is not already available then we will get instantiation exception.  
+<pre>
+&lt;jsp:useBean id="c" type="CustomerBean" scope="session" /&gt;
+</pre>
+
+To use session scope compulsory session object should be available otherwise we will get translation time error.
+
+
+<pre>
+&lt;%@page session="false" %&gt;
+&lt;jsp:useBean id="c" class="CustomerBean" scope="session" /&gt;
+</pre>
+<p>exception:  Illegal for useBean  to use session scope when jsp page declare that it doesn't participate into the session.</p>
+
+
+<pre>
+package foo;
+
+public class CalculatorBean {
+ static int i=0;
+ public CalculatorBean(){
+ System.out.println("calculator bean object created"+
+                                       (++i)+"times");
+ }
+ public int squareIt(int n){
+	return n*n;
+ }
+}
+</pre>
+
+test.jsp
+<pre>
+&lt;jsp:useBean id="calc" class="foo.CalculatorBean" scope="session" /&gt;
+The square of 4 is : &lt;%= calc.squareIt(4) %&gt;
+The square of 5 is : &lt;%= calc.squareIt(5) %&gt;
+&lt;a href="beanTest.jsp"&gt;Click Here&lt;/a&gt;
+</pre>
+
+beanTest.jsp
+<pre>
+&lt;jsp:useBean id="calc" type="foo.CalculatorBean" scope="session" /&gt;
+The square of 8 is : &lt;%= calc.squareIt(8) %&gt;
+The square of 9 is : &lt;%= calc.squareIt(9) %&gt;
+</pre>
+
+case 2 :
+<pre>
+&lt;jsp:useBean id="calc" type="foo.CalculatorBean" scope="session" &gt;
+The square of 8 is : &lt;%= calc.squareIt(8) %&gt;
+The square of 9 is : &lt;%= calc.squareIt(9) %&gt;
+&lt;/jsp:useBean&gt;
+</pre>
+
+case 3 :
+
+<pre>
+&lt;jsp:useBean id="c" type="foo.CalculatorBean" scope="session" &gt;
+The square of 8 is : &lt;%= calc.squareIt(8) %&gt;
+The square of 9 is : &lt;%= calc.squareIt(9) %&gt;
+&lt;/jsp:useBean&gt;
+</pre>
+exception: javax.servlet.ServletException:java.lang.InstantiationException
+<p></p>
+
+person.java
+<pre>
+package foo;
+
+public abstract class Person {
+ public abstract String getMessage(); 
+}
+</pre>
+
+Student.java
+<pre>
+package foo;
+
+public  class Student extends Person{
+ public  String getMessage(){
+	 return "Ashok";
+ }
+ public String getName(){
+	 return "Aggidi";
+ }
+}
+</pre>
+
+test.jsp
+<pre>
+&lt;jsp:useBean id="p" type="foo.Person" class="foo.Student"
+                                   scope="session" /&gt;
+The person name is : &lt;%= p.getMessage() %&gt;
+&lt;a href="beanTest.jsp"&gt;Click Here&lt;/a&gt;
+</pre>
+beanTest.jsp
+<pre>
+&lt;jsp:useBean id="person" class="foo.Student" scope="session" /&gt;
+The student name is : &lt;%= person.getName() %&gt;
+</pre>
+
+
+
+<h6>beanName :</h6>
+There may be a chance of using serialized bean object from local file system in that case we have to used beanName attribute.
+
+<h5>Conclusions for &lt;jsp:useBean&gt; :</h5>
+<ol>
+<li>'id' attribute is mandatory</li>
+<li>'scope' attribute is optional and default scope is page.</li>
+<li>The attributes class, type, beanName can be used in the following combinations
+    <ol>
+    <li>class</li><li>type</li><li>class and type</li><li>type and beanName</li>
+    </ol></li>
+<li>beanName is always associated with type attribute but not class attribute.</li>
+<li>If we are using class attribute whether we are using type attribute  or not compulsory it should be concrete class and it should  contains  public no-arg constructor.</li>
+<li>If we are using only type attribute without class attribute then the specified bean object compulsory should be available specified scope otherwise this tag won't  create new bean object and raises  instantiation exception.</li>
+</ol>
+Consider the following code
+<pre>
+package pack1;
+public class CustomerBean {
+  -----------------
+}
+</pre>
+<h6>Assume that no CustomerBean object is already created then which of the following  standard actions  create a new bean object and store in request scope ?</h6>
+
+
+<ol>
+<li><strong>&lt;jsp:useBean id="c" class="pack1.CustomerBean"  /&gt; </strong> //invalid </li>
+<li><strong>&lt;jsp:useBean id="c" type="pack1.CustomerBean" scope="request" /&gt; </strong> //invalid </li>
+<li><strong>&lt;jsp:useBean name="c" class="pack1.CustomerBean" scope="request" /&gt; </strong> //invalid </li>
+<li><strong>&lt;jsp:useBean id="c" class="pack1.CustomerBean" scope="request" /&gt; </strong> //valid </li>
+</ol> 
+
+
+
+
+
+
+
+
+  
+  
+<h3 id="getProperty"> &lt;jsp:getProperty&gt; : </h3>
+
+This tag can be used to get the properties of bean object
+<pre>
+&lt;%
+CustomerBean c= new CustomerBean();
+out.println(c.getName());
+%&gt;
+
+//equalant jsp
+
+&lt;jsp:useBean id="c" class="CustomerBean" /&gt;
+&lt;jsp:getProperty name="c" property="name" /&gt;
+</pre>
+
+&lt;jsp:getProperty&gt; tag contains the following 2 attributes
+<ol>
+<li>name</li><li>property</li>
+</ol> 
+<h5>name :</h5>
+It represents name of the bean object reference variable from which the required property has to retrieve , it is exactly  equal to id attribute of &lt;jsp:useBean&gt;.
+
+<h5>property :</h5>
+It represents the name of the java bean property whose value has to retrieve.
+<p>Note : both attributes are mandatory attributes.</p> 
+
+<pre>
+package foo;
+
+public class CustomerBean{
+ private String name="ashok";
+ private String mail="ashok@jobs4times.com";
+
+public String getName() {
+	return name;
+}
+
+public String getMail() {
+	return mail;
+}
+}
+</pre>
+
+index.jsp
+
+<pre>
+&lt;%@page import="foo.CustomerBean" %&gt;
+&lt;%
+CustomerBean c=new CustomerBean();
+out.println("The customer name is :"+c.getName());
+out.println("The customer mail is :"+c.getMail());
+ %&gt;
+ 
+ (OR)
+ 
+&lt;jsp:useBean id="c" class="foo.CustomerBean"/&gt;
+The Customer name is : &lt;jsp:getProperty property="name" name="c"/&gt;
+The Customer mail is : &lt;jsp:getProperty property="mail" name="c"/&gt;
+</pre>
+
+
+
+<h3 id="setProperty"> &lt;jsp:setProperty&gt; : </h3>
+<p>We can use this tag to set the properties of bean object , &lt;jsp:setProperty&gt; tag contains the following forms</p> 
+form 1 : 
+<pre>
+&lt;jsp:setProperty property="age" name="c" value="30" /&gt;
+       (OR)
+  c.setAge("30");
+</pre>
+<p></p>
+form 2 : 
+<pre>
+&lt;jsp:setProperty property="age" name="c" param="age" /&gt;
+       (OR)
+  c.setAge(request.getParameter("age"));
+</pre>
+Note : The param attribute to retrieve the request parameter value "age" and assign in to java bean property age. 
+<p></p>
+form 3 : 
+<pre>
+&lt;jsp:setProperty property="age" name="c"  /&gt;
+       (OR)
+  c.setAge(request.getParameter("age"));
+</pre>
+Note: To get this type of advantage it is highly recommended to maintain bean property names same as form parameter names. 
+<p></p>
+form 4 : 
+<pre>
+&lt;jsp:setProperty property="*" name="c"  /&gt;
+ // "*" specifies all the properties of java bean
+</pre>
+Note : It iterates all request parameters  and if any request parameter name match with java bean property name then assign request parameter value to the  java bean property.
+
+<p> &lt;jsp:setProperty&gt; contains the following attributes </p>
+<ol>
+<li>name</li><li>property</li><li>value</li><li>param</li>
+</ol>
+<h5>name :</h5>
+It represents name of the reference variable of the bean object whose property has to set, this is exactly same as id attribute of &lt;jsp:useBean&gt; , It is mandatory attribute.
+
+<h5>property :</h5>
+It represents name of the java bean property which has to set, it is mandatory attribute.
+
+
+<h5>value :</h5>
+It specifies the value which has to set to the java bean property, it is an optional and should not come combination with param attribute.
+ 
+
+
+<h5>param :</h5>
+This attribute specifies name of the request parameter  whose value has to set to the java bean property, it is an optional attribute and should not come combination with value attribute.
+<p></p>  
+
+
+CustomerBean.java
+<pre>
+package foo;
+
+public class CustomerBean{
+ private String name=null;
+ private String mail=null;
+ private String age=null;
+ 
+ public String getName() {
+	return name;
+ }
+ public void setName(String name) {
+	this.name = name;
+ }
+ public String getMail() {
+	return mail;
+ }
+ public void setMail(String mail) {
+	this.mail = mail;
+ }
+ public String getAge() {
+	return age;
+ }
+ public void setAge(String age) {
+	this.age = age;
+ }
+}
+</pre>
+
+index.jsp
+<pre>
+&lt;form action="test.jsp" method="post"&gt;
+&lt;h2&gt;Enter Your Details :&lt;/h2&gt;
+Enter Name : &lt;input type="text" name="uname"&gt;
+Enter Email : &lt;input type="text" name="mail"&gt;
+Enter Age : &lt;input type="text" name="age"&gt;
+ &lt;input type="submit" value="submit"&gt;
+&lt;/form&gt;
+</pre>
+
+test.jsp
+<pre>
+&lt;h1&gt;Set Property Example : &lt;/h1&gt;
+
+&lt;jsp:useBean id="c" class="foo.CustomerBean" /&gt;
+&lt;jsp:setProperty property="*" name="c"/&gt;
+
+Entered Name is : 
+&lt;jsp:getProperty property="name" name="c" /&gt;
+Entered Mail is : 
+&lt;jsp:getProperty property="mail" name="c" /&gt;
+Entered Age is : 
+&lt;jsp:getProperty property="age" name="c" /&gt;
+</pre>
+Note : All required type conversions(String to int) will be performed automatically by &lt;jsp:setProperty&gt;.
+
+<p></p>
+<p><strong>Case 1 : </strong></p>
+test.jsp
+<pre>
+&lt;h1&gt;Set Property Example : &lt;/h1&gt;
+
+&lt;jsp:useBean id="c" class="foo.CustomerBean" /&gt;
+
+&lt;jsp:setProperty property="mail" name="c" 
+  value="&lt;%= request.getParameter("mail") %&gt;" /&gt; //valid
+&lt;jsp:setProperty property="mail" name="c" 
+  value="&lt;%= request.getParameter("age") %&gt;" /&gt; //invalid
+
+Entered Name is : 
+&lt;jsp:getProperty property="name" name="c" /&gt;
+Entered Mail is : 
+&lt;jsp:getProperty property="mail" name="c" /&gt;
+Entered Age is : 
+&lt;jsp:getProperty property="age" name="c" /&gt;
+</pre>
+
+Note :
+Automatic String to primitive conversions doesn't work if we use scripting elements, it fails even if we use expression inside &lt;jsp:setProperty&gt; standard actions.
+
+<pre>
+&lt;jsp:useBean id="c" class="foo.CustomerBean" /&gt;
+
+&lt;jsp:setProperty property="*" name="c" /&gt; //valid
+&lt;jsp:setProperty property="empId" name="c" param="empId" /&gt; //valid
+&lt;jsp:setProperty property="empId" name="c"  /&gt; //valid
+&lt;jsp:setProperty property="empId" name="c" value="1123" /&gt; //valid
+</pre>
+
+Note : If we are using scripting elements  inside jsp standard actions <strong> automatic conversions doesn't work </strong> 
+but it is possible scripting elements inside standard actions.
+
+<pre>
+&lt;jsp:useBean id="c" class="foo.CustomerBean" /&gt;
+&lt;jsp:setProperty property="empId" name="c" 
+  value="&lt;%= request.getParameter("empId") %&gt;" /&gt; //invalid
+</pre>
+
+<p></p>
+<h6>Developing reusable web-components : </h6>
+We can develop reusable web-components by using the following 3 standard actions
+<ol><li> &lt;jsp:include&gt; </li><li> &lt;jsp:forward&gt; </li><li> &lt;jsp:param&gt; </li></ol>
+
+<h3 id="include"> &lt;jsp:include&gt; : </h3>
+
+The response of include page will be included in current response at request processing time, hence it is a dynamic include.
+<p> This  tag representation of <strong> pageContext.include("header.jsp"); </strong></p> 
+ 
+ This standard action contains the following 2 attributes
+ <ol> <li>page</li><li>flush</li> </ol>
+ <ul>
+ <li><strong>page : </strong> page attribute represents name of the included page and it is mandatory.</li>
+ <li><strong>flush : </strong>It specifies whether the response will be flushed before inclusion or not , it is an optional attribute and default value is false.</li>
+ </ul>
+ index.jsp
+<pre>
+&lt;jsp:include page="header.jsp" /&gt;
+&lt;h2&gt;Welcome to Jobs4Times.com&lt;/h2&gt;
+&lt;jsp:include page="footer.jsp" /&gt;
+</pre>
+ 
+ header.jsp
+<pre>
+&lt;h2&gt; We are Master in Java Certification &lt;/h2&gt;
+</pre>
+ 
+ footer.jsp
+<pre>
+ &lt;h4&gt;copyright &copy; www.jobs4times.com &lt;/h4&gt;
+</pre>
+ 
+<h6>Following 4 possible ways to implement include mechanism in JSP's : </h6>
+<ol>
+<li>By using include directive :
+<pre>
+&lt;%@include file="header.jsp" %&gt;
+</pre></li>
+
+<li>By using include action :
+<pre>
+&lt;jsp:include page="header.jsp" flush="true" /&gt;
+  // by default flush is false
+</pre></li>
+<li>By using pageContext implicit object :
+<pre>
+&lt;% pageContext.include("header.jsp");  %&gt; 
+</pre>
+</li> 
+<li>By using RequestDispatcher :
+<pre>
+&lt;%
+RequestDispatcher rd=request.getRequestDispatcher("header.jsp");
+rd.include(request,response);
+%&gt;
+</pre></li>
+</ol>
+
+  
+<h3 id="forward"> &lt;jsp:forward&gt; : </h3>
+If the first jsp is responsible to perform some preliminary processing activities and second jsp is responsible for providing complete response then we should go for forward mechanism.
+<p>Syntax : </p>
+<pre>
+&lt;jsp:forward page="second.jsp" /&gt;
+</pre>
+<p> It contains only one attribute, i.e., page , and it is a mandatory attribute.</p> 
+ 
+ first.jsp
+<pre>
+&lt;h2&gt;This is first Jsp page &lt;/h2&gt;
+&lt;jsp:forward page="second.jsp" /&gt;
+&lt;h2&gt;This is after forwarding &lt;/h2&gt;
+</pre>
+ 
+second.jsp
+<pre>
+&lt;h2&gt;This is second Jsp page &lt;/h2&gt;
+</pre>
+ 
+ 
+<h6>Following 3 possible ways to implement forward mechanism in JSP's : </h6>
+<ol>
+<li>By using forward action :
+<pre>
+&lt;jsp:forward page="second.jsp" /&gt;
+</pre></li>
+<li>By using pageContext implicit object :
+<pre>
+&lt;% pageContext.forward("second.jsp");  %&gt; 
+</pre>
+</li> 
+<li>By using RequestDispatcher :
+<pre>
+&lt;%
+RequestDispatcher rd=request.getRequestDispatcher("header.jsp");
+rd.forward(request,response);
+%&gt;
+</pre></li>
+</ol>
+
+<h3 id="param"> &lt;jsp:param&gt; : </h3>
+While forwarding or including if we want to send parameters to the target Jsp we can achieve this by using &lt;jsp:param&gt; tag
+
+<p></p>
+
+&lt;jsp:param&gt; tag defines the following 2 mandatory attributes
+<ol>
+<li><strong>name : </strong>It represents name of the parameter.</li>
+<li><strong>value : </strong> It represents value of the Parameter.</li>
+</ol>
+
+<p>Note : The parameters which are sending by using &lt;jsp:param&gt; tag are available as form parameters in target Jsp.</p>
+
+first.jsp
+<pre>
+&lt;jsp:include page="second.jsp"&gt;
+ &lt;jsp:param value="ashok" name="username"/&gt;
+ &lt;jsp:param value="25" name="age"/&gt;
+&lt;/jsp:include&gt;
+</pre>
+
+second.jsp
+<pre>
+&lt;%@page isELIgnored="false" %&gt;
+&lt;h2&gt;Hi i'm getting the values from Jsp param&lt;/h2&gt;
+The UserName is : &lt;%=request.getParameter("username") %&gt;
+The Age is : &lt;%=request.getParameter("age") %&gt;
+</pre>
+
+<h6><u>Conclusions :</u> </h6>
+<h5>case 1 :</h5>
+<pre>
+&lt;jsp:forward page="http://localhost:2020/jspApp/second.jsp"/&gt;
+                                                 //invalid
+&lt;jsp:include page="http://localhost:2020/jspApp/second.jsp"/&gt;
+                                                  //invalid
+&lt;%@include file="http://localhost:2020/jspApp/second.jsp"%&gt;
+                                                 //invalid
+</pre>
+The value of page and file attributes should be a relative path or  absolute path  but not server port, protocol and etc.,  
+
+<h5>case 2 :</h5>
+<pre>
+&lt;jsp:forward page="/test" /&gt; //valid
+&lt;jsp:include page="/test" /&gt; //valid
+&lt;%@include file="/test" %&gt;  //invalid
+</pre>
+In the case of forward and include actions page attribute can pointing to a servlet.<br/>
+But in the case of include directive  file attribute can't pointing to a servlet but it can pointing to a Jsp,html,xhtml,xml and etc., 
+
+<h5>case 3 : </h5> 
+<pre>
+&lt;jsp:forward page="/test?name=ashok" /&gt;    //valid
+&lt;jsp:forward page="second.jsp?name=ashok" /&gt; //valid
+&lt;jsp:include page="second.jsp?name=ashok" /&gt; //valid
+&lt;%@include file="second.jsp?name=ashok" %&gt; //invalid
+</pre>
+In the case of include and forward actions we are allowed to pass query string,<br/>
+But in the case of include directive we are not allowed to pass query string.  
+
+
+<h3 id="plug-in"> &lt;jsp:plugin&gt; : </h3>
+
+<ul><li>
+Using &lt;jsp:plugin&gt; action provides the support for including java applet in a jsp page, <br>
+If we have java applets that are part of your web-applications.</li>
+<li>While it's possible to have appropriate html code embedded in your Jsp page, the use of &lt;jsp:plugin&gt; allows the functionality to the browser is neutral.</li>
+</ul>
+
+There are the following 2 optional support tags those work with &lt;jsp:plugin&gt;. i.e., &lt;jsp:params&gt; and &lt;jsp:fallback&gt;
+<h3 id="params"> &lt;jsp:params&gt; : </h3>
+We can pass any additional parameters to the target applet or bean.
+<h3 id="fallback"> &lt;jsp:fallback&gt; : </h3>  
+Which specifies  any content that should be display to the browser, if the plugin is not started or because of some runtime issues.
+<br/>A plugin specific message will be presented to the end user.
+
+
+
+<br/><br/>
+
+ 
+  
+ <p>A translation time error will occurs if we use  &lt;jsp:params&gt; , &lt;jsp:fallback&gt; any other context other than child of &lt;jsp:plugin&gt;.</p>
+ 
+ Syntax : 
+ <pre>
+ &lt;jsp:plugin code="classFileName .class extention" 
+   codebase="The directory of class file name" type="applet/bean" &gt;
+   {align="alignment"}
+   {height=""}
+   {width=""}
+   
+{ &lt;jsp:params&gt;
+  { &lt;jsp:param value="pvalue" name="pname"/&gt; }
+&lt;/jsp:params&gt; }
+
+&lt;jsp:fallback&gt;  Arbitrary test &lt;/jsp:fallback&gt;
+&lt;/jsp:plugin&gt;
+
+  {} ----&gt;optional attributes 
+</pre>
+  
+  
+<h5>type  : </h5>
+The type of object plugin will execute you must specify either applet or bean, as this attribute there is no default value.
+<br/> It is a mandatory attribute.
+<br/>type="applet/bean"  
+
+<h5>code : (class="ClassFileName") </h5>
+The name of the java class file that plugin will execute we must include <strong> .class </strong> extension, file name is relative to the directory named in codeBase attribute , it is also mandatory attribute.
+
+<h5>codeBase  : (codeBase="ClassFileDirectoryName") </h5>
+This is a absolute path or relative path to the directory that contains applet code, it is also mandatory attribute.
+
+<p></p>
+
+index.jsp
+<pre>
+&lt;jsp:forward page="plugIn.jsp"&gt;&lt;/jsp:forward&gt;
+</pre>
+
+plugIn.jsp
+<pre>
+&lt;h2&gt;Welcome to Jsp Application&lt;/h2&gt;
+
+First Applet :
+&lt;jsp:plugin code="ClockApplet.class" codebase="applets"
+               type="applet"  width="260"  height="150"&gt;
+ &lt;jsp:fallback&gt;Plug in tag not supported ..... &lt;/jsp:fallback&gt;
+&lt;/jsp:plugin&gt;
+
+Second Applet :
+&lt;jsp:plugin code="edu.com.MessageApplet.class" 
+    codebase="applets" type="applet" width="500"  height="100"&gt;
+ &lt;jsp:params&gt;
+   &lt;jsp:param value="Welcome to SCWCD" name="msg"/&gt;
+ &lt;/jsp:params&gt;
+ &lt;jsp:fallback&gt;No support to this Applet ..... &lt;/jsp:fallback&gt;
+&lt;/jsp:plugin&gt;
+</pre>
+
+
+ClockApplet.java
+<pre>
+public class ClockApplet extends Applet implements Runnable{
+	
+String time;
+	
+public void init(){
+ Thread t=new Thread(this);
+ t.start();
+}
+
+public void Paint(Graphics g){
+g.setColor(Color.lightGray);
+g.fill3DRect(40, 40, 150, 100, true);
+g.setFont(new Font("monotypeCorsiva",Font.ITALIC,35));
+g.setColor(Color.red);
+
+g.drawString(time, 60, 100);
+
+}
+
+public void run() {
+
+while(true){
+ time=String.valueOf(
+     new SimpleDateFormat("hh:mm:ss").format(new Date()));
+ repaint();
+
+try{
+	Thread.sleep(1000);
+}catch (InterruptedException e) {
+	e.printStackTrace();
+}
+
+}//run
+}
+}//class	
+</pre>
+
+
+MessageApplet.java
+<pre>
+package edu.com;
+
+public class MessageApplet extends Applet implements Runnable{
+	
+String message;
+	
+public void init(){
+ message=getParameter("msg");//available in applet class
+ if(message==null){
+	 message="This is default message";
+ }
+}
+
+public void Paint(Graphics g){
+g.setColor(Color.BLUE);
+g.setFont(new Font("monotype Corsiva",Font.ITALIC,40));
+g.drawString(message, 20, 50);
+}
+
+public void run() {
+}
+
+}
+</pre>
+
+first.jsp
+<pre>
+&lt;h2&gt;This is first Jsp Page&lt;/h2&gt;
+&lt;%! String nextPage="second.jsp"; %&gt;
+&lt;jsp:forward page="&lt;%= nextPage %&gt;" /&gt; //valid
+               // static or dynamic
+&lt;h2&gt;This is after forwarding&lt;/h2&gt;
+</pre>
+
+second.jsp
+<pre>
+&lt;h2&gt;This is second Jsp Page&lt;/h2&gt;
+</pre>
+
+<h4 id="Summary-of-Standard-actions">Summary of Standard actions :</h4>
+<table border="1">
+<tr><th>Standard action</th><th>Purpose</th><th>attributes</th></tr>
+<tr><td>&lt;jsp:useBean&gt;</td><td>To make bean object available to the Jsp</td><td>id, class, type, scope, beanName</td></tr>
+<tr><td>&lt;jsp:getProperty&gt;</td><td>To get and print properties of Java bean</td><td>name, property</td></tr>
+<tr><td>&lt;jsp:setProperty&gt;</td><td>To set the properties of bean</td><td>name, property, value, param</td></tr>
+<tr><td>&lt;jsp:forward&gt;</td><td>To forward a request from one Jsp to another Jsp</td><td>page</td></tr>
+<tr><td>&lt;jsp:include&gt;</td><td>To include the response of some other Jsp into current Jsp at request processing time</td><td>page, flush</td></tr>
+<tr><td>&lt;jsp:param&gt;</td><td>To send parameters to the target Jsp while forwarding or including </td><td>name, value</td></tr>
+<tr><td>&lt;jsp:plugin&gt;</td><td>To embedded a java applet/bean into your Jsp</td><td>type, code, codeBase, {height,width,align}</td></tr>
+<tr><td>&lt;jsp:params&gt;</td><td>To pass additional data or parameters to the target applet or java bean</td><td>no</td></tr>
+<tr><td>&lt;jsp:fallback&gt;</td><td>A plugin specific message will be display to the end-user when a plugin is not started or due to some runtime issue</td><td>no</td></tr>
+</table>
+
+<h2 id="JSP-Documentation">JSP Documentation : </h2>
+They are 2 types syntaxes are possible to write a Jsp 
+<ol><li>Jsp Standard syntax</li><li>Xml based syntax</li></ol>
+
+<ul>
+<li><strong> Jsp Standard Syntax : </strong> If we are writing a Jsp by using Jsp standard syntax such type of Jsp's are called Jsp pages.</li>
+<li><strong> Xml based syntax :  </strong> If we are writing Jsp by using Xml based syntax such type of Jsp's are called Jsp document.</li> 
+</ul>
+
+
+<table border="1">
+<tr><th> </th><th>Standard Syntax </th><th>XML based Syntax (all are case sensitive)</th></tr>
+<tr><td>scriptlet :</td><td> &lt;% %&gt; </td><td> &lt;jsp:script&gt; </td></tr>
+<tr><td>declararion :</td><td> &lt;%! %&gt; </td><td> &lt;jsp:declaration&gt; </td></tr>
+<tr><td>expression :</td><td> &lt;%= %&gt; </td><td> &lt;jsp:expression&gt; </td></tr>
+</table>
+
+<h5>directives : </h5> 
+<table border="1">
+<tr><th>directives </th><th width="41%"> Standard Syntax </th><th>XML based Syntax (all are case sensitive)</th></tr>
+<tr><td>page</td><td> &lt;%@page import="java.util.*" %&gt; </td><td> &lt;jsp:directive.page  import="java.util.*" /&gt; </td></tr>
+<tr><td>include</td><td> &lt;%@include file="second.jsp" %&gt; </td><td>  &lt;jsp:directive.include  file="second.jsp" /&gt; </td></tr>
+<tr><td>taglib</td><td> &lt;%@taglib prefix="mime" uri="www.jobs4times.com"  %&gt; </td><td> For the taglib directive there is no equivalent syntax in xml but we can provide its purpose by using  &lt;jsp:root&gt; </td></tr>
+</table>
+Note : 
+<pre>
+&lt;jsp:root xmlns:mime="www.jobs4times.com" version="4.3" /&gt;
+  //version is mandatory attribute
+  //xmlns:mime is an optional attribute 
+   //and we can take any no.of xml name spaces 
+</pre>
+
+
+
+<h5>Standard actions : </h5>
+There is no difference in standard actions representation between standard syntax and xml based syntax.<br/>
+<b>Ex : </b>
+<table border="1">
+<tr><th> </th><th>Standard Syntax </th><th>XML based Syntax </th></tr>
+<tr><td>useBean </td><td> &lt;jsp:useBean id="c" class="CustomerBean" /&gt; </td><td> // same</td></tr>
+</table>
+
+
+<h5>Comments : </h5>
+Jsp specification doesn't provide any specific syntax for writing comments , hence we can use normal syntax
+
+<table border="1">
+<tr><th>Jsp comment </th><th>XML comment </th></tr>
+<tr><td> &lt;%-- --%&gt; </td><td> &lt;!-- --&gt; </td></tr>
+</table>
+
+<h4>Template text :</h4>
+Jsp Standard syntax doesn't provide any specific way to write template text but Xml based syntax  it provides a special tag &lt;jsp:text&gt; 
+ 
+
+<table border="1">
+<tr><th>Jsp standard syntax </th><th>XML based syntax </th></tr>
+<tr><td> This is secons jsp </td><td> &lt;jsp:text&gt; This is second Jsp &lt;/jsp:text&gt; </td></tr>
+</table>
+
+
+<h6>How the web-container identifies Jsp document ? </h6>
+<ol>
+<li>Save the jsp file with <strong>.jspx</strong> extension.</li>
+<li>Enclose entire Jsp with in<strong> &lt;jsp:text&gt;  </strong> tag.</li>
+<li>Use &lt;jsp-config&gt; element in web.xml as follows
+<pre>
+&lt;web-app&gt;
+&lt;jsp-config&gt;
+  &lt;jsp-property-group&gt;
+    &lt;url-pattern&gt;/jspx/*&lt;/url-pattern&gt;
+    &lt;is-xml&gt;true&lt;/is-xml&gt;
+  &lt;/jsp-property-group&gt;
+&lt;/jsp-config&gt;
+&lt;/web-app&gt;
+</pre>
+</li>
+</ol>
+<b>Note :</b> From servlet 2.4v onwards web-container can identify Jsp document automatically , no special arrangement is reuired.
+
+<h6>Write a Jsp document to print hit count of the Jsp ?</h6>
+
+index.jsp (servlet 2.5v)
+<pre>
+&lt;jsp:directive.page isELIgnored="false" /&gt;
+&lt;!--
+including header.jsp to current  jsp
+--&gt;
+&lt;jsp:directive.include file="header.jsp" /&gt;
+&lt;jsp:declaration&gt; int count=0; &lt;/jsp:declaration&gt;
+&lt;jsp:scriptlet&gt;  count++; &lt;/jsp:scriptlet&gt;
+&lt;jsp:text&gt;The hit count of this page is : &lt;/jsp:text&gt;
+&lt;jsp:expression&gt; count &lt;/jsp:expression&gt;
+</pre> 
+<ul>
+<li>It is never recommended to use both standard and Xml based syntax simultaneously.</li>
+<li>The main advantage of Xml based syntax is we can use Xml editors like Xml-spy for writing and debugging jsp's </li>
+<li>All xml based tags and attributes are case-sensitive and attributes  enclosed either single single quote('') or double quote("").</li>
+</ul>
+<h6>Which of the following valid way of importing java.util.ArrayList in our Jsp ?</h6>
+
+<pre>
+&lt;jsp:page import="java.util.ArrayList" /&gt; //invalid
+
+&lt;jsp:page.directive import="java.util.ArrayList" /&gt; //invalid
+
+&lt;jsp:directive  page import="java.util.ArrayList" /&gt; //invalid
+
+&lt;jsp:directive.page import="java.util.ArrayList" /&gt; //valid
+</pre>
+
+
+<hr/>
+
+Person.java
+<pre>
+package foo;
+
+public class Person {
+ private String name;
+ private Dog dog;
+
+public String getName() {
+ return name;
+}
+public void setName(String name) {
+ this.name = name;
+}
+public Dog getDog() {
+ return dog;
+}
+public void setDog(Dog dog) {
+ this.dog = dog;
+}
+}
+</pre>
+
+Dog.java
+<pre>
+package foo;
+
+public class Dog {
+ private String name;
+
+public String getName() {
+ return name;
+}
+public void setName(String name) {
+ this.name = name;
+} 
+}
+</pre>
+
+JspDemoServlet.java
+<pre>
+public class JspDemoServlet extends HttpServlet {
+	
+public void doGet(HttpServletRequest request, 
+		HttpServletResponse response)
+          throws ServletException, IOException {
+foo.Person p=new Person();
+p.setName("ashok");
+
+foo.Dog d=new Dog();
+d.setName("spike");
+
+p.setDog(d);
+
+request.setAttribute("person", p);
+RequestDispatcher rd=request.getRequestDispatcher("view.jsp");
+rd.forward(request, response);
+}
+}
+</pre>
+
+view.jsp
+<pre>
+The Person's Dog name is : 
+&lt;%=((foo.Person)request.getAttribute("person")).getDog().getName()%&gt;
+</pre>
+
+It is never recommended to use Scripting elements in Jsp , hence the above solution is not proper approach
+
+<pre>
+&lt;jsp:useBean id="person" class="foo.Person" scope="request" /&gt;
+The Person's Dog name is : 
+&lt;jsp:getProperty property="dog" name="person" /&gt;
+
+output:
+The Person's Dog name is : foo.Dog@1234...
+//If request scope is not specified the output is null
+</pre> 
+Solution : ${Person.dog.name}
+
+<p>The &lt;Jsp:getProperty&gt; tag lets you access only property of bean attributes,
+ there is no capability for nested properties, where  you want a property of property rather than property of attribute.
+
+</p>
+
+<h4>Limitations of Standard Actions :</h4>
+Standard Actions can handle String and primitive properties , 
+if we know the standard actions can deal with in a attribute of any type as long as all the attribute properties are String/primitives.
+<br>there is no capability for nested properties.  
+
+<br>    
+<br/>   
+
+ <!-- infolinks  -->   
+<script type="text/javascript">
+ var infolinks_pid = 1921552;
+ var infolinks_wsid = 0;
+</script>
+<script type="text/javascript" src="http://resources.infolinks.com/js/infolinks_main.js"></script>
+<!-- End Infolinks -->
+    
+
+</td></tr></table><a href="https://java.scwcd.jobs4times.com/index.html" >BACK</a>  </div>    
+ 
+
+  
+   
+
+ </body>
+
+<!-- Mirrored from java.scwcd.jobs4times.com/JSP-Actions.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 22 Jun 2024 15:25:22 GMT -->
+</html>

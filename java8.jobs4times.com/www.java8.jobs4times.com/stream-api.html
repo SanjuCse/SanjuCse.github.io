@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from www.java8.jobs4times.com/stream-api.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 22 Jun 2024 15:39:32 GMT -->
+<head>
+<meta charset="ISO-8859-1">
+<title> Java8 New Features - STREAMS</title>
+<link href="java8.css" rel="stylesheet"/>
+</head>
+<body>
+<div align="center" >
+<table border="1"><tr><td width="780px">
+<script src="header.js"></script>
+<hr color="blue"><hr color="red"><hr color="green">
+
+<h2>STREAMS</h2>
+
+To process objects of the collection, in 1.8 version Streams concept introduced.
+<h3>What is the differences between java.util.stream and java.io streams ?</h3>
+<ul>
+	<li>java.util streams meant for processing objects from the
+							collection. i.e, it represents a stream of objects from the
+							collection</li>
+	<li>but java.io streams meant for processing binary and
+							character data with respect to file. i.e.,  it represents stream of
+							binary data or character data from the file. <br>hence java.io streams
+							and java.util streams both are different.</li>
+</ul>
+
+
+<h3>What is the difference between collection and stream ?</h3>
+<ul>
+<li> If we want to represent a group of individual objects as a single entity then we should go for collection.</li>
+<li> If we want to process a group of objects from the collection then we should go for streams.</li>
+<li> We can create a stream object to the collection by using stream() method of Collection interface. </li>
+<li>stream() method is a default method added to the Collection in 1.8 version.
+<pre>
+default Stream stream()
+Ex: 
+Stream s = c.stream();
+</pre>
+</li></ul>
+
+<ul>
+<li> Stream is an interface present in java.util.stream. Once we got the stream, by using that we can process objects of that collection.
+<li> We can process the objects in the following 2 phases
+<ol><li>Configuration</li><li>Processing</li></ol>
+</li></ul>
+<hr>
+<h3>1) Configuration:</h3>
+ We can configure either by using filter mechanism or by using map mechanism.
+ 
+<h4>Filtering:</h4>
+<ul>
+<li>We can configure a filter to filter elements from the collection based on some boolean condition by using filter() method of Stream interface.</li>
+</ul>
+<pre>
+	public Stream filter(Predicate&lt;T> t)
+		here (Predicate&lt;T > t ) can be a boolean valued function/lambda expression
+</pre>
+<pre>
+Ex:
+Stream s = c.stream();
+Stream s1 = s.filter(i -> i%2==0);
+</pre>
+Hence to filter elements of collection based on some Boolean condition we should go for filter() method.
+
+<h4>Mapping:</h4>
+<ul>
+<li>If we want to create a separate new object, for every object present in the collection based on our requirement then we should go for map() method of Stream interface.</li>
+</ul>
+<pre>
+public Stream map (Function f);
+			It can be lambda expression also
+</pre>
+
+<pre>
+Ex:
+Stream s = c.stream();
+Stream s1 = s.map(i-> i+10);
+</pre>
+Once we performed configuration we can process objects by using several methods.
+<hr>
+<h3>2) Processing</h3>
+<ul>
+<li>processing by collect() method</li>
+<li>Processing by count() method</li>
+<li>Processing by sorted() method</li>
+<li>Processing by min() and max() methods</li>
+<li>forEach() method</li>
+<li>toArray() method</li>
+<li>Stream.of()method</li>
+</ul>
+
+
+<h4>I. Processing by collect() method</h4>
+This method collects the elements from the stream and adding to the specified to the collection indicated (specified) by argument.
+<br>
+<br>
+Ex 1: To collect only even numbers from the array list
+<br><br>
+Approach-1: Without Streams 
+<pre>
+1) import java.util.*; 
+2) class Test { 
+3) public static void main(String[] args) { 
+4) ArrayList&lt;Integer> l1 = new ArrayList&lt;Integer>(); 
+5) for(int i=0; i&lt;=10; i++) { 
+6) l1.add(i); 
+7) } 
+8) System.out.println(l1); 
+9) ArrayList&lt;Integer> l2 = new ArrayList&lt;Integer>(); 
+10) for(Integer i:l1) { 
+11) if(i%2 == 0) 
+12) l2.add(i); 
+13) } 
+14) System.out.println(l2); 
+15) } 
+16) }
+</pre>
+
+Approach-2: With Streams
+
+<pre>
+1) import java.util.*; 
+2) import java.util.stream.*; 
+3) class Test { 
+4) public static void main(String[] args) { 
+5) ArrayList&lt;Integer> l1 = new ArrayList&lt;Integer>(); 
+6) for(inti=0; i&lt;=10; i++) { 
+7) l1.add(i); 
+8) } 
+9) System.out.println(l1); 
+10) List&lt;Integer> l2 = l1.stream().filter(i -> i%2==0).collect(Collectors.toList()); 
+11) System.out.println(l2); 
+12) } 
+13) }
+</pre>
+
+
+Ex: 
+Program for map() and collect() Method 
+<pre>
+1) import java.util.*; 
+2) import java.util.stream.*; 
+3) class Test { 
+4) public static void main(String[] args) { 
+5) ArrayList&lt;String> l = new ArrayList&lt;String>(); 
+6) l.add("rvk"); l.add("rk"); l.add("rkv"); l.add("rvki"); l.add("rvkir"); 
+7) System.out.println(l); 
+8) List&lt;String> l2 = l.stream().map(s ->s.toUpperCase()).collect(Collectors.toList()); 
+9) System.out.println(l2); 
+10) } 
+11) }
+</pre>
+
+<h4>II. Processing by count() method</h4>
+
+This method returns number of elements present in the stream. <br>
+<em>public long count()</em>
+
+<pre>
+Ex:
+long count = l.stream().filter(s ->s.length()==5).count();
+sop("The number of 5 length strings is:"+count);
+</pre>
+
+<h4>III. Processing by sorted() method</h4>
+<ul>
+<li>If we sort the elements present inside stream then we should go for sorted() method.</li>
+<li>the sorting can either default natural sorting order or customized sorting order specified by comparator.</li>
+</ul>
+<pre>
+sorted()- default natural sorting order
+sorted(Comparator c)-customized sorting order.
+</pre>
+
+<pre>
+Ex:
+List&lt;String> l3=l.stream().sorted().collect(Collectors.toList());
+sop("according to default natural sorting order:"+l3);
+
+List&lt;String> l4=l.stream().sorted((s1,s2) -> -s1.compareTo(s2)).collect(Collectors.toList());
+sop("according to customized sorting order:"+l4);
+</pre>
+
+<h4>IV. Processing by min() and max() methods</h4>
+<pre>
+min(Comparator c)
+returns minimum value according to specified comparator.
+
+max(Comparator c)
+returns maximum value according to specified comparator
+</pre>
+<pre>
+Ex:
+String min=l.stream().min((s1,s2) -> s1.compareTo(s2)).get();
+
+sop("minimum value is:"+min);
+
+String max=l.stream().max((s1,s2) -> s1.compareTo(s2)).get();
+
+sop("maximum value is:"+max);
+</pre>
+
+<h4>V. forEach() method</h4>
+<ul>
+<li>This method will not return anything.</li>
+<li>This method will take lambda expression as argument and apply that lambda expression for each element present in the stream.</li>
+</ul>
+
+<pre>
+Ex:
+l.stream().forEach(s->sop(s));
+l3.stream().forEach(System.out:: println);
+</pre>
+
+<pre>
+Ex: 
+1) import java.util.*; 
+2) import java.util.stream.*; 
+3) class Test1 { 
+4) public static void main(String[] args) { 
+5) ArrayList&lt;Integer> l1 = new ArrayaList&lt;Integer>(); 
+6) l1.add(0); l1.add(15); l1.add(10); l1.add(5); l1.add(30); l1.add(25); l1.add(20); 
+7) System.out.println(l1); 
+8) ArrayList&lt;Integer> l2=l1.stream().map(i-> i+10).collect(Collectors.toList()); 
+9) System.out.println(l2); 
+10) long count = l1.stream().filter(i->i%2==0).count(); 
+11) System.out.println(count); 
+12) List&lt;Integer> l3=l1.stream().sorted().collect(Collectors.toList()); 
+13) System.out.println(l3); 
+14) Comparator&lt;Integer> comp=(i1,i2)->i1.compareTo(i2); 
+15) List&lt;Integer> l4=l1.stream().sorted(comp).collect(Collectors.toList()); 
+16) System.out.println(l4); 
+17) Integer min=l1.stream().min(comp).get(); 
+18) System.out.println(min); 
+19) Integer max=l1.stream().max(comp).get(); 
+20) System.out.println(max);
+21) l3.stream().forEach(i->sop(i)); 
+22) l3.stream().forEach(System.out:: println); 
+23) 
+24) } 
+25) }
+</pre>
+
+<h4>VI. toArray() method</h4>
+We can use toArray() method to copy elements present in the stream into specified array
+<pre>
+Integer[] ir = l1.stream().toArray(Integer[] :: new);
+for(Integer i: ir) {
+sop(i);
+}
+</pre>
+
+<h4>VII. Stream.of()method</h4>
+We can also apply a stream for group of values and for arrays.
+<pre>
+Ex:
+Stream s=Stream.of(99,999,9999,99999);
+s.forEach(System.out:: println);
+Double[] d={10.0,10.1,10.2,10.3};
+Stream s1=Stream.of(d);
+s1.forEach(System.out :: println);
+</pre>
+
+
+   
+</td></tr></table></div>
+</body>
+
+<!-- Mirrored from www.java8.jobs4times.com/stream-api.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 22 Jun 2024 15:39:32 GMT -->
+</html>

@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from corejava.interviews.jobs4times.com/ by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 22 Jun 2024 15:40:32 GMT -->
+<head>
+<meta charset="ISO-8859-1">
+
+<title> Core Java Interview Questions and Answers </title>
+<link rel="stylesheet" type="text/css" href="styles.css">
+
+<!-- <script type="text/javascript" src="E:\TutorialPoint\delete\script-min-v4.js"></script>
+<link rel="stylesheet" href="E:\TutorialPoint\delete\style-min.css"> -->
+
+</head>
+
+<body>
+
+<div align="center">   
+<table border="1"> <tr><td width="800px">
+    
+    
+ <table>
+ <tr>
+ <td width="50%" align="left"><a href="http://jobs4times.com/"><img alt="jobs4timesLogo"  src="../img.logos.jobs4times.com/banner%20J4T.jpg" width="550" height="150">   </a> </td> 
+ <td  align="right"><a href="http://jobs4times.com/"><img alt="jobs4timesLogo"  src="../img.logos.jobs4times.com/as2.jpg"  width="150" height="150" >  </a>  </td> 
+ </tr>
+ </table>  			
+    
+    
+	
+<h1 align="center"  style="background-color: rgb(64, 0, 64);"> <font color="#ffff00">Core Java Interview Questions and Answers </font>  </h1>
+
+
+
+<!-- <section class="toggle">
+<label> What would the command <i>mvn clean</i> do ?</label>
+<div class="toggle-content">
+<p> This command removes the target directory with all the build data before starting the build process.</p>
+</div>
+</section> -->
+
+<label>1. Can a lock be acquired on a class ?</label>
+<p>
+Yes, <br>a lock can be acquired on a class. This lock is acquired on the class's Class object. <br>
+The synchronized keyword tells the JVM that the method requires a lock in order to run. <br>
+The JVM then creates the lock and manages the allocation of the lock to threads during execution. <br>
+To execute static synchronized area compulsory the thread has to get the class level lock. 
+</p>
+<label>2. Can main method be declared final?</label> 
+<p>Yes, the main method can be declared final, in addition to being public static In-addition to final we can declared main method with synchronized modifier also The following is valid main method declaration</p>
+
+<label>3. Can a public class MyClass be defined in a source file named YourClass.java?</label> 
+<p> If java source file contains a public class then the name of the source file and name of the public class must be matched. otherwise compilation fails.</p>
+ 
+<label>4. What is the default value of the local variables ?</label>
+<ul>
+<li>The local variables are not initialized to any default value, neither primitives nor object references. </li>
+<li>If you try to use these variables without initializing them explicitly, the java compiler will not compile the code. </li>
+<li>It will complain about the local variable not being initialized.</li>
+<li>Hence, <strong>Before using local variable it must be initialized.</strong></li></ul> 
+
+<label>5. Is Empty.java file a valid source file ?</label>
+<p> Yes, an Empty.java file is a perfectly valid source file. </p>
+
+<label>6. What are the different scopes for Java variables ?</label>
+<p> The scope of a Java variable is determined by the context in which the variable is declared. <br>
+Thus a java variable can have one of the three scopes at any given point in time. 
+<br><br>
+<strong>1. Instance :</strong> - These are typical object level variables, they are initialized to default values at the time of creation of object, and remain accessible as long as the object accessible.<br><br>
+<strong>2. Local :</strong> - These are the variables that are defined within a method. They remain accessible only during the course of method execution. When the method finishes execution, these variables fall out of scope.<br><br> 
+<strong>3. Static:</strong> - These are the class level variables. They are initialized when the class is loaded in JVM for the first time and remain there as long as the class remains loaded. 
+They are not tied to any particular object instance.</p>
+
+<label>7. What happens if you don't initialize an instance variable of any of the primitive types in Java?</label>
+ 
+<p>
+Java by default initializes it to the default value for that primitive type. 
+For the integral types the default value is 0, for floating point data types default value is 0.0 and for the boolean types it is false.</p>
+
+<label>8. What will be the initial value of an object reference, which is defined as an instance variable?</label>
+ 
+<p>The object references are all initialized to null in Java. 
+However in order to do anything useful with these references, 
+you must set them to a valid object, else you will get NullPointerExceptions everywhere you try to use such default initialized references.</p> 
+
+
+<label>9. Are main, next, delete and exit keywords in Java?</label> 
+<p>No, they are not keywords in Java. delete is not a keyword in Java. 
+Java does not make use of explicit destructors the way C++ does. 
+To exit a program explicitly you use exit method in System object.</p> 
+
+<label>10. Is String a primitive data type in Java?</label>
+<p> No String is not a primitive data type in Java, even though it is one of the most extensively used object. 
+Strings in Java are instances of String class defined in java.lang package.</p> 
+
+<label>11. What does it mean that a method or field is "static"?</label>
+<ol><li>static variables are class level variables. Only one copy will be created per class and shared by all the objects.</li>
+<li> We can access static variables either by class name or by object reference but recommended way is using class name.</li>
+<li> If you change the value of a static variable by using any object reference , 
+  it will automatically reflect for all the object references.</li>
+<li>  That's how library methods like System.out.println() work out is a static field in the java.lang.System class Static methods are class level methods.</li>
+<li>Mostly these are utility methods we can access without creating objects.</li>
+<li>Static methods can be referenced with the name of the class rather than the name of a particular object of the class (though that works too).</li>
+</ol>
+
+
+<label>12. Give a few reasons for using Java?</label>
+<br><br>
+ Built-in support for <ol><li>multi-threading</li><li>socket communication</li>
+ <li>and memory management (automatic garbage collection)</li><li>Object Oriented (OO).</li>
+ <li>Better portability than other languages across operating systems.</li>
+ <li>Supports Web based applications (Applet, Servlet, and JSP)</li>
+ <li>distributed applications (sockets, RMI, EJB etc)<br> and network protocols (HTTP, JRMP etc) with the help of extensive standardized APIs (Application Programming Interfaces).</li></ol>
+
+
+<label>13. What are "static initializers" or "static blocks with no function names" ?</label> 
+<p>When a class is loaded, all blocks that are declared static and don't have function name (i.e. static initializers) are executed even before the constructors are executed. 
+As the name suggests they are typically used to initialize static fields. </p>
+
+<label>14. How do you express 'is-a' relationship and  'has-a' relationship or explain inheritance and composition?<br>
+ What is the difference between composition and aggregation? </label>
+
+<ul><li>The 'is-a' relationship is expressed with inheritance and 'has-a' relationship is expressed with composition.</li>
+<li>Both inheritance and composition allow you to place sub-objects inside your new class.</li>
+<li>Two of the main techniques for code reuse are class inheritance and object composition.</li>
+<li><b>Inheritance :</b> is uni-directional. For example House is a Building. But Building is not a House. 
+Inheritance uses extends key word.</li> 
+
+<li><b>Composition :</b> is used when House has a Bathroom. It is incorrect to say House is a Bathroom. 
+Composition simply means using instance variables that refer to other objects. 
+The class House will have an instance variable, which refers to a Bathroom object </li></ul>
+
+<label>15. What is the main difference between a String and a StringBuffer class?</label> 
+
+<p>
+<b>String is immutable:</b> you can't modify a string object but can replace it by creating a new instance. 
+Creating a new instance is rather expensive. 
+<br>
+<b>StringBuffer is mutable:</b> use StringBuffer or StringBuilder when you want to modify the contents. 
+StringBuilder was added in Java 5 and it is identical in all respects to StringBuffer except that it is not synchronized, 
+which makes it slightly faster at the cost of not being thread-safe. </p>
+
+<label>16. What is the difference between processes and threads?</label> 
+<p>A process is an execution of a program but a thread is a single execution sequence within the process.<br> 
+A process can contain multiple threads. A thread is sometimes called a lightweight process. </p>
+
+<label>17. Explain different ways of creating a thread?</label> 
+<p>Threads can be used by either :<br> Extending the Thread class<br> Implementing the Runnable interface.</p> 
+
+<label>18. What are transient variables in java?</label> 
+
+<p>Transient variables are variable that cannot be serialized.</p> 
+
+<label>19. What is synchronization?</label> 
+<p>Synchronization is the ability to control the access multiple threads to shared resources. <br>
+Synchronization stops multi-threading. <br>With synchronization , at a time one thread will be able to access a shared resource.</p> 
+
+<label>20. What is the difference between yield() and sleep()?</label> 
+<p>When a object invokes yield() it returns to ready state for giving the chance to remaining threads of same priority. 
+<br>
+But when an object invokes sleep() method enters into sleeping state. 
+After sleeping time expires then only thread entered into ready state </p>
+
+
+<label>21. What is finalize() method? </label>
+<p>Garbage Collector calls this method just before destroying any object to perform clean up activities.</p> 
+
+<label>22. Can we call finalize() method ? </label>
+<p>Yes. Nobody will stop us to call any method , if it is accessible in our class. 
+But a garbage collector cannot call an object's finalize method if that object is reachable.</p>
+
+<label>23. Can we declare an anonymous class as both extending a class and implementing an interface? </label>
+<p>No. An anonymous class can extend a class or implement an interface but not both simultaneously.</p>
+
+ <label>24.What is the use of  "bin"  and  "lib"  in JDK?</label>
+<p> <b>bin</b> contains all tools such as javac, appletviewer, awt tool, etc. whereas <b>lib</b> contains API and all packages</p>
+
+<label>25.What are the legal operands of the instanceof operator? </label>
+<p>The left operand is an object reference or null value and the right operand is a class, 
+interface, or array type. </p>
+
+<label>26.How is it possible for two String objects with identical values not to be equal under the == operator?</label> 
+<p>The == operator compares two objects to determine if they are the same object in memory. 
+It is possible for two String objects to have the same value, 
+but located indifferent areas of memory. </p>
+
+<label>27. What is final, finalize() and finally? </label>
+<p>
+<strong>final :</strong> <br>final keyword can be used for class, method and variables. <br>
+A final class cannot be sub-classed and it prevents other programmers from sub-classing a secure class to invoke insecure methods. 
+<br>A final method can't be overridden. <br>A final variable can't change from its initialized value. 
+<br><br>
+<strong>finalize() :</strong> finalize() method is used just before an object is destroyed and can be called just prior to garbage collection. 
+<br><br>
+<strong>finally :</strong> <br>finally, a key word used in exception handling, creates a block of code that will be executed after a try/catch block has completed and before the code following the try/catch block. 
+<br>The finally block will execute whether or not an exception is thrown. <br>For example, if a method opens a file upon exit, 
+then you will not want the code that closes the file to be bypassed by the exception-handling mechanism. <br>
+This finally keyword is designed to address this contingency.</p>
+
+<label>28. What is the relationship between a method's throws clause and the exceptions that can be thrown during the method's execution?</label> 
+<p>A method's throws clause must declare any checked exceptions that are not caught within the body of the method. 
+These exceptions must be handled by the caller.</p>
+
+<label>29. How many ways can an argument be passed to a subroutine? </label>
+<p>An argument can be passed in two ways. They are Pass by Value and Passing by Reference. 
+Passing by value: This method copies the value of an argument into the formal parameter of the subroutine. 
+Passing by reference: In this method, a reference to an argument (not the value of the argument) is passed to the parameter.
+</p>
+
+<label>30. What is the difference between a static and a non-static inner class?</label>
+<p> A non-static inner class may have object instances that are associated with instances of the class's outer class. 
+A static inner class does not have any object instances.</p> 
+
+<label>31.When can an object reference be cast to an interface reference? </label>
+<p>An object reference be cast to an interface reference when the object implements the referenced interface.</p> 
+
+<label>32. How many methods in the Externalizable interface?</label>
+<p>There are two methods in the Externalizable interface. 
+You have to implement these two methods in order to make your class Externalizable. 
+These two methods are <b> readExternal() </b> and <b> writeExternal()</b> </p>
+
+<label>33. What are synchronized methods and synchronized statements? </label>
+<p>Synchronized methods are methods that are used to control access to an object.
+ A thread only executes a synchronized method after it has acquired the lock for the method's object or class. 
+<br> Synchronized statements are similar to synchronized methods. 
+ A synchronized statement can only be executed after a thread has acquired the lock for the object or class referenced in the synchronized statement. </p>
+ 
+ <label>34. Can an unreachable object become reachable again? </label>
+ <p>An unreachable object may become reachable again. 
+ This can happen when the object's finalize() method is invoked and the object performs an operation which causes it to become accessible to reachable objects.</p> 
+ 
+ <label>35. How do I serialize an object to a file? </label>
+ <p>The class whose instances are to be serialized should implement an interface Serializable. 
+ Then you pass the instance to the ObjectOutputStream which is connected to a Fileoutputstream. 
+ This will save the object to a file. </p>
+ 
+ <label>36. Which methods of Serializable interface should I implement? </label>
+ <p>The serializable interface is an empty interface, it does not contain any methods. 
+ So we do not implement any methods </p>
+ 
+ <label>37. How can I customize the serialization process? 
+ i.e. how can one have a control over the serialization process? </label>
+ 
+ <p>Yes it is possible to have control over serialization process. The class should implement Externalizable interface. 
+ This interface contains two methods namely readExternal and writeExternal. 
+ You should implement these methods and write the logic for customizing the serialization process.</p>
+
+
+<label>38. What is the common usage of serialization? </label>
+<p>Whenever an object is to be sent over the network, objects need to be serialized. 
+Moreover if the state of an object is to be saved, objects need to be serialized.</p>
+
+<label>39. When you serialize an object, what happens to the object references included in the object? </label>
+<p>The serialization mechanism generates an object graph for serialization. 
+Thus it determines whether the included object references are serializable or not. 
+This is a recursive process. Thus when an object is serialized, all the included objects are also serialized along with the original object. </p>
+
+<label>40. What one should take care of while serializing the object? </label>
+<p>One should make sure that all the included objects are also serializable. 
+If any of the objects is not serializable then it throws a NotSerializableException. </p>
+
+<label>41. What happens to the static fields of a class during serialization? </label>
+<p>Serialization ignores static fields, because they are not part of any particular state.</p>
+
+<label>42. Does importing a package imports the sub-packages as well ? </label>
+<p>No, you will have to import the sub-packages explicitly. <br>
+For eg: Importing <strong> com.MyTest.*</strong> will import classes in the package MyTest only.
+ It will not import any class in any of it's sub-package. </p>
+ 
+<label>43. If I write return at the end of the try block, will the finally block still execute ? </label>
+<p>Yes, even if you write return as the last statement in the try block and no exception occurs, the finally block will execute. 
+The finally block will execute and then the control return. </p>
+
+<label>44. Is it necessary that each try block must be followed by a catch block ?</label> 
+<p>It is not necessary that each try block must be followed by a catch block. 
+It should be followed by either a catch block OR a finally block. 
+And whatever exceptions are likely to be thrown should be declared in the throws clause of the method. </p>
+
+<label>45. What are the different ways to handle exceptions ?</label> 
+<p>There are two ways to handle exceptions, <br>
+<strong>1. By using try-catach :</strong> By wrapping the desired code in a try block followed by a catch block to catch the exceptions.<br>
+<strong> 2. By using throws clause: </strong> List the desired exceptions in the throws clause of the method and let the caller of the method handle those exceptions </p>
+ 
+<label>46. What are runtime exceptions?</label> 
+ <p>Runtime exceptions are those exceptions that are thrown at runtime because of either wrong input data or because of wrong business logic etc. 
+ These are not checked by the compiler at compile time.</p>
+ 
+<label>47. What are checked exceptions? </label>
+<p>Checked exception are those which the Java compiler forces you to catch for smooth execution of program at runtime. <br>
+e.g. IOException are checked Exceptions.</p>
+
+<label>48. Does Java provide any construct to find out the size of an object? </label>
+<p>No there is not sizeof operator in Java. So there is not direct way to determine the size of an object directly in Java. </p>
+
+<label>49. What is Externalizable interface? </label>
+<p>Externalizable is an interface which contains two methods readExternal and writeExternal. 
+These methods give you a control over the serialization mechanism. Thus if your class implements this interface, 
+you can customize the serialization process by implementing these methods </p>
+
+<label>50. What is the purpose of garbage collection in Java, and when is it used? </label>
+<p>The purpose of garbage collection is to identify and discard objects that are no longer needed by a program so that their resources can be reclaimed and reused. 
+A Java object is subject to garbage collection when it becomes unreachable to the program in which it is used. </p>
+
+<label>51. What is the difference between a constructor and a method ? </label>
+<p>A constructor is a member function of a class that is used to create objects of that class. 
+It has the same name as the class itself, has no return type, and is invoked using the new operator. <br>
+A method is an ordinary member function of a class. It has its own name, a return type (which may be void), and is invoked using the dot operator. </p>
+
+<label>52. What if the main method is declared as private ?</label> 
+<p>The program compiles properly but at runtime it will give "<strong>Main method not public.</strong>" message. </p>
+
+<label>53. What is an Iterator interface ?</label> 
+<p>The Iterator interface is used to step through the elements of a Collection. </p>
+
+<label>54. Describe the Garbage Collection process in Java ? </label>
+<p>The JVM spec mandates automatic garbage collection outside of the programmers control. 
+The <b>System.gc()</b> or <b>Runtime.getRuntime().gc()</b> is merely a suggestion to the JVM to run the GC process but is NOT guaranteed. </p>
+
+<label>55. What is constructor chaining and how is it achieved in Java ? </label>
+<p>A child object constructor always first needs to construct its parent (which inturn calls its parent constructor). <br>
+In Java it is done via an implicit call to the no-args constructor as the first statement </p>
+
+<label>56. What methods can be overridden in Java ?</label> 
+<p>All Java methods can be overwritten in subclasses except those that are declared final, static, and private. </p>
+
+<label>57. What is daemon thread and which method is used to create the daemon thread ?</label> 
+<p>Daemon thread is a low priority thread which runs intermittently in the back ground for providing the support to Non-Daemon. 
+setDaemon method is used to create a daemon thread.</p>
+
+<label>58. What are Transient and Volatile Modifiers ?</label>
+<p><b> Transient:</b> The transient modifier applies to variables only and it is not stored as part of its object's Persistent state. 
+Transient variables are not serialized. <br>
+<b>Volatile:</b> Volatile modifier applies to variables only and it tells the compiler that the variable modified by volatile can be changed unexpectedly by other parts of the program. 
+JVM maintains a separate copy of the volatile variable for every thread.</p>
+
+<label>59. What is the difference between instanceof and isInstance ? </label>
+<p><b>instanceof</b> is used to check to see if an object can be cast into a specified type without throwing a classcastexception. 
+<br><b>isInstance()</b> determines if the specified Object is assignment-compatible with the object represented by this Class. 
+This method is the dynamic equivalent of the Java language instanceof operator. <br>
+The method returns true if the specified Object argument is non-null and can be cast to the reference type represented by this Class object without raising a ClassCastException. 
+It returns false otherwise.</p>
+
+<label>60. What does the "abstract" keyword mean in front of a method? A class ?</label> 
+<p>Abstract keyword declares either a method or a class. <br>
+If a method has a abstract keyword in front of it,it is called abstract method.Abstract method has no body.
+It has only arguments and return type.Abstract methods act as placeholder methods that are implemented in the subclasses. <br>
+Abstract classes can't be instantiated.If a class is declared as abstract,no objects of that class can be created.
+If a class contains any abstract method it must be declared as abstract </p>
+
+<label>61. What is JDBC? </label>
+<p>Describe the steps needed to execute a SQL query using JDBC. <br>
+The JDBC is a pure Java API used to execute SQL statements. <br>
+It provides a set of classes and interfaces that can be used by developers to write database applications. <br><br>
+The steps needed to execute a SQL query using JDBC: <br>
+1. Open a connection to the database. <br>
+2. Execute a SQL statement. <br>
+3. Process the results. <br>
+4. Close the connection to the database.</p>
+
+<label>62. What are native methods ?
+ How do you use them? </label>
+ 
+<p>Native methods are methods whose implementation is provided in another programming language such as C. 
+The main objective of native methods are to improve the performance of the system. </p>
+
+<label>63. How can you force all derived classes to implement a method present in the base class ?</label> 
+<p>Creating and implementing an interface would be the best way for this situation. 
+Just create an interface with empty methods which forces a programmer to implement all the methods present under it. 
+Another way of achieving this task is to declare a class as abstract with all its methods abstract.</p>
+
+
+
+<label>64. What is the difference between "==" and  ".equals" method?</label> 
+<p>
+The equals method can be considered to perform a deep comparison of the value of an object,
+whereas the == operator performs a shallow comparison. 
+The equals() method compares the characters inside a string object. == operator compares two object references to check whether they refer to the same instances or not.</p>
+
+<label>65. How can you achieve Multiple Inheritance in Java? </label>
+<p>Java's interface mechanism can be used to implement multiple inheritance, 
+with one important difference from c++ way of doing MI: the inherited interfaces must be abstract. 
+This obviates the need to choose between different implementations, as with interfaces there are no implementations.</p>
+
+<label>66. What are the two basic ways in which classes that can be run as threads may be defined? </label>
+<p>A thread class may be declared as a subclass of Thread, or it may implement the Runnable interface.</p> 
+
+<label>67. How are this() and super() used with constructors?</label> 
+<p>this() is used to invoke a constructor of the same class. 
+super() is used to invoke a superclass constructor.</p> 
+
+<label>68. What restrictions are placed on the values of each case of a switch statement? </label>
+<p>the switch argument is any type of variable is allowed which can be implicitly promoted to int type. 
+The case labels must be compile time constants.</p> 
+
+<label>69. What are order of precedence and associativity, and how are they used?</label> 
+<p>Order of precedence determines the order in which operators are evaluated in expressions. 
+Associatity determines whether an expression is evaluated left-to-right or right-to-left </p>
+
+<label>70. What is a StringTokenizer ? </label>
+<p>String Tokenizer provide parsing process in which it identifies the delimiters provided by the user , 
+by default delimiters are spaces, tab, newline etc. and separates them from the tokens. 
+Tokens are those which are separated by delimiters. </p>
+
+<label>71. What are nested classes ? </label>
+<p>There are two types : static and non-static. <br>
+static class means the members in its enclosing class (class within class) can be accessed by creating an object and cannot be accessed directly without creating the object. <br>
+non-static class means inner class and can be accessed directly with the object created for the outer class no need to create again an object like static class. </p>
+
+<label>72. What is the difference between abstract class and interface? </label>
+<p>a) All the methods declared inside an interface are abstract whereas abstract class may or may not contain abstract methods. <br>
+b) In abstract class, key word abstract must be used for the methods whereas interface we need not use that keyword for the methods. <br>
+c)Abstract class must have subclasses whereas interface can't have subclasses
+</p>
+
+
+<label>73. Under what conditions is an object's finalize() method invoked by the garbage collector?</label>
+
+<p> The garbage collector invokes an object's finalize() method just before destroying any object.</p>
+
+ <label>74.What are the steps involved for making a connection with a database or how do you connect to a database?</label>
+ 
+<p><strong> a) Loading the driver :</strong> To load the driver, Class.forName() method is used. 
+<pre>
+Class. forName("sun.jdbc.odbc.JdbcOdbcDriver"); 
+</pre>
+
+When the driver is loaded, it registers itself with the java.sql.DriverManager class as an available database driver. <br><br>
+<strong>b) Making a connection with database:</strong> To open a connection to a given database, 
+DriverManager.getConnection() method is used. 
+<pre>
+Connection con = 
+    DriverManager.getConnection("jdbc:odbc:somedb","user","password"); 
+</pre>
+<br>
+<strong>c) Executing SQL statements :</strong> To execute a SQL query, java. sql. statements class is used. <br>
+ createStatement() method of Connection to obtain a new Statement object. 
+<pre>
+Statement stmt = con.createStatement(); 
+</pre>
+ A query that returns data can be executed using the executeQuery() method of Statement. <br>
+ This method executes the statement and returns a java.sql.ResultSet that encapsulates the retrieved data: 
+<pre>
+ResultSet rs = stmt.executeQuery("SELECT * FROM some table");
+</pre>
+<strong>d) Process the results :</strong> ResultSet returns one row at a time. 
+  Next() method of ResultSet object can be called to move to the next row. 
+  The getString() and getObject() methods are used for retrieving column values:
+<pre>
+while(rs.next()) { 
+String event = rs.getString("event"); 
+Object count = (Integer) rs.getObject("count").
+</pre>
+   
+   
+ <label>75. What is serialization and deserialization? </label>
+<p>Serialization is the process of writing the state of an object to a byte stream. 
+Deserialization is the process of restoring these objects.</p>
+    
+<label>76. What is the difference between JDBC and ODBC?</label>
+<p> a) OBDC is for Microsoft and JDBC is for Java applications. <br>
+b) ODBC can't be directly used with Java because it uses a C interface. <br>
+c) ODBC makes use of pointers which have been removed totally from Java. <br>
+d) ODBC mixes simple and advanced features together and has complex options for simple queries. <br>
+But JDBC is designed to keep things simple while allowing advanced capabilities when required. <br>
+e) ODBC requires manual installation of the ODBC driver manager and driver on all client machines. <br>
+JDBC drivers are written in Java and JDBC code is automatically installable, secure, and portable on all platforms. <br>
+f) JDBC API is a natural Java interface and is built on ODBC. JDBC retains some of the basic features of ODBC.</p>
+
+
+<label>77. What is the difference between Reader/Writer and InputStream/Output Stream? </label>
+<p>The Reader/Writer class is character-oriented and the InputStream/OutputStream class is byte-oriented.</p> 
+
+<label>78. What is a stream and what are the types of Streams and classes of the Streams? </label>
+<p>A Stream is an abstraction that either produces or consumes information. <br>
+There are two types of Streams and they are:
+<br><strong> Byte Streams:</strong> Provide a convenient means for handling input and output of bytes.
+<br>
+<strong>Character Streams:</strong> Provide a convenient means for handling input &amp; output of characters. <br>
+<strong>Byte Streams classes:</strong> Are defined by using two abstract classes, namely InputStream and OutputStream. <br>
+<strong>Character Streams classes:</strong> Are defined by using two abstract classes, namely Reader and Writer. 
+</p>
+
+<label>79. What are Vector, Hashtable, LinkedList and Enumeration?</label>
+<p><b> Vector :</b> The Vector class provides the capability to implement a growable array of objects. <br>
+
+<b>Hashtable :</b> The Hashtable class implements a Hashtable data structure. <br>
+A Hashtable indexes and stores objects in a dictionary using hash codes as the object's keys. <br>
+Hash codes are integer values that identify objects. <br>
+
+<b>LinkedList:</b> Removing or inserting elements in the middle of an array can be done using LinkedList. <br>
+A LinkedList stores each object in a separate link whereas an array stores object references in consecutive locations. <br>
+
+<b>Enumeration:</b> An object that implements the Enumeration interface generates a series of elements, one at a time. <br>
+It has two methods, namely hasMoreElements() and nextElement().<br>
+HasMoreElemnts() tests if this enumeration has more elements and nextElement method returns successive elements of the series  
+</p>
+ 
+<label>80. What is source and listener? </label>
+ 
+ <p><strong>Source :</strong> A source is an object that generates an event. <br>
+ This occurs when the internal state of that object changes in some way. <br><br>
+<strong>Listener :</strong> A listener is an object that is notified when an event occurs. <br><br>
+ It has two major requirements. <br>
+ First, it must have been registered with one or more sources to receive notifications about specific types of events. <br>
+ Second, it must implement methods to receive and process these notifications.</p>
+ 
+ 
+ <label>81. What is the lifecycle of an applet?</label>
+ <p><strong> init() method</strong> - Can be called when an applet is first loaded<br>
+ <strong> start() method </strong>- Can be called each time an applet is started. <br>
+ <strong> paint() method</strong> - Can be called when the applet is minimized or maximized. <br>
+<strong>stop() method</strong> - Can be used when the browser moves off the applet's page. <br>
+<strong>destroy() method</strong> - Can be called when the browser is finished with the applet.</p>
+  
+<label>82. Can a for statement loop indefinitely?</label>
+   
+<p> Yes, a for statement can loop indefinitely. 
+   For example, consider the following:
+<pre>for(;;) ;</pre>
+
+
+   
+<label>83. What is the immediate superclass of the Applet class? </label>
+<p>   Panel</p>
+    
+    
+<label>84. Can an object's finalize() method be invoked while it is reachable?</label>
+     
+<p> An object's finalize() method cannot be invoked by the garbage collector while the object is still reachable. 
+     However, an object's finalize() method may be invoked by other objects.</p>
+
+<label>85. What is the difference between the >> and >>> operators? </label>
+
+<p>The >> operator carries the sign bit when shifting right. The >>> zero-fills bits that have been shifted out.</p>
+
+<label>86. What modifiers may be used with an inner class that is a member of an outer class?</label>
+<p>A (non-local) inner class may be declared as public, protected, private, static, final, or abstract.</p>
+
+<label>87. Which characters may be used as the second character of an identifier, but not as the first character of an identifier? </label>
+<p>The digits 0 through 9 may not be used as the first character of an identifier but they may be used after the first character of an identifier </p>
+
+<label>88. What is synchronization and why is it important?</label>
+<p>With respect to multithreading, synchronization is the capability to control the access of multiple threads to shared resources. Without synchronization, it is possible for one thread to modify a shared object while another thread is in the process of using or updating that object's value. This often leads to significant errors. 
+</p>
+
+<label>89.What is connection pooling?</label>
+<ol><li> With servlets, opening a database connection is a major bottleneck because we are creating and tearing down a new connection for every page request and the time taken to create connection will be more. </li><li>
+Creating a connection pool is an ideal approach for a complicated servlet. </li><li>
+With a connection pool, we can duplicate only the resources we need to duplicate rather than the entire servlet.</li><li> A connection pool can also intelligently manage the size of the pool and make sure each connection remains valid.</li><li>A number of connection pool packages are currently available.</li><li>
+ Some like DbConnectionBroker are freely available from Java Exchange Works by creating an object that dispenses connections and connection Ids on request. </li><li>
+ The ConnectionPool class maintains a Hastable, using Connection objects as keys and Boolean values as stored values. </li><li>
+ The Boolean value indicates whether a connection is in use or not.</li>
+ <li> A program calls getConnection() method of the ConnectionPool for getting Connection object it can use; 
+ it calls returnConnection() to give the connection back to the pool. </li></ol>
+
+
+<label>90.What are the types of statements in JDBC? </label>
+
+<p><strong>Statement:</strong> to be used createStatement() method for executing single SQL statement <br>
+<strong>PreparedStatement </strong>-- To be used preparedStatement() method for executing same SQL statement over and over. <br>
+<strong>CallableStatement</strong> -- To be used prepareCall() method for multiple SQL statements over and over.</p>
+
+<label>91. What is daemon thread and which method is used to create the daemon thread?</label>
+ 
+<p> Daemon thread is a low priority thread which runs intermittently in the back ground doing the garbage collection operation for the java runtime system. 
+setDaemon method is used to create a daemon thread.</p>
+
+
+<label>92. What is the class and interface in java to create thread and which is the most advantageous method?</label> 
+
+<p>Thread class and Runnable interface can be used to create threads and using Runnable interface is
+
+the most advantageous method to create threads because we need not extend thread class here.</p> 
+
+<label>93. What are the methods for inter-thread communication and what is the class in which these methods are defined? </label>
+
+<p>wait (), notify () and notifyAll() methods can be used for inter-thread communication and these methods are in Object class.<br>
+<strong> wait() :</strong> When a thread executes a call to wait() method, it surrenders the object lock and enters into a waiting state. <br>
+<strong> notify()</strong> or <strong> notifyAll() :</strong> To remove a thread from the waiting state, some other thread must make a call to notify() or notifyAll() method on the same object.</p>
+ 
+<label>94. What is multithreading?</label>
+  <p> Multithreading is the mechanism in which more than one thread run independent of each other within the process.</p>
+  
+<label>95. What is the difference between process and thread?</label>
+<p>
+    Process is a program in execution whereas thread is a separate path of execution in a program.</p>
+<label> What is the difference between Array and vector? </label><p>
+     Array is a set of related data type and static whereas vector is a growable array of objects and dynamic.</p>
+     
+<label>96. What is the difference between String and StringBuffer?</label>
+ <p>a) String objects are constants and immutable whereas StringBuffer objects are not. <br>
+ b) String class supports constant strings whereas StringBuffer class supports growable and modifiable strings.</p>
+ 
+<label>97. What are inner class and anonymous class? </label>
+  <p><strong>Inner class :</strong> classes defined in other classes, including those defined in methods are called inner classes. <br>An inner class can have any accessibility including private. 
+  <br>
+<strong>Anonymous class :</strong> Anonymous class is a class defined inside a method without a name and is instantiated and declared in the same place and cannot have explicit constructors.</p>
+  
+<label>98 . Can you have an inner class inside a method and what variables can you access? </label>
+  <p>Yes, we can have an inner class inside a method and final variables can be accessed.</p>
+
+<label>99. What is a cloneable interface and how many methods does it contain? </label>
+<p>It is not having any method because it is a TAGGED or MARKER interface.</p>
+
+<label>100. How many times may an object's finalize() method be invoked by the garbage collector?</label>
+
+<p>An object's finalize() method may only be invoked once by the garbage collector.</p> 
+
+
+<label>101. What modifiers may be used with top-level class? </label>
+
+<p>public, abstract and final,strictfp can be used for top-level class.</p> 
+
+<label>102. What is the difference between the Boolean &amp; operator and the &amp;&amp; operator?</label>
+ 
+<p>If an expression involving the Boolean &amp; operator is evaluated, both operands are evaluated. 
+Then the &amp; operator is applied to the operand. <br>
+
+When an expression involving the &amp;&amp; operator is evaluated, the first operand is evaluated. 
+If the first operand returns a value of true then the second operand is evaluated. <br>
+The &amp;&amp; operator is then applied to the first and second operands. 
+If the first operand evaluates to false, the evaluation of the second operand is skipped.</p>
+
+
+
+
+
+
+</td></tr></table>
+<a href="http://jobs4times.com/">BACK</a>
+
+</div>
+
+</body>
+
+<!-- Mirrored from corejava.interviews.jobs4times.com/ by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 22 Jun 2024 15:40:34 GMT -->
+</html>

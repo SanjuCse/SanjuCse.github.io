@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from www.java.designpatterns.jobs4times.com/flyweight-design-pattern.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 22 Jun 2024 15:36:42 GMT -->
+<head>
+<meta charset="ISO-8859-1">
+<title>Java design patterns - FlyWeight Design Pattern </title>
+<link style="text/css" rel="stylesheet" href="styles.css">
+<link rel="shortcut icon" href="small.html">
+</head>
+
+<body>
+<div align="center" >
+<table border="1" style="width: 887px"><tr><td>
+ 
+<table>
+<tr>
+<td width="50%" align="left"> <a href="http://www.jobs4times.com/"><img alt="jobs4timesLogo"  src="../img.logos.jobs4times.com/banner%20J4T.jpg" width="500" height="200">   </a> </td> 
+<td align="right"> <a href="http://jobs4times.com/J4T/allmaterial.html"><img alt="jobs4timesLogo"  src="../img.logos.jobs4times.com/as2.jpg"  width="180" height="200" >  </a>  </td> 
+</tr>
+</table>  
+
+<h1 style="border-bottom-color: blue; background-color: yellow;font: monospace;color: red;text-align: center;"> FlyWeight Design Pattern </h1> 
+
+<br>
+<ul>
+<li>The FlyWeight is a structural design pattern. In flyweight pattern, instead of creating large number of similar objects, those are reused to save memory.</li>
+<li>This pattern is especially useful when memory is a key concerned.</li>
+</ul>
+
+<br>
+<ul>
+<li>For e.g. smart mobile comes with applications. Let's consider it has an application which is similar to paint application.</li>
+<li>A user can draw as many shapes in it like circles, triangles and squares etc.,</li>
+</ul>
+
+<br>
+<ul>
+<li>Mobiles are the small devices which come with limited set of resources; memory capacity in a smart phone is very  less and should use it efficiently.</li>
+<li>In this case if we try to represent one object for every shape that user draws in the app, the entire mobile memory will be filled up with these objects and makes your mobile run quickly out of memory.</li>
+</ul>
+
+
+   
+Let's understand this by taking a sample code here.
+
+<br><br>
+I have an interface  IShape which represents several shapes which I have to draw.
+
+<pre>
+package design;
+
+public interface IShape {
+
+ void draw();
+	
+}
+</pre>
+
+
+Now I have Circle &amp; Rectangle as implementation  classes for the above interface.
+
+
+<pre>
+package design;
+
+public class Circle implements IShape{
+	
+	private String label;
+	private int radius;
+	private String fillColor;
+	private String lineColor;
+	
+	public Circle() {
+		label="circle";
+	}
+
+	//setters and getters
+	
+	@Override
+	public void draw() {
+	  System.out.println("drawing "+label+" with radius : "+radius+" fillColor : "+fillColor+" lineColor : "+lineColor);		
+	}
+}
+</pre>
+
+
+<pre>
+package design;
+
+public class Rectangle implements IShape {
+	
+	private String label;
+	private int length;
+	private int breath;
+	private String fillStyle;
+	
+	public Rectangle() {
+		label="rectangle";
+	}
+
+	//setters and getters
+	
+	@Override
+	public void draw() {
+	  System.out.println("drawing "+label+" with length : "+length+" breath : "+breath+" fillStyle : "+fillStyle);		
+	}
+}
+</pre>
+
+
+<p>Now in my mobile application I want to 100 circles and rectangles.<br>
+To do this I need to create 100 circles/rectangle objects,<br> 
+I need to set the properties like radius, <br>
+length and breath to draw these shapes as shown below.</p>
+
+<pre>
+package design;
+
+public class PaintApp {
+	
+ public void render(int noOfShapes){
+   IShape[] shapes=new IShape[noOfShapes+1];
+	
+  for(int i=1;i&lt;=noOfShapes;i++){
+	if(i%2==0.0f){
+		shapes[i]=new Circle();
+		((Circle) shapes[i]).setRadius(i);
+		((Circle) shapes[i]).setLineColor("red");
+		((Circle) shapes[i]).setFillColor("white");
+		shapes[i].draw();
+	}else {
+		shapes[i]=new Rectangle();
+		((Rectangle) shapes[i]).setLength(i+i);
+		((Rectangle) shapes[i]).setBreath(i*i);
+		((Rectangle) shapes[i]).setFillStyle("dotted");
+		shapes[i].draw();
+	}
+  }
+ }//render
+}
+</pre>
+
+<ul>
+<li>Let's say I want to draw 1000 shapes, do I need to create 1000 shape implemented class objects.</li>
+<li>Creating 1000 shape objects consumes more amount of memory and yields in performance issues.<br><br></li>
+</ul>
+
+
+<ul>
+<li>Now think to draw 1000 shapes do we need to create really 1000 shapes objects.<br>
+If we observe here our circle or rectangle objects contains attributes.</li>
+<li>These attributes represent state of the class. <br>
+Out of which few attributes are common across all the circles/rectangles we draw.</li>
+<li>For e.g. the label of a circle will be "circle" even we draw 1000 circles also, similarly the label of the rectangle will also be "rectangle".</li>
+<li>This type of attributes or state contained in a class is called intrinsic state, which can be shared across the objects of the class. </li>
+<li>But if we look at the radius, lineColor, fillColor or fillStyle these are the values based on which we need to draw the shape, which are going to change from one circle/rectangle to other.<br>
+This type of attributes or state in a class is called extrinsic state (non-sharable). <br><br>
+</li>
+</ul>
+
+<ul>
+<li>So, flyweight pattern encourages developers to identity intrinsic and extrinsic state in an object, and recommends passing extrinsic state as dynamic values while calling the methods rather storing it as state.</li>
+<li>This makes object to be reusable, making it to draw several shapes with less number of objects. <br><br>
+</li>
+</ul>
+
+<ul>
+<li>Designing an object down to the lowest levels of granularity makes the flexible.</li>
+<li>But makes it more overweight and performance gets effected.</li>
+<li>Let's re-design our classes based on the recommendations provided by flyweight to again optimal utilization of memory. <br><br>
+</li>
+</ul>
+ 
+
+<p>First separate the extrinsic data and pass them as parameters to the methods.</p>
+
+
+<pre>
+package design;
+
+public abstract class IShape {
+
+ public void draw(int radius,String fillColor,String lineColor){
+	 //no-op
+ }
+ 
+ public void draw(int length,int breath,String fillStyle){
+	 //no-op
+ }
+	
+}
+</pre>
+
+<pre>
+package design;
+
+public class Circle extends IShape{
+	
+	private String label;
+		
+	public Circle() {
+		label="circle";
+	}	
+	
+	@Override
+	public void draw(int radius,String fillColor,String lineColor) {
+	  System.out.println("drawing "+label+" with radius : "+radius+" fillColor : "+fillColor+" lineColor : "+lineColor);		
+	}
+	
+}
+</pre>
+
+<pre>
+package design;
+
+public class Rectangle extends IShape {
+	
+	private String label;
+		
+	public Rectangle() {
+		label="rectangle";
+	}
+
+	@Override
+	public void draw(int length,int breath,String fillStyle) {
+	  System.out.println("drawing "+label+" with length : "+length+" breath : "+breath+" fillStyle : "+fillStyle);		
+	}
+	
+}
+</pre>
+
+
+<ul>
+<li>Now to draw  1000 circles/rectangles we don't need to use 1000 shape objects rather than we can reuse the same object to draw any number.</li>
+<li>In order to reuse the objects we need a factory. The factory class here stores the objects and allows us to track the objects to reuse.</li>
+<li>It contains a map of key as shapeType and an object for that shape.</li>
+</ul>
+
+<p>
+If we want to draw a circle rather than creating an object for circle, we can go to the factory and ask for a circle,
+<br> it checks and create/return the existing object in case one exists.
+</p>
+
+<pre>
+package design;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class ShapeFactory {
+	
+ private volatile static Map&lt;String,IShape> shapes;
+ 
+ static{
+	 shapes=new HashMap&lt;String,IShape>();
+ }
+ 
+ public synchronized static IShape getShape(String type){
+   IShape shape=null;
+   
+   //if exists return the existing object
+   if(shapes.containsKey(type)){
+	   shape=shapes.get(type);
+   }else{
+	  //if shape not found create and store
+	 if(type.equals("circle")){
+		 shape=new Circle();
+	 }else if(type.equals("rectangle")){
+		 shape=new Rectangle();
+	 }
+	 shapes.put(type, shape);
+   }
+   
+	
+   return shape;
+ }
+ 
+}
+</pre>
+
+<p>Now in my mobile app rather than creating shape objects we can request for the objects from factory,<br> 
+which is going to either create one new or returns the existing for if already an object for the shape exists as shown below.
+</p>
+
+
+<pre>
+package design;
+
+public class PaintApp {
+	
+ public void render(int noOfShapes){
+   IShape shape=null;
+	
+  for(int i=1;i&lt;=noOfShapes;i++){
+	if(i%2==0.0f){
+		shape=ShapeFactory.getShape("circle");
+		shape.draw(i, "red", "white");
+	}else {
+		shape=ShapeFactory.getShape("rectangle");
+		shape.draw(i+i, i*i, "dotted");
+	}
+  }//for
+  
+ }//render
+ 
+ 
+ public static void main(String[] args){
+	 PaintApp pa=new PaintApp();
+	 pa.render(2);
+ }
+ 
+}
+</pre>
+
+output :
+<pre>
+drawing rectangle with length : 2 breath : 1 fillStyle : dotted
+drawing circle with radius : 2 fillColor : red lineColor : white
+</pre>
+
+<br>
+<p>
+If we see the advantage here with only 2 objects of the shape class we can manage to draw lakhs of shapes also.<br>
+We can achieve higher performance with little amount of memory.
+</p>
+
+<h5>The UML representation of FlyWeight Design Pattern :</h5>
+
+<img alt="flyweight-design-pattern" src="flyweight-design-pattern-2.html">
+
+<br><br>
+
+<h6>Key Points :</h6>
+
+
+<ul>
+<li>If the object overhead ia an issue, where need to reduce the memory footprint. With little amount of design changes we should be able to achieve this, but client should be notified with the impact.</li>
+<li>Remove the extrinsic (non-sharable) state of the class and pass it as arguments to the parameters.</li>
+<li>Create a factory through which we can reuse the objects that creating new.</li>
+<li>The clients must use factory instead of creating the objects out of new operator.</li> 
+</ul>
+
+
+
+
+
+<br><br>
+</td></tr></table>
+<a href="index-2.html"><strong>BACK</strong></a>
+</div>
+  
+
+</body>
+
+<!-- Mirrored from www.java.designpatterns.jobs4times.com/flyweight-design-pattern.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 22 Jun 2024 15:36:42 GMT -->
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from www.java8.jobs4times.com/double-colon-operator.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 22 Jun 2024 15:39:32 GMT -->
+<head>
+<meta charset="ISO-8859-1">
+<title> Java8 New Features - double colon operator</title>
+<link href="java8.css" rel="stylesheet"/>
+</head>
+<body>
+<div align="center" >
+<table border="1"><tr><td width="780px">
+<script src="header.js"></script>
+<hr color="blue"><hr color="red"><hr color="green">
+
+<h2>Method and Constructor references by using ::(double colon) operator</h2>
+<ul>
+<li> Functional Interface method can be mapped to our specified method by using :: (double colon) operator. This is called method reference.
+<li> Our specified method can be either static method or instance method.
+<li> Functional Interface method and our specified method should have same argument types, except this the remaining things like
+ returntype, methodname, modifiers etc are not required to match.
+</ul>
+
+Syntax:
+<ul><li>if our specified method is static method <strong> Classname::methodName </strong>
+<li>if the method is instance method <strong>Objref::methodName</strong>
+</ul>
+<p>Functional Interface can refer lambda expression and Functional Interface can also refer method reference. Hence lambda expression can be replaced with method reference. Hence method reference is alternative syntax to lambda expression.
+</p>
+Ex: With Lambda Expression 
+<pre>
+1) class Test { 
+2) public static void main(String[] args) { 
+3) Runnable r = () -> { 
+4) for(int i=0; i<=10; i++) { 
+5) System.out.println("Child Thread"); 
+6) } 
+7) }; 
+8) Thread t = new Thread(r); 
+9) t.start(); 
+10) for(int i=0; i<=10; i++) { 
+11) System.out.println("Main Thread"); 
+12) } 
+13) } 
+14) }
+</pre>
+With Method Reference 
+<pre>
+1) class Test { 
+2) public static void m1() { 
+3) for(int i=0; i<=10; i++) { 
+4) System.out.println("Child Thread"); 
+5) }
+6) } 
+7) public static void main(String[] args) { 
+8) Runnable r = Test:: m1; 
+9) Thread t = new Thread(r); 
+10) t.start(); 
+11) for(int i=0; i<=10; i++) { 
+12) System.out.println("Main Thread"); 
+13) } 
+14) }
+</pre>
+In the above example Runnable interface run() method referring to Test class static method m1().
+
+<h4>Method reference to Instance method:</h4>
+<pre>
+Ex: 
+1) interface Interf { 
+2) public void m1(int i); 
+3) } 
+4) class Test { 
+5) public void m2(int i) { 
+6) System.out.println("From Method Reference:"+i); 
+7) } 
+8) public static void main(String[] args) { 
+9) Interf f = I ->sop("From Lambda Expression:"+i); 
+10) f.m1(10); 11) Test t = new Test(); 
+12) Interf i1 = t::m2; 
+13) i1.m1(20); 
+14) } 
+15) }
+</pre>
+In the above example functional interface method m1() referring to Test class instance method m2().<br>
+The main advantage of method reference is we can use already existing code to implement functional interfaces (code reusability).
+<h4>Constructor References</h4>
+We can use :: ( double colon )operator to refer constructors also
+Syntax: classname :: new
+<pre>
+Ex:
+Interf f = sample :: new;
+</pre>
+functional interface f referring sample class constructor
+
+<pre>
+Ex: 
+1) class Sample { 
+2) private String s; 
+3) Sample(String s) { 
+4) this.s = s; 
+5) System.out.println("Constructor Executed:"+s); 
+6) } 
+7) } 
+8) interface Interf { 
+9) public Sample get(String s); 
+10) } 
+11) class Test { 
+12) public static void main(String[] args) { 
+13) Interf f = s -> new Sample(s); 
+14) f.get("From Lambda Expression"); 
+15) Interf f1 = Sample :: new; 
+16) f1.get("From Constructor Reference"); 
+17) } 
+18) }
+</pre>
+
+Note: In method and constructor references compulsory the argument types must be matched.  
+   
+</td></tr></table></div>
+</body>
+
+<!-- Mirrored from www.java8.jobs4times.com/double-colon-operator.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 22 Jun 2024 15:39:32 GMT -->
+</html>

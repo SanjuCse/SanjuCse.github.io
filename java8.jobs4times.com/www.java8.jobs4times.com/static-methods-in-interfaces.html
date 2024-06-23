@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from www.java8.jobs4times.com/static-methods-in-interfaces.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 22 Jun 2024 15:39:32 GMT -->
+<head>
+<meta charset="ISO-8859-1">
+<title> Java 8 New Features - Static methods inside interfaces</title>
+<link href="java8.css" rel="stylesheet"/>
+</head>
+<body>
+<div align="center" >
+<table border="1"><tr><td width="780px">
+
+ <script src="header.js"></script>
+<hr color="blue"><hr color="red"><hr color="green">
+<h2> Static methods inside interface:</h2>
+
+
+<ul>
+<li> From 1.8 version onwards in addition to default methods we can write static methods also inside interface to define utility functions.
+<li> Interface static methods by-default not available to the implementation classes hence by using implementation class reference we can't call interface static
+ methods. We should call interface static methods by using interface name.
+</ul>
+<pre>
+Ex: 
+1) interface Interf { 
+2) public static void sum(int a, int b) { 
+3) System.out.println("The Sum:"+(a+b)); 
+4) } 
+5) } 
+6) class Test implements Interf { 
+7) public static void main(String[] args) { 
+8) Test t = new Test(); 
+9) t.sum(10, 20); //CE 
+10) Test.sum(10, 20); //CE 
+11) Interf.sum(10, 20); 
+12) } 
+13) }
+</pre>
+<ul>
+<li> As interface static methods by default not available to the implementation class, overriding concept is not applicable.
+<li> Based on our requirement we can define exactly same method in the implementation class, it's valid but not overriding.
+</ul>
+<pre>
+Ex:1 
+1) interface Interf { 
+2) public static void m1() {} 
+3) } 
+4) class Test implements Interf { 
+5) public static void m1() {} 
+6) }
+</pre>
+It's valid but not overriding
+
+<pre>
+Ex:2 
+1) interface Interf { 
+2) public static void m1() {} 
+3) }
+4) class Test implements Interf { 
+5) public void m1() {} 
+6) }
+</pre>
+This's valid but not overriding
+
+<pre>
+Ex3: 
+1) class P { 
+2) private void m1() {} 
+3) } 
+4) class C extends P { 
+5) public void m1() {} 
+6) }
+</pre>
+This's valid but not overriding
+<br>
+From 1.8 version onwards we can write main() method inside interface and hence we can run interface directly from the command prompt.
+<pre>
+Ex: 
+1) interface Interf { 
+2) public static void main(String[] args) { 
+3) System.out.println("Interface Main Method"); 
+4) } 
+5) }
+</pre>
+At the command prompt:
+<pre>
+javac Interf.Java
+java Interf
+</pre> 
+   
+</td></tr></table></div>
+</body>
+
+<!-- Mirrored from www.java8.jobs4times.com/static-methods-in-interfaces.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 22 Jun 2024 15:39:32 GMT -->
+</html>

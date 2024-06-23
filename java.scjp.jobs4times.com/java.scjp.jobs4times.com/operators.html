@@ -1,0 +1,981 @@
+<!DOCTYPE HTML>
+<html>
+  
+<!-- Mirrored from java.scjp.jobs4times.com/operators.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 22 Jun 2024 15:19:56 GMT -->
+<head><meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+    <title>Java Operators  &amp;  Assignments  OverView | Java Operators  &amp;  Assignments  Tutorial | Java  Operators  &amp;  Assignments   Real Time Examples | Java  Operators  &amp;  Assignments   concepts | Java  Operators  &amp;  Assignments Class Room study material | Java  Operators  &amp;  Assignments  Practical Demonstration | Java  Operators  &amp;  Assignments  Interview Questions and Answers</title>
+	
+    <meta http-equiv="keywords" content=" increment & decrement operators 
+arithmetic operators 
+string concatenation operators 
+Relational operators 
+Equality operators 
+instanceof operators 
+Bitwise operators 
+Short circuit operators 
+type cast operators 
+assignment operator 
+conditional operator 
+new operator 
+[ ] operator 
+Precedence of java operators 
+Evaluation order of java operands 
+new Vs newInstance( ) 
+instanceof Vs isInstance( ) 
+ClassNotFoundException Vs NoClassDefFoundError 
+  ">
+	
+    <meta http-equiv="description" content=" Increment & decrement operators we can apply only for variables but not for constant values. The only overloaded operator in java is ' + ' operator some times it access arithmetic addition operator & some times it access String concatenation operator. 
+">
+    
+    
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    
+ 
+
+  </head>
+  
+  <body>
+  <div  align="center">
+  
+  <table border="3"  width="75%"><tr><td>
+    
+   <table width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="">
+     <tr>
+     <td width="50%" align="left"><a href="https://www.jobs4times.com/"><img alt="jobs4timesLogo"  src="../img.logos.jobs4times.com/banner%20J4T.jpg" width="700" height="200">   </a> </td> 
+   	<td  align="right"><a href="index-2.html"><img alt="jobs4timesLogo"  src="../img.logos.jobs4times.com/as2.jpg"  width="180" height="200" >  </a>  </td> 
+    </tr>
+    </table>  	
+  
+  
+    
+  <h1 style="background-color: rgb(64, 128, 128);" align="center"><font color="#ffff00">OPERATORS &amp; ASSIGNMENTS </font></h1>
+  <u><font color="#FF3366">Agenda: </font></u>
+  
+  <ol>
+    		<li><a href="#incre" >    increment &amp; decrement operators</a></li>
+    		<li><a href="#arithmetic" > arithmetic operators</a></li>
+    		<li><a href="#concate" >string concatenation operators</a></li>
+    		<li><a href="#relational" >Relational operators</a></li>
+    		<li><a href="#equality" >Equality operators</a></li>
+    		<li><a href="#instanceof">instanceof operators</a> </li>
+    		<li><a href="#bitwise"> Bitwise operators</a></li>
+    		<li><a href="#circuit">Short circuit operators </a></li>
+    		<li><a href="#typecast"> type cast operators</a></li>
+    		<li><a href="#assignment">assignment operator</a> </li>
+    		<li><a href="#conditional"> conditional operator</a></li>
+    		<li><a href="#new"> new operator</a></li>
+    		<li><a href="#[]"> [ ] operator</a> </li>
+    		<li><a href="#precedence">Precedence of java operators</a> </li>
+    		<li><a href="#operands">Evaluation order of java operands </a></li>
+    		<li><a href="#newinstance">new   Vs  newInstance( )</a> </li>
+    		<li><a href="#isinstance">instanceof  Vs  isInstance( )</a></li>
+    		<li><a href="#class">ClassNotFoundException   Vs  NoClassDefFoundError</a></li>   		
+</ol>
+
+<hr  color="meroon">
+    
+    
+   <h2  id="incre"  style="background-color: rgb(0, 64, 0);"><font color="#800040">   
+      
+    <font color="#ffff00">Increment &amp; Decrement operators  :  
+      
+      
+    </font></font></h2>
+    <br><img alt="" src="operator/image001.png"><br>   
+    <table   cellpadding="5" border="1">
+    <tr ><th rowspan="2">Increment Operator</th><td>pre-increment</td><td>ex : y=++x ;</td></tr>
+      																				<tr ><td>post-increment</td><td>ex: y=x++; </td></tr>
+    </table>
+    
+    <br><br><img alt="" src="operator/image002.png">
+     
+    <table  cellpadding="5" border="1" >
+    <tr><th rowspan="2">Decrement Operator</th><td>pre-decrement</td><td>ex : y=--x ;</td> </tr>
+    																				<tr><td> post-decrement</td> <td>ex : y=x-- ;</td>    </tr>
+    </table>
+   
+    <br> 
+    The following table will demonstrate the use of increment and decrement operators. 
+    <table border="1">
+    	<tr><th>Expression</th><th>initial  value of  x</th><th>value  of  y</th><th>final value of  x </th></tr>
+    	<tr><td>y=++x</td><td>10</td><td>11</td><td>11</td></tr>
+    	<tr><td>y=x++</td><td>10</td><td>10</td><td>11</td></tr>
+    	<tr><td>y=--x</td><td>10</td><td>9</td><td>9</td></tr>
+    	<tr><td>y=x--</td><td>10</td><td>10</td><td>9</td></tr>
+    </table>
+    
+    
+    <br> 
+    Ex : <br><br><img alt="" src="operator/image003.png">
+     
+    
+    <ol> 
+    	<li>Increment &amp; decrement operators we can apply only for variables but not for constant values.other wise  we will get compile time error . 
+    		<pre>Ex : 	 <br>    			 <br>    				int x = 4; <br>					int y = ++x; <br>				    System.out.pritnln(y);  //output : 5 <br>    			</pre> 
+    			 
+    			Ex 2 :<pre> <br>    			int x = 4; <br>				int y = ++4; <br>				System.out.pritnln(y); <br>				 <br>				C.E: unexpected type <br>				required: varialbe <br>				found : value <br>    			</pre> 
+    </li> 
+     
+     
+    <li>We can't perform nesting of increment or decrement operator, other wise  we will get compile time error  
+    <br><img alt="" src="operator/image004.png"> 
+    <pre> <br>		 int x= 4; <br>		int y = ++(++x); <br>		System.out.println(y);  <br>		 <br>		C.E: unexpected type <br>		required: varialbe <br>		 found : value <br>    </pre> 
+     
+    </li> 
+     
+    <li>For the final variables we can't apply increment or decrement operators ,other wise  we will get compile time error  
+    <br><img alt="" src="operator/image005.png">  
+<pre> <br>Ex: <br>final int x = 4; <br>x++;                         //  x = x + 1 <br>System.out.println(x); <br>			 <br>C.E :  can't assign a value to final variable 'x' . <br>    </pre> 
+     
+    </li> 
+     
+    <li>We can apply increment or decrement operators even for primitive  data types except  boolean . 
+ <pre>Ex: <br>int x=10; <br>x++; <br>System.out.println(x);    //output :11 <br> </pre>
+ <pre>
+ char ch='a';
+  ch++;
+  System.out.println(ch); //b
+ </pre>
+ <pre>
+ double d=10.5;
+  d++;
+  System.out.println(d); //11.5
+ </pre>
+ <pre>
+ boolean  b=true;
+  b++;
+  System.out.println(b); 
+  CE : operator ++ can't be applied to boolean
+ </pre>
+ 
+ </li></ol>
+    
+<br>
+
+ <p>  
+ </p><h3><font color="#ff0000"><u><strong>Difference between b++ and b = b+1?</strong></u></font></h3><p> 
+If we are applying any arithmetic operators b/w 2 operands 'a' &amp; 'b' the result type is  <strong>max(int ,  type of a , type of b)</strong> 
+</p>
+<br><img alt="" src="operator/image008.png"><br><br><img alt="" src="operator/image009.png" width="920"><br> 
+ 
+<pre>Ex 1:  <br>byte a=10;  <br>byte b=20;  <br>byte c=a+b;                      //byte c=byte(a+b);  valid  <br>System.out.println(c);  <br>  <br>CE : possible loss of precession  <br>		found : int  <br>		required : byte  
+</pre>
+      
+  <pre>Ex 2:  <br>byte b=20;  <br>byte  b=b+1;                  //byte b=(byte)b+1 ; valid  <br>System.out.println(c);  <br>  <br>CE : possible loss of precession  <br>		found : int  <br>		required : byte  
+</pre>   
+     
+    In the case of Increment &amp; Decrement  operators  internal type casting  will be performed  automatically  by the compiler<br> <img alt="" src="operator/image010.png">
+    <pre>
+    b++;  =&gt; b=(type of b)b+1;
+    
+    Ex:
+    byte b=10;
+    b++;
+    System.out.println(b);  //output : 11
+    </pre>
+   
+    <br><h2  id="arithmetic"	 style="background-color: rgb(0, 64, 0);">     <font color="#ffff00">Arithmetic  Operator :   
+    </font></h2><ol>
+    <li>
+    
+    If we apply any Arithmetic operation b/w  2  variables  a &amp; b  ,<br>
+     the  result type is always <strong>max(int ,  type of a , type of b)</strong>
+<pre>
+Example : 
+
+byte + byte=int
+byte+short=int  
+short+short=int
+short+long=long
+double+float=double
+int+double=double
+char+char=int
+char+int=int
+char+double=double
+      
+System.out.println('a' + 'b');  // output : 195
+System.out.println('a' + 1);  // output : 98
+System.out.println('a' + 1.2);  // output : 98.2
+</pre>
+
+    <br> <img alt="" src="operator/image011.png">  <br>
+    </li>
+    <li>In integral arithmetic (byte , int , short , long) there is no way to represents  infinity , if infinity  is the  result  we will  get  the  ArithmeticException / by zero
+    		<br><em><strong>System.out.println(10/0);    // output    RE :  ArithmeticException / by zero  </strong></em><br>
+    		But in floating point  arithmetic(float , double) there is a way represents infinity.
+    		<br><em><strong>System.out.println(10/0.0);		//  output : infinity  </strong></em><br> 
+    		<br> <img alt="" src="operator/image012.png" width="920"><br>
+    		<strong>For the Float &amp; Double  classes  contains  the following  constants : 
+    			</strong><ol> <li><font color="#8000ff">POSITIVE_INFINITY </font></li><li><font color="#8000ff">NEGATIVE_INFINITY</font></li>	</ol>
+    			Hence , if infinity is the result we  won't get any ArithmeticException in floating point arithmetics <br> 
+    			<u><strong>Ex :  
+    			</strong></u><br><strong><font color="#0033FF">System.out.println(10/0.0);		//  output : infinity   
+    			<br>System.out.println(-10/0.0);		//  output : - infinity  </font></strong><br>	  
+    
+     </li>
+     
+     <li>NaN(Not a Number)  in <strong><u>integral arithmetic</u></strong> (byte , short , int , long) there is no way to represent  undefine  the  results. Hence  the result  is  undefined  we will  get ArithmericException  in  integral arithmetic 
+     		 <br><font color="#008080"><strong><em>System.out.println(0/0);		//  output    RE :  ArithmeticException / by zero  </em></strong></font><br> 
+     		 But floating<strong><u> point arithmetic</u></strong> (float , double) there is a way  to represents  undefined  the  results .<br> 
+     		 For the Float , Double  classes  contains a  constant  NaN , Hence the result  is  undefined  we  won't  get <strong>ArithmeticException  in floating point arithmetics .</strong><br><strong><font color="#008000">System.out.println(0.0/0.0);		//  output : NaN   
+     		 <br>System.out.println(-0.0/0.0);		//  output : NaN </font></strong><br>
+     </li>
+     <li>For any  'x'  value  including  NaN , the following  expressions  returns  false  
+     <br> <img alt="" src="operator/image013.png" width="920" >  <br>
+<pre>
+  // Ex : 	x=10;
+System.out.println(10 &lt; Float.NaN );			// false
+System.out.println(10 &lt;= Float.NaN );		// false
+System.out.println(10 &gt; Float.NaN );			// false
+System.out.println(10 &gt;= Float.NaN );		// false
+System.out.println(10 == Float.NaN );			// false
+System.out.println(Float.NaN == Float.NaN );		// false
+     			
+System.out.println(10 != Float.NaN );				//true
+System.out.println(Float.NaN != Float.NaN );		//true     			
+</pre></li>
+     <li><strong>ArithmeticException : 
+     			</strong><ol>
+     					<li>It is a RuntimeException  but not  compile time error</li>
+     					<li>It occurs  only  in  integral  arithmetic  but not in floating point  arithmetic.</li>
+     					<li>The  only  operations  which  cause ArithmeticException are :  ' / '  and   ' % '  </li>
+     			</ol>
+    </li>   
+</ol>
+    <br> <img alt="" src="operator/image014.png" width="920">  <br>
+   
+    
+  <br><h2  id="concate"   style="background-color: rgb(0, 64, 0);"> 
+   
+  <font color="#ffff00" >String  Concatenation  operator : 
+  </font></h2><ol>
+  		<li>The  only  overloaded  operator  in java  is  ' <strong>+</strong> '   operator  some times it access  arithmetic  addition  operator  &amp;  some times  it access String  concatenation  operator. </li>
+  		<li>If acts  as  one argument  is  String  type  , then <strong>'+'</strong> operator  acts  as  concatenation  and  If  both arguments  are  number type , then operator  acts  as  arithmetic  operator 
+<pre><strong><u>Ex :</u> </strong>
+String a=&quot;ashok&quot;; <br>int  b=10 , c=20 , d=30 ; <br>System.out.println(a+b+c+d);  //output : ashok102030 <br>System.out.println(b+c+d+a);	//output : 60ashok  <br>System.out.println(b+c+a+d);	//output : 30ashok30  <br>System.out.println(b+a+c+d);	//output : 10ashok 2030 					 
+</pre><u><font color="#008080"><strong>Example : 
+    </strong></font></u><br> <img alt="" src="operator/image015.png" >  <br>
+<u><font color="#008080"><strong>Example : 
+    </strong></font></u><br> <img alt="" src="operator/image016.png" width="920">  <br>
+  		</li>
+  		
+  		<li><u>consider the following declaration  
+  				</u><br>String a="ashok";
+  				<br>int b=10 , c=20 , d=30 ; <br>
+  				
+<pre><strong> Example : </strong><br>a=b+c+d ; <br>  			 <br>CE : incompatible type <br>		found : int <br>		required : java.lang.String 
+</pre>
+  		
+<pre><strong>Example :</strong> 
+<br>a=a+b+c ; // valid 
+</pre>
+  		
+<pre><strong>Example : 
+<br></strong>b=a+c+d ;
+<br>  			
+<br>CE : incompatible type
+<br>		found : java.lang.String
+<br>		required : int
+</pre>
+  		
+<pre><strong>Example : 
+<br></strong>b=b+c+d ;		// valid 
+</pre>
+ </li>
+</ol>
+<br><h2  id="relational"	 style="background-color: rgb(0, 64, 0);"> 
+ 
+<font color="#ffff00">Relational Operators(&lt; , &lt;= , &gt; , &gt;=  ) 
+</font></h2><ol>
+	<li>We can apply relational  operators  for  every  <strong><em>primitive type</em></strong> except<strong> <em>boolean</em></strong> 
+	.<br> <img alt="" src="operator/image017.png" width="920">  <br>
+ <pre>
+ System.out.println(10 &lt; 10.5);    //true
+ System.out.println('a' &gt; 100.5);    //false
+ System.out.println('b'  &gt;  'a');    //true
+ System.out.println(true &gt; false);    
+  //CE : operator  &gt;  can't  be  applied  to  boolean , boolean
+ </pre>
+	  </li>
+	  
+	  <li>We can't apply  relational operators for object  types
+	  <br> <img alt="" src="operator/image018.png" width="920">  <br>
+<pre>
+System.out.println("ashok123" &gt; "ashok");
+ //  CE: operator &gt; can't be applied to java.lang.String , java.lang.String
+ </pre></li>
+	  
+<li>Nesting of relational operator  is  not  allowed 
+<br> <img alt="" src="operator/image019.png" width="920" ><br>
+<pre>
+System.out.println(10 &gt;  20 &gt; 30); //  System.out.println(true  &gt; 30);
+  //CE : operator  &gt; can't  be  applied  to  boolean , int
+</pre>	
+	</li>  
+</ol>  
+<br> 
+<h2 id="equality" style="background-color: rgb(0, 64, 0);"><font color="#ffff00">Equality Operators : (== , !=) 
+ 
+</font></h2><ol>
+	<li>We  can apply equality  operators  for  every  primitive  type  including  boolean type also
+	<pre>
+		System.out.println(10 == 20) ;  //false
+		System.out.println('a' == 'b' );   //false
+		System.out.println('a' == 97.0 )  //true 
+		System.out.println(false == false)   //true 
+	</pre> 
+	</li>
+	
+	<li>We can apply  equality  operators  for  object  types  also .<br> For object  references  r1  and r2  ,  <strong>r1 == r2</strong>  returns  true  if and only if both  r1 and r2 pointing to the same  object.   i.e.,  == operator meant  for  reference-comparision  Or  address-comparision.
+	<pre>
+		Thread t1=new Thread( ) ;
+		Thread t2=new Thread( );
+		Thread t3=t1 ;
+		System.out.println(t1==t2);  //false
+		System.out.println(t1==t3);  //true
+	</pre> 
+	<br> <img alt="" src="operator/image020.png">
+	</li>
+	
+	<li>To use the equality operators  between object type compulsory  these should  be some  relation between  argument types(child to parent  , parent to child) , Otherwise we will get Compiletime error  incompatible types 
+<pre>
+Thread t=new Thread( ) ;
+Object o=new Object( );
+String s=new String("durga");
+System.out.println(t ==o);    //false
+System.out.println(o==s);     //false
+System.out.println(s==t);    
+CE : incompatible types :  java.lang.String and java.lang.Thread
+</pre><br> <br> <img alt="" src="operator/image021.png" width="920"><br>
+		<br> <img alt="" src="operator/image022.png">  <br>
+		</li>
+<li>For any object  reference of on <strong>r==null</strong> is always false  ,  but <strong>null==null</strong> is always  true .
+<pre>
+	String s= new String("ashok");
+	System.out.println(s==null);  //output : false
+</pre>
+<pre>
+	String   s=null ;
+	System.out.println(r==null);  //true 
+</pre>
+<pre>
+	System.out.println(null==null); //true
+</pre>
+</li>
+<li><u><font color="#ff0000"><strong>What is the  difference  between  == operator  and  .equals( )  method ?  </strong></font></u><br> 
+		In general we can use  <strong>.equals( )</strong>  for  content comparision  where as  <strong>== </strong>operator  for  reference comparision  
+		<pre> 
+			String  s1=new String(&quot;ashok&quot;); 
+			String  s2=new  String(&quot;ashok&quot;); 
+			System.out.println(s1==s2);  //false 
+			System.out.println(s1.equals(s2));  //true 
+		</pre>
+		<br> <img alt="" src="operator/image023.png">  <br>
+	</li>	
+</ol>
+ 
+<br><h2  id="instanceof"   style="background-color: rgb(0, 64, 0);"> 
+ 
+<font color="#ffff00">instanceof  operator : </font></h2><ol>
+	<li>We can use the  instanceof  operator   to check  whether  the given an object  is  perticular type or  not 
+	<br> <img alt="" src="operator/image024.png">  <br>
+	<pre>
+		Object o=l.get(0);          // l is an array name
+		if(o  instanceof Student) {
+		  Student s=(Student)o ;
+		  	//perform  student  specific  operation
+		  }
+		  elseif(o instanceof Customer) {
+		    Customer c=(Customer)o;
+		      //perform  Customer specific  operations		  
+		  }
+	</pre>
+</li>
+<li>  <strong> O  instanceof  X </strong> here  O is object reference ,  X is ClassName/Interface name  
+	<pre>
+		Thread  t = new  Thread( );
+		System.out.println(t  instanceof Thread);   //true
+		System.out.println(t instanceof Object);     //true
+		System.out.println(t instanceof Runnable);  //true
+	</pre> 
+	
+	<pre>Ex :
+		public class Thread extends Object  implements Runnable {
+		}
+		</pre>
+	<img alt="" src="operator/image025.png"><br>
+	</li>
+	
+	<li>To use instance  of  operator compulsory there should be  some  relation between  argument types (either child to parent  Or  parent to child    Or  same type)  Otherwise  we will get  compile time  error saying  inconvertible types 
+	<br> <img alt="" src="operator/image026.png" width="920">  <br> 
+	<pre> 
+		Thread t=new Thread( ); 
+		System.out.println(t  instanceof String); 
+			CE : inconvertable  errors 
+					found : java.lang.Thread 
+					required : java.lang.String 
+	</pre> 
+	</li>
+	
+	<li>Whenever  we are checking  the parent object is child type  or not by using  instanceof  operator  that we  get   false.
+	<pre>
+		Object o=new Object( );
+		System.out.println(o  instanceof  String );     //false
+		
+		Object o=new String("ashok");
+		System.out.println(o  instanceof String);   //true
+	</pre>
+	</li>
+	
+	<li>For any class or interface X  <strong>null instanceof X</strong> is always  returns  false 
+	<pre>
+		System.out.println(null  instanceof  X);  //false
+	</pre>
+	</li>
+</ol>
+
+<br><h2  id="bitwise"	 style="background-color: rgb(0, 64, 0);"> 
+ 
+<font color="#ffff00" style="background-color: rgb(0, 64, 0);">Bitwise Operators : ( &amp;  , | , ^)  
+</font></h2><ol>
+<li><font color="#8000ff"><strong>&amp; (AND) :&nbsp;</strong></font> If both arguments are true then only result is true.</li>
+<li><font color="#8000ff"><strong>| (OR) :</strong></font>&nbsp; if at least one argument is true. Then the result is true.</li>
+<li><font color="#400080"><strong>^ (X-OR) :&nbsp;</strong></font> if both are different arguments. Then the result is true. 
+</li></ol>
+<pre>
+Example:
+System.out.println(true&amp;false);//false
+System.out.println(true|false);//true
+System.out.println(true^false);//true
+</pre>
+
+
+We can apply bitwise operators even for integral types also.
+<pre>
+Example:
+System.out.println(4&amp;5);//4         		 using binary digits 
+System.out.println(4|5);//5					 4--&gt;100
+System.out.println(4^5);//1					 5--&gt;101
+</pre>
+
+<u><font color="#008080"><strong>Example : 
+    </strong></font></u><br> <img alt="" src="operator/image027.png">  <br>
+<br><h2> 
+ 
+<font color="#ffff00" style="background-color: rgb(128, 64, 0);">Bitwise complement (~) (tilde symbol) operator: </font>
+</h2><ol>
+<li>We can apply this operator only for <strong><em>integral types</em></strong> but not for boolean types. 
+<br> <img alt="" src="operator/image028.png" width="920">  <br>
+<pre>
+Example :
+System.out.println(~true); // CE :opetator ~ can not be applied to  boolean
+System.out.println(~4);  //-5
+
+description about above program :
+4--&gt;  0 000.......0100                0-----+ve
+~4--&gt; 1 111.......1011                 1--- -ve
+
+2's compliment  of ~4 --&gt;  000....0100 add  1  
+ result is : 000...0101 =5 
+</pre>
+</li>
+
+<li><strong>Note :</strong> The most significant  bit  access as sign bit  0 means +ve number , 1 means -ve number.<br>
+			+ve  number will be  represented directly  in memory where as  -ve number will be represented in  2's  comlement form.</li>
+</ol>
+<br>
+<br> <img alt="" src="operator/image029.png">  <br>
+<h2 style="background-color: rgb(128, 64, 0);"><font color="#ffff00">Boolean complement (!) operator:</font></h2> 
+ 
+This operator is applicable only for <strong><em>boolean types</em></strong> but not for integral types. 
+<br> <img alt="" src="operator/image030.png" width="920">  <br><br><font color="#004080"><strong>Example : 
+    </strong></font><br>
+<pre>
+Example: 
+System.out.println(!true);//false
+System.out.println(!false);//true
+System.out.println(!4);//CE : operator ! can not be applied to int
+</pre>
+Summary:
+<pre>
+&amp;
+|      Applicable for both boolean and integral types.
+^
+~ --------Applicable for integral types only but not for boolean types.
+! --------Applicable for boolean types only but not for integral types.
+</pre>
+
+<br><h2  id="circuit"	 style="background-color: rgb(0, 64, 0);"> 
+ 
+<font color="#ffff00" style="background-color: rgb(0, 64, 0);">Short circuit (&amp;&amp;, ||) operators: 
+</font></h2> 
+<u><font color="#0080c0">These operators are exactly same as normal bitwise operators &amp;(AND), |(OR) except the following differences. 
+</font></u>
+<table  border="1">
+<tr><th>&amp; , |</th><th>&amp;&amp; , ||</th></tr>
+<tr><td>Both arguments should be evaluated always.	</td><td>Second argument evaluation is optional.</td></tr>
+<tr><td>Relatively performance is low.		</td><td>Relatively performance is high.</td></tr>
+<tr><td>Applicable for both integral and boolean types.	</td><td>	Applicable only for boolean types but not for integral types.</td></tr>
+</table>
+
+<p>  
+ <font color="#0000ff"><strong>x&amp;&amp;y :</strong></font> <strong>y</strong> will be evaluated if and only if <strong>x</strong> is true.(If x is false then y won't be  evaluated i.e., If x  is  ture  then only  y will be  evaluated)  
+ </p><p> 
+<font color="#0000ff"><strong> 
+	x||y :</strong></font> <strong>y</strong> will be evaluated if and only if <strong>x</strong> is false.(If x is true then y won't be  evaluated  i.e., If x  is  false  then only  y will be  evaluated) 
+ </p>
+    
+    <strong>Example : 
+    </strong>
+    <pre>
+    	int x=10 , y=15 ;
+    	if(++x &lt; 10  ||  ++y &gt; 15) {    //instead of || using  &amp;,&amp;&amp;, | operators
+    	 x++;
+    	}
+    	else {
+    		y++;
+    	}
+    	
+    	System.out.println(x+"----"+y);
+    	
+    </pre> 
+    <u><strong>Output:</strong></u><table border="1" width="612" height="184">
+    <tr><th>operator</th><th>x</th><th> 	y</th></tr>
+    <tr><td>&amp;</td><td>	11	</td><td>	17</td></tr>
+    <tr><td>| </td><td>	12</td><td>	16</td></tr>
+    <tr><td>&amp;&amp;</td><td>	11	</td><td>	16</td></tr>
+    <tr><td>||</td><td>	12</td><td>	16</td></tr>
+    </table><br><br><strong>Example : 
+    </strong><pre>
+    	int x=10  ;
+    	if(++x &lt; 10  &amp;&amp; ((x/0)&gt;10) ) {   
+    	 System.out.println("Hello"); 
+    	}
+    	else {
+    		System.out.println("Hi"); 
+    	}
+    	
+    	output : Hi 
+</pre>
+
+<br><h2  id="typecast"    style="background-color: rgb(128, 0, 0);"> 
+ 
+<font color="#ffff00">Type Cast Operator : 
+ 
+</font></h2>There are 2 types of type-casting 
+<ol>
+	<li>implicit </li>
+	<li>explicit </li>
+</ol>
+
+ 
+<h3 ><font color="#ffff00"  style="background-color: rgb(0, 0, 255);">implicit  type casting : 
+</font></h3><pre>
+	int x='a';
+	System.out.println(x);  //97
+</pre>
+
+<ol>
+	<li>The compiler  is  responsible  to perform  this type casting.</li>
+	<li>When ever we are assigning  lower datatype  value to  higher datatype variable  then implicit type cast will be performed .</li>
+	<li>It is also known as  Widening  or  Upcasting.</li>
+	<li>	There is no lose of information in this type casting.</li>
+	<li>	The following are various possible implicit type casting.<br>
+		Diagram: <br> <img alt="" src="operator/image031.png">  <br>
+	</li>
+	<li>
+	<pre> 
+Example 1:
+int x='a';
+System.out.println(x);//97
+</pre> 
+<strong>Note:</strong> Compiler converts char to int type automatically by implicit type casting. 
+<pre>
+Example 2:
+double d=10;
+System.out.println(d);//10.0
+</pre>
+Note: Compiler converts int to double type automatically by implicit type casting.
+</li>
+</ol> 
+ 
+ 
+<font color="#ffff00" style="background-color: rgb(128, 0, 64);"><h3>Explicit type casting: 
+</h3></font><ol>
+<li>Programmer is responsible for this type casting.</li>
+<li>Whenever we are assigning bigger data type value to the smaller data type variable then explicit type casting is required.</li>
+<li>	Also known as Narrowing or down casting.</li>
+<li>	There may be a chance of lose of information in this type casting.</li>
+<li>The following are various possible conversions where explicit type casting is required.<br>
+Diagram:<br> <img alt="" src="operator/image032.png">  <br><br>
+<br> <img alt="" src="operator/image033.png">  <br>
+</li>
+<li>
+<pre> 
+Example :
+
+int x=130;
+byte b=(byte)x;
+System.out.println(b);  //-126
+</pre><br> <img alt="" src="operator/image034.png">  <br>
+
+</li>
+<li>
+<pre>
+Example 2 :
+
+int x=130;
+byte b=x;
+System.out.println(b);  //CE : possible loss of precision
+</pre>
+When ever we are assigning  higher datatype value to lower datatype value variable by explicit  type-casting ,the most significant bits will be lost  i.e., we have considered  least significant bits.
+<pre>
+Example 3 :
+
+int x=150;
+short s=(short)x;
+byte b=(byte)x;
+System.out.println(s); //150
+System.out.println(b);  //-106
+</pre>
+</li>
+<li>	When ever  we are  assigning  floating point  value to the integral types  by explicit type casting , the digits of after decimal point will be lost .
+<pre>
+Example 4:
+
+double d=130.456 ;
+
+int x=(int)d ;
+System.out.println(x);  //130
+
+byte b=(byte)d ;
+System.out.println(b);  //-206
+</pre>
+</li> 
+</ol>
+<br> <img alt="" src="operator/image035.png">  <br>
+<br><h2	id="assignment"	 style="background-color: rgb(128, 0, 0);"> 
+ 
+<font color="#ffff00">Assignment Operator : 
+ 
+</font></h2>There are 3 types of assignment operators 
+<ol>
+<li><font color="#0080ff"><strong>Simple assignment:</strong></font><br> 
+<em>Example:</em> int x=10; 
+</li>
+<li><font color="#0080c0"><strong>Chained assignment: 
+</strong></font><pre>
+Example:
+int a,b,c,d;
+a=b=c=d=20;
+System.out.println(a+"---"+b+"---"+c+"---"+d);//20---20---20---20
+</pre>
+<pre>
+int b , c , d ;
+int a=b=c=d=20 ;  //valid
+</pre>
+
+We can't perform chained assignment directly at the time of declaration.
+<br> <img alt="" src="operator/image036.png">  <br>
+<pre>
+Example 2:
+
+int a=b=c=d=30;
+	CE : can not find symbol
+			symbol : variable b
+			location : class Test
+</pre>
+
+</li>
+
+<li> 
+<u><strong><font color="#800040">Compound assignment:</font> 
+</strong></u><ol>
+<li>	Sometimes we can mixed assignment operator with some other operator to form compound assignment operator.
+<pre>
+Ex:
+int a=10 ;
+a +=20 ;
+System.out.println(a);  //30
+</pre>
+</li>
+<li>The following is the list of all possible compound assignment operators in java.
+<br>
+<br> <img alt="" src="operator/image037.png"><br>
+
+<!--
+<table  border="1">
+<tr>
+		<th> +=    <br> -=<br>*=<br>/=<br>%=</th>
+		<th>&amp;=<br>|=<br>^ = </th>
+		<th>&lt;&lt;=<br>&gt;&gt;=<br>&lt;&lt;&lt;=</th>
+</tr>
+</table>
+-->
+
+</li>
+
+<li>	In the case of compound assignment operator internal type casting will be performed automatically by the compiler (similar to increment and decrement operators.)
+</li>
+</ol></li>
+</ol>
+ <br> <br> <img alt="" src="operator/image038.png">  <br><br>			<br> <img alt="" src="operator/image039.png" width="888">  <br><br>
+
+<table   border="1"  width="99%">
+<tr><td>
+<pre>
+byte b=10;
+b=b+1;
+System.out.println(b);
+
+CE :
+ possible loss of precission
+	found : int
+	required : byte
+</pre></td><td>
+<pre>
+byte b=10;
+b++;
+System.out.println(b); //11
+</pre></td></tr><tr><td>
+<pre>
+byte b=10;
+b+=1;
+System.out.println(b); //11
+</pre></td><td>
+<pre>
+byte b=127;
+b+=3;
+System.out.println(b);
+	 //-126
+</pre></td>
+
+</tr>
+</table>
+
+<pre>
+Ex : 
+int a , b , c , d ;
+a=b=c=d=20 ;
+a += b-= c *= d /= 2 ;
+System.out.println(a+"---"+b+"---"+c+"---"+d);// -160...-180---200---10
+</pre>
+
+
+<br><h2  id="conditional"	 style="background-color: rgb(64, 0, 0);"> 
+ 
+<font color="#ffff00">Conditional  Operator (? :) </font></h2>
+The only possible  ternary operator  in java  is  conditional  operator 
+	<pre>
+	Ex 1 :
+	int x=(10&gt;20)?30:40;
+	System.out.println(x); //40
+	</pre>
+	<pre>
+	Ex 2 :
+	int x=(10&gt;20)?30:((40&gt;50)?60:70);
+	System.out.println(x); //70
+	</pre><br>
+ Nesting of conditional operator is  possible 
+ <br> <img alt="" src="operator/image040.png" width="920">  <br><br>
+ <br> <img alt="" src="operator/image041.png">  <br>
+ 
+ <br><h2	id="new"	 style="background-color: rgb(128, 0, 0);"> 
+  
+ <font color="#ffff00">new operator : 
+ </font></h2><ol>
+ <li>We can use "new" operator to create an object.</li>
+ <li>There is no "delete" operator in java because  destruction of useless  objects is the responsibility of garbage collector.</li>
+ </ol>
+ <br> 
+  
+ <h2	id="[]"	 style="background-color: rgb(128, 0, 0);"><font color="#ffff00"><strong>[ ] operator: 
+  
+</strong></font></h2>We can use this operator to declare under construct/create  arrays.<br> 
+ 
+<h2   id="precedence"      style="background-color: rgb(128, 0, 0);"><font color="#ffff00"><u><strong>Java operator precedence: 
+</strong></u></font></h2><ol>
+<li><font color="#800040"><strong>Unary operators:</strong></font> [] ,  x++ ,  x-- , ++x , --x ,  ~ , ! , new , &lt;type&gt;  </li>
+<li><strong><font color="#004080">Arithmetic operators :</font></strong>  * , / , % , + , - . </li>
+<li><strong><font color="#8080c0">Shift operators :</font></strong>&nbsp; &gt;&gt; , &gt;&gt;&gt; , &lt;&lt; .</li>
+<li> <strong><font color="#ff00ff">Comparision operators :</font></strong> &lt;, &lt;=,&gt;,&gt;=, instanceof.</li>
+<li><strong><font color="#ff8000">Equality operators:</font></strong>  == , != </li>
+<li><strong><font color="#8000ff">Bitwise operators:</font></strong>	&amp; , ^ , | .</li>
+<li><strong><font color="#808000">Short circuit operators:</font></strong>  &amp;&amp; , || .</li>
+<li><strong><font color="#8000ff">Conditional operator:</font></strong>  (?:)</li>
+<li><strong>Assignment operators:</strong>  += , -= , *= , /= , %= . . . </li>
+</ol>
+
+<br><h2  id="operands"  style="background-color: rgb(128, 0, 0);"> 
+ 
+<font color="#ffff80">Evaluation order of java operands:</font></h2>&nbsp;There is no precedence for operands before applying any operator all operands will be evaluated from left to right. 
+ 
+<pre>
+Example:
+class OperatorsDemo {
+	public static void main(String[] args)	{
+		System.out.println(m1(1)+m1(2)*m1(3)/m1(4)*m1(5)+m1(6));
+	}
+	public static int m1(int i)	{
+		System.out.println(i);
+		return i;
+	}
+}</pre>
+<br> <img alt="" src="operator/image042.png">  <br>
+<br> <img alt="" src="operator/image043.png">  <br>
+ 
+<br>
+<pre>
+Ex 2:
+
+int i=1;
+i+=++i + i++ + ++i + i++;
+System.out.println(i); //13
+
+description : 
+i=i +  ++i  +  i++   +  ++i  +   i++ ;
+i=1+2+2+4+4;
+i=13;
+</pre>
+
+<br><h2  id="newinstance"  > 
+ 
+<font color="#ffff00"><span style="background-color: rgb(128, 0, 0);">new  Vs newInstance( ) : 
+</span></font></h2><ol>
+	<li>new is  an operator  to create  an objects , if we know class name at the beginning  then we can create an  object by using   new operator .</li>
+	<li>newInstance( )  is a method  presenting class  " Class " , which  can be used to create object.</li>
+	<li>If we don't know  the  class name  at the  beginning  and its  available  dynamically Runtime  then we should go for  newInstance() method 
+	<pre>
+	public  class Test {
+	  public static void main(String[] args) Throws Exception {
+	  	Object o=Class.forName(arg[0]).newInstance( ) ;
+	  	System.out.println(o.getClass().getName( ) );
+	  }
+	}
+	</pre> 
+	</li>
+	<li>If dynamically  provide  class  name is  not  available  then  we will get the RuntimeException  saying  ClassNotFoundException </li>
+	<li>To  use  newInstance( )  method   compulsory  corresponding  class should contains  no argument constructor  , otherwise we will get the RuntimeException saying  InstantiationException.</li>
+</ol><h2> 
+ 
+<font color="#ffff00"><span style="background-color: rgb(128, 0, 0);">Difference between  <em>new</em>  and  <em>newInstance( )</em> : 
+</span></font></h2><table border="1">
+<tr><th><font color="#008000">new  </font></th><th><font color="#008000">newInstance( )  </font></th></tr>
+<tr><td>new  is an operator ,  which  can be  used to create  an  object</td> <td>newInstance( ) is  a  method ,  present in class Class  , which can be used to create an object . </td> </tr>
+<tr><td>We can use new operator  if we know the  class name  at the  beginning.  <br> Test t= new Test( );  </td><td>We can use the newInstance( )  method , If we don't  class  name at the beginning and  available  dynamically  Runtime. <br>Object o=Class.forName(arg[0]).newInstance( ); </td></tr>
+<tr><td>If the  corresponding  .class file  not available  at  Runtime  then  we will get  RuntimeException  saying  NoClassDefFoundError , It is unchecked </td><td>If the  corresponding  .class file  not available  at  Runtime  then  we will get  RuntimeException  saying  ClassNotFoundException , It is checked</td></tr>
+<tr><td> To used new operator  the corresponding  class not required to contain no argument constructor</td><td> To used newInstance( ) method  the corresponding  class should compulsory  contain no argument constructor  , Other wise we will get RuntimeException saying InstantiationException. </td>
+</table>
+<br><h2	id="class"	> 
+ 
+<font color="#ffff00"><span style="background-color: rgb(128, 0, 0);">Difference  between  ClassNotFoundException  &amp;  NoClassDefFoundError : 
+</span></font></h2><ol>
+<li>
+For hard coded class names at Runtime in the  corresponding  .class  files  not available  we will get <strong> NoClassDefFoundError </strong>, which is  unchecked<br><strong>
+Test t = new Test( );</strong> <br>
+
+In Runtime Test.class  file is not  available then  we will get NoClassDefFoundError 
+</li>
+
+<li>
+For Dynamically  provided  class names at Runtime , If the  corresponding  .class files is  not available then we will get the RuntimeException  saying  <strong>ClassNotFoundException</strong> <br><strong>
+Ex : Object o=Class.forname("Test").newInstance( ); </strong> <br>
+At  Runtime  if   Test.class   file  not available  then we will get the ClassNotFoundException , which  is  checked exception  
+</li>
+</ol>
+<br><h2   id="isinstance"  > 
+  
+<font color="#ffff00"><span style="background-color: rgb(128, 0, 0);">Difference  between  instanceof  and  isInstance( ) : 
+ 
+</span></font></h2><table  border="1">
+<tr><th><font color="#800040">instanceof</font></th><th><font color="#800040">isInstance( )</font></th></tr>
+<tr><td>instanceof  an  operator  which can be used to check  whether the given  object is perticular type or not  <br/>We   know  at  the type at beginning it is available    </td><td>isInstance( )  is a method , present in  class Class , we can use  isInstance( ) method  to checked  whether  the  given  object  is perticular  type or not <br> We don't know at the type  at beginning it is available Dynamically at Runtime.</td></tr>
+<tr><td>
+<pre>
+String  s = new  String("ashok");
+System.out.println(s instanceof Object );
+                       //true
+</pre>
+If we know the type  at the  beginning  only.
+</td><td>
+<pre>
+class  Test {
+public static void main(String[]  args) {
+Test  t = new Test( ) ;
+System.out.println(
+   Class.forName(args[0]).isInstance( )); 
+
+
+//arg[0] --- We  don't know  the type
+                    at beginning
+  }
+}
+
+java Test Test    //true
+java Test String    //false
+java  Test Object    //true
+</pre>
+
+</td>	</tr>   
+</table>
+
+  
+
+<br>
+
+<table border="1">
+<tr>
+<td>
+<pre>
+int x= 10 ;
+x=x++;
+System.out.println(x);
+               //10
+</pre>
+</td>
+
+<td>
+<pre>
+1. consider old value of x for  assignment  x=10
+2. Increment x value x=11
+3. Perform assignment with old considered  x  value  x=10  
+</pre>
+</td>
+</tr>
+</table>
+
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+  <br>
+  
+  
+  </td></tr></table>
+  <a href="index-2.html">BACK</a>
+  </div>
+  
+  
+       
+ <!-- infolinks  -->   
+<script type="text/javascript">
+ var infolinks_pid = 1921552;
+ var infolinks_wsid = 0;
+</script>
+<script type="text/javascript" src="../resources.infolinks.com/js/infolinks_main.js"></script>
+   
+
+  
+  </body>
+
+<!-- Mirrored from java.scjp.jobs4times.com/operators.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 22 Jun 2024 15:20:09 GMT -->
+</html>

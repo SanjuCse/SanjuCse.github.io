@@ -1,0 +1,635 @@
+<!DOCTYPE HTML>
+<html>
+  
+<!-- Mirrored from java.scjp.jobs4times.com/regexp.htm by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 22 Jun 2024 15:21:30 GMT -->
+<head><meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+    <title>Java Regular Expression concepts | Java Regular Expression Tutorial | Java Regular Expression Class Room study material | Java Regular Expression Practical Demonstration | Java Regular Expression Real Time Examples | Java Regular Expression Interview Questions and Answers</title>
+	
+    <meta http-equiv="keywords" content="Java Regular Expression Introduction , 
+	The main important application areas of Regular Expression , Pattern class , Matcher class , Important methods of Matcher class , Character classes ,
+	Predefined character classes , Quantifiers , Pattern class split() method , String class split() method , StringTokenizer , Java Regular Expression Requirements ,  Write a regular expression to represent all valid identifiers in java language ,
+	Write a regular expression to represent all mobile numbers , Write a regular expression to represent all Mail Ids , Write a program to extract all valid mobile numbers from a file , Write a program to extract all Mail IDS from the File , Write a program to display all .txt file names present in specific folder " >
+
+    <meta http-equiv="description" content="A Regular Expression is a expression which represents a group of Strings according to a particular pattern.A Pattern object represents compiled version of Regular Expression.">
+
+    
+    
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    
+ 
+
+  </head>
+  
+  <body>
+   
+<div align="center">
+<table  border="4"  width="80%"><tr><td>
+
+
+
+
+ <table width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="">
+     <tr>
+<td width="50%" align="left"><a href="https://www.jobs4times.com/"><img alt="jobs4timesLogo"  src="../img.logos.jobs4times.com/banner%20J4T.jpg" width="700" height="200">   </a> </td> 
+   	<td  align="right"><a href="index-2.html"><img alt="jobs4timesLogo"  src="../img.logos.jobs4times.com/as2.jpg"  width="180" height="200" >  </a>  </td>
+    </tr>
+    </table>  	
+
+
+
+
+
+
+
+
+
+
+   <h1 align="center" style="background-color: rgb(0, 0, 128);"> <font color="#ffff00" style="background-color: rgb(0, 0, 64);">Regular Expression :<br></font></h1>
+
+<u><em><strong>Agenda  </strong></em></u>
+
+<ol>
+<li><a href="#intro" > Introduction.</a></li>
+<li><a href="#area" >The main important application areas of Regular Expression</a></li>
+<li><a href="#pattern" >Pattern class</a></li>
+<li><a href="#matcher" >Matcher class</a></li>
+<li><a href="#method">Important methods of Matcher class</a></li>
+<li><a href="#character">Character classes</a></li>
+<li><a href="#predefined">Predefined character classes</a></li>
+<li><a href="#quantifier">Quantifiers</a></li>
+<li><a href="#patsplit">Pattern class split() method</a></li>
+<li><a href="#strsplit">String class split() method</a></li>
+<li><a href="#token">StringTokenizer</a></li>
+
+<li><a href="#requirement">Requirements:</a>
+<ul>
+<li><a href="#identifier"> Write a regular expression to represent all valid identifiers in java language</a></li>
+<li><a href="#mobile">Write a regular expression to represent all mobile numbers</a></li>
+<li><a href="#mail">Write a regular expression to represent all Mail Ids</a></li>
+<li><a href="#mobfile">Write a program to extract all valid mobile numbers from a file</a></li>
+<li><a href="#maifile">Write a program to extract all Mail IDS from the File</a></li>
+<li><a href="#folder">Write a program to display all .txt file names present in specific(E:\scjp) folder</a></li>
+</ul></li>
+</ol>
+
+
+<h2  id="intro" style="background-color: rgb(0, 64, 128);"><font color="#ffff00">Introduction</font></h2>
+
+
+
+
+
+
+
+
+
+
+
+   <p>	A Regular Expression is a expression which represents a group of Strings according to a particular pattern.</p> 
+<u><strong>Example: 
+</strong></u><ul>
+<li>	We can write a Regular Expression to represent all valid mail ids.</li>
+<li>	We can write a Regular Expression to represent all valid mobile numbers.</li>
+</ul> 
+<u><h3  id="area" >The main important application areas of Regular Expression are: 
+</h3></u><ul>
+<li>	To implement validation logic.</li>
+<li>	To develop Pattern matching applications.</li>
+<li>	To develop translators like compilers, interpreters etc.</li>
+<li>	To develop digital circuits.</li>
+<li>	To develop communication protocols like TCP/IP, UDP etc.</li>
+</ul>
+
+<pre>
+Example:
+import java.util.regex.*;
+class RegularExpressionDemo 
+{
+	public static void main(String[] args) 
+	{
+		int count=0;
+		Pattern p=Pattern.compile("ab");
+		Matcher m=p.matcher("abbbabbaba");
+		while(m.find())
+		{
+     		count++;
+		System.out.println(m.start()+"------"+m.end()+"------"+m.group());
+		}
+		System.out.println("The no of occurences :"+count);
+	}
+}
+Output:
+0------2------ab
+4------6------ab
+7------9------ab
+The no of occurrences: 3
+</pre><h2 id="pattern" > 
+<font color="#ffff00" style="background-color: rgb(128, 0, 64);">Pattern class: 
+</font></h2><ul>
+<li>	A Pattern object represents "compiled version of Regular Expression".</li>
+<li>We can create a Pattern object by using compile() method of Pattern class.</li>
+</ul> 
+<strong>public static Pattern compile(String regex); </strong><br>
+Example:
+<pre>Pattern p=Pattern.compile("ab");</pre> 
+<strong>Note: </strong>if we refer API we will get more information about pattern class. 
+ 
+<h2 id="matcher"  style="background-color: rgb(128, 128, 255);"><font color="#ffff00">Matcher:</font></h2>
+<p>	A Matcher object can be used to match character sequences against a Regular Expression.<br>
+ We can create a Matcher object by using matcher() method of  Pattern class.</p>
+<pre>
+public Matcher matcher(String target);
+          Matcher m=p.matcher("abbbabbaba");
+</pre>           
+ <h3  id="method"> 
+Important methods of Matcher class: 
+ </h3>
+<ol>
+<li>	boolean find();    <br>	It attempts to find next match and returns true if it is available otherwise returns false.</li>
+<li>	int start();   <br>	Returns the start index of the match. </li>
+<li>	int end();   <br>	Returns the offset(equalize) after the last character matched.(or)<br>	Returns the "end+1" index of the matched. </li>
+<li>	String group();	<br>	Returns the matched Pattern.</li>
+</ol>
+<p><strong>Note:</strong> Pattern and Matcher classes are available in <strong><font color="#800040">java.util.regex</font></strong> package, and introduced in 1.4 version</p>
+
+<h3  id="character" style="background-color: rgb(128, 128, 192);"><font color="#ffff00">Character classes:</font></h3>
+<ol>
+<li>[abc]-------------------Either 'a' or 'b' or 'c'</li>
+<li>[^abc] -----------------Except 'a' and 'b' and 'c'</li>
+<li>[a-z] --------------------Any lower case alphabet symbol</li>
+<li>[A-Z] --------------------Any upper case alphabet symbol</li>
+<li>[a-zA-Z] ----------------Any alphabet symbol</li>
+<li>[0-9] --------------------Any digit from 0 to 9</li>
+<li>[a-zA-Z0-9] ------------Any alphanumeric character</li>
+<li>[^a-zA-Z0-9] ------------Any special character</li>
+</ol>
+
+<pre>
+Example:
+import java.util.regex.*;
+class RegularExpressionDemo 
+{
+	public static void main(String[] args) 
+	{
+		Pattern p=Pattern.compile("x");
+		Matcher m=p.matcher("a1b7@z#");
+		while(m.find())
+		{
+			System.out.println(m.start()+"-------"+m.group());
+		}
+	}
+}
+</pre>
+Output:<br><br><img alt="" src="regex/image001.png"><br><br>
+
+
+<h4 id="predefined" ><u>Predefined character classes:</u></h4>
+<p>
+\s---------------------space character <br>
+\d---------------------Any digit from o to 9[o-9]	<br>
+\w---------------------Any word character[a-zA-Z0-9]	<br>
+<b>.</b> ---------------------Any character including special characters.	<br>
+<br>
+<em>
+\S---------------------any character except space character	<br>
+\D---------------------any character except digit	<br>
+\W---------------------any character  except word character(special character)
+</em>
+</p>
+
+<br>
+<pre>
+Example:
+import java.util.regex.*;
+class RegularExpressionDemo 
+{
+	public static void main(String[] args) 
+	{
+		Pattern p=Pattern.compile("x");
+		Matcher m=p.matcher("a1b7 @z#");
+		while(m.find())
+		{
+			System.out.println(m.start()+"-------"+m.group());
+		}
+	}
+}
+</pre>
+Output:
+ 
+ <br><br><img alt="" src="regex/image003.png"><br><br>
+ 
+ <h3 id="quantifier"  style="background-color: rgb(255, 128, 192);"><font color="#ffff80">Quantifiers:</font></h3>
+Quantifiers can be used to specify no of characters to match.<br>
+a-----------------------Exactly one 'a'<br>
+a+----------------------At least one 'a'<br>
+a*----------------------Any no of a's including zero number<br>
+a? ----------------------At most one 'a'<br>
+
+<br>
+<pre>
+Example:
+import java.util.regex.*;
+class RegularExpressionDemo 
+{
+	public static void main(String[] args) 
+	{
+		Pattern p=Pattern.compile("x");
+		Matcher m=p.matcher("abaabaaab");
+		while(m.find())
+		{
+			System.out.println(m.start()+"-------"+m.group());
+		}
+	}
+}
+</pre>
+Output:
+ <br><br><img alt="" src="regex/image005.png"><br><br>
+<h3 id="patsplit"  style="background-color: rgb(0, 128, 255);"><font color="#ffff00">Pattern class split() method:</font></h3>
+Pattern class contains split() method to split the given string against a regular expression.
+
+<pre>
+Example 1:
+import java.util.regex.*;
+class RegularExpressionDemo 
+{
+	public static void main(String[] args) 
+	{
+		Pattern p=Pattern.compile("\\s");
+		String[] s=p.split("ashok software solutions");
+		for(String s1:s)
+		{
+			System.out.println(s1);//ashok
+						//software
+						 //solutions
+		}
+	}
+}
+</pre>
+
+<pre>
+Example 2:
+import java.util.regex.*;
+class RegularExpressionDemo 
+{
+	public static void main(String[] args) 
+	{
+		Pattern p=Pattern.compile("\\.");  //(or)[.]
+		String[] s=p.split("www.dugrajobs.com");
+		for(String s1:s)
+		{
+			System.out.println(s1);//www
+						//dugrajobs
+						 //com
+		}
+	}
+}
+</pre>
+
+
+<h3 id="strsplit"  style="background-color: rgb(0, 64, 0);"><font color="#ffff00">String class split() method:</font></h3>
+	String class also contains split() method to split the given string against a regular expression.
+
+<pre>
+Example:
+import java.util.regex.*;
+class RegularExpressionDemo 
+{
+	public static void main(String[] args) 
+	{
+		String s="www.saijobs.com";
+		String[] s1=s.split("\\.");
+		for(String s2:s1)
+		{
+			System.out.println(s2);//www
+						 //saijobs
+						 //com
+		}
+	}
+}
+</pre>
+<p> 
+<strong>Note :</strong> 	String class split() method can take regular expression as argument where as pattern class split() method can take target string as the argument.</p>
+
+<h3 id="token"  style="background-color: rgb(255, 128, 0);"><font color="#ffff00">StringTokenizer:</font></h3>
+<ul><li>This class present in java.util package.</li>
+<li>	It is a specially designed class to perform string tokenization.</li></ul>
+
+<pre>
+Example 1:
+import java.util.*;
+class RegularExpressionDemo 
+{
+	public static void main(String[] args) 
+	{
+		StringTokenizer st=new StringTokenizer("sai software solutions");
+		while(st.hasMoreTokens())
+		{
+			System.out.println(st.nextToken());//sai
+						         //software
+						         //solutions
+		}
+	}
+}
+</pre> 
+ 
+	<em><strong>The default regular expression for the StringTokenizer is space. 
+ 
+</strong></em><pre>
+Example 2:
+import java.util.*;
+class RegularExpressionDemo 
+{
+	public static void main(String[] args) 
+	{
+	 <br><img alt="" src="regex/image007.html"><br>
+ 
+	   StringTokenizer st=new StringTokenizer("1,99,988",",");
+        	while(st.hasMoreTokens())
+		{
+			System.out.println(st.nextToken());//1
+						         //99
+						         //988
+		}
+	}
+}
+</pre>
+
+
+<p><u><font color="#ff0080"><em><h3  id="requirement" >Requirement:</h3></em></font></u>
+
+<h4  id="identifier" > Write a regular expression to represent all valid identifiers in java language.</h4></p> 
+<u><strong>Rules: 
+</strong></u><br>
+The allowed characters are:
+<ol>
+<li>	a to z, A to Z, 0 to 9, -,#</li>
+<li>	The 1st character should be alphabet symbol only.</li>
+<li>	The length of the identifier should be at least 2.</li>
+</ol>
+
+<pre>
+Program:
+import java.util.regex.*;
+class RegularExpressionDemo 
+{
+	public static void main(String[] args) 
+	{
+		Pattern p=Pattern.compile("[a-zA-Z][a-zA-Z0-9-#]<sup><b>+</b></sup>"); (or)
+		Pattern p=Pattern.compile("[a-zA-Z][a-zA-Z0-9-#][a-zA-Z0-9-#]<sup><b>*</b></sup>");
+		Matcher m=p.matcher(args[0]);
+		if(m.find()&amp;&amp;m.group().equals(args[0]))
+		{
+			System.out.println("valid identifier");
+		}
+		else
+		{
+			System.out.println("invalid identifier");
+		}
+
+	}
+}
+Output:
+E:\scjp&gt;javac RegularExpressionDemo.java
+E:\scjp&gt;java RegularExpressionDemo ashok
+Valid identifier
+
+E:\scjp&gt;java RegularExpressionDemo ?ashok
+Invalid identifier
+
+</pre>
+
+<p><u><font color="#ff00ff"><em><h4  id="mobile" >Requirement:</h4></em></font></u> Write a regular expression to represent all mobile numbers.</p> 
+
+
+
+<ol>
+<li>	Should contain exactly 10 digits.</li><li>	The 1st digit should be 7 to 9.</li></ol>
+
+<pre>
+Program:
+import java.util.regex.*;
+class RegularExpressionDemo 
+{
+	public static void main(String[] args) 
+	{
+		Pattern p=Pattern.compile("
+                              [7-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]");
+		//Pattern p=Pattern.compile("[7-9][0-9]{9}");
+		Matcher m=p.matcher(args[0]);
+		if(m.find()&amp;&amp;m.group().equals(args[0]))
+		{
+			System.out.println("valid number");
+		}
+		else
+		{
+			System.out.println("invalid number");
+		}
+}
+}
+Analysis:
+10 digits mobile:
+[7-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]   (or)
+[7-9][0-9]{9}
+
+Output:
+E:\scjp&gt;javac RegularExpressionDemo.java
+E:\scjp&gt;java RegularExpressionDemo 9989123456
+Valid number
+
+E:\scjp&gt;java RegularExpressionDemo 6989654321
+Invalid number
+10 digits (or) 11 digits:
+(0?[7-9][0-9]{9})
+
+Output:
+E:\scjp&gt;javac RegularExpressionDemo.java
+
+E:\scjp&gt;java RegularExpressionDemo 9989123456
+Valid number
+
+E:\scjp&gt;java RegularExpressionDemo 09989123456
+Valid number
+
+E:\scjp&gt;java RegularExpressionDemo 919989123456
+Invalid number 
+10 digits (0r) 11 digit (or) 12 digits:
+(0|91)?[7-9][0-9]{9}   (or)
+(91)?(0?[7-9][0-9]{9})
+
+E:\scjp&gt;javac RegularExpressionDemo.java
+E:\scjp&gt;java RegularExpressionDemo 9989123456
+Valid number
+E:\scjp&gt;java RegularExpressionDemo 09989123456
+Valid number
+E:\scjp&gt;java RegularExpressionDemo 919989123456
+Valid number
+E:\scjp&gt;java RegularExpressionDemo 69989123456
+Invalid number
+
+</pre> 
+ 
+ 
+<font color="#ff00ff"><u><em><h4  id="mail" >Requirement:</h4></em></u></font> Write a regular expression to represent all Mail Ids. 
+ 
+<pre>
+Program:
+import java.util.regex.*;
+class RegularExpressionDemo 
+{
+	public static void main(String[] args) 
+	{
+		Pattern p=Pattern.compile("
+                             [a-zA-Z][a-zA-Z0-9-.]<sup><b>*</b></sup>@[a-zA-Z0-9]<sup><b>+</b></sup>([.][a-zA-Z]<sup><b>+</b></sup>)<sup><b>+</b></sup>");
+		Matcher m=p.matcher(args[0]);
+		if(m.find()&amp;&amp;m.group().equals(args[0]))
+		{
+			System.out.println("valid mail id");
+		}
+		else
+		{
+			System.out.println("invalid mail id");
+		}
+	}
+}
+Output:
+E:\scjp&gt;javac RegularExpressionDemo.java
+E:\scjp&gt;java RegularExpressionDemo sunmicrosystem@gmail.com
+Valid mail id
+E:\scjp&gt;java RegularExpressionDemo 999sunmicrosystem@gmail.com
+Invalid mail id
+E:\scjp&gt;java RegularExpressionDemo 999sunmicrosystem@gmail.co9
+Invalid mail id
+</pre> 
+ 
+<font color="#ff00ff"><u><em><h4  id="mobfile" >Requirement: </h4></em></u></font>Write a program to extract all valid mobile numbers from a file. 
+<br><br><u><strong>Diagram:</strong></u><br><br><img alt="" src="regex/image009.png"><br><br>
+ 
+ 
+ <pre>
+Program:
+import java.util.regex.*;
+import java.io.*;
+class RegularExpressionDemo 
+{
+	public static void main(String[] args)throws IOException 
+	{
+		PrintWriter out=new PrintWriter("output.txt");
+		BufferedReader br=new BufferedReader(new FileReader("input.txt"));
+		Pattern p=Pattern.compile("(0|91)?[7-9][0-9]{9}");
+		String line=br.readLine();
+		while(line!=null)
+		{
+			Matcher m=p.matcher(line);
+			while(m.find())
+			{
+				out.println(m.group());
+			}
+			line=br.readLine();
+		}
+		out.flush();
+	}
+}
+</pre> 
+ 
+<u><font color="#008080"><em><h4  id="maifile" >Requirement:</h4></em></font></u> Write a program to extract all Mail IDS from the File. 
+<p><u><strong>Note: </strong></u>In the above program replace mobile number regular expression with MAIL ID regular expression.</p> 
+<font color="#0080c0"><em><u><h4  id="folder" >Requirement:</h4></u></em></font> Write a program to display all .txt file names present in E:\scjp folder. 
+ 
+<pre>
+Program:
+import java.util.regex.*;
+import java.io.*;
+class RegularExpressionDemo 
+{
+	public static void main(String[] args)throws IOException 
+	{
+		int count=0;
+		Pattern p=Pattern.compile("[a-zA-Z0-9-$.]+[.]txt");
+		File f=new File("E:\\scjp");
+		String[] s=f.list();
+		for(String s1:s)
+		{
+			Matcher m=p.matcher(s1);
+			if(m.find()&amp;&amp;m.group().equals(s1))
+			{
+				count++;
+				System.out.println(s1);
+			}
+		}
+		System.out.println(count);
+	}
+}
+Output:
+input.txt
+output.txt
+outut.txt
+3
+
+</pre>
+
+<br>
+<p>
+<u><b>Write a program to check  whether  the  given mailid is  valid or not.</b>	</u><br>
+
+In the above  program  we have to  replace  mobile number  regular expression  with  mailid  regular expression
+<br><br>
+Write a regular expressions  to represent  valid Gmail mail id's :
+<br><b>
+[a-zA-Z0-9][a-zA-Z0-9-.]<sup><b>*</b></sup>@gmail[.]com
+    </b>
+</p>
+
+
+<p>
+<b><u>Write a regular expressions  to represent all Java language identifiers :</u></b>
+<br><b>
+Rules :
+</b>
+<ul><li>
+ The length of the identifier should be atleast two.</li><li>
+<pre>
+The allowed characters are 
+	a-z
+	A-Z
+	0-9
+	#
+	$
+
+</pre>
+</li><li>
+The first character should be lower case alphabet symbol<b> k-z</b> , and second character should be a digit divisible by 3</li></ul>
+<b>[k-z][0369][a-zA-Z0-9#$]<sup><b>*</b></sup></b>
+</p>
+
+<p>
+Write a regular expressions  to represent all names  starts with 'a'	<br>
+<b>[aA][a-zA-Z]<sup><b>*</b></sup></b>
+</p>
+
+
+
+
+<p>
+To represent all names starts with 'A' ends with 'K' <br>  <b>	[aA][a-zA-Z]<sup><b>*</b></sup>[kK]  </b>
+</p>
+
+<br>
+
+
+</td></tr></table><a href="index-2.html">BACK</a></div>    
+    
+        
+ <!-- infolinks  -->   
+<script type="text/javascript">
+ var infolinks_pid = 1921552;
+ var infolinks_wsid = 0;
+</script>
+<script type="text/javascript" src="../resources.infolinks.com/js/infolinks_main.js"></script>
+   
+ 
+    
+    
+  </body>
+
+<!-- Mirrored from java.scjp.jobs4times.com/regexp.htm by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 22 Jun 2024 15:21:31 GMT -->
+</html>

@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from www.java.designpatterns.jobs4times.com/abstract-factory-design-pattern.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 22 Jun 2024 15:36:40 GMT -->
+<head>
+<meta charset="ISO-8859-1">
+<title>Java design patterns - Abstract Factory Design Pattern</title>
+<link style="text/css" rel="stylesheet" href="styles.css">
+<link rel="shortcut icon" href="small.html">
+</head>
+
+
+<body>
+
+<div align="center" >
+<table border="1" style="width: 887px"><tr><td>
+ 
+<table>
+<tr>
+<td width="50%" align="left"><a href="http://www.jobs4times.com/"><img alt="jobs4timesLogo"  src="../img.logos.jobs4times.com/banner%20J4T.jpg" width="500" height="200">   </a> </td> 
+<td  align="right"><a href="http://jobs4times.com/J4T/allmaterial.html"><img alt="jobs4timesLogo"  src="../img.logos.jobs4times.com/as2.jpg"  width="180" height="200" >  </a>  </td> 
+</tr>
+</table> 
+
+ 
+<h1 style="border-bottom-color: blue; background-color: yellow;font: monospace;color: red;text-align: center;" >Abstract Factory Design Pattern </h1> 
+<ul>
+<li>
+Abstract Factory can be treated as a super factory or a factory of factories.<br>
+Using factory design pattern we abstract the creation process of another class.<br>
+Using the Abstract factory pattern we abstract the creation of family of classes.
+ <br><br></li><li>
+
+Let's understand it by taking an example. We have several Dao's classes to persist the data. Like EmpDao, DeptDao etc.,  
+in-turn these Dao's can persist the data  into a Database or into an XML file.<br>
+So we have now the Dao's as DBEmpDao, DBDeptDao and XMLEMPDao, XMLDeptDao.
+<br><br></li><li>
+To create the objects of Dao's of related types we have create 2 different factories.<br>
+DBDaoFactory and XMLDaoFactory, these factories takes care of creating the Dao's of their type.
+</li></ul>
+
+<pre>
+package design;
+
+public abstract class Dao{
+ 
+ public abstract void save();
+
+}
+</pre>
+
+<pre>
+package design;
+
+public class XmlEmpDao extends Dao{
+
+@Override
+public void save() {
+ System.out.println("Employee has been written to XML file");
+}
+	
+}
+</pre>
+
+<pre>
+package design;
+
+public class DBEmpDao extends Dao{
+
+@Override
+public void save() {
+ System.out.println("Employee has been written to table");
+}
+	
+}
+</pre>
+
+<pre>
+package design;
+
+public class XMLDeptDao extends Dao{
+
+@Override
+public void save() {
+ System.out.println("Department has been written to XML File");		
+}
+
+}
+</pre>
+
+<pre>
+package design;
+
+public class DBDeptDao extends Dao{
+
+@Override
+public void save() {
+ System.out.println("Department has been written to table");		
+}
+
+}
+</pre>
+
+Now we have XmlDaoFactory and DBDaoFactory which creates Dao objects of their type.
+
+
+<pre>
+package design;
+
+public abstract class DaoFactory {
+	public abstract Dao createDao(String string) ;
+}
+</pre>
+
+<pre>
+package design;
+
+public class XMLDaoFactory extends DaoFactory{
+
+public Dao createDao(String type){
+ Dao dao=null;
+ if(type.equals("emp")){
+  dao=new XmlEmpDao();
+ }else if(type.equals("dept")){
+	 dao=new XMLDeptDao();
+ }
+ return dao;
+}
+
+}
+</pre>
+
+<pre>
+package design;
+
+public class DBDaoFactory extends DaoFactory{
+
+public Dao createDao(String type){
+ Dao dao=null;
+ if(type.equals("emp")){
+  dao=new DBEmpDao();
+ }else if(type.equals("dept")){
+	 dao=new DBDeptDao();
+ }
+ return dao;
+}
+
+}
+</pre>
+
+<br><br>
+
+
+<pre>
+package design;
+
+public class DaoMaker {
+
+public static DaoFactory make(String factoryType){
+ DaoFactory df=null;
+ if(factoryType.equals("xml")){
+   df=new XMLDaoFactory();
+ }else if(factoryType.equals("db")){
+   df=new DBDaoFactory();
+ }
+ return df;
+}
+
+}
+</pre>
+
+<ul>
+<li>now the DaoMaker will takes care of instantiating the appropriate factory to work with family of Dao's.</li>
+<li>For any application it is important to use all Dao's that belongs to same type.</li>
+<li>So our DaoMaker enforces this rule by encouraging you to get one type of factory from which you can Dao's.</li>
+</ul>
+
+
+
+
+For example if an application wants a Dao object it has to do the following.
+
+
+
+
+<pre>
+package design;
+
+public class AbstractFactoryTest {
+
+public static void main(String[] args){
+ DaoFactory daoFactory=null;
+ Dao dao=null;
+
+ daoFactory=DaoMaker.make("xml");
+ dao=daoFactory.createDao("emp");
+ dao.save();
+}
+
+}
+</pre>
+
+<ul>
+<li>
+In the above example the client is using "xml" family of Dao's to perform operations.</li>
+<li>
+If we want to switch from "xml" to "db" he don't need to make lot of modifications as he is dealing with DaoFactory abstract class, he can easily switch between any of the implementation of DaoFactory by calling <strong>DaoMaker.make("db")</strong>.
+<br><br>
+</li>
+<li>
+Hence Abstract Factory pattern helps you in enforcing your application to use related classes across the application.</li>
+</ul>
+
+
+<h6>The UML Diagram for the AbstractFactory :</h6>
+
+<img alt="abstract-factory-design-pattern" src="abstract-factory-design-pattern-2.html"> 
+
+
+<h5>Difference between AbstractFactory and FactoryMethod :</h5>
+
+
+<ul>
+<li>Abstract Factory pattern delegates the responsibility of object instantiation to another object via composition. </li>
+<li>Factory Method pattern uses inheritance and relies on subclasses to handle the desired object instantiation. </li>
+</ul>
+
+
+
+
+
+</td></tr></table>
+<a href="index-2.html"><strong>BACK</strong></a>
+</div>
+  
+
+</body>
+
+<!-- Mirrored from www.java.designpatterns.jobs4times.com/abstract-factory-design-pattern.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 22 Jun 2024 15:36:40 GMT -->
+</html>

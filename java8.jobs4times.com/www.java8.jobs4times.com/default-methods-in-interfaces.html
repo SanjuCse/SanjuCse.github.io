@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from www.java8.jobs4times.com/default-methods-in-interfaces.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 22 Jun 2024 15:39:32 GMT -->
+<head>
+<meta charset="ISO-8859-1">
+<title> Java 8 New Features - Default Methods</title>
+<link href="java8.css" rel="stylesheet"/>
+</head>
+<body>
+<div align="center" >
+<table border="1"><tr><td width="780px">
+
+ <script src="header.js"></script>
+<hr color="blue"><hr color="red"><hr color="green">
+<h2> Default Methods</h2>
+
+
+
+<ul>
+<li> Until 1.7 version onwards inside interface we can take only public abstract methods and public static final variables (every method present inside interface is always public and abstract whether we are declaring or not).
+<li> Every variable declared inside interface is always public static final whether we are declaring or not.
+<li> But from 1.8 version onwards in addition to these, we can declare default concrete methods also inside interface, which are also known as defender methods.
+<li> We can declare default method with the keyword "default" as follows 
+<pre>
+1) default void m1(){ 
+2) System.out.println ("Default Method"); 
+3) }
+</pre>
+<li> Interface default methods are by-default available to all implementation classes. Based on requirement implementation class can use these default methods directly or can override.
+</ul>
+<pre>
+Ex: 
+1) interface Interf { 
+2) default void m1() { 
+3) System.out.println("Default Method"); 
+4) } 
+5) } 
+6) class Test implements Interf { 
+7) public static void main(String[] args) { 
+8) Test t = new Test(); 
+9) t.m1(); 
+10) } 
+11) }
+</pre>
+<ul>
+<li> Default methods also known as defender methods or virtual extension methods.
+<li> The main advantage of default methods is without effecting implementation classes we can add new functionality to the interface (backward compatibility).
+</ul>
+Note: We can't override object class methods as default methods inside interface otherwise we get compile time error.
+
+<pre>
+Ex: 
+1) interface Interf { 
+2) default int hashCode() { 
+3) return 10; 
+4) } 
+5) }
+</pre>
+CompileTimeError
+<p>
+<strong>Reason:</strong> Object class methods are by-default available to every Java class hence it's not required to bring through default methods.
+</p>
+
+<h4>Default method vs multiple inheritance</h4>
+Two interfaces can contain default method with same signature then there may be a chance of ambiguity problem (diamond problem) to the implementation class. 
+To overcome this problem compulsory we should override default method in the implementation class otherwise we get compile time error. 
+<pre>
+1) Eg 1: 
+2) interface Left { 
+3) default void m1() { 
+4) System.out.println("Left Default Method"); 
+5) } 
+6) } 
+7) 
+
+8) Eg 2: 
+9) interface Right { 
+10) default void m1() { 
+11) System.out.println("Right Default Method"); 
+12) } 
+13) } 
+14) 
+15) 
+
+Eg 3: 
+16) class Test implements Left, Right {}
+</pre>
+
+
+<h4>How to override default method in the implementation class ? </h4>
+
+In the implementation class we can provide complete new implementation or we can call any interface method as follows.
+<pre>
+interfacename.super.m1();
+</pre>
+<pre>
+Ex: 
+1) class Test implements Left, Right { 
+2) public void m1() { 
+3) System.out.println("Test Class Method"); // OR Left.super.m1(); 
+4) } 
+5) public static void main(String[] args) { 
+6) Test t = new Test(); 
+7) t.m1(); 
+8) } 
+9) }
+</pre>
+
+<h4>Differences between interface with default methods and abstract class</h4>
+Even though we can add concrete methods in the form of default methods to the interface, it won't be equal to abstract class.
+
+<table border="1">
+<tr><th>Interface with Default Methods</th><th>Abstract Class</th></tr>
+<tr><td>Inside interface every variable is always public static final and there is no chance of instance variables</td>
+	<td>Inside abstract class there may be a chance of instance variables which are required to the child class.</td></tr>
+<tr><td>Interface never talks about state of Object.</td>
+	<td>Abstract class can talk about state of Object.</td></tr>
+<tr><td>Inside interface we can't declare constructors.</td>
+	<td>Inside abstract class we can declare constructors.</td></tr>
+<tr><td>Inside interface we can't declare instance and static blocks.</td>
+	<td>Inside abstract class we can declare instance and static blocks.</td></tr>
+<tr><td>Functional interface with default methods can refer lambda expression.</td>
+	<td>Abstract class can't refer lambda Expressions.</td></tr>
+<tr><td>Inside interface we can't override Object class methods.</td>
+	<td>Inside abstract class we can override Object class methods.</td></tr>
+<!-- <tr><td></td><td></td></tr> -->
+</table>
+
+
+<br>
+
+<strong>interface with default method != abstract class</strong>
+
+
+<br><br>
+
+   
+</td></tr></table></div>
+</body>
+
+<!-- Mirrored from www.java8.jobs4times.com/default-methods-in-interfaces.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 22 Jun 2024 15:39:32 GMT -->
+</html>

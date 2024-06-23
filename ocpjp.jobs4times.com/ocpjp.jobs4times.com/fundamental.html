@@ -1,0 +1,954 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<!-- Mirrored from ocpjp.jobs4times.com/fundamental.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 22 Jun 2024 15:29:37 GMT -->
+<head>
+<meta name="content-type" content="text/html; charset=ISO-8859-1">
+<title> Language Fundamentals OCJP Exam Objectives</title>
+<link rel="stylesheet" type="text/css" href="styles.css">
+<link rel="shortcut icon" href="small.html">  
+<meta name="keywords" content="Oracle Certified Java Programmer, OCPJP, OCJP, SCJP, Dump Programs, real time programs, Interview written test programmes, Language Fundamental OCPJP programmes "  >  
+  
+<meta name="description" content="Oracle Certified Java Programmer, OCPJP, OCJP, SCJP, Dump Programs, real time programs, Interview written test programmes, Language Fundamental OCPJP programmes ">   
+
+<script type="text/JavaScript">
+var message="NoRightClicking";
+function defeatIE() {if (document.all) {(message);return false;}}
+function defeatNS(e) {if 
+(document.layers||(document.getElementById&&!document.all)) {
+if (e.which==2||e.which==3) {(message);return false;}}}
+if (document.layers) 
+{document.captureEvents(Event.MOUSEDOWN);document.onmousedown=defeatNS;}
+else{document.onmouseup=defeatNS;document.oncontextmenu=defeatIE;}
+document.oncontextmenu=new Function("return false")
+</script>
+
+<script type="text/JavaScript">
+//courtesy of BoogieJack.com
+function killCopy(e){
+return false
+}
+function reEnable(){
+return true
+}
+document.onselectstart=new Function ("return false")
+if (window.sidebar){
+document.onmousedown=killCopy
+document.onclick=reEnable
+}
+</script>
+</head>
+<body>
+
+<div align="center">   
+<table border="1"> <tr><td width="900px">
+    
+    
+ <table width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td width="50%" align="left"><a href="http://www.jobs4times.com/"><img alt="jobs4timesLogo"  src="../img.logos.jobs4times.com/banner%20J4T.jpg" width="500" height="200">   </a> </td> 
+<td  align="right"><a href="http://jobs4times.com/J4T/allmaterial.html"><img alt="jobs4timesLogo"  src="../img.logos.jobs4times.com/as2.jpg"  width="180" height="200" >  </a>  </td> 	  	
+</tr>
+</table>			
+    
+    
+	
+<h1 align="center"  style="background-color: rgb(64, 0, 64);"> <font color="#ffff00">Language Fundamentals</font> </h1>
+
+
+<h3>Question : 1</h3>	
+
+<pre>
+public class Foo {
+	
+ static void alpha(){
+	//code here
+ }
+ void beta(){
+	//code here
+ }
+
+}//class
+</pre>
+
+<strong>Which two statements are true ?</strong>
+<ol type="A">
+<li>Foo.beta() is a valid invocation of beta()</li>
+<li>Foo.alpha() is a valid invocation of alpha()</li>
+<li>method beta() can directly call method alpha()</li>
+<li>method alpha() can directly call method beta()</li>
+</ol>
+
+
+<p> Answer : B, C </p>
+
+
+<h3>Question : 2</h3>
+<pre>
+public class Yipee {	
+public static void main(String[] yahoo){
+
+ for(int x=1; x &lt; yahoo.length; x++){
+  System.out.println(yahoo[x]+"");
+ }
+ 
+}//main
+}//class
+
+
+and the command line  invocation :
+ java Yipee a b c
+</pre>
+
+<strong>What is the Result ?</strong>
+<ol type="A">
+<li>a b </li>
+<li>b c </li>
+<li>a b c </li>
+<li>Compilation fails </li>
+<li>An exception is thrown at runtime.</li>
+</ol>
+<p> Answer : B  </p>
+
+
+<h3>Question : 3</h3>
+<pre>
+public class Yipee {	
+public static void main(String[] args){
+
+ for(int x=1; x &lt; args.length; x++){
+  System.out.println(args[x]+"");
+ }
+ 
+}//main
+}//class
+
+
+and two seperate command line invocations :
+ java Yipee
+ java Yipee 1 2 3 4 
+</pre>
+
+<strong>What is the result  ?</strong>
+<ol type="A">
+<li> No output is produced <br> 1 2 3  </li>
+<li> No output is produced <br> 2 3 4</li>
+<li> No output is produced <br> 1 2 3 4 </li>
+<li>An exception is thrown at runtime <br> 1 2 3 </li>
+<li>An exception is thrown at runtime <br> 2 3 4 </li>
+<li>An exception is thrown at runtime <br> 1 2 3 4  </li>
+</ol>
+<p> Answer : B </p>
+
+
+
+<h3>Question : 4</h3>
+<pre>
+Given class Reception :
+
+package utils;
+
+public class Repetition {	
+ public static String twice(String s){
+   return s+s;
+ }
+ 
+}//class
+
+
+and given another  class Demo :
+
+// insert code here line 1
+
+public class Demo {	
+public static void main(String[] args){
+  System.out.println(twice("pizza")); 
+}//main
+}//class
+</pre>
+
+<strong>Which code should be inserted at line 1 of Demo.java to compile and run  Demo to print "pizzapizza"  ?</strong>
+<ol type="A">
+<li>import utils.*; </li>
+<li>static import utils.*; </li>
+<li>import utils.Repetition.*; </li>
+<li>static import utils.Repetition.*; </li>
+<li>import utils.Repetition.twice(); </li>
+<li>import static utils.Repetition.twice; </li>
+<li>static import utils.Repetition.twice; </li>
+</ol>
+<p> Answer :  F</p>
+
+
+
+
+<h3>Question : 5</h3>
+A JavaBeans component has the following field :
+<pre>
+private boolean enabled;
+</pre>
+
+<strong>Which two pairs of method declaration follow the JavaBeans standard for accessing this field ? (Choose two)</strong>
+<ol type="A">
+<li>public void setEnabled(boolean enabled) <br>
+public boolean getEnabled()  </li>
+<li>public void setEnabled(boolean enabled)  <br>
+public void isEnabled() </li>
+<li> public void setEnabled(boolean enabled)  <br>
+public boolean isEnabled()</li>
+<li>public boolean setEnabled(boolean enabled)  <br>
+public boolean isEnabled() </li>
+</ol>
+<p> Answer : A, C </p>
+
+
+
+<h3>Question : 6</h3>
+Given classes defined in two different files :
+<pre>
+package util;
+
+public class BitUtils {	
+public static void process(byte[] bytes){
+	//..........
+}
+	
+}
+
+
+package app;
+
+public class SomeApp {	
+public static void main(String[] args){
+ byte[] bytes=new byte[256];
+   
+  // insert code here
+}
+}
+
+</pre>
+
+<strong>What is required at <i>insert code here</i>  in class SomeApp to use the process method of BitUtils ?</strong>
+<ol type="A">
+<li> process(bytes); </li>
+<li> BitUtils.process(bytes); </li>
+<li> util.BitUtils.process(bytes); </li>
+<li>SomeApp cannot use methods in BitUtils. </li>
+<li>import util.BitUtils.*; process(bytes); </li> 
+</ol>
+<p> Answer :  C</p>
+
+
+<h3>Question : 7</h3>
+Given :
+<pre>
+enum Example{ONE,TWO,THREE}
+</pre>
+
+<strong>Which statement is true ?</strong>
+<ol type="A">
+<li>The expressions (ONE==ONE) and ONE.euels(ONE) are  both guaranteed to be true. </li>
+<li>The expression (ONE &lt; TWO) is guaranteed to be true and ONE.compareTo(TWO) is guaranteed  to be less than one. </li>
+<li>The Example values cannot be used in a raw java.util.HashMap; instead, the programmer must use a java.util.EnumMap. </li>
+<li>The Example values can be used in a java.util.Sortedset, but the set will NOT be sorted because  enumerated types do NOT implement java.lang.Comparable. </li>
+</ol>
+<p> Answer : A </p>
+
+
+<h3>Question : 8</h3>
+Given :
+<pre>
+public abstract class Shape {
+	
+ private int x;
+ private int y;
+ 
+public abstract void draw();
+
+public void setAnchor(int x,int y){
+  this.x=x;
+  this.y=y;
+}
+	
+}
+</pre>
+
+<strong>Which two classes use the Shape class correctly ? (Choose two)</strong>
+<ol type="A">
+<li>
+<pre>
+public class Circle implements Shape {
+ private int radius;
+}
+</pre>
+</li>
+<li>
+<pre>
+public abstract class Circle extends Shape {
+ private int radius;
+}
+</pre> </li>
+<li>
+<pre>
+public class Circle extends Shape {
+ private int radius;
+ public void draw();
+}
+</pre>
+ </li>
+<li>
+<pre>
+public abstract class Circle implements Shape {
+ private int radius;
+ public void draw();
+}
+</pre>
+ </li>
+<li>
+<pre>
+public class Circle extends Shape {
+ private int radius;
+ 
+ public void draw(){ 
+    //.........
+ }
+
+}
+</pre> </li>
+<li>
+<pre>
+public abstract class Circle implements Shape {
+ private int radius;
+ 
+ public void draw(){ 
+    //.........
+ }
+
+}
+</pre> </li>
+</ol>
+<p> Answer : B, E </p>
+
+
+<h3>Question : 9</h3>
+Given :
+<pre>
+class Nav{
+ public enum Direction{NORTH,SOUTH,EAST,WEST}
+}
+public class Sprite{
+ //insert code here	
+}
+</pre>
+
+<strong>Which code, inserted at <i> insert code here </i>, allows the Sprite class to compile  ?</strong>
+<ol type="A">
+<li>Direction d=NORTH; </li>
+<li>Nav.Direction d=NORTH; </li>
+<li>Direction d=Direction.NORTH; </li>
+<li>Nav.Direction d=Nav.Direction.NORTH; </li>
+</ol>
+<p> Answer : D </p>
+
+
+
+<h3>Question : 10</h3>
+<pre>
+interface Foo{
+  int bar();
+}
+
+public class Beta{
+	
+ class A implements Foo{
+  public int bar(){ return 1; }
+ }
+ 
+ public int fubar(Foo foo){
+	 return foo.bar();
+ }
+ 
+ public void testFoo(){
+  class A implements Foo{
+	  public int bar(){return 2; }	  
+  }
+  System.out.println(fubar(new A()));
+ }//testFoo() 
+ 
+ 
+ public static void main(String[] args){
+	 new Beta().testFoo();
+ }	
+	
+}
+</pre>
+
+<strong>Which three ststements are true ? (Choose three) </strong>
+<ol type="A">
+<li>Compilation fails  </li>
+<li>The code compiles and the output is 2. </li>
+<li>If below lines were removed, compilation would fail.
+<pre>
+class A implements Foo{
+  public int bar(){ return 1; }
+}
+</pre> </li>
+<li>If below lines were removed, compilation would fail.
+<pre>
+class A implements Foo{
+  public int bar(){return 2; }	  
+}
+</pre> </li>
+<li>If below lines were removed, the code would compile and the output would be 2.
+<pre>
+class A implements Foo{
+  public int bar(){ return 1; }
+}
+</pre> </li>
+<li>If below lines were removed, the code would compile and the output would be 1.
+<pre>
+class A implements Foo{
+  public int bar(){return 2; }	  
+}
+</pre> </li>
+</ol>
+<p> Answer :  B, E, F</p>
+
+
+
+
+<h3>Question : 11</h3>
+<pre>
+interface Reloadable{
+ public void reload();
+}
+
+class Edit{	
+ public void edit(){
+	 //......
+ }
+}
+
+interface Displayable 
+         XXXXX Xxxxxxxx {
+  xxxxxxxxx
+}
+</pre>
+
+<strong>Code Fragments :</strong>
+<ol type="A">
+<li>extends </li>
+<li>public void display(); </li>
+<li>Reloadable </li>
+<li>implements </li>
+<li>public void display(){ /* display*/ } </li>
+<li>Edit</li> 
+</ol>
+<p> solution :</p>
+<pre>
+interface Reloadable{
+ public void reload();
+}
+
+class Edit{	
+ public void edit(){
+	 //......
+ }
+}
+
+interface Displayable extends Reloadable{
+	public void display();
+}
+</pre>
+
+
+
+
+
+<h3>Question : 12</h3>
+Given :
+<pre>
+1  int[] x={1,2,3,4,5};
+2  int y[]=x;
+3  System.out.println(y[2]);
+</pre>
+
+<strong>Which statement is true ?</strong>
+<ol type="A">
+<li>Line 1  will print the value 2  </li>
+<li>Line 2  will print the value 3 </li>
+<li>Compilation will fail because of an  error in Line 1 </li>
+<li>Compilation will fail because of an  error in Line 2 </li>
+</ol>
+<p> Answer : B </p>
+
+
+<h3>Question : 13</h3>
+Given :
+<pre>
+1  String #name="Jone Doe";
+2  int $age=24;
+3  Double _height=123.5;
+4  double ~temp=37.5;
+</pre>
+
+<strong>Which two statements are true ? (Choose two)</strong>
+<ol type="A">
+<li>Line 1 will not compile </li>
+<li>Line 2 will not compile </li>
+<li>Line 3 will not compile </li>
+<li>Line 4 will not compile </li>
+</ol>
+<p> Answer : A, D </p>
+
+
+
+<h3>Question : 14</h3>
+A programmer needs to create a logging method that can accept an arbitrary number of arguments. <br><br>
+For example, it may be called in these ways : 
+<pre>
+logIt("log message1");
+logIt("log message2","log message3");
+logIt("log message4","log message5","log message6");
+</pre>
+
+<strong>Which declaration satisfies  this requirement ?</strong>
+<ol type="A">
+<li>public void logIt(String * msgs) </li>
+<li>public void logIt(String[] msgs) </li>
+<li>public void logIt(String... msgs) </li>
+<li>public void logIt(String msgs1,String msgs2,String msgs3) </li>
+</ol>
+<p> Answer : C </p>
+
+
+<h3>Question : 15</h3>
+<pre>
+
+</pre>
+
+<strong>Which two code fragments correctly create and initialize a static array of int elements ? (Choose two)</strong> 
+<ol type="A">
+<li> static final int[] a={100,200};  </li>
+<li>static final int[] a; <br>
+static{
+	a=new int[2];
+	a[0]=100;
+	a[1]=200;
+} </li>
+<li>static final int[] a=new int[2]{100,200}; </li>
+<li>static final int[] a;
+<br>
+static void init(){
+	a=new int[3];
+	a[0]=100;
+	a[1]=200;
+} </li>
+</ol>
+<p> Answer : A, B </p>
+
+
+
+<h3>Question : 16</h3>
+<pre>
+public static void main(String[] args){
+	
+ String str="null";
+if(str==null){
+ System.out.println("null");
+}
+else(str.length()==0){
+ System.out.println("zero");
+}
+else{
+ System.out.println("some");
+}
+ 
+}
+</pre>
+
+<strong>What is the result ?</strong>
+<ol type="A">
+<li>null </li>
+<li>zero </li>
+<li>some </li>
+<li>Compilation fails </li>
+<li>An exception is thrown at runtime</li> 
+</ol>
+<p> Answer : D </p>
+
+
+
+
+<h3>Question : 17</h3>
+Given<br><br>
+<b>
+ Test t=new Test();<br>
+ t.method(5);
+</b><br> 
+<br>
+<strong>What is the output of the Test class ?</strong>
+<pre>
+public class Test{
+	
+int x=12;
+ public void method(int x){
+  x+=x;
+  System.out.println(x);
+ }
+
+}
+</pre>
+
+
+<ol type="A">
+<li>5 </li>
+<li>10 </li>
+<li>12 </li>
+<li>17 </li>
+<li>24</li>
+</ol>
+<p> Answer : B </p>
+
+
+
+<h3>Question : 18</h3>
+Given :
+<pre>
+1 public interface Status{
+2  /*insert code here*/ int MY_VALUE=10;
+3 }
+</pre>
+
+<strong>Which three are valid on  on Line 2 ? (Choose three)</strong>
+<ol type="A">
+<li>final</li>
+<li>static </li>
+<li>native </li>
+<li>public </li>
+<li>private </li>
+<li>abstract </li>
+<li>protected </li>
+</ol>
+<p> Answer : A, B, D </p>
+
+
+<h3>Question : 19</h3>
+A programmer is designing a class to encapsulate the information about an inventory item. <br>
+A JavaBeans component is needed to do this. <br>The InventoryItem class has private instance variables to store the item information :
+<pre>
+private int itemId;
+private String name;
+private String description;
+</pre>
+
+<strong>Which method signature follows the JavaBeans naming standards for modifying the itemId instance variable ?</strong>
+<ol type="A">
+<li>itemId(int itemId) </li>
+<li>update(int itemId) </li>
+<li>setItemId(int itemId) </li>
+<li>mutateItemId(int itemId) </li>
+<li>updateItemId(int itemId)</li>
+</ol>
+<p> Answer : C </p>
+
+
+
+<h3>Question : 20</h3>
+
+<pre>
+Given file  GrizzlyBear.java :
+
+1 package animals.mammals;
+2
+3 public class GrizzlyBear extends Bear{
+4 void hunt(){
+5	Salmon s=findSalmon();
+6	s.consume();
+7 }
+8 }
+
+and another file, Salmon.java
+
+1 package animals.fish;
+2
+3 public class Salmon extends Fish{
+4  void consume() { /* do stuff */ }
+5 }
+</pre>
+
+<strong>Assume both classes are defined in the correct directories for theft packages, and that the Mammal class correctly  defines the findSalmon() method. Which two changes allow this code to compile correctly ? (Choose two)</strong>
+<ol type="A">
+<li>add public to the start of line 4 in Salmon.java </li>
+<li>add public to the start of line 4 in GrizzlyBear.java </li>
+<li>add import animals.mammals.*; at line 2 in Salmon.java </li>
+<li>add import animals.fish.*; at line 2 in GrizzlyBear.java </li>
+<li>add import animals.fish.Salmon.*; at line 2 in GrizzlyBear.java </li>
+<li>add import animals.mammals.GrizzlyBear.*; at line 2 is Salmon.java </li>
+</ol>
+<p> Answer : A, D </p>
+
+
+<h3>Question : 21</h3>
+Given :
+<pre>
+public class Barn{
+public static void main(String[] args){
+ new Barn().go("hi",1);
+ new Barn().go("hi","world",2);
+}
+
+public void go(String... y, int i) {
+ System.out.println(y[y.length-1]+" ");	
+}
+
+}
+</pre>
+
+<strong>What is the result ?</strong>
+<ol type="A">
+<li>hi hi </li>
+<li>hi world </li>
+<li>world world </li>
+<li>Compilation fails </li>
+<li>An exception is thrown at runtime.</li>
+</ol>
+<p> Answer : D </p>
+
+
+
+<h3>Question : 22</h3>
+Given :
+<pre>
+1 class Mud{
+2 //insert code here
+3   System.out.println("hi");
+4  }
+5 }
+
+And the following five fragments :
+
+public static void main(String...a){
+public static void main(String.*a){  //not valid
+public static void main(String... a){
+public static void main(String[]... a){
+public static void main(String...[] a){ //not valid 
+</pre>
+
+<strong>How many of the code fragments, inserted independently at Line 2, compile  ?</strong>
+<ol type="A">
+<li>0 </li>
+<li>1 </li>
+<li>2 </li>
+<li>3 </li>
+<li>4 </li>
+<li>5 </li></ol>
+<p> Answer : D </p>
+
+
+
+
+<h3>Question : 23</h3>
+Given :
+<pre>
+class Alligator{	
+public static void main(String[] args){
+ int []x[]={{1,2},{3,4,5},{6,7,8,9}};
+ int [][]y=x;
+  System.out.println(y[2][1]);
+ }
+}
+</pre>
+
+<strong>What is the result ?</strong>
+<ol type="A">
+<li>2 </li>
+<li>3 </li>
+<li>4 </li>
+<li>6 </li>
+<li>7 </li>
+<li>Compilation fails</li> 
+</ol>
+<p> Answer : E </p>
+
+
+
+<h3>Question : 24</h3>
+<pre>
+public class Venus{	
+public static void main(String[] args){
+ int []x={1,2,3};
+ int y[]={4,5,6};
+new Venus().go(x,y); 
+}
+
+void go(int[]... z) {
+ for(int[] a:z)
+  System.out.println(a[0]);
+ }
+
+}
+</pre>
+
+<strong>What is the result  ?</strong>
+<ol type="A">
+<li>1 </li>
+<li> 1 2</li>
+<li>1 4 </li>
+<li>1 2 3 </li>
+<li>Compilation fails </li>
+<li>An exception is thrown at runtime. </li>
+</ol>
+<p> Answer : C </p>
+
+
+<h3>Question : 25</h3>
+<pre>
+
+</pre>
+
+<strong>Which two code fragments correctly create  and initialize a static array of int elements ? (Choose two)</strong>
+<ol type="A">
+<li>static final int[] a={100,200}; </li>
+<li>static final int[] a; <br>
+static {
+	a=new int[2];
+	a[0]=100;
+	a[1]=200;
+} </li>
+<li>static final int[] a=new int[2]{100,200}; </li>
+<li>static final int[] a;
+static void init(){
+	a=new int[3];
+	a[0]=100;
+	a[1]=200;
+} </li>
+</ol>
+<p> Answer : A, B </p>
+
+
+
+
+<h3>Question : 26</h3>
+
+
+<strong>Which are valid declarations ? (Choose all that apply)</strong>
+<ol type="A">
+<li>int $x; </li>
+<li>int 123; </li>
+<li>int _123; </li>
+<li>int #dim; </li>
+<li>int %percent; </li>
+<li>int *divide; </li>
+<li>int central_sales_region_Summer_2005_gross_sales; </li>
+</ol>
+<p> Answer :  A, C, G</p>
+<ul>
+<li>A,C,G are legal identifiers.</li>
+<li>B is incorrect because an identifier can't start with a digit.</li>
+<li>D,E,F are incorrect because identifiers must start with $, _, or a letter.</li>
+</ul>
+
+
+<h3>Question : 27</h3>
+
+<strong>Which method names follow the JavaBeans standard ? (Choose all the apply)</strong>
+<ol type="A">
+<li>addSize </li>
+<li>getCust </li>
+<li>deleteReq </li>
+<li>isColorado </li>
+<li>putDimentions</li>
+</ol>
+<p> Answer : B, D </p>
+
+<ul>
+<li>B and D  use the valid  prefixes 'get'  and 'is'</li>
+<li>A,C and E  are incorrect because 'add', 'delete' and 'put' are not standard JavaBeans name prefixes.</li>
+</ul>
+
+
+
+
+<h3>Question : 28</h3>
+<pre>
+1 public class Voop{	
+2 public static void main(String[] args){
+3	doStuff(1);
+4	doStuff(1,2);
+5 }
+6 //insert code here	
+7 }
+</pre>
+
+<strong>Which, inserted independently at Line 6, will compile ? (Choose all that apply)</strong>
+<ol type="A">
+<li>static void doStuff(int... doArgs){ } </li>
+<li>static void doStuff(int[] doArgs){ } </li>
+<li>static void doStuff(int doArgs){ } </li>
+<li>static void doStuff(int... doArgs,int y){ } </li>
+<li>static void doStuff(int x,int... doArgs){ }</li>
+</ol>
+<p> Answer : A, E </p>
+<ul>
+<li>A and E use valid var-args syntax.</li>
+<li>B and C are invalid var-arg  syntax, and D is invalid because the var-arg must be the last of a method's arguments.</li>
+</ul>
+
+
+<h3>Question : 29</h3>
+
+<strong>Which are legal declarations ? (Choose all that apply)</strong>
+<ol type="A">
+<li>short x[]; </li>
+<li>short[] y; </li>
+<li>short[5] x2; </li>
+<li>short z2[5]; </li>
+<li>short[] z[][]; </li>
+<li>short[] y2=[5]; </li>
+</ol>
+<p> Answer : A, B, E </p>
+<ul>
+<li>A, B and E are correct array declarations; E is a three dimensional array.</li>
+<li>C, D and F are incorrect, you can't include the size of your array in a declaration unless you also instantiate the array object.F uses invalid instantiation syntax.</li> 
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</td></tr></table>
+<a href="scjpHomePage.html">BACK</a>
+
+</div>
+
+</body>
+
+<!-- Mirrored from ocpjp.jobs4times.com/fundamental.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 22 Jun 2024 15:29:37 GMT -->
+</html>

@@ -1,0 +1,120 @@
+@CHARSET "ISO-8859-1";
+
+	li {
+	font-size: 25px;
+	}
+	
+	table {
+	background:url(white.html)
+	}
+	
+	td {
+	font-size: 25px;		
+	}
+	h1 {
+	font-size: 35px;
+	}
+	
+	h2 {
+	font-size: 30px;
+	background-color:#FF3366;
+	color:#FFFFFF;
+	
+	}
+	
+	h3 {
+	font-size: 28px;
+	background-color:#008000;
+	color:#FFFFFF		
+	}
+	h4 {
+	font-size: 26px;
+	background-color:#660033;
+	color:#FFFFFF;
+	
+	}
+	h5 {
+	color:#0000FF;
+	font-size:23px;
+	font-family:Segoe UI;
+	background-color:yellow;
+	}
+	h6 {
+	color:#FF0000;
+	font-size:24px;
+	background-color:yellow;
+	}
+	
+	th {
+	font-size: 25px;
+	}
+	
+	body {
+	font-size: 25px;		
+	font-family:;
+	}
+	
+pre {
+	text-align: left;	
+	font-size: 21px;
+	background-color:wheat;
+	color: blue;			
+	font-family:Consolas, Arial Narrow,"Courier New", Courier, monospace;
+		
+}
+	
+	img {
+	background-color: teal;
+	}
+	
+	body {
+	background:url(ricebk.html);
+	}
+	
+label{
+ color: #0000ff;
+ font-style: normal;
+ 
+}
+	
+b {
+ color:purple;
+ font-family:Arial Narrow,"Courier New", Courier, monospace;
+}
+ strong{
+ color: #527B10;
+ }
+ i{
+ color: teal;
+ }
+  
+ul {	list-style-type:square;  }
+ol {list-style-type: upper-alpha;}
+	
+A {
+	COLOR: #003399; FONT-FAMILY: "Times New Roman", Times, serif; TEXT-DECORATION: underline
+}
+P {
+	FONT-FAMILY: Consolas, "Times New Roman", Times, serif;
+	font-size: 20px;
+	color: 
+}
+TABLE {
+	FONT-FAMILY:  Times, serif
+}
+
+A:hover {
+	COLOR: #FF0000; FONT-FAMILY: "Times New Roman", Times, serif; TEXT-DECORATION: none
+}
+A:active {
+	COLOR: #FFFF00; FONT-FAMILY: "Times New Roman", Times, serif; TEXT-DECORATION: none
+}
+A:visited {
+	COLOR: #009900; FONT-FAMILY: "Times New Roman", Times, serif; TEXT-DECORATION: underline
+}
+A:link {
+	COLOR: #990033; FONT-FAMILY: "Times New Roman", Times, serif; TEXT-DECORATION: underline
+}
+
+
+

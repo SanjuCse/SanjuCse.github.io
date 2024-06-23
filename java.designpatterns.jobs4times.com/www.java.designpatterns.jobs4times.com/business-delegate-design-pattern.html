@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from www.java.designpatterns.jobs4times.com/business-delegate-design-pattern.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 22 Jun 2024 15:36:42 GMT -->
+<head>
+<meta charset="ISO-8859-1">
+<title>Java design patterns - Business Delegate Design Pattern</title>
+<link style="text/css" rel="stylesheet" href="styles.css">
+<link rel="shortcut icon" href="small.html">
+</head>
+
+
+<body>
+<div align="center" >
+<table border="1" style="width: 887px"><tr><td>
+ 
+<table>
+<tr>
+<td width="50%" align="left"><a href="http://www.jobs4times.com/"><img alt="jobs4timesLogo"  src="../img.logos.jobs4times.com/banner%20J4T.jpg" width="500" height="200"></a> </td> 
+<td align="right"><a href="http://jobs4times.com/J4T/allmaterial.html"><img alt="jobs4timesLogo"  src="../img.logos.jobs4times.com/as2.jpg"  width="180" height="200"></a> </td> 
+</tr>
+</table>
+
+
+ 
+<h1 style="border-bottom-color: blue; background-color: yellow;font: monospace;color: red;text-align: center;"> Business Delegate Design Pattern </h1> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+index.jsp
+<pre>
+&lt;%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+&lt;!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+&lt;html>
+&lt;head>
+&lt;meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+
+&lt;title>Index Page&lt;/title>
+&lt;/head>
+&lt;body>
+
+&lt;a href="/javaT/registerStudent.jsp">Show Student Registration Information&lt;/a>
+
+&lt;/body>
+&lt;/html>
+</pre>
+
+registerStudent.jsp
+<pre>
+&lt;%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+&lt;!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+&lt;html>
+&lt;head>
+&lt;meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+&lt;title>Register Student&lt;/title>
+&lt;/head>
+&lt;body>
+
+&lt;form action="register">
+&lt;table>
+&lt;tr>&lt;td>Student Id : &lt;/td>&lt;td> &lt;input type="text" name="studentId">&lt;/td>&lt;/tr>
+&lt;tr>&lt;td> Name : &lt;/td>&lt;td> &lt;input type="text" name="name">&lt;/td>&lt;/tr>
+&lt;tr>&lt;td>Course Id : &lt;/td>&lt;td> &lt;input type="text" name="courseId">&lt;/td>&lt;/tr>
+&lt;tr>&lt;td colspan="2"> &lt;input type="submit" value="Register">&lt;/td>&lt;/tr>
+&lt;/table>
+&lt;/form>
+
+&lt;/body>
+&lt;/html>
+</pre>
+
+
+error.jsp
+<pre>
+&lt;%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+&lt;!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+&lt;html>
+&lt;head>
+&lt;meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+&lt;title>Error !!!&lt;/title>
+&lt;/head>
+&lt;body>
+
+&lt;p style="color:red;">
+  Error while processing your request. Please contact administration.
+&lt;/p>
+
+&lt;/body>
+&lt;/html>
+</pre>
+
+
+confirm.jsp
+<pre>
+&lt;%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+&lt;!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+&lt;html>
+&lt;head>
+&lt;meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+&lt;title>Registration Successfully&lt;/title>
+&lt;/head>
+&lt;body>
+
+&lt;p style="color:green;">
+  Student ${studentId} register successfully ....
+&lt;/p>
+
+&lt;/body>
+&lt;/html>
+</pre>
+
+
+<pre>
+package business.delegate;
+
+import java.io.Serializable;
+
+public class StudentBO implements Serializable {
+	
+	private int id;
+	private String name;
+	
+	//getters and setters
+	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+}
+</pre>
+
+
+<pre>
+package business.delegate;
+
+import java.io.Serializable;
+
+public class StudentCourseBO implements Serializable {
+
+	private int studentId;
+	private int courseId;
+	
+	// setters and getters
+	
+	public int getStudentId() {
+		return studentId;
+	}
+	public void setStudentId(int studentId) {
+		this.studentId = studentId;
+	}
+	public int getCourseId() {
+		return courseId;
+	}
+	public void setCourseId(int courseId) {
+		this.courseId = courseId;
+	}	
+}
+</pre>
+
+
+db.properties
+<pre>
+db.driverClassName = oracle.jdbc.driver.OracleDriver
+db.url = jdbc:oracle:thin:@localhost:1521:xe
+db.userName = system
+db.password = tiger
+</pre>
+
+
+<pre>
+package business.delegate;
+
+import java.sql.Connection;
+import java.sql.SQLException;
+
+public interface StudentDao {
+ void insert(StudentBO studentBO, Connection con) throws SQLException;
+}
+</pre>
+
+
+<pre>
+package business.delegate;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.logging.Logger;
+
+public class StudentDaoImpl implements StudentDao {
+	
+  //SQL queries
+ private final String INSERT_QUERY="insert into student(student_id,name) values(?,?)";
+ private static Logger logger;
+ 
+static {
+  logger=Logger.getLogger("log_file");
+}
+
+@Override
+public void insert(StudentBO studentBO, Connection con) throws SQLException {
+
+ PreparedStatement pstmt=null;
+
+ try{
+  pstmt=con.prepareStatement(INSERT_QUERY);
+  pstmt.setInt(1, studentBO.getId());
+  pstmt.setString(2, studentBO.getName());
+  pstmt.executeUpdate();
+ }catch(SQLException e){
+	 logger.throwing("StudentDao", "Unable to perform insert", e);
+	 throw e;
+ }finally{	 
+     if(pstmt != null)
+      pstmt.close();  
+ }
+ 
+}
+}
+
+
+/*
+  create table student(student_id number(20),name varchar2(15)); 
+ */
+</pre>
+
+
+<pre>
+package business.delegate;
+
+import java.sql.Connection;
+import java.sql.SQLException;
+
+public interface StudentCourseDao {
+	 void insert(StudentCourseBO studentCourseBO, Connection con) throws SQLException;
+}
+</pre>
+
+
+<pre>
+package business.delegate;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.logging.Logger;
+
+public class StudentCourseDaoImpl implements StudentCourseDao {
+	
+  //SQL queries
+ private final String INSERT_QUERY="insert into course(student_id, course_id) values(?,?)";
+ private static Logger logger;
+ 
+static {
+  logger=Logger.getLogger("log_file");
+}
+
+@Override
+public void insert(StudentCourseBO studentCourseBO, Connection con) throws SQLException {
+
+ PreparedStatement pstmt=null;
+
+ try{
+  pstmt=con.prepareStatement(INSERT_QUERY);
+  pstmt.setInt(1, studentCourseBO.getStudentId());
+  pstmt.setInt(2, studentCourseBO.getCourseId());
+  pstmt.executeUpdate();
+ }catch(SQLException e){
+	 logger.throwing("StudentCourseDao", "Unable to perform insert", e);
+	 throw e;
+ }finally{	 
+     if(pstmt != null)
+      pstmt.close();  
+ }
+ 
+}
+}
+
+
+/*
+  create table course(student_id number(20), course_id number(20)); 
+ */
+</pre>
+
+
+
+<pre>
+package business.delegate;
+
+import java.sql.SQLException;
+
+public interface RegistrationDelegate {
+   void register(RegistrationVO registrationVO) throws SQLException, ClassNotFoundException, GenericException;
+}
+</pre>
+
+
+<pre>
+package business.delegate;
+
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.logging.Logger;
+
+public class RegistrationDelegateImpl implements RegistrationDelegate {
+	
+private static Logger logger;
+
+static{
+  logger=Logger.getLogger("log_file");
+}
+
+@Override
+public void register(RegistrationVO registrationVO) throws SQLException, ClassNotFoundException, GenericException {
+ boolean isEx=false;
+ Connection con=null;
+ StudentBO studentBO=null;
+ StudentCourseBO studentCourseBO=null;
+ StudentDao studentDao=null;
+ StudentCourseDao studentCourseDao=null;
+ 
+ try{
+  con=ConnectionFactory.getConnection();
+  
+  studentBO=new StudentBO();
+  studentBO.setId(Integer.parseInt(registrationVO.getStudentId()));
+  studentBO.setName(registrationVO.getName());
+  
+  studentDao=new StudentDaoImpl();
+  studentDao.insert(studentBO, con);
+  
+  studentCourseBO=new StudentCourseBO();
+  studentCourseBO.setStudentId(Integer.parseInt(registrationVO.getStudentId()));
+  studentCourseBO.setCourseId(Integer.parseInt(registrationVO.getCourseId()));
+    
+  studentCourseDao=new StudentCourseDaoImpl();
+  studentCourseDao.insert(studentCourseBO, con);
+  
+ }catch(SQLException e){
+   logger.throwing("RegistrationDelegateImpl", "Unable to register student", e);
+   throw new GenericException(e);
+ }catch (ClassNotFoundException e) {
+   logger.throwing("RegistrationDelegateImpl", "Unable to register student", e);
+   throw new GenericException(e);
+ }finally{
+	 if(con != null) {
+		try{
+			if(isEx)
+				 con.rollback();
+			 else 
+				 con.commit();
+			con.close();
+		}catch(SQLException e){
+			logger.throwing("RegistrationDelegateImpl", "Unable to commit/rollback/clode connection", e);
+			throw new GenericException(e);
+		}
+		
+	 }//if
+		
+ }//finally
+ 
+ 
+}
+
+}
+</pre>
+
+
+<pre>
+package business.delegate;
+
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.logging.Logger;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class RegistrationServlet extends HttpServlet {
+  private static Logger logger=Logger.getLogger("log_file");
+  
+@Override
+protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+  boolean isEx=false;
+  String studentId=null;
+  String name=null;
+  String courseId=null;
+  String page=null;
+  RegistrationVO registrationVO=null;
+  RegistrationDelegate registrationDelegate=null;
+  RequestDispatcher requestDispatcher=null;
+  
+  studentId=request.getParameter("studentId");
+  name=request.getParameter("name");
+  courseId=request.getParameter("courseId");
+  
+  registrationVO=new RegistrationVO();
+  registrationVO.setStudentId(studentId);
+  registrationVO.setName(name);
+  registrationVO.setCourseId(courseId);
+  
+  registrationDelegate=new RegistrationDelegateImpl();  
+ 
+  try{
+	 registrationDelegate.register(registrationVO);
+	 request.setAttribute("studentId", studentId);
+  }catch(GenericException | ClassNotFoundException | SQLException e){
+	  isEx=true;
+	  logger.throwing("Registration Servlet", "Error occured during registration", e);
+  }
+  
+  if(isEx)
+	  page="error.jsp";
+  else
+	  page="confirm.jsp";
+  
+  requestDispatcher=request.getRequestDispatcher(page);
+  requestDispatcher.forward(request, response);  
+  
+}
+
+}
+</pre>
+
+
+<pre>
+package business.delegate;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.util.Properties;
+import java.util.ResourceBundle;
+import java.util.Set;
+import java.util.logging.Logger;
+
+public class ConnectionFactory {
+ private static Properties props;
+ private static Logger logger;
+ 
+static{
+ logger=Logger.getLogger("log_file");
+ props=new Properties();
+ ResourceBundle rb=ResourceBundle.getBundle("business/delegate/db"); // business.delegate.db
+ Set&lt;String> keys=rb.keySet();
+ for(String key:keys){
+	 props.put(key, rb.getString(key));
+ } 
+}
+
+public static Connection getConnection() throws SQLException, ClassNotFoundException {
+ Connection con=null;
+ 
+ try{
+	Class.forName(props.getProperty("db.driverClassName"));
+    con=DriverManager.getConnection(props.getProperty("db.url"),props.getProperty("db.userName"),props.getProperty("db.password"));
+    con.setAutoCommit(false);
+ }catch(SQLException e){
+   logger.throwing("ConnectionFactory", "Unable to get Connection", e);
+  throw e ;
+ }catch (Exception e) {
+   logger.throwing("ConnectionFactory", "Unable to load driver class", e);
+   throw e ;
+} 
+ return con;
+ 
+}
+ 
+}
+</pre>
+
+
+<pre>
+package business.delegate;
+
+public class GenericException extends Throwable {
+
+public GenericException(){
+	super();
+}
+
+public GenericException(String str, Throwable exp){
+	super(str,exp);
+}
+
+public GenericException(String str){
+	super(str);
+}
+
+public GenericException(Throwable exp){
+	super(exp);
+}
+
+}
+</pre>
+
+<pre>
+package business.delegate;
+
+import java.io.Serializable;
+
+public class RegistrationVO implements Serializable{
+
+	private String studentId;
+	private String name;
+	private String courseId;
+	
+	// setters and getters
+	
+	public String getStudentId() {
+		return studentId;
+	}
+	public void setStudentId(String studentId) {
+		this.studentId = studentId;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getCourseId() {
+		return courseId;
+	}
+	public void setCourseId(String courseId) {
+		this.courseId = courseId;
+	}
+
+}
+</pre>
+
+
+web.xml
+<pre>
+&lt;web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"   
+xmlns="http://java.sun.com/xml/ns/javaee"   
+xsi:schemaLocation="http://java.sun.com/xml/ns/javaee   
+http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"   
+id="WebApp_ID" version="3.0">  
+
+&lt;display-name>BusinessDelegate&lt;/display-name>
+&lt;servlet>
+ &lt;servlet-name>delegate&lt;/servlet-name>
+ &lt;servlet-class>business.delegate.RegistrationServlet&lt;/servlet-class>
+&lt;/servlet>
+&lt;servlet-mapping>
+ &lt;servlet-name>delegate&lt;/servlet-name>
+ &lt;url-pattern>/register&lt;/url-pattern>
+&lt;/servlet-mapping>
+
+&lt;welcome-file-list>
+&lt;welcome-file>index.jsp&lt;/welcome-file>
+&lt;/welcome-file-list>
+ 
+&lt;/web-app>
+</pre>
+
+
+
+output :
+<pre>
+http://localhost:8001/javaT/ 
+(OR)
+http://localhost:8001/javaT/register?studentId=123&amp;name=ashok&amp;courseId=432
+
+Student 123 register successfully ....
+
+//add required jar files to project lib flder like servlet-api.jar, ojdbc14.jar etc.,
+</pre>
+
+
+
+<br><br>
+</td></tr></table>
+<a href="index-2.html"><strong>BACK</strong></a>
+</div>
+  
+
+</body>
+
+<!-- Mirrored from www.java.designpatterns.jobs4times.com/business-delegate-design-pattern.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 22 Jun 2024 15:36:42 GMT -->
+</html>

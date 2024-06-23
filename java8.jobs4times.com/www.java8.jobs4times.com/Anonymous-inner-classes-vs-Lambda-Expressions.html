@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from www.java8.jobs4times.com/Anonymous-inner-classes-vs-Lambda-Expressions.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 22 Jun 2024 15:39:32 GMT -->
+<head>
+<meta charset="ISO-8859-1">
+<title> Java 8 New Features</title>
+<link href="java8.css" rel="stylesheet"/>
+</head>
+<body>
+<div align="center" >
+<table border="1"><tr><td width="780px">
+
+ <script src="header.js"></script>
+<hr color="blue"><hr color="red"><hr color="green">
+<h2> Anonymous inner classes vs Lambda Expressions :</h2>
+
+Wherever we are using anonymous inner classes there may be a chance of using Lambda expression to reduce length of the code and to resolve complexity.
+
+<br>
+Ex: With anonymous inner class 
+
+<pre>
+1) class Test { 
+2) public static void main(String[] args) { 
+3) Thread t = new Thread(new Runnable() { 
+4) public void run() { 
+5) for(int i=0; i<10; i++) { 
+6) System.out.println("Child Thread"); 
+7) } 
+8) } 
+9) }); 
+10) t.start(); 
+11) for(int i=0; i<10; i++) 
+12) System.out.println("Main thread"); 
+13) } 
+14) }
+</pre>
+
+With Lambda expression 
+<pre>
+1) class Test { 
+2) public static void main(String[] args) { 
+3) Thread t = new Thread(() -> { 
+4) for(int i=0; i<10; i++) { 
+5) System.out.println("Child Thread"); 
+6) } 
+7) }); 
+8) t.start(); 
+9) for(int i=0; i<10; i++) { 
+10) System.out.println("Main Thread"); 
+11) } 
+12) } 
+13) }
+</pre>
+
+<strong>What are the advantages of Lambda expression ?</strong>
+<ul>
+<li>We can reduce length of the code so that readability of the code will be improved.
+<li>We can resolve complexity of anonymous inner classes.
+<li>We can provide Lambda expression in the place of object.
+<li>We can pass lambda expression as argument to methods.
+</ul>
+Note:
+<ul>
+<li>Anonymous inner class can extend concrete class, can extend abstract class, can implement interface with any number of methods but
+ Lambda expression can implement an interface with only single abstract method (Functional Interface).
+<li>Hence if anonymous inner class implements Functional Interface in that particular case only we can replace with lambda expressions. Hence wherever anonymous inner class concept is there, it may not possible to replace with Lambda expressions.
+<li>Anonymous inner class! = Lambda Expression
+<li>Inside anonymous inner class we can declare instance variables.
+<li>Inside anonymous inner class "this" always refers current inner class object(anonymous inner class) but not related outer class object
+</li></ul>
+Ex:
+<ul>
+<li>Inside lambda expression we can't declare instance variables.
+<li>Whatever the variables declare inside lambda expression are simply acts as local variables
+<li>Within lambda expression "this" keyword represents current outer class object reference (that is current enclosing class reference in which we declare lambda expression)
+</ul>
+<pre>
+Ex: 
+1) interface Interf { 
+2) public void m1(); 
+3) } 
+4) class Test { 
+5) int x = 777; 
+6) public void m2() { 
+7) Interf i = ()-> { 
+8) int x = 888; 
+9) System.out.println(x); //888 
+10) System.out.println(this.x); //777 
+11) }; 
+12) i.m1(); 
+13) } 
+14) public static void main(String[] args) { 
+15) Test t = new Test(); 
+16) t.m2(); 
+17) } 
+18) }
+</pre>
+<ul>
+<li> From lambda expression we can access enclosing class variables and enclosing method variables directly.
+<li> The local variables referenced from lambda expression are implicitly final and hence we can't perform re-assignment for those local variables otherwise we get compile time error
+</ul>
+
+<pre>
+Ex: 
+1) interface Interf { 
+2) public void m1(); 
+3) } 
+4) class Test { 
+5) int x = 10; 
+6) public void m2() { 
+7) int y = 20; 
+8) Interf i = () -> { 
+9) System.out.println(x); //10 
+10) System.out.println(y); //20 
+11) x = 888; 
+12) y = 999; //CE 
+13) }; 
+14) i.m1(); 
+15) y = 777; 
+16) } 
+17) public static void main(String[] args) { 
+18) Test t = new Test(); 
+19) t.m2();
+20) } 
+21) }
+</pre>
+
+
+
+
+<table border="1">
+<caption style="font-size:x-large;">Differences between anonymous inner classes and Lambda expression</caption>
+<tr><th>Anonymous Inner class</th><th>Lambda Expression</th></tr>
+<tr><td>It's a class without name</td><td>It's a method without name (anonymous function)</td></tr>
+<tr><td>Anonymous inner class can extend abstract and concrete classes </td>
+	<td>Lambda expression can't extend abstract and concrete classes</td></tr>
+<tr><td>Anonymous inner class can implement an interface that contains any number of abstract methods</td>
+	<td>Lambda expression can implement an interface which contains single abstract method (Functional Interface)</td></tr>
+<tr><td>Inside anonymous inner class we can declare instance variables.</td>
+	<td>Inside Lambda expression we can't declare instance variables, whatever the variables declared are simply acts as local variables.</td></tr>
+<tr><td>Anonymous inner classes can be instantiated</td>
+	<td>Lambda expressions can't be instantiated</td></tr>
+<tr><td>Inside anonymous inner class "this" always refers current anonymous inner class object but not outer class Object.</td>
+	<td>Inside Lambda expression "this" always refers current outer class object. That is enclosing class object.</td></tr>
+<tr><td>Anonymous inner class is the best choice if we want to handle multiple methods.</td>
+	<td>Lambda expression is the best choice if we want to handle interface with single abstract method (Functional Interface).</td></tr>
+<tr><td>In the case of anonymous inner class at the time of compilation a separate dot class file will be generated (outerclass$1.class)</td>
+	<td>At the time of compilation no dot class file will be generated for Lambda expression. It simply converts in to private method outer class.</td></tr>
+<tr><td>Memory allocated on demand whenever we are creating an object</td>
+	<td>Reside in permanent memory of JVM (Method Area).</td></tr>
+<!-- <tr><td></td><td></td></tr> -->
+</table>
+
+
+
+<br>
+   
+</td></tr></table></div>
+</body>
+
+<!-- Mirrored from www.java8.jobs4times.com/Anonymous-inner-classes-vs-Lambda-Expressions.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 22 Jun 2024 15:39:32 GMT -->
+</html>

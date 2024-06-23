@@ -1,0 +1,1809 @@
+<!DOCTYPE HTML>
+<html>
+  
+<!-- Mirrored from java.scwcd.jobs4times.com/JSP-Technology-model.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 22 Jun 2024 15:25:22 GMT -->
+<head>
+    <title>Tutorial for JSP Technology model | JSP life cycle methods and JSP Implicit objects, JSP scopes</title>
+	
+    <meta name="keywords" content="JSP-API-life-cycle, Translation-Phase, JSP-API, JspPage, HttpJspPage, HttpJspBase, LifeCycle-of-JSP,
+PreCompilation-of-JSP, JSP-ELEMENTS, Template-Text, JSP-Directives, page-directive, import, session, isELIgnored, isThreadSafe, contentType, language, buffer, autoFlush, extends, info, isErrorPage, errorPage, pageEncoding, 
+Summary-of-page-directive-attributes, Servlet-is-ThreadSafe, Jsp-is-ThreadSafe, include-directive, Difference-between-include-directive-and-include-action, taglib-directive, 
+Scripting-Elements, Traditional-Scripting-elements, Scriptlets, Declarations, Expressions, Comments, Jsp-comments, Html-comments, Java-comments, VISIBILITY-of-comments, Comparision-of-Scripting-Elements, 
+Modern-Scripting-elements, EL, JSTL, JSP-Actions, JSP-implicit-Objects, request, response, config, application, session-implicit, out, response-in-Jsp, difference-between-PrintWriter-and-JspWriter,
+difference-between-out.write(100)-and-out.print(100), page, pageContext, exception, Declarative-Approach, Programmatic-Approach, best-approach-to-configure-error-pages, 
+get-all-other-Jsp-implicit-objects, perform-RequestDispatcher-Mechanism, perform-Attribute-Management, JSP-Scopes, request-scope, session-scope, application-scope, page-scope">
+    
+    <meta name="description" content="Describing JSP life cycle methods and JSP Implicit objects, JSP scopes">
+    
+    <meta name="content-type" content="text/html; charset=ISO-8859-1">
+   
+    <link rel="stylesheet" type="text/css" href="styles.css">
+<meta name="robots" content="nofollow" />
+<meta name="googlebot-news" content="nosnippet">
+<meta name="googlebot" content="noindex">
+<link rel="shortcut icon" href="https://java.scwcd.jobs4times.com/small.ico">
+
+<meta name="alexaVerifyId" content="007JYeZ56b-psQxnAu0mwUYTtKk">  
+<meta name="msvalidate.01" content="5E6AA9EBEF5779EFBFC5EABF3ACF5319" /> 
+
+<!-- Google analytics code    -->
+<script  type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','http://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-49487029-1', 'jobs4times.com');
+  ga('send', 'pageview');
+
+</script>
+
+  </head>
+  
+  
+  
+ 
+  
+<body>  
+<div align="center" >
+<table width="75%" border="3" ><tr><td>
+ 
+<table width="100%" cellpadding="0" cellspacing="0" border="0" >
+<tr>
+<td width="50%" align="left"><a href="https://www.jobs4times.com/"><img alt="jobs4timesLogo"  src="https://img.logos.jobs4times.com/banner J4T.jpg" width="700" height="200">   </a> </td> 
+   	<td  align="right"><a href="https://java.scwcd.jobs4times.com/index.html"><img alt="jobs4timesLogo"  src="https://img.logos.jobs4times.com/as2.jpg"  width="180" height="200" >  </a>  </td> 
+</tr> 
+</table> 
+
+ 
+ 
+  
+  <h1 align="center" style="background-color: rgb(0, 0, 128);"><font color="#ffff00">JSP  Technology  Model</font></h1>
+  <ol type="A">
+  <li><a href="#JSP-API-life-cycle">JSP API and  life cycle</a>  <ul type="circle">
+  <li><a href="#Translation-Phase">Translation Phase </a></li>
+  <li><a href="#JSP-API">JSP-API </a></li>
+  <li><a href="#JspPage">javax.servlet.jsp.JspPage(I) </a></li>
+  <li><a href="#HttpJspPage">javax.servlet.jsp.HttpJspPage(I) </a></li>
+  <li><a href="#HttpJspBase">Internal implementation of HttpJspBase class ? </a></li>
+  <li><a href="#LifeCycle-of-JSP">LifeCycle of JSP </a></li>
+  <li><a href="#PreCompilation-of-JSP ">PreCompilation of JSP  </a></li> </ul> </li>
+  
+  <li><a href="#JSP-ELEMENTS">JSP ELEMENTS :</a> <ul>
+  
+  <li><a href="#Template-Text">Template Text</a></li>
+  
+  <li><a href="#JSP-Directives">JSP  Directives :</a> <ol> 
+  
+  <li><a href="#page-directive">page  directive </a><ol type="i">
+  <li><a href="#import">import</a></li>
+  <li><a href="#session">session </a></li>
+  <li><a href="#isELIgnored">isELIgnored </a></li>
+  <li><a href="#isThreadSafe">isThreadSafe </a></li>
+  <li><a href="#contentType">contentType </a></li>
+  <li><a href="#language">language </a></li> 
+  <li><a href="#buffer">buffer </a></li>
+  <li><a href="#autoFlush">autoFlush </a></li>
+  <li><a href="#extends">extends</a></li>
+  <li><a href="#info">info </a></li>
+  <li><a href="#isErrorPage">isErrorPage </a></li>
+  <li><a href="#errorPage">errorPage </a></li>
+  <li><a href="#pageEncoding">pageEncoding </a></li> </ol> <ul>
+  <li><a href="#Summary-of-page-directive-attributes">Summary of the page directive attributes </a></li>
+  <li><a href="#Servlet-is-ThreadSafe">Is Servlet is ThreadSafe ? </a></li>
+  <li><a href="#Jsp-is-ThreadSafe">Is Jsp is ThreadSafe by default ? </a></li> </ul></li>
+  
+<li><a href="#include-directive">include directive </a> <ul>
+<li><a href="#Difference-between-include-directive-and-include-action">Difference between include directive and include action : </a></li></ul> </li> 
+<li><a href="#taglib-directive">taglib directive</a></li>
+</ol> </li> 
+  
+</ul></li>
+  
+  <li><a href="#Scripting-Elements">Scripting Elements </a><ul>  
+  <li><a href="#Traditional-Scripting-elements">Traditional Scripting elements </a><ul>
+  <li><a href="#Scriptlets">Scriptlets </a></li>
+  <li><a href="#Declarations">Declarations </a></li>
+  <li><a href="#Expressions">Expressions </a></li> 
+  <li><a href="#Comments">Comments </a><ol>
+  <li><a href="#Jsp-comments">Jsp comments  </a></li>
+  <li><a href="#Html-comments">Html comments  </a></li>
+  <li><a href="#Java-comments">Java comments </a></ol> <ul>
+  <li><a href="#VISIBILITY-of-comments">VISIBILITY  of comments </a></li>
+  <li><a href="#Comparision-of-Scripting-Elements ">Comparision of Scripting Elements </a></li></ul> </li>  </ul></li>
+  <li><a href="#Modern-Scripting-elements">Modern Scripting elements </a><ul type="disc">
+  <li><a href="#EL">EL </a></li>
+  <li><a href="#JSTL">JSTL </a></li></ul></li>
+  </ul></li>
+  
+
+<li><a href="#JSP-Actions">JSP Actions </a></li>  
+  
+<li><a href="#JSP-implicit-Objects">JSP  Implicit  Objects/elements :</a> <ol>
+<li><a href="#request">request</a></li>
+<li><a href="#request">response </a></li>
+<li><a href="#config">config</a></li>
+<li><a href="#application">application</a></li>
+<li><a href="#session-implicit">session </a></li>
+<li><a href="#out">out :</a> <ul>
+<li><a href="#response-in-Jsp">How to write response in Jsp ? </a></li>
+<li><a href="#difference-between-PrintWriter-and-JspWriter">What is the difference between PrintWriter and JspWriter ? </a></li> 
+<li><a href="#difference-between-out.write(100)-and-out.print(100)">What is the difference between out.write(100) and out.print(100) ?</a></li>
+</ul>
+</li>
+<li><a href="#page">page</a></li>
+<li><a href="#pageContext">pageContext</a> <ul>
+<li><a href="#get-all-other-Jsp-implicit-objects">To get all other Jsp implicit objects :</a></li>  
+<li><a href="#perform-RequestDispatcher-Mechanism">To perform RequestDispatcher Mechanism : </a></li>
+<li><a href="#perform-Attribute-Management">To perform Attribute Management in any scope (Jsp scopes)</a></li></ul>
+</li>
+<li><a href="#exception">exception</a> <ol>
+<li><a href="#Declarative-Approach">Declarative Approach </a></li>
+<li><a href="#Programmatic-Approach">Programmatic Approach </a></li> </ol> <ul>
+<li><a href="#best-approach-to-configure-error-pages">Which approach is best approach to configure error pages ?</a></li>
+</ul> 
+</ol>
+</li>  
+<li><a href="#JSP-Scopes">JSP Scopes</a><ol type="i">
+<li><a href="#request-scope">request scope</a></li>
+<li><a href="#session-scope">session scope</a></li>
+<li><a href="#application-scope">application scope (or) context scope</a></li>
+<li><a href="#page-scope">page scope</a></li></ol>
+
+</li>
+
+</ol>
+  
+  
+  
+  
+  
+ <h2 id="JSP-API-life-cycle">JSP API and  life cycle</h2>  
+  Describes the purpose  and  event   sequence   of  JSP page  life cycle.
+  <ol>
+  	<li>Translation phase </li>
+  	<li>Jsp page  compilation </li>
+  	<li>Load the class </li>
+  	<li>Create  an  Instance (Instantiation)</li>
+  	<li>Call jspInit( ) </li>
+  	<li>Call  _jspService( )</li>
+  	<li>Call  jspDestroy( ) </li>
+  </ol>
+  
+ 
+  <h3 id="Translation-Phase">Translation Phase :</h3>
+  <ol>
+  		<li>The process of translating  Jsp page (.jsp file) into corresponding  Servlet (.java file) is called translation phase.</li>
+  		<li>This can be done by  Jsp container(engine) , In tomcat this engine is called "JASPER" </li>
+  		<li>The generated  .java file is  available  in the following  location(Tomcat6.0\work\catalina\contextrootnamejsp1\org\apache\jsp)   <br>In weblogic :  user-projects\domain\mydomain\myserver\............... </li>
+   </ol>
+   
+   <h4 id="JSP-API"> JSP-API : </h4>
+   <ol>
+   		<li>Every class which is generated  for the jsp , must  implements  <strong>javax.servlet.jsp.JspPage(I)</strong>  Or <strong> javax.servlet.jsp.HttpJspPage </strong> either directly  or indirectly </li>
+   		<li>Tomcat people provided a  base class  org.apache.jasper.runtime.HttpJspBase  for  implementing  the above  2  interfaces. Hence  any Servlet  which is generated by  tomcat is extending  this <strong> HttpJspBase</strong>  class.</li>
+     </ol>
+     
+<br><img alt="" src="https://java.scwcd.jobs4times.com/jsp/jspBase.jpg"><br>
+ 
+ HttpJspBase class name will be valid from vendor to vendor (server to server)
+     
+<h4 id="JspPage">javax.servlet.jsp.JspPage(I) :</h4>
+This interface defines the following 2 methods
+  <ol><li>jspInit( )</li><li>jspDestroy( ) </li> </ol>
+
+
+
+<h5> jspInit( ) :</h5>
+ public void jspInit( ) 
+     <ol>
+     	<li>This method will be  executed  only once  to  perform  initialization  activities , whenever  we are  sending  first request  to the JSP</li>
+     	<li>Web-container always  calls<strong> init(ServletConfig sc)</strong> presents in  HttpJspBase  class , which  intern  calls jspInit( ) </li>
+     	<li>If we have any  initialization  activities  we have to override jspInit( )  in our  Jsp  </li>
+     </ol>
+     
+<pre>
+public class HttpJspBase --- {
+public final void init(ServletConfig config)throws ServletException {
+ jspInit();
+}
+}
+</pre>
+     
+<p>Various possibilities of  overriding   jspInit( ) in our  JSP</p> 
+
+date.jsp  
+<pre>
+&lt;%!
+public void jspInit() {
+ sysem.out.println("jsp Init");
+ //our own initialization
+}
+%&gt;
+The server time is : &lt;%=new java.util.Date()%&gt;
+</pre>
+This method will be executed at the time of first request.
+<br>
+
+<ins> We can't  override init(ServletConfig sc) in jsp, because  it is declared as final in HttpJspBase class</ins>
+
+     
+   
+  
+ <h6>  jspDestroy( )</h6>
+ public void jspDestroy() 
+  <ol>
+  	<li>This method  will be   executed  only  once  to perform  cleanup  activities  just before taking  jsp  from  out of  service.<br> <strong>public void jspDestroy( )</strong> </li>
+  	<li>Web-container  always  calls  destroy( )   available  in HttpJspBase  which  intern  calls jspDestroy( )</li>
+  </ol>
+<pre>
+class HttpJspBase {
+ final  destroy( ) {
+  	jspDestroy( ) ;
+ }
+ 
+ jspDestroy( ) {   }
+}
+</pre>  
+If we have any cleanUp activity we should  override  jspDestroy( )  &amp; we can't  override  destroy( ) , because  it is  declared as  final in  HttpJspBase class.
+  	
+  
+  
+<h4 id="HttpJspPage">  javax.servlet.jsp.HttpJspPage(I) :</h4> 
+<ol>
+<li>It is the child  interface of JspPage(I),it contains only one  method  i.e., _jspservice( ) <br><strong>public void _jspService(HttpServletRequest req , HttpServletResponse res) throws ServletException, IOException</strong>	</li>
+<li>This method will be executed for every request.</li>
+<li>Web-container  always  calls  service(HSR,HSR)  of  HttpJspBase class, which intern  calls  our _jspService(HSR,HSR)</li>
+<li>_jspService( )  should be  generated automatically  by the web-container at translation  phase and  we can't  override.</li>
+<li>If we write  _jspService( )  in the jsp explicitly  then  generated   Servlet  class contains  two  _jspService( ) , which causes compile  time error.(with in the  same class  2 methods with  same   signature is  not possible)</li>
+<li>In our jsp we can't  override service( ) , because  these are declared as  final  in  base class.</li>
+</ol>
+
+<h6 id="HttpJspBase">Internal implementation  of HttpJspBase class ?</h6>
+<pre>
+public  abstract class HttpJspBase extends 
+                 HttpServlet implements HttpJspPage{
+public final void init(ServletConfig config) 
+                             throws ServletException{
+	super.init(config);
+	jspInit();
+}
+public final void destroy(){
+	jspDestroy();
+}
+public void jspInit(){ }
+public void jspDestroy(){ }
+public final void service(HttpServletRequest req,
+  HttpServletResponse res)throws ServletException,IOException{
+	_jspService(req, res);
+}
+public abstract void _jspService(HttpServletRequest req,
+   HttpServletResponse res)throws ServletException,IOException;
+public String getServletInfo(){
+	return "Jsp information"; 
+}
+}
+
+</pre>
+
+
+
+  
+  <p><strong>What is the signature of Underscore  in  _jspService( ) ?</strong> <br>
+  We can't write this method explicitly  and  it  should  be  generated  automatically  by the  web-container.</p>
+  In our  Jsp , which  of the  following methods  we can  write explicitly ? 
+  <ol>
+  		<li>init(ServletConfig  sc)                        //X-- final so  wrong</li>
+  		<li>jspInit( )            //right </li>
+  		<li>destroy()    //wrong</li>
+  		<li>jspDestroy()    //right</li>
+  		<li>service()  //wrong</li>
+  		<li>_jspService() //wrong</li>
+  		  </ol>
+  
+  
+  <h2 id="LifeCycle-of-JSP">LifeCycle  of  JSP:</h2>
+   <ol>
+ <li>jspInit()</li>
+ <li>_jspService(-,-)</li>
+ <li>jspDestroy()</li>
+ </ol>
+ These methods are called life cycle methods of a Jsp.
+ <table border="1"><tr><td><strong> .jsp -----------&gt; .java  -----------&gt; .class -----------&gt;  load .class file -----------&gt; instantiation  -----------&gt;  jspInit() -----------&gt; _jspService(-,-) -----------&gt;jspDestroy()       </strong> </td></tr>		</table>
+<br><img alt="lifeCycle" src="https://java.scwcd.jobs4times.com/jsp/life.jpg"><br>
+ <ol>
+ 	<li>jspInit() and jspDestroy() methods  will be  executed  only once, But _jspService()  will be  executed  for every  request.</li>
+ 	<li>If any problem occurs  at the time of  translation  Or at the time of   compilation   we will  get  500  status code response.</li>
+ 	<li>JspPage  will be  participated  into translated  in the following  cases :
+ 			<ol><li>At the time of  1<sup>st</sup>  request</li><li>When compared with earlier  request , Source  code  of the  jsp  got  modified . For this  web-container   will use  ARAXIS  tool   to  compare  time stamps   of  .jsp  and  .class  file</li>	</ol>
+ 		</li> 		 
+ </ol>
+date.jsp (date_jsp.java)
+<pre>
+&lt;%!
+static{
+ System.out.println("class is loading");
+ }
+public date_jsp(){
+  System.out.println("The generated java class object is created");
+}
+public void jspInit(){
+  System.out.println("jspInit() will be called");
+}
+public void jspDestroy(){
+ System.out.println("jspDestroy() will be called");
+}
+%&gt;
+The server time is : &lt;%= new java.util.Date() %&gt;
+</pre>
+ 
+<h5 id="PreCompilation-of-JSP">PreCompilation of JSP :</h5>
+<ol>
+  	<li>We can initiate  translation phase  explicitly  by using  pre-compilation  process( upto jspInit() ). </li>
+  	<li>Jsp specification  provides  a  special  request  parameter   "jsp-precompile"  to perform  precompilation . We can  use  this parameter  to hit the  jsp  for  compilation  without processing  any  request.</li>
+  	<li>We can invoke pre-compilation as follows : <strong>http://localhost:8080/jsp1/date.jsp?jsp_precompile=true </strong>[ upto   jspInit( )  will  be  executed ]  </li>
+  	<li>The main advantages of  pre-compilation  are 
+  			<ol>
+  					<li>All  requests  will be  processed  with  uniform  response  time </li>
+  					<li>We can  capture  translation  time  errors  and  compilation time  errors  before  processing  first  request.</li>
+   			</ol>
+   	</li>  			
+  </ol>
+<p>While translation and compilation any problem or exception occurs then we will get http status code 500 response.</p>
+
+  
+  
+  
+  <h3 id="JSP-ELEMENTS">  JSP  ELEMENTS :</h3>
+  <br><img alt="" src="https://java.scwcd.jobs4times.com/jsp/element.jpg" width="800"><br>
+  
+  <strong>  Objective :</strong> Identify , describe  and   write  Jsp  code  for the following  elements
+  <ol>
+  		<li>Template Text </li>
+  		<li>Scripting  elements </li>
+  		<li>Standard and  Custom  Actions </li>
+  		<li>Expression  Language  Elements </li>
+  </ol>
+  
+<h4 id="Template-Text">  Template Text :</h4>
+  <ol>
+  		<li>It  consists of html and  xml  tags and  raw  data.</li>
+  		<li>For the template  text  no  translation  is  required ,   And it will  become  argument  to  out.write( )  present  in  _jspService( ) of generated servlet. </li>
+  </ol>
+date.jsp
+<pre>
+The server time is :
+&lt;%= new java.util.Date() %&gt;
+</pre> 
+date_jsp.java
+<pre>
+public final class date_jsp extends HttpJspBase{
+public void _jspService(-,-)-- {
+ out.write("The server time is:");
+ out.print(new java.util.Date());
+}	
+}
+</pre>
+  
+<h6>The Template text will become argument to write() where as Expression  value will become argument to print() , what is the reason. </h6>
+  write( )  can take  only  character  data  as  argument  and template  text  is always  character data.  Hence template  text  will  become  argument  to  out.write( ). 
+<br> Expression  value  can be  any  data type , hence  we  can't  use  write( ) , compulsory  we should  go for  print( )  which  can  take any type of  argument.
+
+<h4 id="JSP-Directives">JSP  Directives :</h4>
+  
+  A  directive  is a translation  time  instruction to the jsp  engine by using directives.<br/> we can specify  whether current jsp  error page or not, whether the current jsp participating into session traffic or not.
+  <br><strong>syntax:</strong><br>
+  &lt;%@directive-name attribute-name=attribute-value1,.... %&gt;
+  <p></p>
+  There  are  3  types of directives
+
+ 
+<ol>
+<li><strong>Page directive :</strong> <br> It can be used  to  specify overall  properties  of  jsp page to the jsp engine   
+<pre>
+&lt;%@ page  isErrorPage="true"  %&gt;
+</pre>
+This  directive  specifies  that  the current  jsp  is  error page  and  hence  jsp engine   makes  exception  implicit  object  available  to the jsp  page.</li>
+<li><strong>Include directive :</strong> <br>  We  can  use this  directive  to include  the content  of some other page into current  page  at  translation time(static include)
+<pre>
+&lt;%@ include file="header.jsp" %&gt;
+</pre>
+</li>
+<li><strong>taglib directive :</strong> <br>  We can  use this directive  to make  custom tag  functionality  available  to the jsp
+<pre>
+&lt;%@ taglib prefix="mime" uri="www.jobs4times.com" %&gt;
+</pre>
+</li>
+</ol> 
+  
+<h4 id="JSP-Actions">JSP Actions :</h4> 
+<ul>
+<li>Actions  are  commands  to Jsp engine , They  direct  jsp  engine to  perform certain  task at  execution time(Runtime). </li></ul>
+The  following are various  standard actions  available in jsp
+<ol>
+<li>&lt; jsp:useBean &gt; </li>
+<li>&lt; jsp:getProperty &gt; </li>
+<li>&lt; jsp:setProperty &gt; </li>
+<li>&lt; jsp:include &gt; </li>
+<li>&lt; jsp:forward &gt; </li>
+<li>&lt; jsp:param &gt; </li>
+<li>&lt; jsp:plugIn &gt; </li>
+<li>&lt; jsp:fallBack &gt; </li>
+<li>&lt; jsp:params &gt; </li>
+</ol>
+Ex:
+<pre>
+&lt;jsp: include page="header.jsp" /&gt;
+</pre>
+It  includes  the  response  of  header.jsp  in the current page  response  at  runtime.(Dynamic include).
+<h4 id="Scripting-Elements">Scripting Elements :</h4>
+ There are  2 types  of Scripting  elements
+<ol>
+<li>Traditional Scripting elements
+  <ol>
+  <li>Expressions </li>
+  <li>Scriptlets </li>
+  <li>Declarative </li>
+  <li>Comments </li>
+ </ol> 
+</li>
+<li>Modern Scripting elements
+<ol><li>EL </li><li>JSTL</li></ol>
+</li>
+</ol>
+  
+
+<h4 id="Expressions">Expressions :(&lt;%= %&gt;) </h4>
+Expression can be  used  to print  java expression to the jsp.<br>
+Example : 
+<pre>
+&lt;%= 2+3 %&gt;   (OR)
+ 
+out.print(2+3);
+</pre>
+
+Expression will become argument to  out.print( )  present in _jspService( ) 
+<ol>
+<li>Inside jsp  expression ,  expression value  should  not  ends with  semicolon otherwise we will get http status 500 error.
+<br>
+Ex : 
+<pre>
+&lt;%= newDate( ); %&gt;  (OR)
+
+ out.print(new Date( ) ; );   // 500  status code
+ </pre>
+ </li>
+  			
+<li>Inside expressions we can  take  method  calls  also but  void return  type  method  calls  are not  allowed.
+
+<pre>
+&lt;%= math.random( ) %&gt;       //valid
+&lt;%=(new AL( ) ).clear( ) %&gt;   // invalid    
+because  void return type methods  are not allowed
+</pre>
+
+</li>
+  	   
+<li>Inside expression  space  is not  allowed   between  %  and  =  , otherwise  it will be  treated  as  scriptlet  which  causes  compile time  error .
+
+<pre >
+&lt;%  =20 %&gt;
+
+ _jspService() {
+  =20 ;   // invalid statememt
+ }
+ </pre>
+ 
+ </li>
+  			
+<li>Declarations are not allowed in expressions i.e., declaring variables,methods etc.,
+
+<pre>
+&lt;%= String s="durga" %&gt;  OR
+
+out.println(String s="durga");   //invalid  
+</pre>
+</li>
+</ol>
+  
+<h6>  Which  of the following  Expressions  are  valid ?</h6> 
+<ol>
+<li>  &lt;%=  2*3     %&gt;      //valid   </li>
+<li>  &lt;%= 2&lt;3    %&gt;      //valid   </li>
+<li>  &lt;%=  math.sqrt(4)     %&gt;      //valid   </li>
+<li>  &lt;%=  2*3 ;    %&gt;      //invalid   </li>
+<li>  &lt;%=  new  Student( )     %&gt;  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //   sop(new  Student( ) );      //valid     </li>
+</ol>
+  
+<h4 id="Scriptlets">  Scriptlet : (&lt;%  %&gt;)  </h4>
+  <ol><li>
+  We  can  use  scriptlet  to place  java  code in the jsp
+<pre>
+&lt;%  any  java code %&gt;
+// this java code in _jspService()
+</pre>  
+</li>
+  <li>Scriptlet  code  will be  placed  directly  inside  _jspService( ) of generated servlet. </li>
+  <li>Every  java  statement  present  inside  scriptlet  should   ends  with  semicolon<strong>(;)</strong>. </li>  
+  </ol>
+  
+<h6> Write Jsp to print  hit  count :</h6>
+  
+<pre>
+&lt;%
+int count=0;
+count++;   
+//every request count initialized to 0 and print 1 
+out.println(count);
+%&gt;
+</pre>
+This  Jsp  is  invalid  and generates '1' as  response  every  time, here  count  variable  is  local.
+<pre>
+&lt;%!
+int  count=0 ;
+%&gt;
+
+&lt;%
+count++;
+out.println(count);
+%&gt;
+</pre>
+  
+<pre>
+&lt;%
+/*
+any java code;
+it will be placed in 
+generated servlet _jspService() 
+*/
+%&gt;
+</pre>  
+
+<pre>
+&lt;%
+System.out.println("hello");
+     // valid
+%&gt;
+</pre>
+<pre>
+&lt;%
+public int x=20; // invalid, x is not final
+out.println(x*2);
+%&gt; 
+</pre>
+<pre>
+&lt;%
+final int x=20; // valid, x is final
+out.println(x*2); 
+%&gt;
+</pre>
+
+<pre>
+&lt;%
+public int m1(){
+int x=10;
+int y=20;         //invalid 
+return x*y;
+}
+%&gt;
+Result is :&lt;%= m1() %&gt;
+</pre>
+
+
+<h6>  What  is the  difference  between the following ?</h6> 
+<table border="1">
+<tr><td> 
+<pre>
+&lt;%
+int count=0 ;
+%&gt;
+</pre>
+</td>
+<td>
+<pre>
+&lt;%!
+int count=0 ;
+%&gt;
+</pre>
+</td>
+</tr>
+<tr><td>It is the local  variable  present  inside _jspService() </td>
+<td>It is the instance  variable  present in generated Servlet , out side of  _jspService() </td>
+</tr>
+</table> 
+  
+ <strong>  Note :</strong>
+  It's  never  recommended  to  write  scriptlets  in the jsp.
+   
+  
+  <h4 id="Declarations">  Declarations : (&lt;%! %&gt;) </h4>
+<ol>
+<li>We can use  declaration  tag  to  declare  instance  variables , instance methods, static variables , static methods , instance and static  blocks , constructors, inner classes etc., 
+<pre>
+&lt;%!
+// any java declarations
+%&gt;
+</pre>
+</li>
+<li>These  declarations will be  placed  directly  in the generated Servlet but  outside of _jspService( ) 
+<pre>
+&lt;%!
+int x=10 ;
+static int y=20;
+public void m1(){
+System.out.println("allowed");
+}
+%&gt;
+</pre>
+</li>
+  	<li>Every statement  present  in declaration tag  should  compulsory  ends  with  semicolon.
+ <table border="1"><tr><td>
+<pre>
+&lt;%!
+public  void m1( ){
+out.println("hello");
+}
+%&gt;
+&lt;%
+m1( ) ;
+%&gt;
+</pre>
+</td>
+<td>
+<pre>
+class  {
+public void m1( ) {
+ out.println("Hello");
+}
+_jspService(- - )- - {
+ JspWriter out ;
+  ---------------
+}
+}
+</pre>
+  		
+  		
+  		</td>
+  		</tr>
+  		<tr><td>CE: out cannot  be resolved</td><td>out is local variable  to _jspService( ) we can't access  outside .</td></tr>
+  		</table>
+  	
+  	</li>
+  	
+  	<li>All  implicit  objects available  in Jsp's   are    local variables inside  _jspService( ) </li>
+  	<li>Declaration tag code  will be  placed outside of _jspService() , Hence  implicit objects  we can't  use in declaration tags. Otherwise we will get Compile time  error.</li>
+  	<li>But  we can use  implicit  objects  inside scriptlets  and  expressions because their  code will be  placed  inside _jspService( ) </li>  
+  	</ol>
+
+<h4 id="Comments">  Comments :</h4>
+  
+  There are 3 types  of comments  are allowed in  Jsp 
+  <ol><li>Jsp  comments    <br> &lt;%-- Jsp comments  --%&gt;   </li>
+  		<li>Html comments    <br>  &lt;!--   html/xml  comments  --&gt;   </li>
+  		<li>	Java  comments<ol><li>Single line </li><li>Multi line </li>		</ol> </li> 
+  </ol>
+  
+<h5 id="Jsp-comments">  Jsp  Comments :</h5>
+  <table bordercolor="yellow"><tr><td>&lt;%--  Jsp  comment  --%&gt;  </td></tr>	</table>
+  <ol>
+  <li>Also  known as  hidden  comments , because these are not  visible  in the  remaining  phases  of  jsp  execution (like .java, .class, and response).</li>
+  <li>This  comments  are  highly recommended to use  in the Jsp </li>
+  </ol>
+<h5 id="Html-comments"> Html Comments :</h5>
+  <table bordercolor="yellow"><tr><td>&lt;!--  Html/XML  comments  --&gt;  </td></tr>	</table>
+  <ol>
+  	<li>Also known as  template  text  comments </li>
+  	<li>These are visible  to the  end-user as the  part of  generated  response source code, hence these are not  recommended to use with in the Jsp.</li>
+  </ol>
+<h5 id="Java-comments"> Java  Comments :</h5>
+<pre>
+&lt;%
+// single line  java comment
+/* multi line java comment */
+%&gt;
+</pre>
+
+  <ol>
+  	<li>Also  known as  scripting  Comments </li>
+  	<li>These  comments are visible  in the generated Servlet source code(.java)  but in all  other  phases  these are not  visible.</li>
+  </ol>
+  
+ <h6 id="VISIBILITY-of-comments">  VISIBILITY : </h6>
+<table border="1">
+  <tr><th>Comments</th> <th>Syntax</th> <th> in JSP </th> <th>in generated servlet source  code(.java)</th> <th>in end-user response</th></tr>
+  <tr><td>JSP </td><td>  &lt;%--  --%&gt;  </td>  <td>visible</td><td>not visible</td><td>not visible</td> </tr>
+  <tr><td>Html</td> <td>  &lt;!--  --&gt;  </td>  <td>visible</td><td> visible</td><td> visible</td> </tr>
+  <tr><td>Java</td><td>  //  <br> /*  .....  */  </td>  <td>visible</td><td> visible</td><td>not visible</td> </tr>
+  </table>
+<p>Translator can perform only one level translation , hence among declaration,scriptlet,expressions and comments we can't take another i.e., nesting of scripting elements are not  allowed  otherwise we will get compiletime error.</p>
+<pre>
+&lt;%!
+ &lt;%-- Jsp comments --%&gt; // invalid
+ int a=10;
+%&gt;
+</pre> 
+
+<pre>
+&lt;%
+ &lt;% out.println("hello"); %&gt;//invalid
+%&gt;
+</pre>
+
+<pre>
+&lt;%
+ out.print(&lt;%= 10+2+3 %&gt;);//invalid 
+%&gt;
+</pre> 
+ 
+<pre>
+&lt;%--
+ &lt;% out.print("It is valid because i'm in comments"); %&gt;
+--%&gt;
+</pre> 
+  
+<h5 id="Comparision-of-Scripting-Elements">Comparision of Scripting Elements :</h5>
+<table border="1">
+<tr><th>Elements</th><th>Syntax</th><th>is ends with simicolon</th><th>code will be _jspService()</th></tr>
+<tr><td>Scriptlet</td><td>&lt;% %&gt;</td><td>Yes</td><td>Yes</td></tr>
+<tr><td>Expression</td><td>&lt;%= %&gt;</td><td>No</td><td>Yes</td></tr>
+<tr><td>Declaration</td><td>&lt;%! %&gt;</td><td>Yes</td><td>No</td></tr>
+<tr><td>Jsp Comments</td><td>&lt;%-- --%&gt;</td><td>not applicable</td><td>not applicable</td></tr>
+</table>   
+   
+   
+<h2>Directives :(&lt;%@ %&gt;)</h2>
+ Write a jsp code that uses the following directives are
+<ol>
+<li>page</li><li>include</li><li>taglib</li>
+</ol> 
+<p>Directives are translation time instruction to the jsp engine, by using these directives we can specify whether Jsp is an error page or not, whether Jsp is participating or not and etc.,</p>
+
+Syntax:<br>
+<strong>
+&lt;%@ directive-name  attribute-name=attribute-value1,......  %&gt;
+</strong>
+<br>attribute-values should encode with singlecode(' ') or doublecode(" ")
+   
+   
+<h3 id="page-directive">page :</h3>
+This page directive specifies overall properties of Jsp page to Jsp engine,<br> we can use this directive no.of times and any where.
+
+<br>
+Syntax:<br>
+<strong>&lt;%@ page  attribute-name=attribute-value %&gt; </strong>
+<h5>The following are list of possible attributes of the page directive (13): </h5>
+<ol>
+<li>import</li><li>session</li><li>isELIgnored</li><li>isThreadSafe</li><li>contentType</li>
+<li>language</li><li>buffer</li><li>autoFlush</li><li>extends</li><li>info</li>
+<li>isErrorPage</li>
+<li>errorPage</li>
+<li>pageEncoding</li>
+</ol>
+
+<h4 id="import">import :</h4>
+We can use this import attribute to import classes and interfaces in our Jsp, this is exactly similar to core java  import statement.
+<p></p>
+date.jsp (with import attribute)
+<pre>
+&lt;%@ page  import="java.util.Date" %&gt;
+The Server Time is : &lt;%= new Date() %&gt;
+</pre>
+
+date.jsp (without import attribute)
+<pre>
+The server time is: &lt;%= new java.util.Date() %&gt;
+</pre>
+
+
+<h6>To import multiple packages the following various possibilities :</h6>
+<pre>
+&lt;%@ page  import="java.util.*" %&gt;
+&lt;%@ page  import="java.io.*" %&gt;
+</pre>
+or
+<pre>
+&lt;%@ page  import="java.util.*" import="java.io.*" %&gt;
+</pre>
+or
+<pre>
+&lt;%@ page  import="java.util.*,java.io.*" %&gt;
+</pre>
+<p>
+With in the same Jsp we are not allowed to take any attribute except import attribute of page directive <strong>multiple times  with  different values</strong> but we can take same attribute <strong>multiple times with same values</strong> for other attributes.
+</p>
+
+<h6>Q : Which of the following are valid ?</h6>
+
+<pre>
+&lt;%@ page  import="java.util.*" import="java.io.*" %&gt;
+      //valid
+</pre>
+
+<pre>
+&lt;%@ page  session="true"  session="false" %&gt;
+     //invalid
+</pre>
+<pre>
+&lt;%@ page isELIgnored="true" isELIgnored="false" %&gt;
+</pre>
+<pre>
+&lt;%@ page   session="true"   session="true" %&gt;
+     //valid
+</pre>
+<pre>
+&lt;%@ page  language=java %&gt;
+  //invalid
+</pre>
+
+The following packages are  not required to import bydefault available in every Jsp.
+<ol>
+<li>java.lang.*;</li>
+<li>javax.servlet.*;</li>
+<li>javax.servlet.http.*;</li>
+<li>javax.servlet.jsp.*;</li>
+</ol>
+
+<h4 id="session">session :</h4>
+<ul><li>
+We can use session attribute to make session object unavailable  to the jsp by default session object is available to every jsp page.</li>
+<li>If we don't want to session object we have to declare page directive as follows
+ <pre>
+&lt;%@ page session="false" %&gt;
+</pre>
+</li>
+<li>In this case session object is not available in the jsp, in the rest of the jsp when ever we are trying to use this session object that time we will get an error like <strong>session can't be resolved.</strong>
+
+<pre>
+&lt;%@ page session="false" %&gt;
+&lt;% out.println(session.getId()); %&gt;
+    //session can't be resolved
+%&gt;
+</pre>
+</li>
+<li>
+If we are not declaring session attribute explicitly (or) declaring session attribute with true value , then the equalent  generated servlet code as follows
+<pre>
+HttpSession session=null;
+  session=pageContext.getSession();
+</pre>
+
+If we take session attribute with false value then the generated servlet above 2 lines of code won't be available.
+</li>
+<li>The allowed values for session attribute are True/true/TRUE/TruE or False/false/FALSE/FalsE.</li>
+<li>In this case <strong>case </strong> is not important, consider only content.</li>
+<li>If we are taking other than true or false , then we will ger translation time error.
+<pre>
+&lt;%@ page session="ashok" %&gt; //invalid
+</pre>
+</li>
+</ul>
+
+<h6>Which of the folowing make session object is available to Jsp ?</h6>
+<pre>
+&lt;%@ page session="true" %&gt; //valid
+</pre>
+<pre>
+&lt;%@ page session="false" %&gt; //invalid
+</pre>
+<pre>
+&lt;%@ page session=true %&gt; //invalid
+</pre>
+<pre>
+&lt;%@ page contentType="text/html" %&gt; //valid
+</pre>
+ 
+<h4 id="isELIgnored">isELIgnored</h4>
+Expression Language introduced in jsp 1.2v
+<p></p>
+The main objective of EL is to eliminate java code from jsp
+<pre>
+&lt;%= request.getParameter("user") %&gt;
+</pre>
+Or
+<pre>
+${param.user}
+</pre>
+we can use isELIgnored attribute to enable or disable in our Jsp.
+<p></p>
+<b>isELIgnored="true"</b><br>
+EL syntax just treated as template text without any processing 
+<p></p>
+<b>isELIgnored="false"</b><br>
+EL syntax  will be evaluated and print its value.
+<pre>
+&lt;%@ page isELIgnored="true" %&gt;
+The result is : ${2+3}
+</pre>
+output : The result is : ${2+3} 
+<pre>
+&lt;%@ page isELIgnored="false" %&gt;
+ The result is : ${2+3}
+</pre>
+output : The result is : 5
+<p>The default value of Jsp 1.2v is "true".<br>
+But from Jsp 2.0v onwards default value is "false".</p>
+
+<h4 id="isThreadSafe">isThreadSafe</h4>
+We can use this attribute to provide Thread Safety to the Jsp
+<p></p>
+<b>isThreadSafe="true"</b><br>
+It means the jsp is already thread safe and it is not required to implement SingleThreadModel interface by the generated sevrlet
+<p></p>
+<b>isThreadSafe="false"</b><br>
+The current Jsp is not Thread Safe hence to provide thread safety generated servlet should implement SingleThreadModel interface, In this case the jsp can process only one request  at a time.
+
+<p>The default value for isThreadSafe value is "true".</p> 
+
+<h6>Which of the following to provide Thread Safety to the Jsp ?</h6>
+<ul>
+<li>&lt;%@ page isThreadSafe="true" %&gt; // not provide</li>
+<li>&lt;%@ page isThreadSafe="false" %&gt;  // provide</li>
+<li>&lt;%@ page isThreadSafe="true" isThreadSafe="false" %&gt; // not provide</li>
+<li>No special arrangement is required because jsp is Thread Safe by default.</li> 
+</ul>
+
+
+<h4 id="contentType">contentType</h4>
+<ul><li>We have to use this attribute to specify  content type of the response(mime type)</li>
+<li>The defaut value of the contentType is "text/html".</li>
+</ul>
+<h6>If we want to send JSON object as response to the client , what is the content type required in the Jsp ?</h6>
+<strong>&lt;%@ page contentType="application/json" %&gt;</strong> 
+
+
+
+<h4 id="language">language</h4>
+<ul><li>Defines the language used in scriptlets, expressions, declarations, write now the only possible value is Java.</li>
+<li>The defaut value of the language is "java".</li>
+</ul> 
+<b>Ex: </b>
+<strong>&lt;%@ page lanjuage="java" %&gt;</strong>
+
+<h4 id="buffer">buffer</h4>
+Defines how buffering is handled by the implicit <strong>out</strong> object (reference to JspWriter)
+
+<h4 id="autoFlush">autoFlush</h4>
+Defines whether the buffered output is flushed automatically , the dafault value is "true".
+
+<h4 id="extends">extends</h4>
+Defines the super class of the class this jsp will become
+<p></p>
+<strong>&lt;%@ page extends="com. ......" %&gt;</strong>//compiler error
+
+<h4 id="info">info</h4>
+Defines a string that gets put in to the translated page just show that we can get it using the generated servlet inherited getServletInfo()) .
+
+<h4 id="isErrorPage">isErrorPage</h4> It is defined in <strong>exception</strong> implicit object.
+<h4 id="errorPage">errorPage</h4> It is defined in <strong>exception</strong> implicit object.
+<h4 id="pageEncoding">pageEncoding</h4> 
+Defines the character encoding for the jsp's the default is "ISO-8859-1"
+
+
+
+ 
+ <h3 id="Summary-of-page-directive-attributes">Summary of the page directive attributes :</h3>
+ <table border="1">
+ <tr><th>Attribute name</th><th>Purpose</th><th>default value</th></tr>
+ <tr><td>import</td><td>To import classes and interfaces of package</td><td>There is no default value, but  default packages are <br>java.lang.*;<br>
+                javax.servlet.*;<br>javax.servlet.http.*;<br>javax.servlet.jsp.*;  </td></tr>
+ <tr><td>session</td><td>To make session object unavailable to Jsp </td><td>true</td></tr>
+ <tr><td>contentType</td><td>To specify mime type of the response</td><td>text/html</td></tr>
+ <tr><td>isELIgnored</td><td>To enable or disable Expression Language in our Jsp </td><td>false</td></tr>
+ <tr><td>isThreadSafe</td><td>To provide Thread Safety to the Jsp</td><td>true</td></tr>
+ <tr><td>language</td><td>If can be used to specify the scripting language which is used in Jsp</td><td>java</td></tr>
+ <tr><td>pageEncoding</td><td>Defines character encoding for the Jsp</td><td>ISO-8859-1</td></tr>
+ <tr><td>outoFlush</td><td>Defines whether buffered output is flush automatically</td><td>true</td></tr> 
+ </table>
+ 
+ <h6 id="Servlet-is-ThreadSafe">Is Servlet is ThreadSafe ? </h6>
+ No, by default Sevlet is not ThreadSafe and we van provide Thread Safety by implementing SingleThreadModel interface.
+ 
+ <h6 id="Jsp-is-ThreadSafe">Is Jsp is ThreadSafe by default ?</h6>
+ No, Jsp is not ThreadSafe by default  and we provide Thread Safety by taking page directive.
+ <p></p>
+<strong>&lt;%@ page isThreadSafe="false" %&gt;</strong>
+ 
+<h2>Include Mechanism : </h2>
+<ul><li> several Jsp's required  for common functionality then it's   recommended to write that common functionality seperately in every jsp.</li>
+<li>We have to write that common code into seperate file and we have to include that file where ever it is required.</li></ul>
+
+The main advantages in this approach is
+<ol>
+<li>code re-usuability</li>
+<li>improves maintanability</li>
+<li>Enhancements will be come very easy</li>
+</ol>
+We can achieve this include mechanism either by using include directive or include action.
+ 
+<h3 id="include-directive">include directive :</h3>
+Syntax : 
+<strong>&lt;%@ include file="header.jsp" %&gt;</strong>
+<p>This inclusion will happen at translation time hence this inclusion is also called <strong>static include</strong> or <strong>translation time inclusion</strong></p>
+<img alt="include-directive" src="https://java.scwcd.jobs4times.com/jsp/include1.jpg">
+
+<h3>include action :</h3>
+ Syntax : 
+<strong>&lt;jsp: include page="footer.jsp" flush="true" /&gt;</strong>
+<p>This inclusion will happen at request processing time and  hence it is considered as  <strong>dynamic include</strong> or <strong>run time inclusion</strong></p>
+<img alt="include-action" src="https://java.scwcd.jobs4times.com/jsp/include2.jpg">
+
+<br><br>
+header.jsp
+<pre>
+Master in java certification
+</pre>
+
+footer.jsp
+<pre>
+learning subject is not enough,
+utilization is very important
+</pre>
+
+main.jsp
+<pre>
+&lt;%@ include file="header.jsp" %&gt;
+welcome to learners , it is enough
+&lt;jsp:include page="footer.jsp" flush="true" /&gt;
+</pre>
+
+<h3 id="Difference-between-include-directive-and-include-action">Difference between include directive and include action :</h3>
+ <table border="1">
+ <tr><th>include directive</th><th>include action</th></tr>
+ <tr><td>&lt;%@ include file="header.jsp" %&gt; <br>It contains only one attribute and it is mandatory </td><td>&lt;jsp: include page="footer.jsp" flush="true" /&gt; <br> It contains 2 attributes i.e., page,flush. <br> page is mandatory,flush is optional  </td></tr>
+ <tr><td>This inclusion will happen at translation time hence it's considered as static include.</td><td> This inclusion will happen at request processing time and hence it is considered as dynamic include. </td></tr>
+ <tr><td>For both including and inluded Jsp's a single servet will be generated hence code sharing between the components  is possible. </td><td> For including and included Jsp's seperate servlets will be generated, hence code sharing between components is not possible. </td></tr>
+ <tr><td>Relatively performance is high </td><td>Relatively performance is low</td></tr>
+ <tr><td>There is no guarantee for the inclusion of latest version of included Jsp, it is a vendor dependent. </td><td>Always latest version of included page will be included. </td></tr>
+ <tr><td>If the target resource won't change frequently then it is recommended to use static include. </td><td>The target resource will change frequently then recommended to use dynamic include.</td></tr>
+ </table>  
+   
+<ul>
+<li>To include header.jsp at translation time the required code is <br> <strong>&lt;%@ include file="header.jsp" %&gt; </strong> </li>
+<li>To include header.jsp at request processing time the required  code is <br> <strong>&lt;jsp: include page="header.jsp" /&gt; </strong></li>
+</ul>
+
+<ol>
+<li><strong>&lt;%@ include page="footer.jsp" %&gt;</strong> //invalid</li>
+<li><strong>&lt;%@ include file="footer.jsp" flush="true" %&gt; </strong>//invalid</li>
+<li><strong>&lt;%@ include file="footer.jsp"  /&gt;</strong>//invalid</li>
+<li><strong>&lt;%@ include file="footer.jsp"  %&gt;</strong> //valid</li>
+<li><strong>&lt;jsp:include file="footer.jsp" flush="true" /&gt;</strong>//invalid</li>
+<li><strong>&lt;jsp:include page="footer.jsp" flush="true" %&gt;</strong>//invalid</li>
+<li><strong>&lt;jsp:include page="footer.jsp" flush="true" /&gt;</strong>//valid</li>
+</ol>
+<ul>
+<li><strong>page</strong> attribute applicable for include action but not for include directive where as the,
+<strong>file</strong> attribute applicable for include directive but not for include action.</li>
+<li><strong>flush </strong>attribute applicable only for include action but not for include directive.</li> 
+</ul>  
+
+<b>Example :</b><br>
+header.jsp
+<pre>
+&lt;%! 
+  int x=10 ; 
+%&gt;
+</pre>
+
+  <p></p>
+  
+main.jsp
+<pre>
+&lt;%@ include file="header.jsp" %&gt;
+The result of x is : &lt;%= x*100 %&gt; //1000
+</pre> 
+ <p></p>  
+main.jsp
+<pre>
+&lt;jsp:include page="header.jsp" /&gt;
+The result of x : &lt;%= x*100 %&gt; //x can't be resolved
+</pre>
+
+<h3 id="taglib-directive">taglib directive :</h3>
+<b>syntax :</b><br>
+<strong>&lt;%@ taglib prefix="mime" uri="www.jobs4times.com" %&gt;</strong>
+
+<ul>
+<li>We can use Taglib directive to make custom tag functionality available to the jsp</li><li> taglib directive contains 2 attributes
+ <ol> <li>prefix</li><li>uri</li> </ol></li>
+ <li>prefix can be used with in the Jsp, uri can be used to specify location of TLD file. </li>
+ <li>For every custom tag in the Jsp seperate  taglib directive is required.</li>
+</ul>
+   
+   
+<h2 id="JSP-implicit-Objects">JSP Implicit Objects : </h2>
+<ul><li><strong>Objective: </strong>For the given scinario write a jsp code by using appropriate jsp implicit  objects.</li>
+<li>When compared with Servlet programming  developing  jsp's is very easy. Because the required  mandatory  stuff automatically available in every jsp.</li>
+<li>Implicit objects also one such area , implicit objects also bydefault available .</li>  </ul>  
+ <b><strong> The following is the list of all implicit objects :</strong></b>
+ 
+ <table border="1" ><tr><th>Implicit Objects</th><th>Type</th></tr>
+ <tr><td>request</td><td>javax.servlet.http.HttpServletRequest(I)</td></tr>
+ <tr><td>response</td><td>javax.servlet.http.HttpServletResponse(I)</td></tr>
+ <tr><td>config</td><td>javax.servlet.ServletConfig(I)</td></tr>
+ <tr><td>application</td><td>javax.servlet.ServletContext(I)</td></tr>
+ <tr><td>session</td><td>javax.servlet.http.HttpSession(I)</td></tr>
+ <tr><td>out</td><td>javax.servlet.jsp.JspWriter(AC)</td></tr>
+ <tr><td>page</td><td>java.lang.object(CC)</td></tr> 
+ <tr><td>pageContext</td><td>javax.servlet.jsp.PageContext(AC)</td></tr>
+ <tr><td>exception</td><td>java.lang.Throwable(CC)</td></tr>
+  </table> 
+  
+  
+  
+<h3 id="request">request &amp; response implicit objects:</h3>
+<ul>
+<li>request and response implicit objects are available  to the jsp are arguments to _jspService() </li>
+<li>All the methods present in HttpServletRequest and HttpServletResponse  can be applicable on this request and response  implicit objects.</li> 
+</ul>
+ 
+index.html 
+<pre>
+&lt;form action="test.jsp"&gt;
+Enter UserName : &lt;input type="text" name="uname" /&gt; &lt;br&gt;
+Enter Course : &lt;input type="text" name="course" /&gt; &lt;br&gt;
+Enter Place : &lt;input type="text" name="place"  /&gt;  &lt;br&gt;
+&lt;input type="submit" value="submit"&gt;
+&lt;/form&gt;
+</pre>
+  
+test.jsp
+
+<pre>
+&lt;%@page import="java.util.*" %&gt;
+
+The request method:&lt;%= request.getMethod() %&gt;  <br/>
+The User Name : &lt;%=request.getParameter("uname")  %&gt;<br/>
+
+&lt;%
+Enumeration e=request.getParameterNames();
+while(e.hasMoreElements() ) {
+ %&gt;
+ &lt;%= request.getParameter((String)e.nextElement())  %&gt; <br>
+&lt;% } %&gt;
+</pre>  
+  
+<pre>
+&lt;%
+response.setContentType("text/xml");
+response.setHeader("ashok","SCWCD");
+ %&gt;
+</pre>
+  
+
+
+<h3 id="application">application : (javax.servlet.ServletContext) </h3> 
+<p>
+This implicit object of type javax.servlet.ServletContext , which provides environment of the web-application, what ever the methods available in ServletContext those methods are available application implicit object also.</p>
+<b>Ex:</b>
+<pre>
+&lt;%
+RequestDispatcher rd=
+   application.getRequestDispatcher("/header.jsp");//absolute path
+rd.include(request,response); //OR
+rd.forward(request,response);
+ %&gt;
+</pre>
+
+
+application.jsp
+<pre>
+&lt;%
+java.util.Enumeration e=application.getInitParameterNames();
+while(e.hasMoreElements()){ %&gt;
+
+&lt;%= application.getInitParameter((String)e.nextElement()) %&gt;
+
+&lt;% } %&gt;
+</pre>
+
+web.xml
+<pre>
+&lt;web-app&gt;
+&lt;display-name&gt;MyJsp&lt;/display-name&gt;
+&lt;context-param&gt;
+&lt;param-name&gt;uname&lt;/param-name&gt;
+&lt;param-value&gt;ashok&lt;/param-value&gt;
+&lt;/context-param&gt;
+ ------------
+&lt;/web-app&gt;
+</pre>
+
+
+<h3 id="config">config </h3>
+This implicit object is of the type javax.servlet.ServletConfig what ever the methods present in ServletConfig interface, we can apply all these methods on config implicit object also.
+<p></p>
+The following are the methods available in ServletConfig interface
+
+<ol>
+<li>public String getServletName()</li>
+<li>public String getInitParameter(String pname)</li>
+<li>public Enumeration getInitParameterNames()) <br/> http://localhost:2018/app/config.jsp</li>
+<li>public ServletContext getServletContext()) <br/> http://localhost:2018/app/test</li>
+</ol>
+config.jsp
+<pre>
+The init parameter is :
+     &lt;%= getServletConfig.getInitParameter("uname") %&gt;
+The servlet parameter is :
+           &lt;%= config.getServletParameter("course") %&gt;
+The servlet name is :&lt;%= config.getServletName() %&gt;
+</pre>
+
+web.xml
+<pre>
+&lt;web-app&gt;
+
+&lt;servlet&gt;
+&lt;servlet-name&gt;configDemo&lt;/servlet-name&gt;
+&lt;jsp-file&gt;/config.jsp&lt;/jsp-file&gt;
+
+&lt;init-param&gt;
+&lt;param-name&gt;uname&lt;/param-name&gt;
+&lt;param-value&gt;ashok&lt;/param-value&gt;
+&lt;/init-param&gt;
+&lt;/servlet&gt;
+
+&lt;servlet-mapping&gt;
+&lt;servlet-name&gt;configDemo&lt;/servlet-name&gt;
+&lt;url-pattern&gt;/test&lt;/url-pattern&gt;
+&lt;url-pattern&gt;/test1&lt;/url-pattern&gt;
+&lt;url-pattern&gt;/test2&lt;/url-pattern&gt;
+&lt;/servlet-mapping&gt;
+
+&lt;/web-app&gt;
+</pre>
+
+If we are placing jsp with in the context root in the time, we can access that jsp the following 2 ways
+<ol>
+<li>By using it's name </li>
+<li>By using it's url-pattern</li>
+</ol>
+
+<pre>
+http://localhost:2018/jspApp/config.jsp
+Answer : null
+         null
+         jsp
+         (the default logical name of the jsp's is jsp)
+</pre>
+
+<pre>
+http://localhost:2018/jspApp/test
+Answer : ashok
+         test
+         configDemo
+</pre>
+
+<p>To result servlet level configuration for the Jsp's compulsory we should access the jsp by using it's url-pattern.</p>
+
+<h3 id="page">page </h3>
+page implicit object always pointing to current servlet object in the generated servlet it is declared as follows
+<pre>
+public class .....
+public void _jspService(-,-)--{
+Object page=this;
+}
+</pre> 
+<h6>Which of the following are valid ?</h6>
+
+<ol>
+<li><strong>&lt;%= page.getServletInfo() %&gt;</strong> //invalid </li>
+<li><strong>&lt;%= ((Servlet)page).getServletInfo() %&gt;</strong> //valid </li>
+<li><strong>&lt;%= ((HttpServlet)page).getServletInfo() %&gt;</strong> //valid </li>
+<li><strong>&lt;%= this.getServletInfo() %&gt;</strong> //valid </li>
+<li><strong>&lt;%= getServletInfo() %&gt;</strong> //valid </li>
+</ol>
+
+<p>
+page implicit object is declared as java.lang.Object type, hence we are allowed to call only the methods present in the Object class but not Servlet specific methods. <br>
+Hence this implicit object is most rarely used implicit object. 
+</p>
+
+
+<h3 id="session-implicit">session </h3>
+session implicit object is by default available to every jsp and it is of the type of HttpSession.
+<pre>
+&lt;%@page session="true" %&gt;
+The session timeout is : &lt;%= session.getMaxInactiveInterval() %&gt;
+The session id is : &lt;%= session.getId() %&gt;
+The session new is : &lt;%= session.isNew() %&gt;
+</pre>
+
+We make a session object unavailable to the jsp
+<pre>
+&lt;%@page session="false" %&gt;
+&lt;%= session.getMaxInactiveInterval() %&gt;
+  //session can't be resolved
+</pre>
+
+<h6>Which of the following make session object available to the Jsp  ?</h6>
+
+<ol>
+<li><strong>&lt;%@page session=true %&gt;</strong> //invalid </li>
+<li><strong>&lt;%@page session="false" %&gt;</strong> //invalid </li>
+<li><strong>&lt;%@page session="true" session="false" %&gt;</strong> //invalid </li>
+<li><strong>&lt;%@page session="true" %&gt;</strong> //valid </li>
+<li><strong>&lt;%@page contentType="text/xml" %&gt;</strong> //valid </li>
+</ol>
+session.jsp
+<pre>
+&lt;%@page session="true" %&gt;
+&lt;% session.setAttribute("ashok","SCWCD"); %&gt;
+</pre>
+
+date.jsp
+<pre>
+&lt;%@page session="true" %&gt;
+&lt;%= session.getId() %&gt;
+&lt;%= session.getAttribute("ashok") %&gt;
+</pre>
+
+<p><strong>
+http://localhost:2018/scwdcApp/session.jsp <br>
+http://localhost:2018/scwdcApp/date.jsp
+</strong></p>
+
+same browser : (date.jsp)
+<pre>
+output : same sessionid, SCWCD
+</pre>
+
+different browser : (date.jsp)
+<pre>
+output : different sessionid, null
+</pre>
+
+<h3 id="out">out : javax.servlet.jsp.JspWriter(AC) </h3>
+<ul>
+<li>This implicit object of type javax.servlet.jsp.JspWriter, This object is specially designed for Jsp's to write character data to the response object.</li>
+<li>The main difference between PrintWriter and jspWriter in the case of PrintWriter there is no buffering concept is available . hence  whenever we are writing any data by using PrintWriter it will be return directly into the response object.</li>
+<li>But in the case of JspWriter  buffer concept is available, hence whenever we are writing by using JspWriter it will be written to the buffer and at the end total buffer data will be added to the response object.</li>
+<li>Except this buffer difference , there is no other difference between JspWriter and PrintWriter.<br/>
+<b>JspWriter=PrintWriter+buffer</b> </li>
+</ul>
+
+out.jsp
+<pre>
+&lt;%@page autoFlush="true" %&gt;
+&lt;%
+java.io.PrintWriter pw=response.getWriter();
+pw.println("Good Morning Ashok");
+pw.println("Good Morning Akshay");
+pw.println("Good Morning Arun");
+pw.println("Good Morning Sai");
+%&gt;
+
+output:
+Good Morning Ashok
+Good Morning Sai
+Good Morning Akshay
+Good Morning Arun
+</pre> 
+
+note: 
+<ol>
+<li><b>autoFlush="true"</b> A value of true  indicates automatically  buffer flushing , A value of false indicates and value of false throws an exception.</li>
+<li>It causes the servlet throws an exception when the servlet output buffer is full.</li>
+<li>In Jsp can't set the false value for autoFlush attribute , if the buffer is  "none".</li>
+<li>The default buffer size is 8kb and none is also valid for the buffer attribute , In this case whenever we are writing any data by using JspWriter that time it will be return directly  to the response object.</li>
+</ol>
+
+out.jsp
+<pre>
+&lt;%@page autoFlush="true" buffer="none" %&gt;
+&lt;%
+java.io.JspWriter jw=response.getWriter();
+jw.println("Good Morning Ashok");
+jw.println("Good Morning Akshay");
+jw.println("Good Morning Arun");
+jw.println("Good Morning Sai");
+%&gt;
+
+output:
+Good Morning Ashok
+Good Morning Akshay
+Good Morning Arun
+Good Morning Sai
+</pre>  
+<ul>
+<li>With in the Jsp we can use either PrintWriter or JspWriter but not recommended to use both symultaniously.</li>
+<li>JspWriter is the child class of Writer, hence all methods available in writer are available by default to the JspWriter through Inheritence.</li>
+<li>In addition to these methods JspWriter contains print(), println()  methods, add any type of data add to these methods.</li>   
+</ul>
+
+<pre>
+Writer(AC)   write(int)
+             write(char)
+             write(String)
+             
+JspWriter(AC)   print()
+                println()
+                
+                       //AC = abstract class
+</pre>
+
+Example:
+<pre>
+&lt;%
+out.print("The PI value is :");
+out.println(3.14);
+out.print("This exactly ");
+out.println(true);
+
+output:
+The PI value is : 3.14
+This exactly true
+%&gt;
+</pre>
+
+<h6 id="response-in-Jsp">How to write response in Jsp</h6>
+By using out implicit object which is of the type Writer.
+
+<h6 id="difference-between-PrintWriter-and-JspWriter">What is the difference between PrintWriter and JspWriter ?</h6>
+Buffering
+<br><b>JspWriter = PrintWriter + buffer</b>
+
+<h6 id="difference-between-out.write(100)-and-out.print(100)">What is the difference between out.write(100)  and  out.print(100) ?</h6>
+<ul><li>In the case of write(100), the corresponding character "d" will  be added to the response.</li>
+<li>In the case of print(100) , the int value 100 will be added to the response.</li>
+</ul>
+Ex:
+<pre>
+&lt;%
+out.write(100); //d
+out.print(100); //100
+%&gt;
+</pre>
+
+
+<h3 id="pageContext">pageContext : (javax.servlet.jsp.PageContext) </h3>
+<ul>
+<li>The pageContext implicit object is a type of javax.servlet.jsp.pageContext(AC).</li>
+<li>It is an abstract class and vendor is responsible to provide implementation ,<br>
+     PageContext is the child class of JspContext(jsp 2.0v)</li>
+<li>PageContext class is useful in ClassicTagModel.</li>  
+</ul>
+
+We can pageContext implicit object for the following 3 purposes
+<ol>
+<li>To get all other Jsp implicit objects.</li>
+<li>To perform RequestDispatcher Mechanism</li>
+<li>To perform Attribute Management in any scope (Jsp scopes)</li>
+</ol>
+
+<h4 id="get-all-other-Jsp-implicit-objects"> How to get all other Jsp implicit objects ? </h4>
+By using pageContext implicit object we can get any other jsp implicit objects, hence pageContext implicit object act as a single point of contact for the remaining implicit objects.
+
+<p>
+PageContext class defines the following methods to retrive remaining all other implicit objects.</p>
+
+<pre>
+request     --&gt; getRequest()
+response    --&gt; getResponse()
+config      --&gt; getServletConfig()
+application --&gt; getServletContext()
+session     --&gt; getSession()
+page        --&gt; getPage()
+out         --&gt; getOut()
+exception   --&gt; getException()
+</pre>
+<ul><li>These methods are not useful with in the Jsp because all jsp implicit objects already available to every Jsp, </li>
+<li>These methods are useful outside of Jsp mostly in custom tags(Tag Handler Classes).</li></ul>   
+
+<h4 id="perform-RequestDispatcher-Mechanism">To perform RequestDispatcher Mechanism :</h4>
+We can use pageContext implicit object to perform RequestDispatcher activity also, for this purpose pageContext class defines the following methods
+
+<p><strong>
+public void forward(String targetPath); <br>
+public void include(String targetPath);
+</strong></p>
+<p>Note : All the rules of ServletRequestDispatcher will be applicable for pageContext implicit object based on RequestDispatcher mechanism.</p>
+
+first.jsp
+<pre>
+This is RD mechanism using pageContext implicit object  
+&lt;%
+pageContext.forward("second.jsp");
+System.out.println("control come back");
+%&gt;
+</pre>
+
+second.jsp
+<pre>
+This is second jsp
+&lt;% java.util.Enumeration e=request.getAttributeNames(); %&gt;
+ ---------------
+</pre>
+
+
+<h4 id="perform-Attribute-Management">To perform Attribute Management in any scope (Jsp scopes) :</h4>
+We can use pageContext implicit object to perform  attribute management in any scope (will be covered in Jsp scopes)
+
+<h3 id="exception">exception : </h3>
+configuring error pages in Jsp.
+
+<p>We can configuring the following 2 approaches</p>
+<ol>
+<li>Declarative Approach</li>
+<li>Programmatic Approach</li>
+</ol>
+
+<h4 id="Declarative-Approach">Declarative Approach :</h4>
+We can configure error pages according to a particular exceptions or perticular error code in web.xml as follows
+<pre>
+&lt;web-app&gt;
+&lt;error-page&gt;
+&lt;exception-type&gt;java.lang.ArithmeticExeption&lt;/exception-type&gt;
+&lt;location&gt;/error.jsp&lt;/location&gt;
+&lt;/error-page&gt;
+&lt;error-page&gt;
+&lt;error-code&gt;404&lt;/error-code&gt;
+&lt;location&gt;/error404.jsp&lt;/location&gt;
+&lt;/error-page&gt;
+&lt;/web-app&gt;
+</pre>
+
+Note : The error pages configured in this approach is applicable entire web-application(not a perticular servlet Or  not a perticular Jsp).
+
+ 
+<h4 id="Programmatic-Approach">Programmatic Approach :</h4>
+<p>
+We can configure error pages for a particular Jsp by using error page attribute of page directive.
+</p>
+demo.jsp
+<pre>
+&lt;%@page errorPage="error.jsp" %&gt;
+&lt;% out.println(10/0); %&gt;
+</pre>
+<ul><li>
+In demo.jsp any problem or exception occurs then error.jsp is responsible  to report that error.</li>
+<li>This way of configuring error pages for a particular jsp we can declare jsp as a error page by using isErrorPage attribute of page directive.</li>
+<li>In error pages only exception implicit object is available.</li></ul>   
+
+error.jsp
+<pre>
+&lt;%@page isErrorPage="true" %&gt;
+The raised Exception is : &lt;%= exception %&gt;
+        //internally toString() calling
+</pre>
+
+<p>
+If Jsp is not configuring/declared as a error page and if we are trying to use exception implicit object then we will get compile time error saying that exception can't be resolved.</p>
+
+error.jsp
+<pre>
+The raised Exception is : &lt;%= exception %&gt;
+</pre>
+<p>
+If we are trying to access error page directly without taking any exception then  exception implicit object value refers null.</p>
+Ex:
+<b>http://localhost:2018/jspApp/error.jsp </b>
+
+<p>If we are configuring both declarative and programmatic approach on web-application, then programmatic approach will be effected.</p>
+
+<h6 id="best-approach-to-configure-error-pages">Which approach is best approach to configure error pages ?</h6>
+Declarative approach is best approach because we can customize error pages based on exception type and error code.
+
+<ul><li> jsp implicit objects are local variables of _jspService() in the generated servlet, hence we are allowed to use these implicit objects inside scriptlet and expression tag because the corresponding  code will be place inside _jspService(), but we are not allowed to access declaration tag because it's code will be placed outside of _jspService().</li>
+<li>The most powerful implicit object is pageContext and rarely used implicit object is page.</li>
+<li>Among 9 implicit objects  except session &amp; exception , all remaining implicit objects are always available in every Jsp we can't make them unavailable.</li>
+<li>session implicit object is by default available in every jsp but we can make it's unavailable by using session attribute of page directive.
+<pre>
+&lt;%@page session="false" %&gt;
+</pre></li>
+<li>exception implicit object is by default not available to every jsp but we can make it's available by using isErrorPage attribute of page directive.
+<pre>
+&lt;%@page isErrorPage="true" %&gt;
+</pre>
+</li></ul>
+
+
+
+
+
+
+<h2 id="JSP-Scopes">JSP Scopes </h2>
+
+In our servlets we have follwing 3 scopes 
+<ol>
+<li>request scope</li>
+<li>session scope</li>
+<li>application scope (or) context scope</li>
+<li>page scope  ( In addition to these  scopes we have page scope also in our jsp's ) 
+</ol>
+
+<h3 id="request-scope">request scope :</h3>
+<ul>
+<li>In servlets this scope will be maintained by using ServletRequest object but in jsp's it is maintained by request implicit object.</li>
+<li>Information stored in request scope  is available or applicable for all components which are processing the same request.</li>
+<li>The request scope will be started at the time of request object creation. i.e., just before starting  service() and will be lost at the time of request object destruction, i.e., just after completion service().</li>
+</ul>
+We can perform attribute management  in request scope by using the following methods of ServletRequest  interface
+<ol>
+<li>public void setAttribute(String aname, Object avalue)</li>
+<li>public Object getAttribute(String aname)</li>
+<li>public void removeAttribute(String aname)</li>
+<li>public Enumeration getAttributeNames()</li>
+</ol>
+
+
+<h3 id="session-scope">session scope :</h3>
+<ul>
+<li>session scope will be maintained in our servlet by using HttpSession object but in Jsp's maintained by session implicit object.</li>
+<li>Information stored in the session scope is available or applicable for all the components which are participating in the session scope.</li>
+<li>session scope will be started at the time of session object creation and will be lost once session will be expire either by invalidate() or session time out mechanism.</li>
+</ul> 
+
+We can perform attribute management  in session scope by using the following methods of HttpSession  interface
+<ol>
+<li>public void setAttribute(String aname, Object avalue)</li>
+<li>public Object getAttribute(String aname)</li>
+<li>public void removeAttribute(String aname)</li>
+<li>public Enumeration getAttributeNames()</li>
+</ol> 
+
+<h3 id="application-scope">application scope :</h3>
+<ul>
+<li>We can maintain application scope in servlet by using ServletContext object but in Jsp's by using application implicit object.</li>
+<li>Information stored in the application scope is available or applicable for all the components of web-application.</li>
+<li>application scope will be started at the time of ServletContext object creation. i.e., at the time of application deployment or server startup, and ends at the time of ServletContext destruction  i.e., application undeployment or server shutdown.</li>
+</ul>
+We can perform attribute management  in application scope by using the following methods of ServletContext  interface
+<ol>
+<li>public void setAttribute(String aname, Object avalue)</li>
+<li>public Object getAttribute(String aname)</li>
+<li>public void removeAttribute(String aname)</li>
+<li>public Enumeration getAttributeNames()</li>
+</ol> 
+
+
+
+
+<h3 id="page-scope">page scope :</h3>
+<ul>
+<li>This scope is applicable only for Jsp's  but not for servlets, This scope will be maintained by pageContext implicit object (but not page implicit object).</li>
+<li>Information stored in the page scope is by default  available  with in the translation unit only.</li>
+<li>page scope is most commonly used scope in  custom tag share information between TagHandler classes.</li>
+</ul>
+<br><img alt="" src="https://java.scwcd.jobs4times.com/session/page.jpg"><br>
+We can perform attribute management  in page scope by using the following methods of PageContext class
+<ol>
+<li>public void setAttribute(String aname, Object avalue)</li>
+<li>public Object getAttribute(String aname)</li>
+<li>public void removeAttribute(String aname)</li>
+</ol> 
+<h5>We can perform attribute management  in any scope by using the following methods of pageContext implicit object :</h5>
+We can use pageContext implicit object to perform attribute management in any scope for this purpose PageContext class following these methods
+
+<br><img alt="JspContext" src="https://java.scwcd.jobs4times.com/jsp/jspContext.jpg">
+
+
+
+<p></p>
+<strong>public void setAttribute(String aname, Object value, <u>int scope</u>)</strong>
+<table border="1">
+<tr><td>The allowed values for the scope is : </td>
+<td>pageContext.PAGE_SCOPE or 1 <br>pageContext.REQUEST_SCOPE or 2 <br>
+pageContext.SESSION_SCOPE or 3 <br>pageContext.APPLICATION_SCOPE or 4 <br>
+
+</td></tr>
+</table>
+<p></p>
+If we are passing other than  these values we will get Runtime exception saying java.lang.IllegalArgumentException(invalid scope)
+
+
+<p>
+<strong>public Object findAttribute(String aname)</strong>
+</p>
+First this method searches in page scope for the required attribute if it is available it return the corresponding value, if it is not available  then it will search in request scope followed by session and application scope(order is important).
+
+<p><strong>page &gt; request &gt; session &gt; application</strong></p>
+
+suppose that attribute is not  available even in application then this method returns null.
+
+<p></p>
+demo.jsp
+<pre>
+&lt;%
+pageContext.setAttribute("ashok","scwcd",2);
+pageContext.setAttribute("ashok","scjp",4);
+pageContext.forward("header.jsp");
+pageContext.setAttribute("akshay","scjp");
+%&gt;
+</pre>
+<ul>
+<li>In this case , if we are not mension in any scope by default scope in Jsp is page scope.</li>
+<li>The information is available in current jsp but not outside of the Jsp.</li> 
+</ul>
+
+header.jsp
+<pre>
+&lt;%
+out.println(pageContext.getAttribute("akshay"));
+out.println(pageContext.findAttribute("ashok"));
+out.println(pageContext.findAttribute("abc"));
+%&gt;
+
+output:
+
+null
+scwcd
+null
+</pre>
+
+<h6>Difference between getAttribute(-) and findAttribute(-) ?</h6>
+<ul><li>getAttribute(-) method it searches by default in page scope if we are not mension any scope.</li>
+<li>findAttribute(-) method it will search all scopes for the required attribute.</li></ul>
+
+ 
+<h6>Which of the following are valid to store attribute in page scope ?</h6>
+
+<ol>
+<li><strong>page.setAttribute("ashok","scjp");</strong> //invalid</li>
+<li><strong>pageContext.setAttribute("ashok","scjp",2);</strong> //invalid</li>
+<li><strong>pageContext.setAttribute("ashok","scjp",pageContext.PAGE_SCOPE);</strong> //valid</li>
+<li><strong>pageContext.setAttribute("ashok","scwcd"); </strong> //valid</li>
+<li><strong>pageContext.setAttribute("ashok","scjp", pageContext.PAGE_CONTEXT_SCOPE);</strong> //invalid </li>
+</ol>
+
+<pre>
+&lt;%!
+ // java comments are allowed in declarations 
+%&gt;
+
+&lt;%
+// java comments are allowed in scriptlet and expression also
+/* java comments are allowed in scriptlet and expression also */
+%&gt;
+</pre>
+
+demo.jsp
+<pre>
+&lt;%
+pageContext.setAttribute("ashok","SCWCD",3);
+pageContext.setAttribute("ashok","SCJP",4);
+pageContext.forward("header.jsp");
+%&gt;
+</pre>
+
+header.jsp
+<pre>
+&lt;%@page session="false" %&gt;
+&lt;% out.println(pageContext.findAttribute("ashok")); %&gt;
+// session scope is not available so then go for application scope
+</pre>
+
+<table border="1">
+<tr><th>scope</th><th>in Servlets</th><th>in Jsp's(using jsp implicit objects)</th></tr>
+<tr><td>application/context</td><td>getServletContext.<br>setAttribute("ashok","scwcd");</td><td>application.<br>setAttribute("ashok","scwcd");</td></tr>
+<tr><td>session</td><td>request.getSession().<br>setAttribute("ashok","scwcd");</td><td>session.<br>setAttribute("ashok","scwcd");</td></tr>
+<tr><td>request</td><td>request.<br>setAttribute("ashok","scwcd");</td><td>request.<br>setAttribute("ashok","scwcd");</td></tr>
+<tr><td>page</td><td>Not Applicable</td><td>pageContext.<br>setAttribute("ashok","scwcd");</td></tr>
+</table>  
+
+<br>
+  
+</td></tr> </table>
+ <!-- infolinks  -->   
+<script type="text/javascript">
+ var infolinks_pid = 1921552;
+ var infolinks_wsid = 0;
+</script>
+<script type="text/javascript" src="http://resources.infolinks.com/js/infolinks_main.js"></script>
+<!-- End Infolinks -->
+
+<a href="https://java.scwcd.jobs4times.com/index.html">BACK</a>  </div> 
+
+ 
+
+  
+
+  
+   
+
+
+  </body>
+
+<!-- Mirrored from java.scwcd.jobs4times.com/JSP-Technology-model.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 22 Jun 2024 15:25:22 GMT -->
+</html>

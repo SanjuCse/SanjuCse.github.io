@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from www.java.designpatterns.jobs4times.com/command-design-pattern.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 22 Jun 2024 15:36:41 GMT -->
+<head>
+<meta charset="ISO-8859-1">
+<title>Java design patterns - Command Design Pattern</title>
+<link style="text/css" rel="stylesheet" href="styles.css">
+<link rel="shortcut icon" href="small.html">
+</head>
+
+
+<body>
+<div align="center" >
+<table border="1" style="width: 887px"><tr><td>
+ 
+<table>
+<tr>
+<td width="50%" align="left"><a href="http://www.jobs4times.com/"><img alt="jobs4timesLogo"  src="../img.logos.jobs4times.com/banner%20J4T.jpg" width="500" height="200">   </a> </td> 
+<td  align="right"><a href="http://jobs4times.com/J4T/allmaterial.html"><img alt="jobs4timesLogo"  src="../img.logos.jobs4times.com/as2.jpg"  width="180" height="200" >  </a>  </td> 
+</tr>
+</table>
+ 
+ 
+<h1 style="border-bottom-color: blue; background-color: yellow;font: monospace;color: red;text-align: center;" >Command Design Pattern </h1> 
+ 
+
+<br>
+<ul>
+<li>Command design pattern is the one Behavioral Design pattern from Gang Of Four Design Patterns.</li>
+<li>It is used to encapsulate a request as an Object and pass to an invoker.</li>
+<li>Invoker doesn't know how to service the request but uses encapsulated command object to perform the action.</li>
+</ul>
+<br>
+
+Typically in a command design pattern there are five actors involved there are as follows :
+
+<ol style="A">
+<li><strong>Command : </strong> It is an interface with execute method. It acts as a contract. </li>
+<li><strong>Client : </strong> Client instantiates an concrete command object and associates it with a receiver. </li>
+<li><strong>Invoker : </strong> He instructs the command to perform an action. </li>
+<li><strong>Concrete Command : </strong>  Associates a binding between receiver and action.</li>
+<li><strong>Receiver : </strong> It is the object that knows the actual steps to perform the action. </li>
+</ol>
+
+<br>
+<ul>
+<li>
+Let's consider an example to understand it. For example PowerOn and PowerOff are the commands, to turn on/off the Television.
+These commands are received by the Television.</li>
+<li>
+You will issue these commands using the remote controller who acts as an Invoker. Client is the person who uses this remote Control.
+</li></ul>
+
+<br>
+<ul>
+<li>The advantage of this is invoker is decoupled by the action performed by the receiver.</li>
+<li>The Invoker has no knowledge of the receiver.The Invoker issues a command where in the command performs the action on a receiver.</li>
+<li>The Invoker doesn't know the details of the action being performed. So, changes to the receiver action don't affect the invoker's action.</li>
+</ul>
+ 
+Here is the code snippet explaining the same, The interface acts as a core contract for commands.
+
+<pre>
+package design;
+
+public interface Command {
+     public void execute();	
+}
+</pre> 
+<p>
+Implementing this interface we have 2 commands, PowerOn and PowerOff .
+</p>
+<pre>
+package design;
+
+  //command, encapsulated with receiver to perform action
+public class PowerOn implements Command{
+	
+	 //receiver on who command performs the action 
+	private Television television;
+	
+	public PowerOn(Television television) {
+		this.television=television;
+	}
+
+  @Override
+  public void execute() {
+    television.on();
+  }
+
+}
+</pre>
+<br>
+<pre>
+package design;
+
+  //command, encapsulated with receiver to perform action
+public class PowerOff implements Command{
+	
+	 //receiver on who command performs the action 
+	private Television television;
+	
+	public PowerOff(Television television) {
+		this.television=television;
+	}
+
+  @Override
+  public void execute() {
+    television.off();
+  }
+
+}
+</pre>
+
+<p>
+In the above Television is the receiver on who the command is issuing the action.
+</p>
+<pre>
+package design;
+
+ //receiver (he knows how to perform the action)
+public class Television {
+
+  public void on() {
+	System.out.println("Television switcher on ...");
+  }
+  
+  public void off() {
+	System.out.println("Television turning off ...");
+  }
+
+}
+</pre>
+
+<p>
+Now remote control is the invoker who can issue several commands and command triggers an action on the receiver who knows how to to handle that action.
+</p>
+
+<pre>
+package design;
+
+public class RemoteControl {
+	
+	private Command command;
+	
+	public RemoteControl(Command command){
+		this.command=command;
+	}
+	
+	public void pressButton(){
+		command.execute();
+	}
+
+}
+</pre>
+
+<p align="center">  (OR) </p>
+
+<pre>
+package design;
+
+public class RemoteControl {
+	
+	private Command command;
+	
+	public RemoteControl(Command command){
+		this.command=command;
+	}
+	
+	public RemoteControl() { }
+
+	public void pressButton(){
+		command.execute();
+	}
+
+	public void setCommand(PowerOn onCmd) {
+		command=onCmd;		
+	}
+
+	public void setCommand(PowerOff offCmd) {
+		command=offCmd;		
+	}
+
+}
+</pre>
+
+<p>Finally Client is the Person who issues a command on the Invoker.</p>
+
+<pre>
+package design;
+
+public class Person {
+	
+ public static void main(String[] args){
+	 
+	 //Invoker
+	RemoteControl control=new RemoteControl();
+	
+	//receiver
+	Television television=new Television();
+	
+	
+	//command setup with receiver
+	PowerOn onCmd=new PowerOn(television);
+	control.setCommand(onCmd);
+	control.pressButton();
+	
+	PowerOff offCmd=new PowerOff(television);
+	control.setCommand(offCmd);
+	control.pressButton();
+ }
+	
+}
+</pre>
+
+
+output :
+<pre>
+Television switcher on ...
+Television turning off ...
+</pre>
+
+
+<h5>The UML representation of Command design pattern : </h5>
+
+<img alt="command-design-pattern" src="command-design-pattern-2.html">
+
+
+<br><br>
+</td></tr></table>
+<a href="index-2.html"><strong>BACK</strong></a>
+</div>
+  
+
+</body>
+
+<!-- Mirrored from www.java.designpatterns.jobs4times.com/command-design-pattern.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 22 Jun 2024 15:36:41 GMT -->
+</html>

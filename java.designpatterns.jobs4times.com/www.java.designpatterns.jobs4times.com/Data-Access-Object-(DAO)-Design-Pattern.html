@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from www.java.designpatterns.jobs4times.com/Data-Access-Object-(DAO)-Design-Pattern.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 22 Jun 2024 15:36:42 GMT -->
+<head>
+<meta charset="ISO-8859-1">
+<title>Java design patterns - Data Access Object (DAO) Design Pattern</title>
+<link style="text/css" rel="stylesheet" href="styles.css">
+<link rel="shortcut icon" href="small.html">
+</head>
+
+
+<body>
+<div align="center" >
+<table border="1" style="width: 887px"><tr><td>
+ 
+<table>
+<tr>
+<td width="50%" align="left"><a href="http://www.jobs4times.com/"><img alt="jobs4timesLogo"  src="../img.logos.jobs4times.com/banner%20J4T.jpg" width="500" height="200"></a> </td> 
+<td align="right"><a href="http://jobs4times.com/J4T/allmaterial.html"><img alt="jobs4timesLogo"  src="../img.logos.jobs4times.com/as2.jpg"  width="180" height="200"></a> </td> 
+</tr>
+</table> 
+
+ 
+ 
+<h1 style="border-bottom-color: blue; background-color: yellow;font: monospace;color: red;text-align: center;">Data Access Object (DAO) Design Pattern </h1> 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+<pre>
+package design.dao;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.util.logging.Logger;
+
+public class ConnectionFactory {
+
+ private static Logger logger;
+ 
+static{
+	logger=Logger.getLogger("logfile");
+}
+
+public static Connection getConnection(final String driverClassName,final String url,final String userName,final String password) throws SQLException, ClassNotFoundException {
+ Connection con=null;
+
+ try{
+  Class.forName(driverClassName);
+  con=DriverManager.getConnection(url,userName,password);
+  con.setAutoCommit(false);
+ }catch(SQLException e){
+   logger.throwing("ConnectionFactory", "Exception thrown by ConnectionFactory", e);
+   throw e;
+ }catch(ClassNotFoundException e){
+   logger.throwing("ConnectionFactory", "Not able to load driver class", e);
+   throw e;
+ }
+
+return con;
+}
+
+}
+</pre>
+ 
+ 
+<pre>
+package design.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.logging.Logger;
+
+public class EmpDao {
+	
+  //SQL queries
+ private final String INSERT_QUERY="insert into emp(emp_id,name) values(?,?)";
+ private Logger logger;
+ 
+ public EmpDao(){
+  logger=Logger.getLogger("logfile");
+ }
+
+public void insert(int id, String name) throws SQLException, ClassNotFoundException {
+
+ boolean isException=false;
+ Connection con=null;
+ PreparedStatement pstmt=null;
+
+ try{
+  con=ConnectionFactory.getConnection("oracle.jdbc.driver.OracleDriver","jdbc:oracle:thin:@localhost:1521:xe","system","tiger");
+  pstmt=con.prepareStatement(INSERT_QUERY);
+  pstmt.setInt(1, id);
+  pstmt.setString(2, name);
+  pstmt.executeUpdate();
+ }catch(SQLException e){
+	 isException=true;
+	 logger.throwing("StudentDao", "Unable to get Connection", e);
+	 throw e;
+ }catch(ClassNotFoundException e) {
+	 isException=true;
+	 logger.throwing("StudentDao", "Unable to get Connection", e);
+	 throw e;
+ }finally{
+	 
+   if(con != null){
+	   if(isException==true){
+		   con.rollback();
+	   }else con.commit();
+   
+   con.close();   
+   }
+ 
+ if(pstmt != null)
+	 pstmt.close();
+  
+	
+ }//finally
+}
+}
+
+
+/*
+create table emp(emp_id number(20),name varchar2(15), sal number(7,2));
+*/
+</pre> 
+ 
+ 
+<pre>
+package design.dao;
+
+import java.sql.SQLException;
+
+public class EmpController {
+
+public void addEmp(int id, String name) throws ClassNotFoundException, SQLException {
+
+	EmpDao dao=new EmpDao();
+	dao.insert(id,name);
+}
+
+}
+</pre>
+ 
+
+<pre>
+package design.dao;
+
+import java.sql.SQLException;
+
+public class DaoTest {
+
+public static void main(String[] args) throws ClassNotFoundException, SQLException {
+	
+ EmpController empController=new EmpController();
+ empController.addEmp(9,"Ashok");
+
+}
+
+}
+</pre>
+
+
+ 
+ 
+ 
+
+<br><br>
+</td></tr></table>
+<a href="index-2.html"><strong>BACK</strong></a>
+</div>
+  
+
+</body>
+
+<!-- Mirrored from www.java.designpatterns.jobs4times.com/Data-Access-Object-(DAO)-Design-Pattern.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 22 Jun 2024 15:36:42 GMT -->
+</html>

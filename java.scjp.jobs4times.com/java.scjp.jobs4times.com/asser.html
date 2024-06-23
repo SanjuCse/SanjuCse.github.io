@@ -1,0 +1,418 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  
+<!-- Mirrored from java.scjp.jobs4times.com/asser.htm by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 22 Jun 2024 15:20:19 GMT -->
+<head><meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+    <title>Java Assertion Tutorial | Java Assertion Real Time Examples | Java Assertion concepts | Java Assertion Class Room study material | Java Assertion Practical Demonstration | Java Assertion Interview Questions and Answers</title>
+	
+    <meta http-equiv="keywords" content="Java Assertion Introduction , Assert as keyword and identifier, Types of assert statements, Various runtime flags , Appropriate and inappropriate use of assertions , AssertionError , Simple version , Argumented version">
+    
+    <meta http-equiv="description" content="assert keyword is introduced in 1.4 version , main objective of assertions is to perform debugging , assertions concept is applicable for the development and test environments but not for the production.">
+    
+    
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    
+    
+
+
+
+
+  </head>
+  
+  <body>
+   
+ <div align="center">
+<table  border="4"  width="80%"><tr><td>
+  
+<table bgcolor="" border="0" cellpadding="0" cellspacing="0" width="100%">
+<tr><td height="150" width="50%" align="left"> <strong><a href="https://www.jobs4times.com/"><font size="50"><font color="#000000">JOBS</font><font color="green">4</font><font color="#ff0000">TIMES</font></font> </a></strong> </td>
+
+<td  align="right"><a href="index-2.html"><img alt="jobs4timesLogo"  src="../img.logos.jobs4times.com/as2.jpg"  width="180" height="200" >  </a>  </td>
+</tr> </table>
+
+
+   
+<h1 align="center" style="background-color: rgb(0, 0, 128);"> <font color="#ffff00">Assertions </font></h1>
+
+<u><em><strong>Agenda  </strong></em></u>
+
+<ol>
+<li><a href="#intro" > Introduction</a></li>
+<li><a href="#keyword" > Assert as keyword and identifier</a></li>
+<li><a href="#type" > Types of assert statements</a>
+<ol type="i">
+<li><a href="#simple" > Simple version</a></li>
+<li><a href="#argumented" > Argumented version</a></li></ol>
+</li>
+
+<li><a href="#flag" > Various runtime flags</a></li>
+
+
+<li><a href="#appro" > Appropriate and Inappropriate use of assertions</a></li>
+<li><a href="#error" > AssertionError</a></li>
+</ol>
+
+<h2 id="intro"><u><font color="#004000">Introduction:</font></u></h2>
+
+<ol>
+<li>The most common way of debugging is uses of sops. But the main disadvantage of sops is after fixing the bug compulsory we should delete extra added sops otherwise these sops also will be executed at runtime which impacts performance of the system and disturbs logging mechanism.</li>
+<li>	To overcome these problems sun people introduced assertions concept in 1.4 versions.</li>
+<li>	The main advantage of assertions over sops is based on our requirement we can enable or disable assertions and by default assertions are disable hence after fixing the bug it is not required to delete assert statements explicitly.</li>
+<li>	Hence the main objective of assertions is to perform debugging.</li>
+<li>	Usually we can perform debugging either in development environment or Test environment but not in production environment hence assertions concept is applicable for the development and test environments but not for the production.</li>
+</ol>
+
+<h2 id="keyword"><u><font color="#004080">Assert as keyword and identifier:</font></u></h2>
+<p>	assert keyword is introduced in 1.4 version hence from 1.4 version onwards we can't use assert as identifier but until 1.3 we can use assert as an identifier.</p>
+<pre>
+Example:
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		int assert=10;
+		System.out.println(assert);
+	}
+}
+</pre>
+Output:
+<ul>
+<li>	javac Test.java(invalid)</li>
+<li>	As of release 1.4, 'assert' is a keyword, and may not be used as an identifier. (Use -source 1.3 or lower to use 'assert' as an identifier)</li>
+<li>	javac -source 1.3 Test.java(valid)</li>
+<li>	The code compiles fine but warnings will be generated.</li>
+<li>	java Test</li>
+<li>	10</li>
+</ul>
+
+<p>Note: It is always possible to compile a java program according to a particular version by using -source option.</p>
+
+<h2 id="type"><u><font color="#800040">Types of assert statements:</font></u></h2>
+There are 2 types of asset statements.
+<ol><li>Simple version</li><li>	Argumented version</li></ol>
+
+<h3 id="simple" style="background-color: rgb(0, 128, 0);"><font color="#ffff00">Simple version:</font></h3>
+Syntax:   assert(b);//b should be boolean type.
+<ul>
+<li>	If 'b' is true then our assumption is correct and continue rest of the program normally.</li>
+<li>	If 'b' is false our assumption is fails and hence stop the program execution by raising assertion error.</li>
+</ul>
+
+<pre>
+Example:
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		int x=10;
+		;;;;;;;;;
+		assert(x&gt;10);
+		;;;;;;;;;
+		System.out.println(x);
+	}
+}
+Output:
+javac Test.java
+java Test
+10
+java -ea Test(invalid)
+R.E: AssertionError
+</pre>
+Note: By default assertions are disable and hence they won't be executed by default we have to enable assertions explicitly by using <b>-ea</b> option.
+
+<h3 id="argumented" style="background-color: rgb(255, 255, 0);"><u><font color="#008080">Argumented version:</font></u></h3>
+By using argumented version we can argument some extra information with the assertion error.
+<br><b>Syntax:      assert(b):e;</b>  <br>
+
+	'b' should be boolean type.<br>
+	'e' can be any type.
+<pre>
+Example:
+
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		int x=10;
+		;;;;;;;;;
+		assert(x&gt;10):"here x value should be &gt;10 but it is not";
+		;;;;;;;;;
+		System.out.println(x);
+	}
+}
+Output:
+javac Test.java
+java Test
+10
+java -ea Test(invalid)
+R.E: AssertionError: here x value should be &gt;10 but it is not
+</pre> 
+ 
+<u><strong>Conclusion 1:</strong></u><br><br> 
+<strong>assert(b):e; 
+</strong><p> 'e'  will be evaluated if and only if  'b'  is false that is if  'b'  is true then  'e'  won't be evaluated.</p>
+ 
+ <pre>
+Example:
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		int x=10;
+		;;;;;;;;;
+		assert(x==10):++x;
+		;;;;;;;;;
+		System.out.println(x);
+	}
+}
+Output:
+javac Test.java
+java Test
+10
+java -ea Test
+10
+</pre> 
+ 
+<u><strong>Conclusion 2:  </strong></u><br><br> 
+<strong>assert(b):e; 
+</strong><p>For the 2nd argument we can take method call also but void type method call not allowed.</p>
+
+<pre>
+Example:
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		int x=10;
+		;;;;;;;;;
+		assert(x&gt;10):methodOne();
+		;;;;;;;;;
+		System.out.println(x);
+	}
+	public static int methodOne()
+	{
+		return 999;
+	}
+}
+Output:
+javac Test.java
+java Test
+10
+java -ea Test
+R.E: AssertionError: 999
+</pre>
+	If methodOne() method return type is void then we will get compile time error saying <b> void type not allowed here.</b>
+	
+<h3 id="flag"><font color="#0000ff"><u>Various runtime flags:</u></font></h3>
+<ol>
+<li><b>-ea:</b> To enable assertions in every non system class(user defined classes).<br>
+<b>-enableassertions:</b> It is exactly same as -ea.</li>
+<li><b>-da:</b> To disable assertions in every non system class.<br>
+<b>-disableassertions:</b> It is exactly same as -da.</li>
+<li><b>-esa:</b> To enable assertions in every system class(predefined classes  or  application classes).<br>
+<b>-enablesystemassertions:</b> It is exactly same as -esa.</li>
+<li><b>-dsa:</b> To disable assertions in every system class.<br>
+<b>-disablesystemassertions:</b> It is exactly same as -dsa.</li>
+</ol> 
+<u><strong>Example: </strong></u>We can use these flags in combination also but all these flags will be executed from left to right. 
+<pre>
+Example:
+java -ea -esa -dsa -ea -dsa -esa Test
+</pre>
+<br><br><img alt="" src="asser/image001.png"><br><br>
+
+
+ <p>At the end in both system and non system class assertions are enabled.</p> 
+ 
+<strong>Example: </strong><br><br><img alt="" src="asser/image002.png"><br><br>
+ <ol>
+ <li>To enable assertions only in B class.<br>
+java -ea: pack1.B</li>
+
+<li>	To enable assertions only in B and C classes.<br>
+java -ea: pack1.B  -ea:pack1.pack2.C
+</li>
+<li>	To enable assertions in every class of pack1.<br> 
+java -ea:pack1 
+</li>
+<li>	To enable assertions everywhere inside pack1 except B class.<br> 
+java -ea:pack1 -da:pack1.B 
+</li>
+<li>	To enable assertions in every class of pack1 except pack2 classes.<br> 
+java -ea:pack1...  -da:pack1.pack2... 
+</li>
+</ol>
+<p>It is possible to enable (or) disable assertions either class wise (or) package wise also.</p>
+
+
+	
+<h3 id="appro"><u><font color="#004000">Appropriate and inappropriate use of assertions:</font></u></h3>
+<ul>
+<li>	It is always inappropriate to mix programming logic with assert statements, because there is no guaranty for the execution of assert statement always at runtime.</li></ul>
+
+Example:<br><br><img alt="" src="asser/image003.png"><br><br>
+<ul><li>For validating public method arguments usage of assertions is always inappropriate, because outside person is not aware whether assertions are enabled or disabled in our local system.</li>
+<li>	While perform debugging if any place where the control is not allow to reach then that is the best place to use assertions.</li>
+</ul>
+
+<pre>
+Example:
+switch(x)
+	{
+		case 1:
+		System.out.println("Jan");
+		break;
+		case 2:
+		System.out.println("Feb");
+		break;
+		case 3:
+		System.out.println("Mar");
+		break;
+		case 12:
+		System.out.println("Dec");
+		break;
+		default:assert(false);
+	}
+</pre>
+<ul>
+<li>	It is always inappropriate to use assertions for validating public method arguments.</li>
+<li>	It is always appropriate to use assertions for validating private method arguments.</li>
+<li>	It is always inappropriate to use assertions for validating command line arguments because these are arguments to public method main.</li>
+</ul>
+
+<h2 id="error" style="background-color: rgb(128, 0, 128);"><font color="#ffff00">AssertionError:</font></h2>
+<ol>
+<li>	It is the child class of Error and it is unchecked.</li>
+<li>	Raised explicitly whenever assert statement fails.</li>
+<li>	Even though it is legal but it is not recommended to catch AssertionError.</li>
+</ol>
+<pre>
+Example:
+class Test {
+public static void main(String[] args){
+  int x=10;
+ try {
+    assert(x&gt;10);
+	}
+	catch (AssertionError e)	{
+	System.out.println("not a good programming practice to catch AssertionError");
+	}
+		System.out.println(x);
+ }
+}
+Output:
+javac Test.java
+java Test
+10 
+Not a good programming practice to catch AssertionError
+10
+</pre>
+
+<pre>
+Example 1:
+class One 
+{
+	public static void main(String[] args) 
+	{
+		int assert=0;
+	}
+}
+class Two
+{
+	public static void main(String[] args) 
+	{
+		 assert(false);
+	}
+}
+Output:
+Javac -source 1.3 one.java//compiles with warnings.
+Javac -source 1.4 one.java//compile time error.
+Javac -source 1.3 Two.java//compile time error.
+Javac -source 1.4 Two.java//compiles without warnings.
+</pre>
+
+<pre>
+Example 2:
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		assert(args.length==1);
+	}
+}
+Which two will produce AssertionError?
+1)	Java Test
+2)	Java -ea Test//R.E: AssertionError
+3)	Java Test file1
+4)	Java -ea Test file1
+5)	java -ea Test file1 file2//R.E: AssertionError
+6)	java -ea:Test Test file1
+</pre>
+   To enable the assertions in a particular class.
+   
+ <pre>
+Example 3:
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		boolean assertOn=true;
+		assert(assertOn):assertOn=true;
+		if(assertOn)
+		{
+			System.out.println("assert is on");
+		}
+	}
+}
+Output:
+Java Test
+Assert is on
+Java -ea Test
+Assert is on
+</pre> 
+ 
+In the above example<strong> boolean assertOn=false</strong> then answer following questions. 
+<pre>
+Javac Test.java
+Java Test
+java -ea Test
+R.E: AssertionError: true
+</pre> 
+<u><font color="#008000"><strong>Example 4:</strong></font></u><br><br><img alt="" src="asser/image004.png"><br><br> 
+  
+<font color="#0000ff"><u><strong>Example 5:</strong></u></font><br><br><img alt="" src="asser/image005.png"><br><br> 
+  
+<font color="#800040"><u><strong>Example 6:</strong></u></font><br><br><img alt="" src="asser/image006.png"><br><br>
+ 
+ 
+ <p><font color="#8000ff"><u><strong>Note:</strong></u></font> Because assert statement changes the value of Z. By using assert statement we can not changes the value that is why it is inappropriate.</p>
+ 
+
+	
+   
+   
+   
+   
+   
+   
+   
+ </td></tr></table><a href="index-2.html">BACK</a></div>  
+   
+   
+   
+   
+   
+   
+      
+ <!-- infolinks  -->   
+<script type="text/javascript">
+ var infolinks_pid = 1921552;
+ var infolinks_wsid = 0;
+</script>
+<script type="text/javascript" src="../resources.infolinks.com/js/infolinks_main.js"></script>
+   
+  
+  </body>
+
+<!-- Mirrored from java.scjp.jobs4times.com/asser.htm by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 22 Jun 2024 15:20:21 GMT -->
+</html>

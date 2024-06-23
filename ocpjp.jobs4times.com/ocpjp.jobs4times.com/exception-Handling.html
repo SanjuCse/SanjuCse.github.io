@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from ocpjp.jobs4times.com/exception-Handling.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 22 Jun 2024 15:29:37 GMT -->
+<head>
+<meta charset="ISO-8859-1">
+
+<title>Exception Handling</title>
+<link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+
+<div align="center">   
+<table border="1"> <tr><td width="900px">
+    
+    
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td width="50%" align="left"><a href="http://www.jobs4times.com/"><img alt="jobs4timesLogo"  src="../img.logos.jobs4times.com/banner%20J4T.jpg" width="500" height="200">   </a> </td> 
+<td  align="right"><a href="http://jobs4times.com/J4T/allmaterial.html"><img alt="jobs4timesLogo"  src="../img.logos.jobs4times.com/as2.jpg"  width="180" height="200" >  </a>  </td> 	  	
+</tr>
+</table>			
+    
+    
+	
+<h1 align="center"  style="background-color: rgb(64, 0, 64);"> <font color="#ffff00">Exception Handling </font>  </h1>
+
+	
+
+
+<h3>  Q: 01 Given:</h3>
+<pre>
+11. public static void parse(String str) { 
+12. try { 
+13. float f = Float.parseFloat(str); 
+14. } catch (NumberFormatException nfe) { 
+15. f = 0; 
+16. } finally { 
+17. System.out.println(f); 
+18. } 
+19. } 
+20. public static void main(String[] args) { 
+21. parse("invalid"); 
+22. } 
+</pre>
+What is the result? 
+<ol start="A">
+<li> 0.0</li><li> Compilation fails.</li><li> A ParseException is thrown by the parse method at runtime.</li>
+<li> A NumberFormatException is thrown by the parse method at runtime.</li></ol>
+ Answer: B
+ 
+ <h3> Q: 02 Given: </h3>
+ <pre>
+ 84. try { 
+ 85. ResourceConnection con = resourceFactory.getConnection(); 
+ 86. Results r = con.query("GET INFO FROM CUSTOMER"); 
+ 87. info = r.getData(); 
+ 88. con.close(); 
+ 89. } catch (ResourceException re) { 
+ 90. errorLog.write(re.getMessage()); 
+ 91. } 
+ 92. return info; 
+ </pre>
+ Which statement is true if a ResourceException is thrown on line 86 ?
+ <ol start="A">
+ <li> Line 92 will not execute.</li><li> The connection will not be retrieved in line 85.</li>
+ <li> The resource connection will not be closed on line 88.</li><li> The enclosing method will throw an exception to its caller.</li></ol>
+  Answer: C 
+  <h3>  Q: 03 Given:</h3>
+  <pre>
+  31. // some code here 
+  32. try { 
+  33. // some code here 
+  34. } catch (SomeException se) { 
+  35. // some code here 
+  36. } finally { 
+  37. // some code here 
+  38. } 
+  </pre>
+  
+  Under which three circumstances will the code on line 37 be executed? (Choose three.)
+<ol start="A">
+<li> The instance gets garbage collected.</li>
+<li> The code on line 33 throws an exception.</li>
+<li>The code on line 35 throws an exception.</li>
+<li>The code on line 31 throws an exception.</li>
+<li> The code on line 33 executes successfully.</li>
+</ol>
+ Answer: B, C, E 
+ 
+ <h3> Q: 04 Given:</h3>
+<pre>
+11. class A { 
+12. public void process() { System.out.print("A,"); } 
+13. class B extends A { 
+14. public void process() throws IOException { 
+15. super.process(); 
+16. System.out.print("B,"); 
+17. throw new IOException(); 
+18. } 
+19. public static void main(String[] args) { 
+20. try { new B().process(); } 
+21. catch (IOException e) { System.out.println("Exception"); }} 
+</pre>
+
+What is the result ?
+<ol>
+<li> Exception</li><li> A,B,Exception</li><li> Compilation fails because of an error in line 20.</li>
+<li> Compilation fails because of an error in line 14.</li>
+<li> A NullPointerException is thrown at runtime.</li></ol>
+ Answer: D
+ 
+ <h3> Q: 05 Given:</h3>
+ <pre>
+ 11. static void test() throws Error { 
+ 12. if (true) throw new AssertionError(); 
+ 13. System.out.print("test "); 
+ 14. } 
+ 15. public static void main(String[] args) { 
+ 16. try { test(); } 
+ 17. catch (Exception ex) { System.out.print("exception "); } 
+ 18. System.out.print("end "); 
+ 19. } 
+ </pre>
+ 
+ What is the result ?
+ <ol>
+ <li> end</li><li> Compilation fails.</li><li> exception end</li><li> exception test end</li>
+ <li> A Throwable is thrown by main.</li><li> An Exception is thrown by main.</li></ol>
+  Answer: E
+  
+<h3> Q: 06 Given:</h3>
+<pre>  
+11. Float pi = new Float(3.14f); 
+12. if (pi > 3) { 
+13. System.out.print("pi is bigger than 3. "); 
+14. }
+15. else { 
+16. System.out.print("pi is not bigger than 3. "); 
+17. } 
+18. finally { 
+19. System.out.println("Have a nice day."); 
+20. } 
+</pre>
+
+What is the result ? 
+<ol start="A">
+<li> Compilation fails.</li><li> pi is bigger than 3.</li><li> An exception occurs at runtime.</li>
+<li> pi is bigger than 3. Have a nice day.</li><li> pi is not bigger than 3. Have a nice day.</li></ol>
+ Answer: A
+ 
+ <h3> Q : 07 Given:</h3>
+<pre>
+11. public static void main(String[] args) { 
+12. try { 
+13. args = null; 
+14. args[0] = "test"; 
+15. System.out.println(args[0]); 
+16. } catch (Exception ex) { 
+17. System.out.println("Exception"); 
+18. } catch (NullPointerException npe) { 
+19. System.out.println("NullPointerException"); 
+20. } 
+21. } 
+</pre>
+
+What is the result ?
+<ol start="A">
+<li> test</li><li> Exception</li><li> Compilation fails.</li><li> NullPointerException</li></ol>
+ Answer: C 
+ 
+<h3> Q:08 Click the Exhibit button. Given:</h3> 
+<pre>
+25. try { 
+26. A a = new A(); 
+27. a.method1(); 
+28. } catch (Exception e) { 
+29. System.out.print("an error occurred"); 
+30. }
+</pre>
+
+<p> Which two statements are true if a NullPointerException is thrown on line 3 of class C ? (Choose two.) </p>
+<ol start="A">
+<li> The application will crash.</li><li> The code on line 29 will be executed.</li>
+<li> The code on line 5 of class A will execute.</li><li> The code on line 5 of class B will execute.</li>
+<li> The exception will be propagated back to line 27.</li>
+</ol>
+
+Answer: B, E
+
+<h3>Q:09 Given:</h3>
+<pre>
+11. static void test() throws RuntimeException {
+12. try {
+13. System.out.print("test ");
+14. throw new RuntimeException();
+15. }
+16. catch (Exception ex) { System.out.print("exception "); }
+17. }
+18. public static void main(String[] args) {
+19. try { test(); }
+20. catch (RuntimeException ex) { System.out.print("runtime "); }
+21. System.out.print("end ");
+22. }
+</pre>
+What is the result ?
+<ol>
+<li> test end</li>
+<li> Compilation fails.</li>
+<li> test runtime end</li>
+<li> test exception end</li>
+<li> A Throwable is thrown by main at runtime.</li>
+</ol>
+
+Answer: D
+
+<h3>Q:10 Given:</h3> 
+<pre>
+33. try { 
+34. // some code here 
+35. } catch (NullPointerException e1) { 
+36. System.out.print("a"); 
+37. } catch (RuntimeException e2) { 
+38. System.out.print("b"); 
+39. } finally { 
+40. System.out.print("c"); 
+41. } 
+</pre>
+
+What is the result if a NullPointerException occurs on line 34 ? 
+<ol>
+<li> c</li><li> a</li><li> ab</li><li> ac </li><li> bc</li><li> abc</li></ol>
+
+ Answer: D
+ 
+<h3>  Q:11 Given:</h3> 
+<pre>
+10. public class Foo { 
+11. static int[] a; 
+12. static { a[0]=2; } 
+13. public static void main( String[] args ) {} 
+14. } 
+</pre>
+
+Which exception or error will be thrown when a programmer attempts to run this code ?
+<ol>
+<li> java.lang.StackOverflowError</li>
+<li> java.lang.IllegalStateException</li>
+<li> java.lang.ExceptionInInitializerError</li>
+<li> java.lang.ArrayIndexOutOfBoundsException</li>
+</ol>
+ Answer: C
+ 
+ <h3> Q: 12 Given:</h3>
+<pre>
+11. static void test() { 
+12. try { 
+13. String x = null; 
+14. System.out.print(x.toString() + " "); 
+15. } 
+16. finally { System.out.print("finally "); } 
+17. } 
+18. public static void main(String[] args) { 
+19. try { test(); } 
+20. catch (Exception ex) { System.out.print("exception "); } 
+21. }
+</pre>
+ What is the result ? 
+<ol>
+<li> null</li>
+<li> finally</li>
+<li> null finally </li>
+<li> Compilation fails.</li>
+<li> finally exception</li>
+</ol> 
+
+Answer: E
+
+<h3>Q: 13 Click the Exhibit button.</h3>
+Given:
+<pre>
+31. public void method() {
+32. A a = new A();
+33. a.method1();
+34. }
+</pre>
+Which statement is true if a TestException is thrown on line 3 of class B ?
+<ol start="A">
+<li> Line 33 must be called within a try block.</li>
+<li> The exception thrown by method1 in class A is not required to be caught.</li>
+<li> The method declared on line 31 must be declared to throw a RuntimeException.</li>
+<li> On line 5 of class A, the call to method2 of class B does not need to be placed in a try/catch block.</li>
+</ol>
+
+Answer: B
+
+<h3>Q: 14 Click the Exhibit button.</h3>
+Which statement is true about the two classes ?
+<ol>
+<li> Compilation of both classes will fail.</li>
+<li> Compilation of both classes will succeed.</li>
+<li> Compilation of class A will fail. Compilation of class B will succeed.</li>
+<li> Compilation of class B will fail. Compilation of class A will succeed.</li>
+</ol>
+Answer: D
+
+<h3>Q : 15 </h3>
+Click the Exhibit button.
+<pre>
+Class TestException
+1. public class TestException extends Exception {
+2. }
+Class A:
+1. public class A {
+2.
+3. public String sayHello(String name) throws TestException {
+4.
+5. if(name == null) {
+6. throw new TestException();
+7. }
+8.
+9. return “Hello “+ name;
+10. }
+11.
+12. }
+A programmer wants to use this code in an application:
+45. A a=new A();
+46. System.out.println(a.sayHello(”John”));
+</pre>
+
+Which two are true? (Choose two.)
+<ol start="A">
+<li> Class A will not compile.</li>
+<li> Line 46 can throw the unchecked exception TestException.</li>
+<li> Line 45 can throw the unchecked exception TestException.</li>
+<li> Line 46 will compile if the enclosing method throws a TestException.</li>
+<li> Line 46 will compile if enclosed in a try block, where TestExceptionis caught.</li>
+</ol>
+Answer: D , E
+
+<h3> Q : 16 Given:</h3> 
+<pre>
+11.classA { 
+12. public void process() { System.out.print(”A “); } } 
+13. class B extends A { 
+14. public void process() throws RuntimeException { 
+15. super.process(); 
+16. if (true) throw new RuntimeException(); 
+17. System.out.print(“B”); }} 
+18. public static void main(String[] args) { 
+19. try { ((A)new B()).process(); } 
+20. catch (Exception e) { System.out.print(”Exception “); } 
+21. }
+</pre>
+
+ What is the result ?
+ <ol start="A">
+ <li> Exception</li>
+ <li> A Exception</li>
+ <li> A Exception B</li>
+ <li> A B Exception</li>
+ <li> Compilation fails because of an error in line 14.</li>
+ <li> Compilation fails because of an error in line 19.</li></ol>
+ 
+ Answer: B
+ 
+<h3>Q : 17</h3>
+ which two code fragments are most likely to cause a StackOverflowError? (Choose two.)
+ 
+<ol>
+<li> int []x = {1,2,3,4,5}; for(int y = 0; y &lt; 6; y++) System.out.println(x[y]);</li>
+<li> static int[] x = {7,6,5,4}; static { x[1] = 8; x[4] = 3; }</li>
+<li> for(int y = 10; y &lt; 10; y++) doStuff(y);</li>
+<li> void doOne(int x) { doTwo(x); } void doTwo(int y) { doThree(y); } void doThree(int z) { doTwo(z); }</li>
+<li> for(int x = 0; x &lt; 1000000000; x++) doStuff(x);</li>
+<li> void counter(int i) { counter(++i); }</li></ol>
+ Answer: D,F
+ 
+ <h3> Q : 18</h3>
+ which can appropriately be thrown by a programmer using Java SE technology to create a desktop application ?
+ <ol>
+ <li> ClassCastException</li><li> NullPointerException</li><li> NoClassDefFoundError</li><li> NumberFormatException</li>
+ <li> ArrayIndexOutOfBoundsException</li></ol>
+ 
+  Answer: D
+
+<h3> 19. Given:</h3> 
+<pre>
+import java.io.*; 
+
+class Master { 
+String doFileStuff() throws FileNotFoundException { 
+ return "a"; 
+} 
+}
+ 
+class Slave extends Master { 
+public static void main(String[] args) { 
+ String s = null; 
+ try {
+  s = new Slave().doFileStuff(); 
+ } 
+ catch ( Exception x) { 
+   s = "b"; 
+ } 
+System.out.println(s); } // insert code here } 
+</pre>
+
+Which, inserted independently at // insert code here, will compile, and produce the output b? (Choose all that apply.)
+<ol>
+<li> String doFileStuff() { return "b"; }</li>
+<li> String doFileStuff() throws IOException { return "b"; }</li>
+<li> String doFileStuff(int x) throws IOException { return "b"; }</li>
+<li> String doFileStuff() throws FileNotFoundException { return "b"; }</li>
+<li> String doFileStuff() throws NumberFormatException { return "b"; }</li>
+<li> String doFileStuff() throws NumberFormatException, FileNotFoundException { return "b"; }</li>
+</ol>  
+Answer:
+<ul>
+<li> A , D, E, and F are correct. It's okay for an overriding method to throw the same exceptions, narrower exceptions, or no exceptions. <br>
+  And it's okay for the overriding method to throw any runtime exceptions.</li>
+  <li>B is incorrect, because the overriding method is trying to throw a broader exception. C is incorrect. This method doesn't override, so the output is a.</li></ul>
+  
+<h3>20. Given:</h3>
+<pre>
+class Input { 
+ public static void main(String[] args) { 
+  String s = "-"; 
+  try { 
+   doMath(args[0]); s += "t "; // line 6 
+  } 
+  finally { 
+   System.out.println(s += "f "); 
+   } 
+  } 
+public static void doMath(String a) { 
+ int y = 7 / Integer.parseInt(a); 
+} 
+}
+</pre>
+
+<p> And the command-line invocations: java Input java Input 0 </p>
+
+Which are true? (Choose all that apply.)
+<ol>
+<li> Line 6 is executed exactly 0 times.</li>
+<li> Line 6 is executed exactly 1 time.</li>
+<li> Line 6 is executed exactly 2 times. </li>
+<li> The finally block is executed exactly 0 times.</li>
+<li> The finally block is executed exactly 1 time. </li>
+<li> The finally block is executed exactly 2 times.</li>
+<li> Both invocations produce the same exceptions. </li>
+<li> Each invocation produces a different exception. </li>
+</ol>
+
+ Answer:
+<ul>
+<li> A , F, and H are correct. Since both invocations throw exceptions, line 6 is never reached. <br>
+ Since both exceptions occurred within a try block, the finally block will always execute.<br>
+  The first invocation throws an ArrayIndexOutOfBoundsException, <br>
+  and the second invocation throws an ArithmeticException for the attempt to divide by zero. </li>
+<li>B, C, D, E, and G are incorrect based on the above.</li>
+</ul> 
+  
+  
+<h3> 21. Given:</h3> 
+<pre>
+class Plane { 
+ static String s = "-"; 
+public static void main(String[] args) { 
+ new Plane().s1(); 
+ System.out.println(s); 
+} 
+void s1() { 
+ try {  s2();  } 
+ catch (Exception e) { s += "c"; } 
+ } 
+ 
+ void s2() throws Exception { s3(); s += "2"; s3(); s += "2b"; } 
+ void s3() throws Exception { throw new Exception(); } 
+} 
+</pre>
+ 
+ What is the result ? 
+<ol>
+<li> -</li><li> -c</li><li> -c2 </li><li> -2c</li><li> -c22b</li><li> -2c2b</li><li> -2c2bc</li><li> Compilation fails.</li>
+</ol>
+ 
+ Answer:
+ <ul>
+ <li> B is correct. Once s3() throws the exception to s2(), s2() throws it to s1(), and no more of s2()'s code will be executed.</li>
+ <li>A, C, D, E, F, G, and H are incorrect based on the above.</li>
+ </ul>
+
+<h3>22. Given:</h3> 
+<pre>
+try { 
+ int x = Integer.parseInt("two"); 
+}
+</pre>
+
+Which could be used to create an appropriate catch block? (Choose all that apply.)
+<ol>
+<li> ClassCastException</li><li> IllegalStateException</li><li>NumberFormatException </li><li> IllegalArgumentException</li>
+<li> ExceptionInInitializerError</li><li> ArrayIndexOutOfBoundsException</li></ol>
+ Answer:
+ <ul>
+ <li> C and D are correct. Integer.parseInt can throw a NumberFormatException, and IllegalArgumentException is its superclass (i.e., a broader exception).</li>
+  <li> A, B, E, and F are not in NumberFormatException‘s class hierarchy. </li>
+  </ul>
+  
+  <h3> 23. Given:</h3>
+<pre>
+1. class Ping extends Utils { 
+2. public static void main(String [] args) { 
+3. Utils u = new Ping(); 
+4. System.out.print(u.getInt(args[0])); 
+5. } 
+6. int getInt(String arg) { 
+7. return Integer.parseInt(arg); 
+8. } 
+9. } 
+10. class Utils { 
+11. int getInt(String x) throws Exception { return 7; } 
+12. }
+</pre>
+
+ And the following three possible changes:
+<pre>
+C1. Declare that main() throws an Exception. 
+C2. Declare that Ping.getInt() throws an Exception. 
+C3. Wrap the invocation of getInt() in a try / catch block. 
+</pre>
+Which change(s) allow the code to compile? (Choose all that apply.) 
+<ol start="A">
+<li> Just C1 is sufficient.</li><li> Just C2 is sufficient.</li><li> Just C3 is sufficient.</li> 
+<li> Both C1 and C2 are required.</li><li> Both C1 and C3 are required.</li> 
+<li> Both C2 and C3 are required.</li><li> All three changes are required.</li>
+</ol>
+ 
+  
+  Answer:
+<ul>
+<li> A and C are correct. Remember that line 4 is making a polymorphic call so the compiler knows that an exception might be thrown.<br> 
+  If C1 is implemented the exception has been sufficiently declared, and if C3 is implemented the exception has been sufficiently handled. <br>
+  C2 is not necessary in either case.</li>
+<li>B, D, E, F, and G are incorrect based on the above.</li></ul> 
+
+<h3>24. Given:</h3>
+<pre>
+class Emu { 
+ static String s = "-"; 
+ public static void main(String[] args) { 
+  try { 
+   throw new Exception(); 
+  } 
+  catch (Exception e) { 
+  try { 
+   try { 
+     throw new Exception(); 
+   } catch (Exception ex) {
+      s += "ic "; 
+   } throw new Exception(); 
+   } catch (Exception x) { s += "mc "; } 
+ finally { s += "mf "; } 
+ } finally { s += "of "; } 
+ System.out.println(s); 
+} 
+} 
+</pre>
+
+What is the result ?
+<ol start="A">
+ <li> -ic of </li><li> -mf of</li><li> -mc mf </li><li> -ic mf of</li>
+ <li> -ic mc mf of</li><li> -ic mc of mf</li><li> Compilation fails.</li>
+</ol>
+
+Answer:
+<ul>
+ <li> E is correct. There is no problem nesting try / catch blocks. <br> As is normal, when an exception is thrown, the code in the catch block runs, then the code in the finally block runs.</li>
+ <li>A, B, C, D, and F are incorrect based on the above.</li>
+</ul>
+  
+
+<h3>25. Given:</h3> 
+<pre>
+class Mineral { } 
+class Gem extends Mineral { } 
+class Miner { 
+ static int x = 7; 
+ static String s = null; 
+ public static void getWeight(Mineral m) { 
+  int y = 0 / x; 
+  System.out.print(s + " "); 
+ } 
+public static void main(String[] args) { 
+ Mineral[] ma = {new Mineral(), new Gem()}; 
+ for(Object o : ma) 
+ getWeight((Mineral) o); 
+} 
+}
+</pre>
+
+ And the command-line invocation: java Miner.java What is the result ?
+<ol start="A">
+<li> null</li><li> null null</li>
+<li> A ClassCastException is thrown.</li>
+<li> A NullPointerException is thrown.</li>
+<li> A NoClassDefFoundError is thrown.</li>
+<li> An ArithmeticException is thrown.</li>
+<li> An IllegalArgumentException is thrown.</li>
+<li> An ArrayIndexOutOfBoundsException is thrown.</li>
+</ol>
+Answer:
+<ul>
+<li> E is correct. The invocation should be java Miner, in which case null null would be produced.</li>
+<li>A, B, C, D, F, G, and H are incorrect based on the above.</li></ul>
+
+<h3> 26. Which are most typically thrown by an API developer or an application developer as opposed to being thrown by the JVM? (Choose all that apply.)</h3>
+<ol start="A">
+<li> ClassCastException</li>
+<li> IllegalStateException </li>
+<li> NumberFormatException</li>
+<li> IllegalArgumentException</li>
+<li>ExceptionInInitializerError</li>
+</ol> 
+ 
+ Answer:
+ <ul>
+ <li> B , C, and D are correct. B is typically used to report an environment problem such as trying to access a resource that's closed. C is often thrown in API methods that attempt to convert poorly formed String arguments to numeric values. D is often thrown in API methods that receive poorly formed arguments.</li>
+ <li>A and E are thrown by the JVM.</li></ul>
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+<br><br>
+</td></tr></table>
+<a href="index-2.html">BACK</a>
+
+</div>
+
+</body>
+
+<!-- Mirrored from ocpjp.jobs4times.com/exception-Handling.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 22 Jun 2024 15:29:37 GMT -->
+</html>

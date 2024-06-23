@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from www.java.designpatterns.jobs4times.com/decorator-design-pattern.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 22 Jun 2024 15:36:41 GMT -->
+<head>
+<meta charset="ISO-8859-1">
+<title>Java design patterns - Decorator Design Pattern</title>
+<link style="text/css" rel="stylesheet" href="styles.css">
+</head>
+
+
+<body>
+<div align="center" >
+<table border="1" style="width: 888px"><tr><td>
+ 
+<table>
+<tr>
+<td width="50%" align="left"><a href="http://www.jobs4times.com/"><img alt="jobs4timesLogo"  src="../img.logos.jobs4times.com/banner%20J4T.jpg" width="500px" height="200">   </a> </td>
+<td align="right"><a href="http://jobs4times.com/J4T/allmaterial.html"><img alt="jobs4timesLogo"  src="../img.logos.jobs4times.com/as2.jpg"  width="180px" height="200" >  </a>  </td>
+</tr>  
+</table> 
+
+ 
+ 
+<h1>Decorator Design Pattern </h1>
+
+
+<br>
+<ul>
+<li>Decorator is one of the widely used structural patterns.</li>
+<li>It adds dynamically the functionality to an object at runtime without affecting the other objects.</li>
+<li>It adds additional responsibilities to an object by wrapping it. So it is also called as wrapper. <br><br> </li>
+</ul>
+
+<ul>
+<li>For example, Pizza is the object which is object which is already baked and consider as a base object.</li>
+<li>As requested by the customer we might need to add some additional toppings on it like cheese or tomato on it, important is only for the object customer requested without effecting other Pizza's.</li>
+<li>You can consider these toppings as additional responsibilities added by the decorator.<br><br> </li>
+</ul>
+
+<h5>Key Points :</h5>
+<ul>
+<li>Add and remove additional functionalities or responsibilities to an object dynamically at runtime, without affecting the other objects.</li>
+<li>Usually these decorators are designed on component interface, so you can select the object that has to be decorated at runtime.</li>
+<li>Sometime adding an additional responsibility to a class may not be possible by sub-classing it. Only available way of achieving it is using decorator.</li>
+</ul>
+ 
+ 
+Following are the participants of the Decorator design pattern :
+
+<ol>
+<li><strong>Component : </strong> Pizza is the base interface. </li>
+<li><strong>Concrete component : </strong> NormalPizza is the  concrete implementation of the Pizza interface. </li>
+<li><strong>Decorator : </strong> is the abstract class who holds the reference of the component and also implements from the component interface. </li>
+<li><strong>Concrete Decorator : </strong> Who implements from the abstract decorator and add additional responsibilities to the Concrete component. </li>
+</ol>
+
+
+<pre>
+package design;
+
+public interface Pizza {
+   public void bake();	
+}
+</pre>
+
+Now implementing the above interface we have a concrete class NormalPizza.
+
+<pre>
+package design;
+
+public class NormalPizza implements Pizza{
+
+	@Override
+	public void bake() {
+	  System.out.println("Booking normal pizza ...");		
+	}
+}
+</pre>
+
+<p>
+Now we want to add some more toppings on the normal pizza. We don't want to modify all the pizza's rather one instance  of the normal pizza we want to decorate.
+</p>
+
+So create Abstract Decoder implementing from Pizza and has reference of Pizza to add toppings.
+
+
+<pre>
+package design;
+
+public class PizzaDecorator implements Pizza {
+	private Pizza pizza;
+	
+	public PizzaDecorator(Pizza pizza) {
+		this.pizza=pizza;
+	}
+
+	@Override
+	public void bake() {
+		pizza.bake();
+		
+	}
+}
+</pre>
+
+Now create an  concrete decorator extends from Abstract Decorator to add Tomato as a toppings .
+
+<pre>
+package design;
+
+public class TomatoPizzaDecorator extends PizzaDecorator {
+
+	public TomatoPizzaDecorator(Pizza pizza) {
+		super(pizza);
+	}
+	
+	public void bake(){
+		super.bake();
+		addTomatoTapping();
+	}
+
+	public void addTomatoTapping() {
+		System.out.println("Tomato topping added ...");		
+	}
+}
+</pre>
+
+If a PizzaShop wants a TomatoPizza rather modifying the Pizza, he can use TomatoPizzaDecorator as Pizza which decorates the Normal Pizza and serves.
+
+<pre>
+package design;
+
+public class Shop {
+
+public static void main(String[] args){
+  Pizza pizza=new TomatoPizzaDecorator(new NormalPizza());
+  pizza.bake();
+}
+
+}
+</pre>
+
+<h5>The UML representation of Decorator Design Pattern :</h5>
+
+<img alt="decorator-design-pattern" src="decorator-design-pattern-2.html">
+
+
+<br><br>
+</td></tr></table>
+<a href="index-2.html"><strong>BACK</strong></a>
+</div>
+  
+
+</body>
+
+<!-- Mirrored from www.java.designpatterns.jobs4times.com/decorator-design-pattern.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 22 Jun 2024 15:36:41 GMT -->
+</html>

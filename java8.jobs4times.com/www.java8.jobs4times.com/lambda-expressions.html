@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from www.java8.jobs4times.com/lambda-expressions.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 22 Jun 2024 15:39:32 GMT -->
+<head>
+<meta charset="ISO-8859-1">
+<title> Java 8 - Lambda Expression </title>
+<link href="java8.css" rel="stylesheet"/>
+</head>
+<body>
+<div align="center" >
+<table border="1"><tr><td width="780px">
+ <script src="header.js"></script> 
+<hr color="blue"><hr color="red"><hr color="green">
+
+<h3 id="lambda"> Lambda Expression : </h3>
+
+History:
+<ul>
+	<li>Lambda calculus is a big change in mathematical world which has been introduced in 1930. Because of benefits of Lambda calculus slowly this concepts started using in programming world.</li> 
+	<li>LISP is the first programming which uses Lambda Expression.</li>
+	<li>The other languages which uses lambda expressions are: C#, .Net, C Objective, C, C++, Python, Ruby etc. and finally in Java also.</li>
+</ul>
+
+
+<p>The Main Objective of Lambda Expression is to bring benefits of functional programming into Java.</p>
+
+
+What is Lambda Expression:
+<ul>
+<li>Lambda Expression is just an anonymous (nameless) function. That means the function which doesn't have the name, return type and access modifiers.</li>
+<li>Lambda Expression also known as anonymous functions or closures.</li></ul>
+<pre>
+Ex: 1
+public void m1() {
+sop("hello"");
+}
+
+lambda ex:
+
+() ->{
+	sop("hello"");
+	}
+() -> { sop("hello"); }
+() -> sop("hello");
+
+
+
+Ex:2
+public void add(int a, int b) {
+sop(a+b);
+}
+
+lambda ex:
+(int a, int b) -> sop(a+b);
+</pre>
+
+<ul>
+<li> If the type of the parameter can be decided by compiler automatically based on the context then we can remove types also.</li>
+<li> The above Lambda expression we can rewrite as <pre>(a,b) -> sop (a+b);</pre></li>
+</ul>
+
+
+<pre>
+Ex: 3
+public String str(String str) {
+return str;
+}
+
+Lambda ex:
+(String str) -> return str;
+(str) -> str;
+</pre>
+
+<h3>Conclusions:</h3>
+<ol>
+<li>A lambda expression can have zero or more number of parameters (arguments).
+<pre>
+Ex:
+() -> sop("hello");
+(int a ) -> sop(a);
+(int a, int b) -> return a+b;
+</pre>
+</li>
+<li>Usually we can specify type of parameter. If the compiler expects the type based on the context then we can remove type. i.e., programmer is not required.
+<pre>
+Ex:
+(int a, int b) -> sop(a+b);
+(a,b) -> sop(a+b);
+</pre>
+</li>
+<li>If multiple parameters present then these parameters should be separated with comma (,).
+</li>
+<li>If zero number of parameters available then we have to use empty parameter [ like ()].
+<pre>
+Ex: () -> sop("hello");
+</pre>
+</li>
+<li>If only one parameter is available and if the compiler can expect the type then we can remove the type and parenthesis also.
+<pre>
+Ex:
+(int a) -> sop(a);
+(a)-> sop(a);
+a -> sop(a);
+</pre>
+</li>
+<li>Similar to method body lambda expression body also can contain multiple statements. If more than one statements present then we have to enclose inside within curly braces. If one statement present then curly braces are optional.
+</li>
+<li>Once we write lambda expression we can call that expression just like a method, for this functional interfaces are required.
+</li>
+</ol>
+   
+</td></tr></table></div>
+</body>
+
+<!-- Mirrored from www.java8.jobs4times.com/lambda-expressions.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 22 Jun 2024 15:39:32 GMT -->
+</html>
