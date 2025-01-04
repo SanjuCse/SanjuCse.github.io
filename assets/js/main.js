@@ -117,7 +117,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
         slidesPerView: 1,
         loop: true,
         // effect: "fade",
-        autoplay: true,
+        autoplay: false,
         thumbs: {
             swiper: bannerThumbSlider,
         },

@@ -66,6 +66,12 @@ svg path {
 
 img {
   max-width: 100%;
+  /* width: 100% !important; */
+}
+
+.ul-banner-slide-img img {
+  width: 100% !important;
+  height: 400px;
 }
 
 a {
@@ -138,7 +144,7 @@ button {
 }
 
 .ul-container {
-  margin: 0 clamp(15px, 3.15vw, 60px);
+  margin: 0 clamp(0px, 3.15vw, 0px);
 }
 
 .ul-inner-container {
@@ -985,11 +991,11 @@ button {
 
 .ul-banner {
   display: flex;
-  gap: clamp(15px, 1.58vw, 30px);
+  /* gap: clamp(15px, 1.58vw, 30px); */
 }
 
 .ul-banner-slider {
-  max-width: clamp(310px, 59.12vw, 1125px);
+  /* max-width: clamp(310px, 59.12vw, 1125px); */
   border-radius: 30px;
 }
 @media screen and (max-width: 767px) {
@@ -1003,7 +1009,7 @@ button {
   }
 }
 .ul-banner-slider-wrapper {
-  width: max-content;
+  width: 100%;
   position: relative;
   z-index: 11;
   background-color: var(--white);
