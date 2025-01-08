@@ -882,7 +882,7 @@ button {
   left: 3.1vw;
   right: 3.1vw;
   width: auto;
-  top: clamp(110px, 7.8vw, 7.8vw);
+  top: clamp(50px, 3.8vw, 7.8vw);
   z-index: 99;
   padding: clamp(10px, 3.15vw, 60px) clamp(15px, 4.2vw, 80px);
   overflow: visible;
@@ -1246,7 +1246,7 @@ button {
 
 .ul-products {
   background-color: rgba(239, 40, 83, 0.05);
-  padding: clamp(40px, 4.2vw, 80px) 0;
+  padding: clamp(10px, 0.2vw, 80px) 0;
   border-radius: clamp(15px, 2.1vw, 40px);
 }
 .ul-products-sub-banners-wrapper {
@@ -1363,7 +1363,8 @@ button {
   justify-content: space-between;
   align-items: center;
   gap: 5px;
-  margin-bottom: clamp(15px, 1.31vw, 25px);
+  /* margin-bottom: clamp(15px, 1.31vw, 25px); */
+  margin-bottom: clamp(3px, 0px, 25px);
 }
 .ul-product-price {
   color: var(--black);
@@ -1589,6 +1590,7 @@ button {
   .ul-ad-img {
     margin: auto;
     order: 3;
+    
   }
 }
 .ul-ad .ul-btn {
@@ -3976,3 +3978,14 @@ button {
   background-color: var(--black);
   color: var(--ul-primary);
 }/*# sourceMappingURL=style.css.map */
+
+.buyNowBtn{
+  border: 1px solid red;
+  cursor: pointer;
+  padding: 3px 9px;
+  border-radius: 5px;
+}
+
+.ul-ad-img > img {
+  height: 250px;
+}

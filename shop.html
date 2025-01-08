@@ -32,7 +32,7 @@
       <!-- header -->
       <div class="ul-sidebar-header">
         <div class="ul-sidebar-header-logo">
-          <a href="index-2.html">
+          <a href="index.html">
             <img src="assets/img/logo.svg" alt="logo" class="logo" />
           </a>
         </div>
@@ -88,7 +88,7 @@
                     <a href="shop-details.html">Orange Airsuit</a>
                   </h4>
                   <h5 class="ul-product-category">
-                    <a href="shop.html">Fashion Bag</a>
+                    <a class="buyNowBtn" href="shop-details.html">Buy Now</a>
                   </h5>
                 </div>
               </div>
@@ -117,7 +117,7 @@
                     <a href="shop-details.html">Orange Airsuit</a>
                   </h4>
                   <h5 class="ul-product-category">
-                    <a href="shop.html">Fashion Bag</a>
+                    <a class="buyNowBtn" href="shop-details.html">Buy Now</a>
                   </h5>
                 </div>
               </div>
@@ -146,7 +146,7 @@
                     <a href="shop-details.html">Orange Airsuit</a>
                   </h4>
                   <h5 class="ul-product-category">
-                    <a href="shop.html">Fashion Bag</a>
+                    <a class="buyNowBtn" href="shop-details.html">Buy Now</a>
                   </h5>
                 </div>
               </div>
@@ -195,7 +195,7 @@
     <!-- HEADER SECTION START -->
     <header class="ul-header">
       <!-- header top -->
-      <div class="ul-header-top">
+      <div class="ul-header-top" style="display: none">
         <div class="ul-header-top-slider splide">
           <div class="splide__track">
             <ul class="splide__list">
@@ -261,7 +261,7 @@
             <!-- header left -->
             <div class="header-bottom-left">
               <div class="logo-container">
-                <a href="index-2.html" class="d-inline-block"
+                <a href="index.html" class="d-inline-block"
                   ><img src="assets/img/logo.svg" alt="logo" class="logo"
                 /></a>
               </div>
@@ -277,10 +277,10 @@
                       id="ul-header-search-category"
                     >
                       <option data-placeholder="true">Select Category</option>
-                      <option value="1">Clothing</option>
-                      <option value="2">Watches</option>
-                      <option value="3">Jewellery</option>
-                      <option value="4">Glasses</option>
+                      <option value="1">Academics</option>
+                      <option value="2">Rentals</option>
+                      <option value="3">Store</option>
+                      <option value="4">Services</option>
                     </select>
                   </div>
                   <div class="ul-header-search-form-right">
@@ -308,11 +308,11 @@
             <div class="ul-header-nav-wrapper">
               <div class="to-go-to-sidebar-in-mobile">
                 <nav class="ul-header-nav">
-                  <a href="index-2.html">Home</a>
-                  <a href="shop.html">Shop</a>
-                  <a href="shop.html">Women</a>
-                  <a href="shop.html">Men's</a>
-                  <a href="shop.html">Kids</a>
+                  <a href="index.html">Home</a>
+                  <a href="shop.html">Academics</a>
+                  <a href="shop.html">Rental</a>
+                  <a href="shop.html">Store</a>
+                  <a href="services.html">Services</a>
                   <a href="blog.html">Blog</a>
 
                   <div class="has-sub-menu has-mega-menu">
@@ -336,7 +336,7 @@
                       <div class="single-col">
                         <span class="single-col-title">Shop Pages</span>
                         <ul>
-                          <li><a href="shop.html">Shop Left Sidebar</a></li>
+                          <li><a href="shop.html">Our Products</a></li>
                           <li>
                             <a href="shop-right-sidebar.html"
                               >Shop Right Sidebar</a
@@ -432,9 +432,9 @@
       <!-- BREADCRUMB SECTION START -->
       <div class="ul-container">
         <div class="ul-breadcrumb">
-          <h2 class="ul-breadcrumb-title">Shop Left Sidebar</h2>
+          <h2 class="ul-breadcrumb-title">Our Products</h2>
           <div class="ul-breadcrumb-nav">
-            <a href="index-2.html"><i class="flaticon-home"></i> Home</a>
+            <a href="index.html"><i class="flaticon-home"></i> Home</a>
             <i class="flaticon-arrow-point-to-right"></i>
             <span class="current-page">Shop</span>
           </div>
@@ -744,11 +744,6 @@
                 <!-- product card -->
                 <div class="col">
                   <div class="ul-product">
-                    <div class="ul-product-heading">
-                      <span class="ul-product-price">$99.00</span>
-                      <span class="ul-product-discount-tag">25% Off</span>
-                    </div>
-
                     <div class="ul-product-img">
                       <img
                         src="assets/img/product-img-1.jpg"
@@ -762,12 +757,18 @@
                       </div>
                     </div>
 
+                    <div class="ul-product-heading pb-0">
+                      <span class="ul-product-price">$99.00</span>
+                      <span class="ul-product-discount-tag">25% Off</span>
+                    </div>
                     <div class="ul-product-txt">
                       <h4 class="ul-product-title">
                         <a href="shop-details.html">Orange Airsuit</a>
                       </h4>
                       <h5 class="ul-product-category">
-                        <a href="shop.html">Fashion Bag</a>
+                        <a class="buyNowBtn" href="shop-details.html"
+                          >Buy Now</a
+                        >
                       </h5>
                     </div>
                   </div>
@@ -776,11 +777,6 @@
                 <!-- product card -->
                 <div class="col">
                   <div class="ul-product">
-                    <div class="ul-product-heading">
-                      <span class="ul-product-price">$99.00</span>
-                      <span class="ul-product-discount-tag">25% Off</span>
-                    </div>
-
                     <div class="ul-product-img">
                       <img
                         src="assets/img/product-img-2.jpg"
@@ -794,12 +790,19 @@
                       </div>
                     </div>
 
+                    <div class="ul-product-heading pb-0">
+                      <span class="ul-product-price">$99.00</span>
+                      <span class="ul-product-discount-tag">25% Off</span>
+                    </div>
+
                     <div class="ul-product-txt">
                       <h4 class="ul-product-title">
                         <a href="shop-details.html">Orange Airsuit</a>
                       </h4>
                       <h5 class="ul-product-category">
-                        <a href="shop.html">Fashion Bag</a>
+                        <a class="buyNowBtn" href="shop-details.html"
+                          >Buy Now</a
+                        >
                       </h5>
                     </div>
                   </div>
@@ -808,11 +811,6 @@
                 <!-- product card -->
                 <div class="col">
                   <div class="ul-product">
-                    <div class="ul-product-heading">
-                      <span class="ul-product-price">$99.00</span>
-                      <span class="ul-product-discount-tag">25% Off</span>
-                    </div>
-
                     <div class="ul-product-img">
                       <img
                         src="assets/img/product-img-3.jpg"
@@ -826,12 +824,18 @@
                       </div>
                     </div>
 
+                    <div class="ul-product-heading pb-0">
+                      <span class="ul-product-price">$99.00</span>
+                      <span class="ul-product-discount-tag">25% Off</span>
+                    </div>
                     <div class="ul-product-txt">
                       <h4 class="ul-product-title">
                         <a href="shop-details.html">Orange Airsuit</a>
                       </h4>
                       <h5 class="ul-product-category">
-                        <a href="shop.html">Fashion Bag</a>
+                        <a class="buyNowBtn" href="shop-details.html"
+                          >Buy Now</a
+                        >
                       </h5>
                     </div>
                   </div>
@@ -840,11 +844,6 @@
                 <!-- product card -->
                 <div class="col">
                   <div class="ul-product">
-                    <div class="ul-product-heading">
-                      <span class="ul-product-price">$99.00</span>
-                      <span class="ul-product-discount-tag">25% Off</span>
-                    </div>
-
                     <div class="ul-product-img">
                       <img
                         src="assets/img/product-img-4.jpg"
@@ -858,12 +857,18 @@
                       </div>
                     </div>
 
+                    <div class="ul-product-heading pb-0">
+                      <span class="ul-product-price">$99.00</span>
+                      <span class="ul-product-discount-tag">25% Off</span>
+                    </div>
                     <div class="ul-product-txt">
                       <h4 class="ul-product-title">
                         <a href="shop-details.html">Orange Airsuit</a>
                       </h4>
                       <h5 class="ul-product-category">
-                        <a href="shop.html">Fashion Bag</a>
+                        <a class="buyNowBtn" href="shop-details.html"
+                          >Buy Now</a
+                        >
                       </h5>
                     </div>
                   </div>
@@ -872,11 +877,6 @@
                 <!-- product card -->
                 <div class="col">
                   <div class="ul-product">
-                    <div class="ul-product-heading">
-                      <span class="ul-product-price">$99.00</span>
-                      <span class="ul-product-discount-tag">25% Off</span>
-                    </div>
-
                     <div class="ul-product-img">
                       <img
                         src="assets/img/product-img-5.jpg"
@@ -890,12 +890,18 @@
                       </div>
                     </div>
 
+                    <div class="ul-product-heading pb-0">
+                      <span class="ul-product-price">$99.00</span>
+                      <span class="ul-product-discount-tag">25% Off</span>
+                    </div>
                     <div class="ul-product-txt">
                       <h4 class="ul-product-title">
                         <a href="shop-details.html">Orange Airsuit</a>
                       </h4>
                       <h5 class="ul-product-category">
-                        <a href="shop.html">Fashion Bag</a>
+                        <a class="buyNowBtn" href="shop-details.html"
+                          >Buy Now</a
+                        >
                       </h5>
                     </div>
                   </div>
@@ -904,11 +910,6 @@
                 <!-- product card -->
                 <div class="col">
                   <div class="ul-product">
-                    <div class="ul-product-heading">
-                      <span class="ul-product-price">$99.00</span>
-                      <span class="ul-product-discount-tag">25% Off</span>
-                    </div>
-
                     <div class="ul-product-img">
                       <img
                         src="assets/img/product-img-6.jpg"
@@ -922,12 +923,18 @@
                       </div>
                     </div>
 
+                    <div class="ul-product-heading pb-0">
+                      <span class="ul-product-price">$99.00</span>
+                      <span class="ul-product-discount-tag">25% Off</span>
+                    </div>
                     <div class="ul-product-txt">
                       <h4 class="ul-product-title">
                         <a href="shop-details.html">Orange Airsuit</a>
                       </h4>
                       <h5 class="ul-product-category">
-                        <a href="shop.html">Fashion Bag</a>
+                        <a class="buyNowBtn" href="shop-details.html"
+                          >Buy Now</a
+                        >
                       </h5>
                     </div>
                   </div>
@@ -936,11 +943,6 @@
                 <!-- product card -->
                 <div class="col">
                   <div class="ul-product">
-                    <div class="ul-product-heading">
-                      <span class="ul-product-price">$99.00</span>
-                      <span class="ul-product-discount-tag">25% Off</span>
-                    </div>
-
                     <div class="ul-product-img">
                       <img
                         src="assets/img/product-img-1.jpg"
@@ -954,12 +956,18 @@
                       </div>
                     </div>
 
+                    <div class="ul-product-heading pb-0">
+                      <span class="ul-product-price">$99.00</span>
+                      <span class="ul-product-discount-tag">25% Off</span>
+                    </div>
                     <div class="ul-product-txt">
                       <h4 class="ul-product-title">
                         <a href="shop-details.html">Orange Airsuit</a>
                       </h4>
                       <h5 class="ul-product-category">
-                        <a href="shop.html">Fashion Bag</a>
+                        <a class="buyNowBtn" href="shop-details.html"
+                          >Buy Now</a
+                        >
                       </h5>
                     </div>
                   </div>
@@ -968,11 +976,6 @@
                 <!-- product card -->
                 <div class="col">
                   <div class="ul-product">
-                    <div class="ul-product-heading">
-                      <span class="ul-product-price">$99.00</span>
-                      <span class="ul-product-discount-tag">25% Off</span>
-                    </div>
-
                     <div class="ul-product-img">
                       <img
                         src="assets/img/product-img-2.jpg"
@@ -986,12 +989,18 @@
                       </div>
                     </div>
 
+                    <div class="ul-product-heading pb-0">
+                      <span class="ul-product-price">$99.00</span>
+                      <span class="ul-product-discount-tag">25% Off</span>
+                    </div>
                     <div class="ul-product-txt">
                       <h4 class="ul-product-title">
                         <a href="shop-details.html">Orange Airsuit</a>
                       </h4>
                       <h5 class="ul-product-category">
-                        <a href="shop.html">Fashion Bag</a>
+                        <a class="buyNowBtn" href="shop-details.html"
+                          >Buy Now</a
+                        >
                       </h5>
                     </div>
                   </div>
@@ -1000,11 +1009,6 @@
                 <!-- product card -->
                 <div class="col">
                   <div class="ul-product">
-                    <div class="ul-product-heading">
-                      <span class="ul-product-price">$99.00</span>
-                      <span class="ul-product-discount-tag">25% Off</span>
-                    </div>
-
                     <div class="ul-product-img">
                       <img
                         src="assets/img/product-img-3.jpg"
@@ -1018,12 +1022,18 @@
                       </div>
                     </div>
 
+                    <div class="ul-product-heading pb-0">
+                      <span class="ul-product-price">$99.00</span>
+                      <span class="ul-product-discount-tag">25% Off</span>
+                    </div>
                     <div class="ul-product-txt">
                       <h4 class="ul-product-title">
                         <a href="shop-details.html">Orange Airsuit</a>
                       </h4>
                       <h5 class="ul-product-category">
-                        <a href="shop.html">Fashion Bag</a>
+                        <a class="buyNowBtn" href="shop-details.html"
+                          >Buy Now</a
+                        >
                       </h5>
                     </div>
                   </div>
@@ -1032,11 +1042,6 @@
                 <!-- product card -->
                 <div class="col">
                   <div class="ul-product">
-                    <div class="ul-product-heading">
-                      <span class="ul-product-price">$99.00</span>
-                      <span class="ul-product-discount-tag">25% Off</span>
-                    </div>
-
                     <div class="ul-product-img">
                       <img
                         src="assets/img/product-img-4.jpg"
@@ -1050,12 +1055,18 @@
                       </div>
                     </div>
 
+                    <div class="ul-product-heading pb-0">
+                      <span class="ul-product-price">$99.00</span>
+                      <span class="ul-product-discount-tag">25% Off</span>
+                    </div>
                     <div class="ul-product-txt">
                       <h4 class="ul-product-title">
                         <a href="shop-details.html">Orange Airsuit</a>
                       </h4>
                       <h5 class="ul-product-category">
-                        <a href="shop.html">Fashion Bag</a>
+                        <a class="buyNowBtn" href="shop-details.html"
+                          >Buy Now</a
+                        >
                       </h5>
                     </div>
                   </div>
@@ -1064,11 +1075,6 @@
                 <!-- product card -->
                 <div class="col">
                   <div class="ul-product">
-                    <div class="ul-product-heading">
-                      <span class="ul-product-price">$99.00</span>
-                      <span class="ul-product-discount-tag">25% Off</span>
-                    </div>
-
                     <div class="ul-product-img">
                       <img
                         src="assets/img/product-img-5.jpg"
@@ -1082,12 +1088,18 @@
                       </div>
                     </div>
 
+                    <div class="ul-product-heading pb-0">
+                      <span class="ul-product-price">$99.00</span>
+                      <span class="ul-product-discount-tag">25% Off</span>
+                    </div>
                     <div class="ul-product-txt">
                       <h4 class="ul-product-title">
                         <a href="shop-details.html">Orange Airsuit</a>
                       </h4>
                       <h5 class="ul-product-category">
-                        <a href="shop.html">Fashion Bag</a>
+                        <a class="buyNowBtn" href="shop-details.html"
+                          >Buy Now</a
+                        >
                       </h5>
                     </div>
                   </div>
@@ -1096,11 +1108,6 @@
                 <!-- product card -->
                 <div class="col">
                   <div class="ul-product">
-                    <div class="ul-product-heading">
-                      <span class="ul-product-price">$99.00</span>
-                      <span class="ul-product-discount-tag">25% Off</span>
-                    </div>
-
                     <div class="ul-product-img">
                       <img
                         src="assets/img/product-img-6.jpg"
@@ -1114,12 +1121,18 @@
                       </div>
                     </div>
 
+                    <div class="ul-product-heading pb-0">
+                      <span class="ul-product-price">$99.00</span>
+                      <span class="ul-product-discount-tag">25% Off</span>
+                    </div>
                     <div class="ul-product-txt">
                       <h4 class="ul-product-title">
                         <a href="shop-details.html">Orange Airsuit</a>
                       </h4>
                       <h5 class="ul-product-category">
-                        <a href="shop.html">Fashion Bag</a>
+                        <a class="buyNowBtn" href="shop-details.html"
+                          >Buy Now</a
+                        >
                       </h5>
                     </div>
                   </div>
@@ -1279,7 +1292,7 @@
 
           <!-- single widget -->
           <div class="ul-footer-middle-widget align-self-center">
-            <a href="index-2.html"
+            <a href="index.html"
               ><img src="assets/img/logo-white.png" alt="logo" class="logo"
             /></a>
           </div>
