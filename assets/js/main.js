@@ -96,7 +96,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
     const bannerThumbSlider = new Swiper(".ul-banner-img-slider", {
         slidesPerView: 1,
         loop: true,
-        autoplay: true,
+        autoplay: false,
         spaceBetween: 15,
         breakpoints: {
             992: {
@@ -143,7 +143,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
     new Swiper(".ul-products-slider-1", {
         slidesPerView: 3,
         loop: true,
-        autoplay: true,
+        autoplay: false,
         spaceBetween: 15,
         navigation: {
             nextEl: ".ul-products-slider-1-nav .next",
@@ -178,7 +178,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
     new Swiper(".ul-products-slider-2", {
         slidesPerView: 3,
         loop: true,
-        autoplay: true,
+        autoplay: false,
         spaceBetween: 15,
         navigation: {
             nextEl: ".ul-products-slider-2-nav .next",
@@ -213,7 +213,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
     new Swiper(".ul-flash-sale-slider", {
         slidesPerView: 1,
         loop: true,
-        autoplay: true,
+        autoplay: false,
         spaceBetween: 15,
         breakpoints: {
             480: {
@@ -244,7 +244,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
     new Swiper(".ul-reviews-slider", {
         slidesPerView: 1,
         loop: true,
-        autoplay: true,
+        autoplay: false,
         spaceBetween: 15,
         breakpoints: {
             768: {
@@ -273,7 +273,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
     new Swiper(".ul-gallery-slider", {
         slidesPerView: 2.2,
         loop: true,
-        autoplay: true,
+        autoplay: false,
         centeredSlides: true,
         spaceBetween: 15,
         breakpoints: {
@@ -319,7 +319,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
     new Swiper(".ul-product-details-img-slider", {
         slidesPerView: 1,
         loop: true,
-        autoplay: true,
+        autoplay: false,
         spaceBetween: 0,
         navigation: {
             nextEl: "#ul-product-details-img-slider-nav .next",
@@ -342,7 +342,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
     new Swiper(".ul-sidebar-products-slider", {
         slidesPerView: 1,
         loop: true,
-        autoplay: true,
+        autoplay: false,
         spaceBetween: 30,
         navigation: {
             nextEl: ".ul-sidebar-products-slider-nav .next",

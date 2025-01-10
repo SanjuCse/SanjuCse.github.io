@@ -996,7 +996,7 @@ button {
 
 .ul-banner-slider {
   /* max-width: clamp(310px, 59.12vw, 1125px); */
-  border-radius: 30px;
+  border-radius: 0px !important;
 }
 @media screen and (max-width: 767px) {
   .ul-banner-slider {
@@ -1348,7 +1348,7 @@ button {
 .ul-product {
   background-color: var(--white);
   border-radius: 20px;
-  padding: clamp(15px, 1.58vw, 30px);
+  padding: clamp(0px, 1vw, 10px);
 }
 .ul-product:hover .ul-product-img img {
   transform: scale(1.05);
@@ -1385,7 +1385,7 @@ button {
   align-items: center;
   justify-content: center;
   aspect-ratio: 270/262;
-  margin-bottom: clamp(16px, 1.16vw, 22px);
+  margin-bottom: clamp(1px, 1.16vw, 2px);
   overflow: hidden;
   position: relative;
 }
@@ -1526,7 +1526,7 @@ button {
 }
 
 .ul-ad {
-  margin: clamp(40px, 4.2vw, 80px) 0;
+  margin: clamp(40px, 4.2vw, 80px) 40px;
   border-radius: clamp(15px, 2.63vw, 50px);
   background: var(--ul-gradient);
   padding-top: clamp(37px, 3vw, 57px);
@@ -1664,11 +1664,13 @@ button {
 
 .ul-sub-banner {
   background-color: var(--ul-primary);
+  /* background: #f7d6e2;
+  color: #e73362 !important; */
   border-radius: clamp(15px, 1.58vw, 30px);
   overflow: hidden;
   position: relative;
   z-index: 1;
-  padding: clamp(20px, 2.1vw, 40px);
+  padding: clamp(40px, 2.1vw, 40px);
   color: var(--white);
   height: 100%;
 }
