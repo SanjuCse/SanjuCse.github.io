@@ -1,0 +1,1398 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Mirrored from glamics.temptics.com/shop-details.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 27 Dec 2024 15:37:04 GMT -->
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <!-- libraries CSS -->
+    <link rel="stylesheet" href="assets/icon/flaticon_glamer.css" />
+    <link rel="stylesheet" href="assets/vendor/bootstrap/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/vendor/splide/splide.min.css" />
+    <link rel="stylesheet" href="assets/vendor/swiper/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="assets/vendor/slim-select/slimselect.css" />
+    <link rel="stylesheet" href="assets/vendor/animate-wow/animate.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- custom CSS -->
+    <link rel="stylesheet" href="assets/css/style.css" />
+
+    <style>
+        /* Container styling */
+        .info-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            background-color: #eae5d8;
+            padding: 20px 40px;
+            border-radius: 10px;
+        }
+
+        /* Individual box styling */
+        .info-box {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Number styling */
+        .info-number {
+            font-size: 48px;
+            font-weight: bold;
+            color: #0b1a37;
+        }
+
+        /* Text section styling */
+        .info-text {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+        }
+
+        /* Title styling */
+        .info-title {
+            font-size: 12px;
+            color: #555;
+            text-transform: uppercase;
+        }
+
+        /* Bold detail styling */
+        .info-detail {
+            font-size: 14px;
+            font-weight: bold;
+            color: #0b1a37;
+        }
+
+        /* ========= list items */
+
+        /* Custom dotted list styling */
+        .custom-dotted-list {
+            list-style: none;
+            /* Remove default bullets */
+            padding: 0;
+            margin: 0;
+        }
+
+        .custom-dotted-list li {
+            position: relative;
+            padding-left: 40px;
+            /* Space for the dot */
+            margin-bottom: 15px;
+            font-size: 16px;
+            color: #333;
+        }
+
+        /* Outer Circle (Border) */
+        .custom-dotted-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 4px;
+            width: 18px;
+            /* Outer size */
+            height: 18px;
+            background-color: transparent;
+            /* Transparent background */
+            border: 2px solid #ef2b58;
+            /* Black outer border */
+            border-radius: 50%;
+            /* Circle shape */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Inner Circle (Colored Dot with space) */
+        .custom-dotted-list li::after {
+            content: '';
+            position: absolute;
+            left: 5px;
+            /* Centers the inner dot */
+            top: 9px;
+            width: 8px;
+            /* Inner dot size */
+            height: 8px;
+            background-color: #ef2b58;
+            /* Blue inner dot */
+            border-radius: 50%;
+            transition: background-color 0.3s ease;
+        }
+
+        /* Hover effect for inner dot and text */
+        .custom-dotted-list li:hover::after {
+            background-color: #ef2b58;
+            /* Change inner dot color on hover */
+        }
+
+        .custom-dotted-list li:hover {
+            color: #ef2b58;
+            /* Change text color on hover */
+        }
+        /* =============== */
+        
+    </style>
+</head>
+
+<body>
+
+    <div class="preloader" id="preloader">
+        <div class="loader"></div>
+    </div>
+
+    <!-- SIDEBAR SECTION START -->
+    <div class="ul-sidebar">
+        <!-- header -->
+        <div class="ul-sidebar-header">
+            <div class="ul-sidebar-header-logo">
+                <a href="index.html">
+                    <img src="assets/img/logo.svg" alt="logo" class="logo" />
+                </a>
+            </div>
+            <!-- sidebar closer -->
+            <button class="ul-sidebar-closer">
+                <i class="flaticon-close"></i>
+            </button>
+        </div>
+
+        <div class="ul-sidebar-header-nav-wrapper d-block d-lg-none"></div>
+
+        <div class="ul-sidebar-about d-none d-lg-block">
+            <span class="title">About glamer</span>
+            <p class="mb-0">
+                Phasellus eget fermentum mauris. Suspendisse nec dignissim nulla.
+                Integer non quam commodo, scelerisque felis id, eleifend turpis.
+                Phasellus in nulla quis erat tempor tristique eget vel purus. Nulla
+                pharetra pharetra pharetra. Praesent varius eget justo ut lacinia.
+                Phasellus pharetra, velit viverra lacinia consequat, ipsum odio mollis
+                dolor, nec facilisis arcu arcu ultricies sapien. Quisque ut dapibus
+                nunc. Vivamus sit amet efficitur velit. Phasellus eget fermentum
+                mauris. Suspendisse nec dignissim nulla. Integer non quam commodo,
+                scelerisque felis id, eleifend turpis. Phasellus in nulla quis erat
+                tempor tristique eget vel purus. Nulla pharetra pharetra pharetra.
+                Praesent varius eget justo ut lacinia. Phasellus pharetra velit.
+            </p>
+        </div>
+
+        <!-- product slider -->
+        <div class="ul-sidebar-products-wrapper d-none d-lg-flex">
+            <div class="ul-sidebar-products-slider swiper">
+                <div class="swiper-wrapper">
+                    <!-- product card -->
+                    <div class="swiper-slide">
+                        <div class="ul-product">
+                            <div class="ul-product-heading">
+                                <span class="ul-product-price">$99.00</span>
+                                <span class="ul-product-discount-tag">25% Off</span>
+                            </div>
+
+                            <div class="ul-product-img">
+                                <img src="assets/img/product-img-1.jpg" alt="Product Image" />
+
+                                <div class="ul-product-actions">
+                                    <button><i class="flaticon-shopping-bag"></i></button>
+                                    <a href="#"><i class="flaticon-hide"></i></a>
+                                    <button><i class="flaticon-heart"></i></button>
+                                </div>
+                            </div>
+
+                            <div class="ul-product-txt">
+                                <h4 class="ul-product-title">
+                                    <a href="shop-details.html">Orange Airsuit</a>
+                                </h4>
+                                <h5 class="ul-product-category">
+                                    <a href="shop.html">Fashion Bag</a>
+                                </h5>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- product card -->
+                    <div class="swiper-slide">
+                        <div class="ul-product">
+                            <div class="ul-product-heading">
+                                <span class="ul-product-price">$99.00</span>
+                                <span class="ul-product-discount-tag">25% Off</span>
+                            </div>
+
+                            <div class="ul-product-img">
+                                <img src="assets/img/product-img-2.jpg" alt="Product Image" />
+
+                                <div class="ul-product-actions">
+                                    <button><i class="flaticon-shopping-bag"></i></button>
+                                    <a href="#"><i class="flaticon-hide"></i></a>
+                                    <button><i class="flaticon-heart"></i></button>
+                                </div>
+                            </div>
+
+                            <div class="ul-product-txt">
+                                <h4 class="ul-product-title">
+                                    <a href="shop-details.html">Orange Airsuit</a>
+                                </h4>
+                                <h5 class="ul-product-category">
+                                    <a href="shop.html">Fashion Bag</a>
+                                </h5>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- product card -->
+                    <div class="swiper-slide">
+                        <div class="ul-product">
+                            <div class="ul-product-heading">
+                                <span class="ul-product-price">$99.00</span>
+                                <span class="ul-product-discount-tag">25% Off</span>
+                            </div>
+
+                            <div class="ul-product-img">
+                                <img src="assets/img/product-img-2.jpg" alt="Product Image" />
+
+                                <div class="ul-product-actions">
+                                    <button><i class="flaticon-shopping-bag"></i></button>
+                                    <a href="#"><i class="flaticon-hide"></i></a>
+                                    <button><i class="flaticon-heart"></i></button>
+                                </div>
+                            </div>
+
+                            <div class="ul-product-txt">
+                                <h4 class="ul-product-title">
+                                    <a href="shop-details.html">Orange Airsuit</a>
+                                </h4>
+                                <h5 class="ul-product-category">
+                                    <a href="shop.html">Fashion Bag</a>
+                                </h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ul-sidebar-products-slider-nav flex-shrink-0">
+                <button class="prev"><i class="flaticon-left-arrow"></i></button>
+                <button class="next">
+                    <i class="flaticon-arrow-point-to-right"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="ul-sidebar-about d-none d-lg-block">
+            <p class="mb-0">
+                Phasellus eget fermentum mauris. Suspendisse nec dignissim nulla.
+                Integer non quam commodo, scelerisque felis id, eleifend turpis.
+                Phasellus in nulla quis erat tempor tristique eget vel purus. Nulla
+                pharetra pharetra pharetra. Praesent varius eget justo ut lacinia.
+                Phasellus pharetra, velit viverra lacinia consequat, ipsum odio mollis
+                dolor, nec facilisis arcu arcu ultricies sapien. Quisque ut dapibus
+                nunc. Vivamus sit amet efficitur velit. Phasellus eget fermentum
+                mauris. Suspendisse nec dignissim nulla. Integer non quam commodo,
+                scelerisque felis id, eleifend turpis. Phasellus in nulla quis erat
+                tempor tristique eget vel purus. Nulla pharetra pharetra pharetra.
+                Praesent varius eget justo ut lacinia. Phasellus pharetra velit.
+            </p>
+        </div>
+
+        <!-- sidebar footer -->
+        <div class="ul-sidebar-footer">
+            <span class="ul-sidebar-footer-title">Follow us</span>
+
+            <div class="ul-sidebar-footer-social">
+                <a href="#"><i class="flaticon-facebook-app-symbol"></i></a>
+                <a href="#"><i class="flaticon-twitter"></i></a>
+                <a href="#"><i class="flaticon-instagram"></i></a>
+                <a href="#"><i class="flaticon-youtube"></i></a>
+            </div>
+        </div>
+    </div>
+    <!-- SIDEBAR SECTION END -->
+
+    <!-- HEADER SECTION START -->
+    <header class="ul-header">
+        <!-- header top -->
+        <div class="ul-header-top" style="display: none">
+            <div class="ul-header-top-slider splide">
+                <div class="splide__track">
+                    <ul class="splide__list">
+                        <li class="splide__slide">
+                            <p class="ul-header-top-slider-item">
+                                <i class="flaticon-sparkle"></i> limited time offer
+                            </p>
+                        </li>
+                        <li class="splide__slide">
+                            <p class="ul-header-top-slider-item">
+                                <i class="flaticon-sparkle"></i> limited time offer
+                            </p>
+                        </li>
+                        <li class="splide__slide">
+                            <p class="ul-header-top-slider-item">
+                                <i class="flaticon-sparkle"></i> limited time offer
+                            </p>
+                        </li>
+                        <li class="splide__slide">
+                            <p class="ul-header-top-slider-item">
+                                <i class="flaticon-sparkle"></i> limited time offer
+                            </p>
+                        </li>
+                        <li class="splide__slide">
+                            <p class="ul-header-top-slider-item">
+                                <i class="flaticon-sparkle"></i> limited time offer
+                            </p>
+                        </li>
+                        <li class="splide__slide">
+                            <p class="ul-header-top-slider-item">
+                                <i class="flaticon-sparkle"></i> limited time offer
+                            </p>
+                        </li>
+                        <li class="splide__slide">
+                            <p class="ul-header-top-slider-item">
+                                <i class="flaticon-sparkle"></i> limited time offer
+                            </p>
+                        </li>
+                        <li class="splide__slide">
+                            <p class="ul-header-top-slider-item">
+                                <i class="flaticon-sparkle"></i> limited time offer
+                            </p>
+                        </li>
+                        <li class="splide__slide">
+                            <p class="ul-header-top-slider-item">
+                                <i class="flaticon-sparkle"></i> limited time offer
+                            </p>
+                        </li>
+                        <li class="splide__slide">
+                            <p class="ul-header-top-slider-item">
+                                <i class="flaticon-sparkle"></i> limited time offer
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- header bottom -->
+        <div class="ul-header-bottom">
+            <div class="ul-container">
+                <div class="ul-header-bottom-wrapper">
+                    <!-- header left -->
+                    <div class="header-bottom-left">
+                        <div class="logo-container">
+                            <a href="index.html" class="d-inline-block"><img src="assets/img/logo.svg" alt="logo"
+                                    class="logo" /></a>
+                        </div>
+
+                        <!-- search form -->
+                        <div class="ul-header-search-form-wrapper flex-grow-1 flex-shrink-0">
+                            <form action="#" class="ul-header-search-form">
+                                <div class="dropdown-wrapper">
+                                    <select name="search-category" id="ul-header-search-category">
+                                        <option data-placeholder="true">Select Category</option>
+                                        <option value="1">Academics</option>
+                                        <option value="2">Rentals</option>
+                                        <option value="3">Store</option>
+                                        <option value="4">Services</option>
+                                    </select>
+                                </div>
+                                <div class="ul-header-search-form-right">
+                                    <input type="search" name="header-search" id="ul-header-search"
+                                        placeholder="Search Here" />
+                                    <button type="submit">
+                                        <span class="icon"><i class="flaticon-search-interface-symbol"></i></span>
+                                    </button>
+                                </div>
+                            </form>
+
+                            <button class="ul-header-mobile-search-closer d-xxl-none">
+                                <i class="flaticon-close"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- header nav -->
+                    <div class="ul-header-nav-wrapper">
+                        <div class="to-go-to-sidebar-in-mobile">
+                            <nav class="ul-header-nav">
+                                <a href="index.html">Home</a>
+                                <a href="academics.html">Academics</a>
+                                <a href="shop.html">Rental</a>
+                                <a href="shop.html">Store</a>
+                                <a href="services.html">Services</a>
+                                <a href="blog.html">Blog</a>
+
+                                <div class="has-sub-menu has-mega-menu">
+                                    <a role="button">Pages</a>
+
+                                    <div class="ul-header-submenu ul-header-megamenu">
+                                        <div class="single-col">
+                                            <span class="single-col-title">Inner Pages</span>
+                                            <ul>
+                                                <li><a href="about.html">About</a></li>
+                                                <li><a href="blog.html">Blogs</a></li>
+                                                <li><a href="blog-2.html">Blogs Layout 2</a></li>
+                                                <li><a href="blog-details.html">Blog Details</a></li>
+                                                <li><a href="contact.html">Contact</a></li>
+                                                <li><a href="faq.html">FAQ</a></li>
+                                                <li><a href="our-store.html">Our Store</a></li>
+                                                <li><a href="reviews.html">Reviews</a></li>
+                                            </ul>
+                                        </div>
+
+                                        <div class="single-col">
+                                            <span class="single-col-title">Shop Pages</span>
+                                            <ul>
+                                                <li><a href="shop.html">Shop Left Sidebar</a></li>
+                                                <li>
+                                                    <a href="shop-right-sidebar.html">Shop Right Sidebar</a>
+                                                </li>
+                                                <li>
+                                                    <a href="shop-no-sidebar.html">Shop Full Width</a>
+                                                </li>
+                                                <li><a href="shop-details.html">Shop Details</a></li>
+                                                <li><a href="wishlist.html">Wishlist</a></li>
+                                                <li><a href="cart.html">Cart</a></li>
+                                                <li><a href="checkout.html">Checkout</a></li>
+                                            </ul>
+                                        </div>
+
+                                        <div class="single-col">
+                                            <span class="single-col-title">Men's</span>
+                                            <ul>
+                                                <li><a href="#">Clothing</a></li>
+                                                <li><a href="#">Footwear</a></li>
+                                                <li><a href="#">Accessories</a></li>
+                                                <li><a href="#">Activewear</a></li>
+                                                <li><a href="#">Grooming</a></li>
+                                                <li><a href="#">Ethnic Wear</a></li>
+                                            </ul>
+                                        </div>
+
+                                        <div class="single-col">
+                                            <span class="single-col-title">Women's</span>
+                                            <ul>
+                                                <li><a href="#">Clothing</a></li>
+                                                <li><a href="#">Footwear</a></li>
+                                                <li><a href="#">Bags & Accessories</a></li>
+                                                <li><a href="#">Activewear</a></li>
+                                                <li><a href="#">Beauty & Grooming</a></li>
+                                                <li><a href="#">Ethnic Wear</a></li>
+                                            </ul>
+                                        </div>
+
+                                        <div class="single-col">
+                                            <span class="single-col-title">Children's</span>
+                                            <ul>
+                                                <li><a href="#">Clothing</a></li>
+                                                <li><a href="#">Footwear</a></li>
+                                                <li><a href="#">Accessories</a></li>
+                                                <li><a href="#">Toys & Games</a></li>
+                                                <li><a href="#">Baby Essentials</a></li>
+                                            </ul>
+                                        </div>
+
+                                        <div class="single-col">
+                                            <span class="single-col-title">Jewellery</span>
+                                            <ul>
+                                                <li>
+                                                    <a href="#">Ethnic & Traditional Jewellery</a>
+                                                </li>
+                                                <li><a href="#">Bridal Jewellery</a></li>
+                                                <li><a href="#">Bracelets</a></li>
+                                                <li><a href="#">Rings</a></li>
+                                                <li><a href="#">Earrings</a></li>
+                                                <li><a href="#">Chains & Pendants</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </nav>
+                        </div>
+                    </div>
+
+                    <!-- actions -->
+                    <div class="ul-header-actions">
+                        <button class="ul-header-mobile-search-opener d-xxl-none">
+                            <i class="flaticon-search-interface-symbol"></i>
+                        </button>
+                        <button><i class="flaticon-user"></i></button>
+                        <a href="wishlist.html"><i class="flaticon-heart"></i></a>
+                        <a href="cart.html"><i class="flaticon-shopping-bag"></i></a>
+                    </div>
+
+                    <!-- sidebar opener -->
+                    <div class="d-inline-flex">
+                        <button class="ul-header-sidebar-opener">
+                            <i class="flaticon-hamburger"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- HEADER SECTION END -->
+
+    <main>
+        <!-- AD SECTION START -->
+        <div class="ul-container">
+            <div class="ul-ad-breadcrumb">
+                <div class="ul-inner-container">
+                    <div class="ul-ad-content">
+                        <div class="ul-ad-txt">
+                            <div style="color: #333">Andhra loyola college of Drone training</div>
+                            <h2 class="ul-section-title">Drone Agriculture Course </h2>
+                            <p style="color:#333">we offer comprehensive course designed to equip you with the skills
+                                and knowledge required to excel in the field of drone technology. Our curriculum is
+                                tailored to meet industry standards and covers a wide range of topics </p>
+                            <div class="ul-ad-categories">
+                                <div class="row">
+                                    <div class="info-container">
+                                        <div class="info-box">
+                                            <div class="info-number">01</div>
+                                            <div class="info-text">
+                                                <div class="info-title">Course Duration</div>
+                                                <div class="info-detail">5 Days</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="info-box">
+                                            <div class="info-number">02</div>
+                                            <div class="info-text">
+                                                <div class="info-title">Drone Category</div>
+                                                <div class="info-detail">Medium</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="info-box">
+                                            <div class="info-number">03</div>
+                                            <div class="info-text">
+                                                <div class="info-title">Location</div>
+                                                <div class="info-detail">Hyderabad</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="ul-ad-img">
+                            <img src="assets/img/drones/drone-1.png" alt="Ad Image" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- AD SECTION END -->
+
+        <!-- MAIN CONTENT SECTION START -->
+        <div class="ul-inner-page-container">
+            <div class="ul-product-details">
+                <div class="ul-product-details-top">
+                    <div class="row ">
+                        <!-- img -->
+                        <!-- txt -->
+                        <div class="col-9">
+                            <div class="ul-product-details-txt">
+                                <!-- Brand title -->
+                                <!-- product title -->
+                                <h3 class="ul-product-details-title">
+                                    About This Course
+                                </h3>
+                                <!-- product rating -->
+                                <div class="ul-product-details-rating">
+
+                                    <span class="review-number">A drone refers to any aerial vehicle that receives
+                                        remote commands from a pilot or relies on software for autonomous flight. Many
+                                        drones display features like cameras for collecting visual data and propellers
+                                        for stabilizing their flight patterns.</span>
+                                </div>
+
+                                <!-- price -->
+                                <!-- <span class="ul-product-details-price">$120.00</span> -->
+                                <h3 class="ul-product-details-title">
+                                    What You'll Learn
+                                </h3>
+
+
+
+                                <!-- product description -->
+                                <ul class="custom-dotted-list">
+                                    <li>Understand the fundamental principles of drone mechanics, electronics and
+                                        aerodynamics.
+                                    </li>
+                                    <li>Explore techniques and analyzing data for agriculture monitoring, industrial
+                                        inspections, and more
+                                    </li>
+                                    <li>Learn about the latest safety protocols and requirements to ensure compliant and
+                                        responsible drone operation
+                                    </li>
+                                    <li>Gain pratical expericence with real-world flight exercises under the guidance of
+                                        experienced instructors
+                                    </li>
+                                </ul>
+
+                                <!-- MOST SELLING START -->
+                                <div class="ul-container mt-5">
+                                    <section class="ul-products ul-most-selling-products"
+                                        style="background-color: #ffffff !important;">
+                                        <div class="ul-inner-container" style="margin:0">
+                                            <div
+                                                class="ul-section-heading flex-lg-row flex-column text-md-start text-center">
+
+                                                <div class="left">
+                                                    <div class="ul-most-sell-filter-navs">
+                                                        <button type="button" class="active"
+                                                            data-filter=".course-circullam">
+                                                            Course Curriculum
+                                                        </button>
+                                                        <button type="button" data-filter=".course-eligibility">
+                                                            Course Eligibility
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- products grid -->
+                                            <div
+                                                class="ul-bs-row row row-cols-xl-12 row-cols-lg-12 row-cols-sm-12 row-cols-12 ul-filter-products-wrapper">
+                                                <!-- product card -->
+                                                <div class="mix col- course-eligibility">
+                                                    <ul class="custom-dotted-list">
+                                                        <li>Age - 18 to 65 years. </li>
+                                                        <li>10th Pass Certificate </li>
+                                                        <li>Valid India Passport</li>
+                                                        <li>Medical Fitness Certificate</li>
+                                                        <li>Aadhar card linked with mobile number </li>
+                                                    </ul>
+                                                </div>
+
+                                                <div class="mix col- course-circullam active">
+                                                    <div class="ul-faq">
+                                                        <div class="ul-inner-page-container" style="    padding-top: 0;
+                        margin-top: 12px;
+                        margin-right: auto;
+                        margin-left: auto;">
+                                                            <div class="ul-accordion">
+                                                                <!-- single question -->
+                                                                <div class="ul-single-accordion-item">
+                                                                    <div class="ul-single-accordion-item__header">
+                                                                        <div class="left">
+                                                                            <h3 class="ul-single-accordion-item__title">
+                                                                                Day 1
+                                                                            </h3>
+                                                                        </div>
+                                                                        <span class="icon"><i
+                                                                                class="flaticon-plus"></i></span>
+                                                                    </div>
+
+                                                                    <div class="ul-single-accordion-item__body">
+                                                                        <p class="mb-0">
+                                                                            Nullam faucibus eleifend mi eu varius.
+                                                                            Integer vel tincidunt
+                                                                            massa, quis semper odio. Mauris et mollis
+                                                                            quam. Nullam
+                                                                            fringilla erat id ante commodo sodales. In
+                                                                            maximus ultrices
+                                                                            euismod. Vivamus porta justo ex.
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+
+                                                                <!-- single question -->
+                                                                <div class="ul-single-accordion-item open">
+                                                                    <div class="ul-single-accordion-item__header">
+                                                                        <div class="left">
+                                                                            <h3 class="ul-single-accordion-item__title">
+                                                                                Day 2
+                                                                            </h3>
+                                                                        </div>
+                                                                        <span class="icon"><i
+                                                                                class="flaticon-plus"></i></span>
+                                                                    </div>
+
+                                                                    <div class="ul-single-accordion-item__body">
+                                                                        <p class="mb-0">
+                                                                            Nullam faucibus eleifend mi eu varius.
+                                                                            Integer vel tincidunt
+                                                                            massa, quis semper odio. Mauris et mollis
+                                                                            quam. Nullam
+                                                                            fringilla erat id ante commodo sodales. In
+                                                                            maximus ultrices
+                                                                            euismod. Vivamus porta justo ex.
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+
+                                                                <!-- single question -->
+                                                                <div class="ul-single-accordion-item">
+                                                                    <div class="ul-single-accordion-item__header">
+                                                                        <div class="left">
+                                                                            <h3 class="ul-single-accordion-item__title">
+                                                                                Day 3
+                                                                            </h3>
+                                                                        </div>
+                                                                        <span class="icon"><i
+                                                                                class="flaticon-plus"></i></span>
+                                                                    </div>
+
+                                                                    <div class="ul-single-accordion-item__body">
+                                                                        <p class="mb-0">
+                                                                            Nullam faucibus eleifend mi eu varius.
+                                                                            Integer vel tincidunt
+                                                                            massa, quis semper odio. Mauris et mollis
+                                                                            quam. Nullam
+                                                                            fringilla erat id ante commodo sodales. In
+                                                                            maximus ultrices
+                                                                            euismod. Vivamus porta justo ex.
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+
+                                                                <!-- single question -->
+                                                                <div class="ul-single-accordion-item">
+                                                                    <div class="ul-single-accordion-item__header">
+                                                                        <div class="left">
+                                                                            <h3 class="ul-single-accordion-item__title">
+                                                                                Day 4
+                                                                            </h3>
+                                                                        </div>
+                                                                        <span class="icon"><i
+                                                                                class="flaticon-plus"></i></span>
+                                                                    </div>
+
+                                                                    <div class="ul-single-accordion-item__body">
+                                                                        <p class="mb-0">
+                                                                            Nullam faucibus eleifend mi eu varius.
+                                                                            Integer vel tincidunt
+                                                                            massa, quis semper odio. Mauris et mollis
+                                                                            quam. Nullam
+                                                                            fringilla erat id ante commodo sodales. In
+                                                                            maximus ultrices
+                                                                            euismod. Vivamus porta justo ex.
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+
+                                                                <!-- single question -->
+                                                                <div class="ul-single-accordion-item">
+                                                                    <div class="ul-single-accordion-item__header">
+                                                                        <div class="left">
+                                                                            <h3 class="ul-single-accordion-item__title">
+                                                                                Day 5
+                                                                            </h3>
+                                                                        </div>
+                                                                        <span class="icon"><i
+                                                                                class="flaticon-plus"></i></span>
+                                                                    </div>
+
+                                                                    <div class="ul-single-accordion-item__body">
+                                                                        <p class="mb-0">
+                                                                            Nullam faucibus eleifend mi eu varius.
+                                                                            Integer vel tincidunt
+                                                                            massa, quis semper odio. Mauris et mollis
+                                                                            quam. Nullam
+                                                                            fringilla erat id ante commodo sodales. In
+                                                                            maximus ultrices
+                                                                            euismod. Vivamus porta justo ex.
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+
+                                                                <!-- single question -->
+                                                                <div class="ul-single-accordion-item">
+                                                                    <div class="ul-single-accordion-item__header">
+                                                                        <div class="left">
+                                                                            <h3 class="ul-single-accordion-item__title">
+                                                                                Day 6
+                                                                            </h3>
+                                                                        </div>
+                                                                        <span class="icon"><i
+                                                                                class="flaticon-plus"></i></span>
+                                                                    </div>
+
+                                                                    <div class="ul-single-accordion-item__body">
+                                                                        <p class="mb-0">
+                                                                            Nullam faucibus eleifend mi eu varius.
+                                                                            Integer vel tincidunt
+                                                                            massa, quis semper odio. Mauris et mollis
+                                                                            quam. Nullam
+                                                                            fringilla erat id ante commodo sodales. In
+                                                                            maximus ultrices
+                                                                            euismod. Vivamus porta justo ex.
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
+                                </div>
+                                <!-- MOST SELLING END -->
+
+                                <div>
+                                    <h3 class="ul-product-details-title">
+                                        Who should get this course
+                                    </h3>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <ul class="custom-dotted-list">
+                                                <li>Beginners Pilot </li>
+                                                <li>Experienced Pilot</li>
+                                                <li>Students</li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-6">
+                                            <ul class="custom-dotted-list">
+                                                <li>Content Creators</li>
+                                                <li>Technicians</li>
+                                                <li>Hobbyist</li>
+                                            </ul>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                                <div>
+                                    <h3 class="ul-product-details-title mt-3">
+                                        Certification
+                                    </h3>
+                                    <div class="row">
+                                        <p>Upon successfuly completion of the course. You will receive a recognized
+                                            drone pilot license, certifying your ability to operate drones
+                                            professionally and safely.</p>
+                                    </div>
+                                </div>
+
+
+                                <div>
+                                    <h3 class="ul-product-details-title mt-3">
+                                        Why Choose Us
+                                    </h3>
+                                    <!-- SUB BANNER SECTION START -->
+                                    <div class="ul-container mt-3">
+                                        <section class="ul-sub-banners pb-0">
+                                            <div class="ul-inner-container" style="margin: 0;">
+                                                <div class="row ul-bs-row row-cols-md-3 row-cols-sm-2 row-cols-1">
+                                                    <!-- single sub banner -->
+                                                    <div class="col">
+                                                        <div class="ul-sub-banner">
+                                                            <div class="ul-sub-banner-txt">
+                                                                <div class="top" style="margin-bottom:0px">
+                                                                    <h3 class="ul-sub-banner-title"
+                                                                        style="font-size: 14px;">Expert instructors
+                                                                    </h3>
+                                                                    <p class="ul-sub-banner-descr">Learn from industry
+                                                                        professionals with extensive experience in drone
+                                                                        technology and applications.</p>
+                                                                </div>
+                                                                <!-- <p>Learn from industry professionals with extensive experience in drone technology and applications. </p> -->
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <!-- single sub banner -->
+                                                    <div class="col">
+                                                        <div class="ul-sub-banner ul-sub-banner--2">
+                                                            <div class="ul-sub-banner-txt">
+                                                                <div class="top" style="margin-bottom:0px">
+                                                                    <h3 class="ul-sub-banner-title"
+                                                                        style="font-size: 14px;">Career Support </h3>
+                                                                    <p class="ul-sub-banner-descr">Learn from industry
+                                                                        professionals with extensive experience in drone
+                                                                        technology and applications.</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <!-- single sub banner -->
+                                                    <div class="col">
+                                                        <div class="ul-sub-banner ul-sub-banner--3">
+                                                            <div class="ul-sub-banner-txt">
+                                                                <div class="top" style="margin-bottom:0px">
+                                                                    <h3 class="ul-sub-banner-title"
+                                                                        style="font-size: 14px;">State-of-the-Art
+                                                                        Facilities </h3>
+                                                                    <p class="ul-sub-banner-descr">Learn from industry
+                                                                        professionals with extensive experience in drone
+                                                                        technology and applications.</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="mt-4">Join us and take the first step towards a rewarding
+                                                    career in the rapidly growing field of drone technology. Whether you
+                                                    are a beginner or looking to enhance your existing skills. our
+                                                    courses are designed to help you achieve your goals and soar to new
+                                                    heights. </div>
+                                            </div>
+                                        </section>
+                                    </div>
+
+                                </div>
+
+                                <div>
+                                    <h3 class="ul-product-details-title mt-3">
+                                        Course Trainers
+                                    </h3>
+                                    <div class="card card-body-">
+                                        <div class="row">
+                                            <div class="col-4">
+                                                <img src="assets/img/product-img-4.jpg" alt="">
+                                            </div>
+                                            <div class="col-lg-8 p-3">
+                                                <!-- <h2>kdsnvbjk</h2> -->
+                                                <h4 class="mb-0">Vamsi</h4>
+                                                <div class="mb-2-" style="color:#ef2b58">Senior Pilot</div>
+                                                <div class="mb-2" style="color:#ef2b58">Exp : 8Years</div>
+                                                <p>A drone refers to any aerial vehicle that receives remote commands
+                                                    from a pilot or relies on software for autonomous flight. Many
+                                                    drones display features like cameras for collecting visual data and
+                                                    propellers for stabilizing their flight patterns.
+                                                </p>
+                                                <div class="bottom">
+                                                    <a class="ul-sub-banner-btn"
+                                                        style="color: #ef2b58; border: 1px solid #ef2b58; padding: 12px; border-radius: 29px;">View
+                                                        More <i class="flaticon-up-right-arrow"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card card-body- mt-3 mb-3">
+                                        <div class="row">
+                                            <div class="col-4">
+                                                <img src="assets/img/product-img-4.jpg" alt="">
+                                            </div>
+                                            <div class="col-lg-8 p-3">
+                                                <!-- <h2>kdsnvbjk</h2> -->
+                                                <h4 class="mb-0">Vamsi</h4>
+                                                <div class="mb-2-" style="color:#ef2b58">Senior Pilot</div>
+                                                <div class="mb-2" style="color:#ef2b58">Exp : 8Years</div>
+                                                <p>A drone refers to any aerial vehicle that receives remote commands
+                                                    from a pilot or relies on software for autonomous flight. Many
+                                                    drones display features like cameras for collecting visual data and
+                                                    propellers for stabilizing their flight patterns.
+                                                </p>
+                                                <div class="bottom">
+                                                    <a class="ul-sub-banner-btn"
+                                                        style="color: #ef2b58; border: 1px solid #ef2b58; padding: 12px; border-radius: 29px;">View
+                                                        More <i class="flaticon-up-right-arrow"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card card-body-">
+                                        <div class="row">
+                                            <div class="col-4">
+                                                <img src="assets/img/product-img-4.jpg" alt="">
+                                            </div>
+                                            <div class="col-lg-8 p-3">
+                                                <!-- <h2>kdsnvbjk</h2> -->
+                                                <h4 class="mb-0">Vamsi</h4>
+                                                <div class="mb-2-" style="color:#ef2b58">Senior Pilot</div>
+                                                <div class="mb-2" style="color:#ef2b58">Exp : 8Years</div>
+                                                <p>A drone refers to any aerial vehicle that receives remote commands
+                                                    from a pilot or relies on software for autonomous flight. Many
+                                                    drones display features like cameras for collecting visual data and
+                                                    propellers for stabilizing their flight patterns.
+                                                </p>
+                                                <div class="bottom">
+                                                    <a class="ul-sub-banner-btn"
+                                                        style="color: #ef2b58; border: 1px solid #ef2b58; padding: 12px; border-radius: 29px;">View
+                                                        More <i class="flaticon-up-right-arrow"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <h3 class="ul-product-details-title mt-5">
+                                        Course Gallery
+                                    </h3>
+
+                                    <!-- GALLERY SECTION START -->
+                                    <div class="ul-gallery overflow-hidden mx-auto">
+                                        <div class="ul-gallery-slider swiper">
+                                            <div class="swiper-wrapper">
+                                                <!-- single gallery item -->
+                                                <div class="ul-gallery-item swiper-slide">
+                                                    <img src="assets/img/gallery-item-1.jpg" alt="Gallery Image" />
+                                                    <div class="ul-gallery-item-btn-wrapper">
+                                                        <a href="assets/img/gallery-item-1.jpg"
+                                                            data-fslightbox="gallery"><i
+                                                                class="flaticon-instagram"></i></a>
+                                                    </div>
+                                                </div>
+
+                                                <!-- single gallery item -->
+                                                <div class="ul-gallery-item swiper-slide">
+                                                    <img src="assets/img/gallery-item-2.jpg" alt="Gallery Image" />
+                                                    <div class="ul-gallery-item-btn-wrapper">
+                                                        <a href="assets/img/gallery-item-2.jpg"
+                                                            data-fslightbox="gallery"><i
+                                                                class="flaticon-instagram"></i></a>
+                                                    </div>
+                                                </div>
+
+                                                <!-- single gallery item -->
+                                                <div class="ul-gallery-item swiper-slide">
+                                                    <img src="assets/img/gallery-item-3.jpg" alt="Gallery Image" />
+                                                    <div class="ul-gallery-item-btn-wrapper">
+                                                        <a href="assets/img/gallery-item-3.jpg"
+                                                            data-fslightbox="gallery"><i
+                                                                class="flaticon-instagram"></i></a>
+                                                    </div>
+                                                </div>
+
+                                                <!-- single gallery item -->
+                                                <div class="ul-gallery-item swiper-slide">
+                                                    <img src="assets/img/gallery-item-4.jpg" alt="Gallery Image" />
+                                                    <div class="ul-gallery-item-btn-wrapper">
+                                                        <a href="assets/img/gallery-item-4.jpg"
+                                                            data-fslightbox="gallery"><i
+                                                                class="flaticon-instagram"></i></a>
+                                                    </div>
+                                                </div>
+
+                                                <!-- single gallery item -->
+                                                <div class="ul-gallery-item swiper-slide">
+                                                    <img src="assets/img/gallery-item-5.jpg" alt="Gallery Image" />
+                                                    <div class="ul-gallery-item-btn-wrapper">
+                                                        <a href="assets/img/gallery-item-5.jpg"
+                                                            data-fslightbox="gallery"><i
+                                                                class="flaticon-instagram"></i></a>
+                                                    </div>
+                                                </div>
+
+                                                <!-- single gallery item -->
+                                                <div class="ul-gallery-item swiper-slide">
+                                                    <img src="assets/img/gallery-item-6.jpg" alt="Gallery Image" />
+                                                    <div class="ul-gallery-item-btn-wrapper">
+                                                        <a href="assets/img/gallery-item-6.jpg"
+                                                            data-fslightbox="gallery"><i
+                                                                class="flaticon-instagram"></i></a>
+                                                    </div>
+                                                </div>
+
+                                                <!-- single gallery item -->
+                                                <div class="ul-gallery-item swiper-slide">
+                                                    <img src="assets/img/gallery-item-1.jpg" alt="Gallery Image" />
+                                                    <div class="ul-gallery-item-btn-wrapper">
+                                                        <a href="assets/img/gallery-1.html" data-fslightbox="gallery"><i
+                                                                class="flaticon-instagram"></i></a>
+                                                    </div>
+                                                </div>
+
+                                                <!-- single gallery item -->
+                                                <div class="ul-gallery-item swiper-slide">
+                                                    <img src="assets/img/gallery-item-2.jpg" alt="Gallery Image" />
+                                                    <div class="ul-gallery-item-btn-wrapper">
+                                                        <a href="assets/img/gallery-item-2.jpg"
+                                                            data-fslightbox="gallery"><i
+                                                                class="flaticon-instagram"></i></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- GALLERY SECTION END -->
+                                </div>
+
+                                <div class="row">
+                                    <h2 class="ul-product-details-title mt-3">
+                                        Student Reviews
+                                    </h2>
+                                    <div class="col-4">
+                                        <div class="ul-review">
+                                            <div class="ul-review-rating">
+                                                <i class="flaticon-star"></i>
+                                                <i class="flaticon-star"></i>
+                                                <i class="flaticon-star"></i>
+                                                <i class="flaticon-star"></i>
+                                                <i class="flaticon-star-3"></i>
+                                            </div>
+                                            <p class="ul-review-descr">
+                                                Praesent ut lacus a velit tincidunt aliquam a eget urna. Sed
+                                                ullamcorper tristique nisl at pharetra turpis accumsan et
+                                                etiam eu sollicitudin eros. In imperdiet accumsan.
+                                            </p>
+                                            <div class="ul-review-bottom">
+                                                <div class="ul-review-reviewer">
+                                                    <div class="reviewer-image">
+                                                        <img src="assets/img/review-author-1.png"
+                                                            alt="reviewer image" />
+                                                    </div>
+                                                    <div>
+                                                        <h3 class="reviewer-name">Esther Howard</h3>
+                                                        <span class="reviewer-role">Web Designer</span>
+                                                    </div>
+                                                </div>
+
+                                                <!-- icon -->
+                                                <div class="ul-review-icon">
+                                                    <i class="flaticon-left"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-4">
+                                        <div class="ul-review">
+                                            <div class="ul-review-rating">
+                                                <i class="flaticon-star"></i>
+                                                <i class="flaticon-star"></i>
+                                                <i class="flaticon-star"></i>
+                                                <i class="flaticon-star"></i>
+                                                <i class="flaticon-star-3"></i>
+                                            </div>
+                                            <p class="ul-review-descr">
+                                                Praesent ut lacus a velit tincidunt aliquam a eget urna. Sed
+                                                ullamcorper tristique nisl at pharetra turpis accumsan et
+                                                etiam eu sollicitudin eros. In imperdiet accumsan.
+                                            </p>
+                                            <div class="ul-review-bottom">
+                                                <div class="ul-review-reviewer">
+                                                    <div class="reviewer-image">
+                                                        <img src="assets/img/review-author-1.png"
+                                                            alt="reviewer image" />
+                                                    </div>
+                                                    <div>
+                                                        <h3 class="reviewer-name">Esther Howard</h3>
+                                                        <span class="reviewer-role">Web Designer</span>
+                                                    </div>
+                                                </div>
+
+                                                <!-- icon -->
+                                                <div class="ul-review-icon">
+                                                    <i class="flaticon-left"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-4">
+                                        <div class="ul-review">
+                                            <div class="ul-review-rating">
+                                                <i class="flaticon-star"></i>
+                                                <i class="flaticon-star"></i>
+                                                <i class="flaticon-star"></i>
+                                                <i class="flaticon-star"></i>
+                                                <i class="flaticon-star-3"></i>
+                                            </div>
+                                            <p class="ul-review-descr">
+                                                Praesent ut lacus a velit tincidunt aliquam a eget urna. Sed
+                                                ullamcorper tristique nisl at pharetra turpis accumsan et
+                                                etiam eu sollicitudin eros. In imperdiet accumsan.
+                                            </p>
+                                            <div class="ul-review-bottom">
+                                                <div class="ul-review-reviewer">
+                                                    <div class="reviewer-image">
+                                                        <img src="assets/img/review-author-1.png"
+                                                            alt="reviewer image" />
+                                                    </div>
+                                                    <div>
+                                                        <h3 class="reviewer-name">Esther Howard</h3>
+                                                        <span class="reviewer-role">Web Designer</span>
+                                                    </div>
+                                                </div>
+
+                                                <!-- icon -->
+                                                <div class="ul-review-icon">
+                                                    <i class="flaticon-left"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <!-- txt -->
+                        <div class="col-3">
+                            <div class="course-card" style="background: #ffc0c0;  padding: 10px; border-radius: 10px;">
+                                <div class="card-header">
+                                  <h3>Course Fee</h3>
+                                  <!-- <span class="icon">↗</span> -->
+                                </div>
+                              
+                                <div class="course-price">
+                                  <p class="main-price mb-0" style="font-weight: 500;">₹ 20000 <span>/-</span></p>
+                                  <p class="advance-text mb-0" style="font-size: 13px; line-height: 20px;">Book this course with an Advance Payment</p>
+                                  <p class="advance-price mb-0" style="font-weight:bold">₹ 400 <span>/-</span></p>
+                                  <p class="info-text mb-1" style="font-size: 13px; line-height: 20px;">
+                                    Remaining amount will be paid by the student to the training institute before the course starts.
+                                  </p>
+                                </div>
+                              
+                                <button class="book-btn mt-1" style="border: 1px solid #ef2b58; border-radius: 5px;">BOOK NOW</button>
+                              </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+            </div>
+        </div>
+        <!-- MAIN CONTENT SECTION END -->
+    </main>
+
+    <!-- FOOTER SECTION START -->
+    <footer class="ul-footer">
+        <div class="ul-inner-container">
+            <div class="ul-footer-top">
+                <!-- single links column -->
+                <div class="ul-footer-top-widget">
+                    <h3 class="ul-footer-top-widget-title">Brands</h3>
+
+                    <div class="ul-footer-top-widget-links">
+                        <a href="#">Zara</a>
+                        <a href="#">Guess</a>
+                        <a href="#">Mango</a>
+                        <a href="#">LCWaikiki</a>
+                        <a href="#">Monda</a>
+                    </div>
+                </div>
+
+                <!-- single links column -->
+                <div class="ul-footer-top-widget">
+                    <h3 class="ul-footer-top-widget-title">Categories</h3>
+
+                    <div class="ul-footer-top-widget-links">
+                        <a href="#">Watches</a>
+                        <a href="#">Watch Accessories</a>
+                        <a href="#">Clocks</a>
+                        <a href="#">Jewellery</a>
+                        <a href="#">Women’s Collection</a>
+                    </div>
+                </div>
+
+                <!-- single links column -->
+                <div class="ul-footer-top-widget">
+                    <h3 class="ul-footer-top-widget-title">Accessories</h3>
+
+                    <div class="ul-footer-top-widget-links">
+                        <a href="#">Order Tracking</a>
+                        <a href="#">Terms & Conditions</a>
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Tutorials</a>
+                        <a href="#">FAQ</a>
+                    </div>
+                </div>
+
+                <!-- single links column -->
+                <div class="ul-footer-top-widget">
+                    <h3 class="ul-footer-top-widget-title">Services</h3>
+
+                    <div class="ul-footer-top-widget-links">
+                        <a href="#">Sale</a>
+                        <a href="#">Quick Ship</a>
+                        <a href="#">New Designs</a>
+                        <a href="#">Protection Plan</a>
+                        <a href="#">Gift Cards</a>
+                    </div>
+                </div>
+
+                <!-- single links column -->
+                <div class="ul-footer-top-widget">
+                    <h3 class="ul-footer-top-widget-title">Policies</h3>
+
+                    <div class="ul-footer-top-widget-links">
+                        <a href="#">Policy</a>
+                        <a href="#">Dressy Inside</a>
+                        <a href="#">About Us</a>
+                        <a href="#">Company</a>
+                        <a href="#">Careers</a>
+                    </div>
+                </div>
+
+                <!-- single links column -->
+                <div class="ul-footer-top-widget">
+                    <h3 class="ul-footer-top-widget-title">Help</h3>
+
+                    <div class="ul-footer-top-widget-links">
+                        <a href="#">Contact us</a>
+                        <a href="#">About us</a>
+                        <a href="#">Reviews</a>
+                        <a href="#">Terms of Service</a>
+                        <a href="#">Refund policy</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ul-footer-middle">
+                <!-- single widget -->
+                <div class="ul-footer-middle-widget">
+                    <h3 class="ul-footer-middle-widget-title">Download Our Apps</h3>
+                    <div class="ul-footer-middle-widget-content">
+                        <div class="app-links">
+                            <a href="#"><img src="assets/img/android.png" alt="Play Store Link Image" /></a>
+                            <a href="#"><img src="assets/img/ios.png" alt="App Store Link Image" /></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- single widget -->
+                <div class="ul-footer-middle-widget">
+                    <h3 class="ul-footer-middle-widget-title">Follow us</h3>
+                    <div class="ul-footer-middle-widget-content">
+                        <div class="social-links">
+                            <a href="#"><i class="flaticon-facebook-app-symbol"></i></a>
+                            <a href="#"><i class="flaticon-twitter"></i></a>
+                            <a href="#"><i class="flaticon-linkedin-big-logo"></i></a>
+                            <a href="#"><i class="flaticon-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- single widget -->
+                <div class="ul-footer-middle-widget">
+                    <h3 class="ul-footer-middle-widget-title">Need help? Call now!</h3>
+                    <div class="ul-footer-middle-widget-content">
+                        <div class="contact-nums">
+                            <a href="tel:+91 8297627609">+91 8297627609</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- single widget -->
+                <div class="ul-footer-middle-widget align-self-center">
+                    <a href="index.html"><img src="assets/img/logo-white.png" alt="logo" class="logo" /></a>
+                </div>
+            </div>
+
+            <div class="ul-footer-bottom">
+                <p class="copyright-txt">
+                    Copyright 2024 ©
+                    <a href="https://vamsi.com/" class="ul-footer-bottom-link">Vamsi</a>
+                </p>
+                <img src="assets/img/payment-methods.png" alt="payment methods logos" />
+            </div>
+        </div>
+    </footer>
+    <!-- FOOTER SECTION END -->
+
+    <!-- libraries JS -->
+    <script src="assets/vendor/bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/splide/splide.min.js"></script>
+    <script src="assets/vendor/splide/splide-extension-auto-scroll.min.js"></script>
+    <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="assets/vendor/slim-select/slimselect.min.js"></script>
+    <script src="assets/vendor/animate-wow/wow.min.js"></script>
+    <script src="assets/vendor/splittype/index.min.js"></script>
+    <script src="assets/vendor/mixitup/mixitup.min.js"></script>
+    <script src="assets/vendor/fslightbox/fslightbox.js"></script>
+
+    <!-- custom JS -->
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/accordion.js"></script>
+</body>
+
+<!-- Mirrored from glamics.temptics.com/shop-details.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 27 Dec 2024 15:37:07 GMT -->
+
+</html>

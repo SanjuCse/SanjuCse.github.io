@@ -1964,7 +1964,7 @@ button {
 }
 
 .ul-blogs {
-  padding: clamp(40px, 4.2vw, 80px) 0;
+  padding: clamp(5px, 0px, 80px) 0;
 }
 .ul-blogs-heading-btn {
   display: inline-flex;
@@ -3990,4 +3990,231 @@ button {
 
 .ul-ad-img > img {
   height: 250px;
+}
+
+.ul-ad-breadcrumb{
+background: var(--ul-gradient);
+    padding-top: clamp(37px, 3vw, 57px);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+/* =======Clients css===== */
+
+.logo-slider {
+  overflow: hidden;
+  padding: 30px 0 0 0;
+  white-space: nowrap;
+  position: relative;
+}
+
+.logo-slider:hover .logos-slide {
+  animation-play-state: paused;
+}
+
+.logos-slide {
+  display: inline-block;
+  animation: 45s slide infinite linear;
+}
+
+.logos-slide img {
+  width: 183px;
+  height: 83px;
+  margin: 0 40px;
+}
+
+
+@keyframes slide {
+  from {
+      transform: translateX(0);
+  }
+
+  to {
+      transform: translateX(-100%);
+  }
+}
+
+ /* ========= list items */
+
+        /* Custom dotted list styling */
+        .custom-dotted-list {
+          list-style: none;
+          /* Remove default bullets */
+          padding: 0;
+          margin: 0;
+      }
+
+      .custom-dotted-list li {
+          position: relative;
+          padding-left: 40px;
+          /* Space for the dot */
+          margin-bottom: 15px;
+          font-size: 16px;
+          color: #333;
+      }
+
+      /* Outer Circle (Border) */
+      .custom-dotted-list li::before {
+          content: '';
+          position: absolute;
+          left: 0;
+          top: 4px;
+          width: 18px;
+          /* Outer size */
+          height: 18px;
+          background-color: transparent;
+          /* Transparent background */
+          border: 2px solid #ef2b58;
+          /* Black outer border */
+          border-radius: 50%;
+          /* Circle shape */
+          display: flex;
+          align-items: center;
+          justify-content: center;
+      }
+
+      /* Inner Circle (Colored Dot with space) */
+      .custom-dotted-list li::after {
+          content: '';
+          position: absolute;
+          left: 5px;
+          /* Centers the inner dot */
+          top: 9px;
+          width: 8px;
+          /* Inner dot size */
+          height: 8px;
+          background-color: #ef2b58;
+          /* Blue inner dot */
+          border-radius: 50%;
+          transition: background-color 0.3s ease;
+      }
+
+      /* Hover effect for inner dot and text */
+      .custom-dotted-list li:hover::after {
+          background-color: #ef2b58;
+          /* Change inner dot color on hover */
+      }
+
+      .custom-dotted-list li:hover {
+          color: #ef2b58;
+          /* Change text color on hover */
+      }
+      /* =============== */
+
+/* =================Jobs Section =============== */
+
+/* Section styling */
+.jobs-section {
+  text-align: center;
+  background-color: #f9fbfc;
+  padding: 40px 20px;
+}
+
+.jobs-section h2 {
+  font-size: 32px;
+  color: #222;
+  margin-bottom: 8px;
+}
+
+.jobs-section p {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 30px;
+}
+
+/* Job Cards container */
+.jobs-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+/* Job Card styling */
+.job-card {
+  width: 300px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+  text-align: left;
+  transition: transform 0.3s ease;
+}
+
+.job-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Header date and tag */
+.job-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.job-date {
+  font-size: 14px;
+  color: #888;
+}
+
+.job-tag {
+  background-color: var(--ul-primary);
+  color: #fff;
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 20px;
+}
+
+/* Company Logo */
+.company-logo {
+  width: 60px;
+  margin-bottom: 10px;
+}
+
+/* Job title */
+.job-card h3 {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+/* Company Name */
+.company-name {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+/* Location */
+.job-location {
+  font-size: 13px;
+  color:var(--ul-primary);
+  display: flex;
+  align-items: center;
+}
+
+.location-icon {
+  margin-right: 5px;
+}
+
+/* View All Button */
+.view-all-btn {
+  margin-top: 30px;
+  padding: 12px 25px;
+  background-color: var(--ul-primary);
+  color: #fff;
+  border: none;
+  border-radius: 25px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.view-all-btn:hover {
+  background-color: var(--ul-primary);
 }
