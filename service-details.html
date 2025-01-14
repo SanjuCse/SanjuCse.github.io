@@ -413,7 +413,9 @@
               <button class="ul-header-mobile-search-opener d-xxl-none">
                 <i class="flaticon-search-interface-symbol"></i>
               </button>
-              <button><i class="flaticon-user"></i></button>
+              <a href="login.html" style="color:#163260">
+                  <i class="flaticon-user"></i>
+                </a>
               <a href="wishlist.html"><i class="flaticon-heart"></i></a>
               <a href="cart.html"><i class="flaticon-shopping-bag"></i></a>
             </div>
@@ -438,7 +440,7 @@
         <div class="ul-ad-content">
           <div class="ul-ad-txt">
            
-            <h2 class="ul-section-title">Get 30% Discount On All Hudis!</h2>
+            <h2 class="ul-section-title" style="color:#fff">Get 30% Discount On All Hudis!</h2>
             <div class="ul-ad-categories">
               <span class="category"
                 ><span><i class="flaticon-check-mark"></i></span>Zara</span
@@ -514,6 +516,7 @@
               <!-- txt -->
               <div class="col">
                 <div class="ul-product-details-txt">
+                  <span class="ul-product-details-price">Front view modern dark sunglasses</span>
                   <!-- product rating -->
                   <div class="ul-product-details-rating">
                     <span class="rating">
@@ -531,7 +534,8 @@
 
                   <!-- product title -->
                   <h3 class="ul-product-details-title">
-                    Front view modern dark sunglasses
+                    Vamsi Kuraku
+                    <div style="font-size:13px; color: #42a9a0;">5 Years expericence</div>
                   </h3>
 
                   <!-- product description -->
@@ -725,10 +729,11 @@
             aria-labelledby="exampleModalLabel"
             aria-hidden="true"
           >
-            <div class="modal-dialog">
-              <div class="modal-content">
+            <div class="modal-dialog modal-dialog-centered">
+              <!-- linear-gradient(90deg, var(#163260) 0%, var(#42a9a0) 100%); -->
+              <div class="modal-content" style="background: var(--ul-gradient);">
                 <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">
+                  <h5 class="modal-title" id="exampleModalLabel" style="color: #fff;">
                     Book a Service
                   </h5>
                   <button
@@ -741,9 +746,33 @@
                   </button>
                 </div>
                 <div class="modal-body" style="padding: 0rem">
-                  <div class="container mt-5">
+                  <div class="container mt-3">
                     <div class="form-group">
-                      <label for="datetimepicker">Choose Date and Time</label>
+                      <label for="datetimepicker" style="color: #fff;">Enter Location</label>
+                      <div
+                        class="input"
+                        id="datetimepicker"
+                        data-target-input="nearest"
+                      >
+                        <input
+                          type="text"
+                          class="form-control datetimepicker-input"
+                          data-target="#datetimepicker"
+                        />
+                        <div
+                          class="input-group-append"
+                          data-target="#datetimepicker"
+                          data-toggle="datetimepicker"
+                        >
+                          <!-- <div class="input-group-text">
+                            <i class="fa fa-calendar"></i>
+                          </div> -->
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="datetimepicker" style="color: #fff;">Choose Date and Time</label>
                       <div
                         class="input-group date"
                         id="datetimepicker"
@@ -759,9 +788,9 @@
                           data-target="#datetimepicker"
                           data-toggle="datetimepicker"
                         >
-                          <div class="input-group-text">
+                          <!-- <div class="input-group-text">
                             <i class="fa fa-calendar"></i>
-                          </div>
+                          </div> -->
                         </div>
                       </div>
                     </div>
@@ -772,24 +801,21 @@
                     type="button"
                     class="btn btn-secondary"
                     data-dismiss="modal"
+                    style="border-radius: 20px; background: #7b7b7b;"
                   >
                     Close
                   </button>
                   <!-- <button type="button" class="btn btn-primary">Book</button> -->
                   <button
                     style="
-                      background: linear-gradient(
-                        -90deg,
-                        var(--ul-primary) 0%,
-                        var(--ul-secondary) 100%
-                      );
+                      background-color: #163260;
                       padding: 7px;
                       border-radius: 20px;
                       color: #fff;
                     "
                   >
                     Book a Service
-                    <span class="icon"><i class="flaticon-cart"></i></span>
+                    <!-- <span class="icon"><i class="flaticon-cart"></i></span> -->
                   </button>
                 </div>
               </div>

@@ -42,7 +42,9 @@ CSS INDEX
   --white: #fff;
   --ul-primary: #EF2853;
   --ul-secondary: #FFA31A;
-  --ul-gradient: linear-gradient(90deg, var(--ul-primary) 0%, var(--ul-secondary) 100%);
+  --ul-primary1: #163260;
+  --ul-secondary1: #42a9a0;
+  --ul-gradient: linear-gradient(90deg, var(--ul-primary1) 0%, var(--ul-secondary1) 100%);
   --font-primary: "Jost", sans-serif;
 }
 
@@ -3309,7 +3311,7 @@ button {
   border-radius: 999px;
 }
 .ul-checkout-form-btn:hover {
-  background-color: var(--black);
+  background-color: #42a9a0;
 }
 .ul-checkout-payment-methods {
   background-color: #f4fffe8c;
