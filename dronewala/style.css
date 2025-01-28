@@ -5742,3 +5742,13 @@ li.Dronewala-dropdown-menu .dropdown-trigger-btn.active i {
   margin-left: 0;
   margin-right: 1rem;
 }
+
+.view-btn{
+      border: 1px solid #ea4c62;
+    padding: 0px 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #ea4c62 !important;
+    font-weight: 400 !important;
+}
