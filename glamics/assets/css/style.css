@@ -54,7 +54,7 @@ html {
 }
 
 body {
-  font-family: var(--font-primary);
+  font-family: var(--font-primary) !important;
   margin: auto;
   overflow: hidden;
   position: fixed;
@@ -172,7 +172,7 @@ button {
 
 @media screen and (max-width: 479px) {
   .row-cols-xxs-1>* {
-    width: 100%;
+    /* width: 100%; */
   }
 }
 
@@ -2446,7 +2446,7 @@ button {
 }
 
 .ul-footer {
-  background-color: var(--black);
+  background-color: #163260;
 }
 
 .ul-footer-top {
@@ -5098,5 +5098,23 @@ button {
 .ul-checkout-payment-methods {
   text-align: center;
 }
-
+.ul-products-search-form {
+  border: 1px solid #42a9a0;
 }
+
+.ss-main {
+  border: 1px solid #42a9a0;
+  height: 44px;
+  border-radius: 10px;
+}
+
+.ul-ad-breadcrumb-2 {
+  /* background: var(--ul-gradient); */
+  padding-top: clamp(0px, 3vw, 57px);
+  /* position: relative;
+  overflow: hidden;
+  z-index: 1; */
+  display:none;
+}
+}
+
