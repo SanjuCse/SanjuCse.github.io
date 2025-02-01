@@ -242,11 +242,14 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
     // reviews slider
     new Swiper(".ul-reviews-slider", {
-        slidesPerView: 1,
+        slidesPerView: 2,
         loop: true,
         autoplay: false,
         spaceBetween: 15,
         breakpoints: {
+            600: {
+                slidesPerView: 2,
+            },
             768: {
                 slidesPerView: 2,
             },
