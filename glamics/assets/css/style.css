@@ -842,9 +842,13 @@ button {
 }
 
 .ul-header-nav a {
-  color: var(--black);
+  /* color: var(--black);
+  font-size: clamp(13px, 0.84vw, 16px);
+  text-transform: uppercase; */
+  color: #163260;
   font-size: clamp(13px, 0.84vw, 16px);
   text-transform: uppercase;
+  font-weight: bold;
 }
 
 .ul-header-nav a:hover {
@@ -1549,7 +1553,9 @@ button {
 .ul-product {
   background-color: var(--white);
   border-radius: 20px;
-  padding: clamp(0px, 1vw, 10px);
+  /* padding: clamp(0px, 1vw, 10px); */
+      padding: 13px 9px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
 }
 
 .ul-product:hover .ul-product-img img {
@@ -1579,13 +1585,19 @@ button {
 }
 
 .ul-product-discount-tag {
-  background-color: #42a9a0;
+  /* background-color: #42a9a0;
   ;
   border-radius: 999px;
   color: var(--white);
   padding: clamp(2px, 0.26vw, 5px) clamp(7px, 0.53vw, 10px);
   font-weight: 500;
-  font-size: clamp(9px, 0.63vw, 12px);
+  font-size: clamp(9px, 0.63vw, 12px); */
+  background-color: #42a9a0;
+    border-radius: 999px;
+    color: var(--white);
+    padding: 4px 3px;
+    font-weight: 500;
+    font-size: 8px;
 }
 
 .ul-product-img {
@@ -1641,13 +1653,15 @@ button {
 
 .ul-product-title {
   margin-bottom: 4px;
+  
 }
 
 .ul-product-title a {
   font-weight: 500;
   font-size: clamp(17px, 1.05vw, 20px);
   /* color: var(--black); */
-  color: #163260;
+  /* color: #163260; */
+  color:black
 }
 
 .ul-product-title a:hover {
@@ -1662,9 +1676,10 @@ button {
 .ul-product-category a {
   font-size: clamp(11px, 0.74vw, 14px);
   /* color: var(--ul-primary); */
-  color: #163260;
-  font-weight: 400;
-  text-transform: uppercase;
+     color: #fff;
+    font-weight: 400;
+    text-transform: uppercase;
+    background: #163260;
 }
 
 .ul-most-selling-products {
@@ -1739,7 +1754,7 @@ button {
 }
 
 .ul-product-horizontal .ul-product-category a {
-  color: #163260;
+  color: #fff;
 }
 
 .ul-product-horizontal .ul-product-category a:hover {
@@ -4738,7 +4753,7 @@ button {
   height: 18px;
   background-color: transparent;
   /* Transparent background */
-  border: 2px solid #42a9a0;
+  border: 2px solid #163260;
   /* Black outer border */
   border-radius: 50%;
   /* Circle shape */
@@ -4757,7 +4772,7 @@ button {
   width: 8px;
   /* Inner dot size */
   height: 8px;
-  background-color: #42a9a0;
+  background-color: #163260;
   /* Blue inner dot */
   border-radius: 50%;
   transition: background-color 0.3s ease;
@@ -4765,7 +4780,7 @@ button {
 
 /* Hover effect for inner dot and text */
 .custom-dotted-list li:hover::after {
-  background-color: #42a9a0;
+  background-color: #163260;
   /* Change inner dot color on hover */
 }
 
@@ -5115,6 +5130,20 @@ button {
   overflow: hidden;
   z-index: 1; */
   display:none;
+}
+
+.ul-product-title {
+      margin-bottom: 4px;
+    /* line-height: 11px; */
+    font-size: 15px;
+}
+
+.ul-product-horizontal {
+  display: inline-block !important;
+  width: 100%;
+}
+.ul-header-bottom{
+    padding: 0 10px;
 }
 }
 

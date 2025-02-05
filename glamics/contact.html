@@ -16,6 +16,22 @@
 
     <!-- custom CSS -->
     <link rel="stylesheet" href="assets/css/style.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <style>
+      .ss-main {
+        padding: 14px;
+        border-radius: 30px;
+      }
+      @media only screen and (min-width: 768px) {
+        .mt_3 {
+          margin-top: 1rem !important;
+        }
+      }
+    </style>
   </head>
 
   <body>
@@ -24,7 +40,7 @@
     </div>
 
     <!-- SIDEBAR SECTION START -->
-   <div class="ul-sidebar" style="display:none">
+    <div class="ul-sidebar" style="display: none">
       <!-- header -->
       <div class="ul-sidebar-header">
         <div class="ul-sidebar-header-logo">
@@ -191,9 +207,48 @@
     <!-- HEADER SECTION START -->
     <header class="ul-header">
       <!-- header top -->
-      <div class="ul-header-top" style="display: none">
+      <div class="ul-header-top">
         <div class="ul-header-top-slider splide">
-          <div class="splide__track">
+          <div class="row">
+            <div class="col-lg-5 d-none d-md-block">
+              <img
+                src="assets/img/logo-white.png"
+                style="height: 80px"
+                alt=""
+              />
+            </div>
+            <div class="col-lg-4">
+              <!-- country -->
+              <div class="form-group ul-checkout-country-wrapper mt_3">
+                <!-- <label for="ul-checkout-country">Country*</label> -->
+                <select name="country" id="ul-checkout-country">
+                  <option data-placeholder="true">Select Location</option>
+                  <option value="2">United States</option>
+                  <option value="3">United Kingdom</option>
+                  <option value="4">Germany</option>
+                  <option value="5">France</option>
+                  <option value="6">India</option>
+                </select>
+              </div>
+            </div>
+
+            <div
+              class="col-lg-3 d-none d-md-block"
+              style="float: right; text-align: end"
+            >
+              <div style="color: #fff">
+                <i class="fa fa-phone"></i> 912345678
+              </div>
+              <div style="color: #fff">
+                <i class="fa fa-envelope"></i> kurakuvamsi27@gmail.com
+              </div>
+              <div style="color: #fff">
+                <i class="fa fa-map-marker"></i> Hyderabad
+              </div>
+            </div>
+          </div>
+
+          <div class="splide__track d-none">
             <ul class="splide__list">
               <li class="splide__slide">
                 <p class="ul-header-top-slider-item">
@@ -407,9 +462,9 @@
               <button class="ul-header-mobile-search-opener d-xxl-none">
                 <i class="flaticon-search-interface-symbol"></i>
               </button>
-              <a href="login.html" style="color:#163260">
-                  <i class="flaticon-user"></i>
-                </a>
+              <a href="login.html" style="color: #163260">
+                <i class="flaticon-user"></i>
+              </a>
               <a href="wishlist.html"><i class="flaticon-heart"></i></a>
               <a href="cart.html"><i class="flaticon-shopping-bag"></i></a>
             </div>
@@ -428,41 +483,42 @@
 
     <main>
       <!-- AD SECTION START -->
-   <div class="ul-container">
-    <section class="ul-ad-breadcrumb">
-      <div class="ul-inner-container">
-        <div class="ul-ad-content">
-          <div class="ul-ad-txt">
-           
-            <h2 class="ul-section-title" style="color:#fff">Get 30% Discount On All Drones!</h2>
-            <div class="ul-ad-categories">
-              <span class="category"
-                ><span><i class="flaticon-check-mark"></i></span>Zara</span
-              >
-              <span class="category"
-                ><span><i class="flaticon-check-mark"></i></span>Gucie</span
-              >
-              <span class="category"
-                ><span><i class="flaticon-check-mark"></i></span>Publo</span
-              >
-              <span class="category"
-                ><span><i class="flaticon-check-mark"></i></span>Men's</span
-              >
-              <span class="category"
-                ><span><i class="flaticon-check-mark"></i></span
-                >Women's</span
-              >
+      <div class="ul-container">
+        <section class="ul-ad-breadcrumb">
+          <div class="ul-inner-container">
+            <div class="ul-ad-content">
+              <div class="ul-ad-txt">
+                <h2 class="ul-section-title" style="color: #fff">
+                  Get 30% Discount On All Drones!
+                </h2>
+                <div class="ul-ad-categories">
+                  <span class="category"
+                    ><span><i class="flaticon-check-mark"></i></span>Zara</span
+                  >
+                  <span class="category"
+                    ><span><i class="flaticon-check-mark"></i></span>Gucie</span
+                  >
+                  <span class="category"
+                    ><span><i class="flaticon-check-mark"></i></span>Publo</span
+                  >
+                  <span class="category"
+                    ><span><i class="flaticon-check-mark"></i></span>Men's</span
+                  >
+                  <span class="category"
+                    ><span><i class="flaticon-check-mark"></i></span
+                    >Women's</span
+                  >
+                </div>
+              </div>
+
+              <div class="ul-ad-img">
+                <img src="assets/img/drones/drone-1.png" alt="Ad Image" />
+              </div>
             </div>
           </div>
-
-          <div class="ul-ad-img">
-            <img src="assets/img/drones/drone-1.png" alt="Ad Image" />
-          </div>
-        </div>
+        </section>
       </div>
-    </section>
-  </div>
-  <!-- AD SECTION END -->
+      <!-- AD SECTION END -->
 
       <!-- CONTACT INFO SECTION START -->
       <section class="ul-contact-infos">
@@ -594,7 +650,7 @@
           <div class="ul-footer-top-widget">
             <h3 class="ul-footer-top-widget-title">Brands</h3>
 
-           <div class="ul-footer-top-widget-links">
+            <div class="ul-footer-top-widget-links">
               <a href="#">DJ Drones</a>
               <a href="#">Agmay Drones</a>
               <a href="#">Drone Acharya</a>
@@ -620,7 +676,7 @@
           <div class="ul-footer-top-widget">
             <h3 class="ul-footer-top-widget-title">Accessories</h3>
 
-           <div class="ul-footer-top-widget-links">
+            <div class="ul-footer-top-widget-links">
               <a href="#">Camera</a>
               <a href="#">Batteries</a>
               <a href="#">Propeller</a>

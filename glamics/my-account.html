@@ -33,7 +33,23 @@
       crossorigin="anonymous"
     ></script>
 
+    <!-- custom CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+
     <style>
+      .ss-main {
+        padding: 14px;
+        border-radius: 30px;
+      }
+      @media only screen and (min-width: 768px) {
+        .mt_3 {
+          margin-top: 1rem !important;
+        }
+      }
+
       .nav-pills .nav-link.active,
       .nav-pills .show > .nav-link {
         color: var(--bs-nav-pills-link-active-color);
@@ -238,9 +254,51 @@
     <!-- HEADER SECTION START -->
     <header class="ul-header">
       <!-- header top -->
-      <div class="ul-header-top" style="display: none">
+      <div class="ul-header-top">
+        <div class="row">
+          <div class="col-lg-5 d-none d-md-block">
+            <img src="assets/img/logo-white.png" style="height: 80px" alt="" />
+          </div>
+          <div class="col-lg-4">
+            <!-- country -->
+            <div class="form-group ul-checkout-country-wrapper mt_3">
+              <!-- <label for="ul-checkout-country">Country*</label> -->
+              <select
+                name="country"
+                id="ul-checkout-country"
+                style="
+                  width: 100% !important;
+                  padding: 11px 0px;
+                  border-radius: 30px;
+                "
+              >
+                <option data-placeholder="true">Select Location</option>
+                <option value="2">United States</option>
+                <option value="3">United Kingdom</option>
+                <option value="4">Germany</option>
+                <option value="5">France</option>
+                <option value="6">India</option>
+              </select>
+            </div>
+          </div>
+
+          <div
+            class="col-lg-3 d-none d-md-block"
+            style="float: right; text-align: end"
+          >
+            <div style="color: #fff"><i class="fa fa-phone"></i> 912345678</div>
+            <div style="color: #fff">
+              <i class="fa fa-envelope"></i> kurakuvamsi27@gmail.com
+            </div>
+            <div style="color: #fff">
+              <i class="fa fa-map-marker"></i> Hyderabad
+            </div>
+          </div>
+        </div>
         <div class="ul-header-top-slider splide">
-          <div class="splide__track">
+          <div class="row"></div>
+
+          <div class="splide__track d-none">
             <ul class="splide__list">
               <li class="splide__slide">
                 <p class="ul-header-top-slider-item">
@@ -352,14 +410,20 @@
               <div class="to-go-to-sidebar-in-mobile">
                 <nav class="ul-header-nav">
                   <a href="index.html">Home</a>
-                  <a href="shop.html">Academics</a>
+                  <!-- <a href="shop.html">Shop</a>
+                  <a href="shop.html">Women</a>
+                  <a href="shop.html">Men's</a>
+                  <a href="shop.html">Kids</a> -->
+
+                  <a href="academics.html">Academics</a>
                   <a href="shop.html">Rental</a>
                   <a href="shop.html">Store</a>
                   <a href="services.html">Services</a>
+
                   <a href="blog.html">Blog</a>
 
                   <div class="has-sub-menu has-mega-menu">
-                    <a role="button">Pages</a>
+                    <!-- <a role="button">Pages</a> -->
 
                     <div class="ul-header-submenu ul-header-megamenu">
                       <div class="single-col">
@@ -454,7 +518,9 @@
               <button class="ul-header-mobile-search-opener d-xxl-none">
                 <i class="flaticon-search-interface-symbol"></i>
               </button>
-              <button><i class="flaticon-user"></i></button>
+              <a href="login.html" style="color: #163260">
+                <i class="flaticon-user"></i>
+              </a>
               <a href="wishlist.html"><i class="flaticon-heart"></i></a>
               <a href="cart.html"><i class="flaticon-shopping-bag"></i></a>
             </div>
@@ -739,7 +805,7 @@
           <div class="ul-footer-top-widget">
             <h3 class="ul-footer-top-widget-title">Brands</h3>
 
-           <div class="ul-footer-top-widget-links">
+            <div class="ul-footer-top-widget-links">
               <a href="#">DJ Drones</a>
               <a href="#">Agmay Drones</a>
               <a href="#">Drone Acharya</a>
@@ -765,7 +831,7 @@
           <div class="ul-footer-top-widget">
             <h3 class="ul-footer-top-widget-title">Accessories</h3>
 
-           <div class="ul-footer-top-widget-links">
+            <div class="ul-footer-top-widget-links">
               <a href="#">Camera</a>
               <a href="#">Batteries</a>
               <a href="#">Propeller</a>
